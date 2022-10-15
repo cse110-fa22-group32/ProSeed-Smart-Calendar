@@ -8,6 +8,7 @@
 | Jonathan Hsu | jihsu@ucsd.edu | 858-888-0088 | CS |
 | Guan Li | --- | --- | --- |
 | Steven Khaw | skhaw@ucsd.edu | 626-825-5186 | Math-CS |
+| Yuelin Dai | y1dai@ucsd.edu | 858-250-9875 | CS |
 
 # Primary Means of Communication:
 
@@ -47,4 +48,5 @@ Staff(TA) will be available to meet with team members to resolve issues. If a te
 # Team Signatures:
 
 Jonathan Hsu\
-Steven Khaw
+Steven Khaw\
+Yuelin Dai
