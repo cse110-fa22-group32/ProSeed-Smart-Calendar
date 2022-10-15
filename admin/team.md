@@ -10,6 +10,7 @@
 | Steven Khaw | skhaw@ucsd.edu | 626-825-5186 | Math-CS |
 | Yuelin Dai | y1dai@ucsd.edu | 858-250-9875 | CS |
 | Younus Ahmad | yahmad@ucsd.edu | 559-691-7990 | CE |
+| Peng Luo | p2luo@ucsd.edu | 858-203-8254 | Math-CS |
 
 # Primary Means of Communication:
 
@@ -52,3 +53,4 @@ Jonathan Hsu\
 Steven Khaw\
 Yuelin Dai\
 Younus Ahmad\
+Peng Luo\
