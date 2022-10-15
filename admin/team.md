@@ -9,6 +9,7 @@
 | Guan Li | --- | --- | --- |
 | Steven Khaw | skhaw@ucsd.edu | 626-825-5186 | Math-CS |
 | Yuelin Dai | y1dai@ucsd.edu | 858-250-9875 | CS |
+| Younus Ahmad | yahmad@ucsd.edu | 559-691-7990 | CE |
 
 # Primary Means of Communication:
 
@@ -49,4 +50,5 @@ Staff(TA) will be available to meet with team members to resolve issues. If a te
 
 Jonathan Hsu\
 Steven Khaw\
-Yuelin Dai
+Yuelin Dai\
+Younus Ahmad\
