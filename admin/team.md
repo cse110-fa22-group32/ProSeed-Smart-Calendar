@@ -46,5 +46,5 @@ Staff(TA) will be available to meet with team members to resolve issues. If a te
 
 # Team Signatures:
 
-Jonathan Hsu
+Jonathan Hsu\
 Steven Khaw
