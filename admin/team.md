@@ -15,5 +15,6 @@ We here at Grass Touchers Corp. are a group of highly determined, yet lowly expe
 | Younus Ahmad | yahmad@ucsd.edu | 559-691-7990 | CE |
 | Steven Chin | sdchin@ucsd.edu | 323-810-6037 | Math-CS |
 | Christopher Han | cbhan@ucsd.edu | 619-380-3955 | Math-CS |
+| Yangming Guan | yaguan@ucsd.edu | 316-519-1943 | CE |
 
 ###### We are net held responsable for any information lost, any miss-use of our software, and anything of importance to be deleted. Use our software at your own risk. <3
