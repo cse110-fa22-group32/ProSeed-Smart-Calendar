@@ -15,7 +15,7 @@ We are still in the brainstorming progress for our project.
 - Haoyi Wang
 
 **Meeting Times:**
-Monday and Friday we will have standups in Discord chat.
+Monday and Friday we will have standups in Discord chat.  
 Wednesday 6-6:30pm we will have an in-person discussion about the progress.
 
 [**Link to team.md**](/admin/team.md)
