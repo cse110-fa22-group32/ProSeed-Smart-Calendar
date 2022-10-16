@@ -9,7 +9,7 @@ We are still in the brainstorming progress for our project.
 - Younus Ahmad
 - Yangming Guan
 - Steven Chin
-- Christopher Ha 
+- Christopher Han
 - Yuelin Dai
 - Peng Luo
 - Haoyi Wang
