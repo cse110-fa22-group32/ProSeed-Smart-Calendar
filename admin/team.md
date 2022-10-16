@@ -9,7 +9,7 @@ We here at Grass Touchers Corp. are a group of highly determined, yet lowly expe
 | Name | Email | Phone | Major |
 |---|---|---|---|
 | Jonathan Hsu | jihsu@ucsd.edu | 858-888-0088 | CS |
-| Guan Li | --- | --- | --- |
+| Guan Li | gcl001@ucsd.edu | 858-218-4637 | CS |
 | Steven Khaw | skhaw@ucsd.edu | 626-825-5186 | Math-CS |
 | Yuelin Dai | y1dai@ucsd.edu | 858-250-9875 | CS |
 | Younus Ahmad | yahmad@ucsd.edu | 559-691-7990 | CE |
