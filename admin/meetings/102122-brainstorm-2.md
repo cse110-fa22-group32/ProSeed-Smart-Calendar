@@ -15,7 +15,7 @@
 ### **Missing**
 - Jonathan (Out of town)
 
-###### Agenda:
+### Agenda:
 <div style="font-size:10pt;">
     <ol>
         <li> Logistics
@@ -23,14 +23,14 @@
     </ol>
 </div>
 
-###### What we did:
+### What we did:
 <div style="font-size:10pt;">
     <ul>
         <li> Brainstormed some ideas, added them to Miro
     </ul>
 </div>
 
-###### Meeting Notes:
+### Meeting Notes:
 <div style="font-size:10pt;">
     <ul>
         <li> Saturday meetings at 6-7pm with the TA.
@@ -43,7 +43,7 @@
     </ul>
 </div>
 
-###### What we have to do:
+### What we have to do:
 <div style="font-size:10pt;">
     <ul>
         <li> Continue to brainstorm ideas and add them to Miro. <b> 1 Miro Brainstorming contribution by Sunday night </b>

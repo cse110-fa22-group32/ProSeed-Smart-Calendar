@@ -15,7 +15,7 @@
 - Yeulin (Sick)
 - Yangming (No reply)
 
-###### Agenda:
+### Agenda:
 <div style="font-size:10pt;">
     <ol>
         <li> Logistics
@@ -24,7 +24,7 @@
     </ol>
 </div>
 
-###### What we did:
+### What we did:
 <div style="font-size:10pt;">
     <ul>
         <li> https://miro.com/welcomeonboard/M1VobzFMTTQ0M3hOb3JBNXJ1bFBnY3p6U3BPeTU0a21Mc2pPeFN4R2hYTDZSUDlIZE9uUVFndlVQc01mbEN4RXwzNDU4NzY0NTM2NDA0MjM5MTQ5fDI=?share_link_id=758519361288
@@ -35,7 +35,7 @@
     </ul>
 </div>
 
-###### Meeting Notes:
+### Meeting Notes:
 <div style="font-size:10pt;">
     <ul>
         <li> Every member will contribute 1 whole brainstorming tree on Miro - Sunday Night 
@@ -51,7 +51,7 @@
     </ul>
 </div>
 
-###### What we have to do:
+### What we have to do:
 <div style="font-size:10pt;">
     <ul>
         <li> Set up agile workspace (later on)
