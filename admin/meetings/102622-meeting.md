@@ -26,8 +26,8 @@
 
 1. discuss each topic
 2. finalize topic
-3. start assigning tasks
-4. build out starting pipeline and directories (maybe)
+3. start assigning tasks (not reached)
+4. build out starting pipeline and directories (not reached)
 
 </div>
 
@@ -36,6 +36,7 @@
 <div style="font-size:10pt;">
 
 - each person talks about their brainstorming topics
+- put 3 stars next to topics you like on miro with your name on it
 
 </div>
 
@@ -45,5 +46,7 @@
 
 - build starting pipeline and directories
 - assign and begin construction
+- set up work environment/github
+- prep for first sprint, schedule first sprint meeting to come up with stories
 
 </div>
