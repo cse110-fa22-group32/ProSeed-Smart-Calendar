@@ -23,27 +23,27 @@
 ###### Agenda
 
 <div style="font-size:10pt;">
-    <ol>
-        <li> discuss each topic
-        <li> finalize topic
-        <li> finalize github branch structure and basics like issues
-        <li> start assigning tasks
-        <li> build out starting pipeline and directories (maybe)
-    </ol>
+
+1. discuss each topic
+2. finalize topic
+3. start assigning tasks
+4. build out starting pipeline and directories (maybe)
+
 </div>
 
 ###### What we did
 
 <div style="font-size:10pt;">
-    <ul>
-        <li>
-    </ul>
+
+- each person talks about their brainstorming topics
+
 </div>
 
 ###### What we have to do
 
 <div style="font-size:10pt;">
-    <ul>
-        <li>
-    </ul>
+
+- build starting pipeline and directories
+- assign and begin construction
+
 </div>
