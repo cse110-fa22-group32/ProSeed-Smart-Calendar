@@ -1,6 +1,6 @@
 # cse110-fa22-group32
 
-We are still in the brainstorming progress for our project.
+We are about to start our first sprint.
 
 **Team members:**
 - Jonathan Hsu - Lead
