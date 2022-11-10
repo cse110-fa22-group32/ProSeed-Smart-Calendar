@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Recipe Card Custom Element -->
+  <!-- <script src="assets/scripts/RecipeCard.js" type="module"></script> -->
+
+  <!-- Main Stylesheets & Scripts -->
+  <link rel="stylesheet" href="assets/styles/calendar.css" />
+  <script src="assets/scripts/calendar.js" type="module"></script>
+
+</head>
+
+<body>
+	<h2 align="center">
+		Month Year
+	</h2>
+	
+	<table bgcolor="lightgrey" align="center"
+		cellspacing="20" cellpadding="20">
+		
+		<thead>
+			<tr>
+				<th>Sun</th>
+				<th>Mon</th>
+				<th>Tue</th>
+				<th>Wed</th>
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+  <form id="new-event2" >
+    <fieldset>
+      <legend>Add An Event</legend>
+      <label for="title-txt">Date:
+        <input type="number" id="dateIn" name="dateIn" required>
+      </label>
+      <label for="title-lnk">Event:
+        <input type="text" id="eventIn" name="eventIn" required>
+      </label>
+    </fieldset>
+    <button type="submit">Add</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+  <form id="remove-event" >
+    <fieldset>
+      <legend>Remove An Event</legend>
+      <label for="title-txt">date:
+        <input type="number" id="date" name="date" required>
+      </label>
+      <label for="title-lnk">index:
+        <input type="number" id="index" name="index" required>
+      </label>
+    </fieldset>
+    <button type="submit">Remove</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+  <form id="month-setting" >
+    <fieldset>
+      <legend>Change Month Starting Date</legend>
+      <label for="title-txt">startRow:
+        <input type="number" id="startRow" name="startRow" required>
+      </label>
+      <label for="title-lnk">startCol:
+        <input type="number" id="startCol" name="startCol" required>
+      </label>
+      <label for="title-lnk">monthDays:
+        <input type="number" id="monthDays" name="monthDays" required>
+      </label>
+    </fieldset>
+    <button type="submit">Change</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+
+</body>
+
+</html>
