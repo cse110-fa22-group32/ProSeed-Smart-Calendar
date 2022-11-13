@@ -11,6 +11,7 @@
   <!-- <script src="assets/scripts/RecipeCard.js" type="module"></script> -->
 
   <!-- Main Stylesheets & Scripts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="assets/styles/calendar.css" />
   <script src="assets/scripts/calendar.js" type="module"></script>
 
@@ -19,8 +20,31 @@
 <body>
 	<main>
 		<div id="calendar">
-			<div id="calendar-head">
+			<div id="calendar-title-bar">
 				<h1>ProSeed Calendar</h1>
+				<div id="calendar-title-bar-conponent">
+					<button id="calendar-month-btn-up" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_upward</span>
+					</button>
+					<button id="calendar-month-btn-down" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_downward</span>
+					</button>
+					<p>Month</p>
+					<button id="calendar-year-btn-up" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_upward</span>
+					</button>
+					<button id="calendar-year-btn-down" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_downward</span>
+					</button>
+					<p>Year</p>
+					<button id="calendar-title-bar-user" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">account_circle</span>User
+					</button>
+				</div>
+				
+			</div>
+			<div id="calendar-head">
+				<h1>November 2022</h1>
 			</div>
 			<div id="calendar-day-main">
 				<div class="week-of-day"><p>Sunday</p></div>
@@ -70,6 +94,26 @@
 				<div class="calendar-day-block"></div>
 				<div class="calendar-day-block"></div>
 				<div class="calendar-day-block"></div>
+			</div>
+			<div id="calendar-tail">
+				<button id="share-export" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">error</span> Share or Export
+				</button>
+				<button id="add-event" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Add Event
+				</button>
+				<button id="add-todo" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Add To-Do List
+				</button>
+				<button id="create-user" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Create User
+				</button>
+				<button id="change-user" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Change User
+				</button>
+				<button id="help" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">help</span>
+				</button>
 			</div>
 		</div>
 	</main>
