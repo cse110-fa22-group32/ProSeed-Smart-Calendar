@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Recipe Card Custom Element -->
+  <!-- <script src="assets/scripts/RecipeCard.js" type="module"></script> -->
+
+  <!-- Main Stylesheets & Scripts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="assets/styles/calendar.css" />
+  <script src="assets/scripts/calendar.js" type="module"></script>
+
+</head>
+
+<body>
+	<main>
+		<div id="calendar">
+			<div id="calendar-title-bar">
+				<h1>ProSeed Calendar</h1>
+				<div id="calendar-title-bar-conponent">
+					<button id="calendar-month-btn-up" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_upward</span>
+					</button>
+					<button id="calendar-month-btn-down" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_downward</span>
+					</button>
+					<p>Month</p>
+					<button id="calendar-year-btn-up" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_upward</span>
+					</button>
+					<button id="calendar-year-btn-down" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">arrow_downward</span>
+					</button>
+					<p>Year</p>
+					<button id="calendar-title-bar-user" class="calendar-title-bar-btn">
+						<span class="material-symbols-outlined">account_circle</span>User
+					</button>
+				</div>
+				
+			</div>
+			<div id="calendar-head">
+				<h1>November 2022</h1>
+			</div>
+			<div id="calendar-day-main">
+				<div class="week-of-day"><p>Sunday</p></div>
+				<div class="week-of-day"><p>Monday</p></div>
+				<div class="week-of-day"><p>Tuesday</p></div>
+				<div class="week-of-day"><p>Wednesday</p></div>
+				<div class="week-of-day"><p>Thursday</p></div>
+				<div class="week-of-day"><p>Friday</p></div>
+				<div class="week-of-day"><p>Saturday</p></div>
+				<div id="day-block-0" class="calendar-day-block"><p>1</p></div>
+				<div id="day-block-1" class="calendar-day-block"><p>2</p></div>
+				<div id="day-block-2" class="calendar-day-block"><p>3</p><div>event 1</div><div>event 2</div><div>event 3</div><div>event 4</div></div>
+				<div id="day-block-3" class="calendar-day-block"><p>4</p></div>
+				<div id="day-block-4" class="calendar-day-block"><p>5</p></div>
+				<div id="day-block-5" class="calendar-day-block"><p>6</p></div>
+				<div id="day-block-6" class="calendar-day-block"><p>7</p></div>
+
+				<!--can be create by javascript, just for the test-->
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+				<div class="calendar-day-block"></div>
+			</div>
+			<div id="calendar-tail">
+				<button id="share-export" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">error</span> Share or Export
+				</button>
+				<button id="add-event" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Add Event
+				</button>
+				<button id="add-todo" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Add To-Do List
+				</button>
+				<button id="create-user" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Create User
+				</button>
+				<button id="change-user" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">add_circle</span>Change User
+				</button>
+				<button id="help" class="calendar-tail-btn">
+					<span class="material-symbols-outlined">help</span>
+				</button>
+			</div>
+		</div>
+	</main>
+	<h2 align="center" class="hidden">
+		Month Year
+	</h2>
+	<table bgcolor="lightgrey" align="center" class="hidden"
+		cellspacing="20" cellpadding="20">
+		
+		<thead>
+			<tr>
+				<th>Sun</th>
+				<th>Mon</th>
+				<th>Tue</th>
+				<th>Wed</th>
+				<th>Thu</th>
+				<th>Fri</th>
+				<th>Sat</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+  <form id="new-event2" >
+    <fieldset>
+      <legend>Add An Event</legend>
+      <label for="title-txt">Date:
+        <input type="number" id="dateIn" name="dateIn" required>
+      </label>
+      <label for="title-lnk">Event:
+        <input type="text" id="eventIn" name="eventIn" required>
+      </label>
+    </fieldset>
+    <button type="submit">Add</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+  <form id="remove-event" >
+    <fieldset>
+      <legend>Remove An Event</legend>
+      <label for="title-txt">date:
+        <input type="number" id="date" name="date" required>
+      </label>
+      <label for="title-lnk">index:
+        <input type="number" id="index" name="index" required>
+      </label>
+    </fieldset>
+    <button type="submit">Remove</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+  <form id="month-setting" >
+    <fieldset>
+      <legend>Change Month Starting Date</legend>
+      <label for="title-txt">startRow:
+        <input type="number" id="startRow" name="startRow" required>
+      </label>
+      <label for="title-lnk">startCol:
+        <input type="number" id="startCol" name="startCol" required>
+      </label>
+      <label for="title-lnk">monthDays:
+        <input type="number" id="monthDays" name="monthDays" required>
+      </label>
+    </fieldset>
+    <button type="submit">Change</button>
+    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
+  </form>
+
+
+</body>
+
+</html>
