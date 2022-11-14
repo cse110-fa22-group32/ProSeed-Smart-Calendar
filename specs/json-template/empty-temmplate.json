@@ -1,0 +1,37 @@
+{
+    "usersList" : [
+        {
+            "firstname" : " ",
+            "lastname" : " ",
+            "username" : " ",
+            "password" : " ",
+            "profileID" : " ",
+            "calendarIDs" : {
+                "key" : " ",
+                "v" : true
+            }
+        }
+    ],
+    "eventsList" : [
+        {
+            "startDay" : "MM/DD/YY HH:MM",
+            "endDay" : "MM/DD/YY HH:MM",
+            "name" : " ",
+            "location" : " ",
+            "description" : " ",
+            "users" : [0]
+        }
+    ],
+    "tasksList" : [
+        {
+            "name" : " ",
+            "tag" : " ",
+            "createdDate" : "MM/DD/YY HH:MM",
+            "taskLastUpdated" : "MM/DD/YY HH:MM",
+            "workDates" : "MM/DD/YY HH:MM",
+            "dueDate" : "MM/DD/YY HH:MM",
+            "taskDescription" : " ",
+            "users" : [0]
+        }
+    ]
+}
