@@ -1,0 +1,159 @@
+/*
+***********************************************
+the display size of calendar depend on the screen size
+at 600px, 900px, 1200px.
+***********************************************
+*/
+@media only screen and (max-width: 600px) {
+    :root {
+        --calendar-width:642px;
+        --week-title-display: inline;
+        --week-block-display:grid;
+        --day-block-height: 90px;
+        --day-block-width: 90px;
+        --grid-template-columns: repeat(7, 90px);
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    :root {
+        --calendar-width:642px;
+        --week-title-display: inline;
+        --week-block-display:grid;
+        --day-block-height: 90px;
+        --day-block-width: 90px;
+        --grid-template-columns: repeat(7, 90px);
+    }
+}
+
+
+@media only screen and (min-width: 900px) {
+    :root {
+        --calendar-width:852px;
+        --week-title-display: inline;
+        --week-block-display:grid;
+        --day-block-height: 120px;
+        --day-block-width: 120px;
+        --grid-template-columns: repeat(7, 120px);
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    :root {
+        --calendar-width:1202px;
+        --week-title-display: inline;
+        --week-block-display:grid;
+        --day-block-height: 170px;
+        --day-block-width: 170px;
+        --grid-template-columns: repeat(7, 170px);
+    }
+}
+
+/*
+***********************************************
+title bar and head css setting for calendar
+***********************************************
+*/
+#calendar {
+    display: inline;
+    gap: 0%;
+}
+
+#calendar-title-bar {
+    width: var(--calendar-width);
+    background-color:rgb(137, 149, 160);
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+}
+
+#calendar-head {
+    margin-top: 3px;
+    background-color:rgb(137, 149, 160);
+    width: var(--calendar-width);
+}
+
+#calendar-head h1{
+    margin:0%;
+}
+
+#calendar-title-bar-conponent {
+    background-color:rgb(92, 106, 120);
+    display: flex; 
+    justify-content:center;
+}
+
+.calendar-title-bar-btn {
+    margin:10px;
+    border-color: rgb(92, 106, 120);
+    width: 50px;
+    height: 50px;
+    background-color:rgb(92, 106, 120);
+}
+
+.calendar-title-bar-btn:hover {
+    background-color: RoyalBlue;
+}
+/*
+***********************************************
+day block css setting for calendar
+***********************************************
+*/
+
+.week-of-day {
+    display: var(--week-title-display);
+    background-color:rgb(92, 106, 120);
+    margin:0%;
+    padding:0%;
+    height: 40px;
+    width: var(--day-block-width);
+}
+.week-of-day p{
+    text-align: center;
+}
+
+.calendar-day-block {
+    background-color:rgb(137, 149, 160);
+    height: var(--day-block-height);
+    width: var(--day-block-width);
+    
+}
+
+#calendar-day-main {
+    display: var(--week-block-display);
+    gap: 2px;
+    grid-template-columns: var(--grid-template-columns)
+}
+
+.calendar-day-block p {
+    color:blue;
+    margin:0%;
+    padding:0%;
+    border: 0%;
+}
+
+.hidden {
+    display:none
+}
+
+/*
+***********************************************
+function button setting for calendar
+***********************************************
+*/
+#calendar-tail {
+    width: var(--calendar-width);
+    margin-top: 3px;
+    background-color:rgb(137, 149, 160);
+}
+.calendar-tail-btn {
+    margin:10px;
+    border-color: rgb(92, 106, 120);
+    width: 150px;
+    height: 40px;
+    background-color:rgb(92, 106, 120);
+}
+
+.calendar-tail-btn:hover {
+    background-color: RoyalBlue;
+}
