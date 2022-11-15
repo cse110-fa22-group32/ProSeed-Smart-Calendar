@@ -6,17 +6,23 @@
         <title>ProSeed Login</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./assets/styles/main.css">
+        <link rel="stylesheet" href="./assets/styles/login.css">
     </head>
     <body>
+        <div class="title">
+            <h1>ProSeed</h1>
+            <h3>The Smart Calendar and To-Do List</h4>
+        </div>
         <div class="mainContainer">
-            <h1>Create An Account</h1>
-            <h4>Sign in to access all of your calendars and todo lists!</h4>
             <form class="loginFields">
+                <h1>Sign In</h4>
                 <div class="container">
+                    <label for="uname">Username or Email</label>
                     <input type="text" placeholder="Enter Username" name="uname" required>
-                    <input type="text" placeholder="Enter Password" name="pword" required>
-                    <button type="submit">Login</button>
+                    <label for="pword">Password</label>
+                    <input type="password" placeholder="Enter Password" name="pword" required>
+                    <label><input type="checkbox" checked="unchecked" name="remember"> Remember Me<br></label>
+                    <button type="submit" id="login">Login</button>
                 </div>
             </form>
             <span>Already have an account? <button type="submit">Sign In!</button></span>
