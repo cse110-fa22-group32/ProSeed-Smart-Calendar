@@ -1,5 +1,5 @@
 /**
- * Year.js
+ * User.js
  * @author Guan Li
  * @summary File contains user class and functions.
  * 

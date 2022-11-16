@@ -15,21 +15,34 @@ class Month {
      * @constructor construct empty Month
      */
     constructor(curMonthInt, currMonthStr, days, users) {
-        this.curMonthInt = -1;
-        this.currMonthStr = "";
-        this.days = [];
-        this.users = [];
+        this.curMonthInt = curMonthInt;
+        this.currMonthStr = currMonthStr;
+        this.days = days;
+        this.users = users;
     }
 
     //Getters:
+
+    /**
+     * @author Steven Khaw
+     * This is the getter for current month number (1-12)
+     */
     get MonthInt() {
         return this.currMonth;
     }
 
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
     get MonthStr() {
         return this.currMonthStr;
     }
 
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
     get Users() {
         return this.users;
     }

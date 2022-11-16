@@ -10,31 +10,57 @@
 class Day {
 
     /**
+     * @author Steven Khaw
      * Create a day object 
      * 
      * @constructor construct empty Day
      */
-    constructor() {
-        this.currDay = -1;
-        this.events = [];
-        this.todos = [];
-        this.users = [];
+    constructor(currDayInt, currDayStr, events, todos, users) {
+        this.currDayInt = currDayInt;
+        this.currDayStr = currDayStr;
+        this.events = events;
+        this.todos = todos;
+        this.users = users;
     }
 
     //Getters:
+
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
+    get DayInt() {
+        return this.currDayInt;
+    }
     
-    get Day() {
-        return this.currDay;
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
+    get DayStr() {
+        return this.currDayStr;
     }
 
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
     get Events() {
         return this.events;
     }
 
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
     get Todos() {
         return this.todos;
     }
 
+    /**
+     * @author Steven Khaw
+     * This is the getter for current day
+     */
     get Users() {
         return this.users;
     }
