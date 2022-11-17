@@ -39,7 +39,7 @@ jobs:
         run: |
           git config --local user.email "p2luo@ucsd.edu"
           git config --local user.name "JSDoc_generation workflow"
-          git add ./source/assets/doc
+          git add ./
           git commit -m "Updating the Documentation"
       
       # Push the change
@@ -48,4 +48,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: JSDoc_generation
-          force: true
