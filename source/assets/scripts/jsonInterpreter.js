@@ -57,16 +57,6 @@ const testJson = `
   }
 `;
 
-import {Day} from './Day.js'
-import {Event} from './Event.js'
-import {Calendar} from './calendar.js'
-import { Task } from './Task.js';
-import { Month } from './Month.js';
-import { Year } from './Year.js';
-import { User } from './User.js';
-
-export {LoadJson};
-
 /**
  * Get the corresponding string of a day 
  * @param ind - order number of the day (1 - 7)

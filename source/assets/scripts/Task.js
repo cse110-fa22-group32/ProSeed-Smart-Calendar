@@ -7,8 +7,6 @@
  * Last Modified : 2022-11-16 2:30 PM
  */
 
- export {Task};
-
 /** Class Task TODO ADD MORE DESCRIPTION  */
 class Task {
 

@@ -7,8 +7,6 @@
  * Last Modified : 2022-11-16 2:30 PM
  */
 
- export {User};
-
 /** Class User  */
 class User {
 
