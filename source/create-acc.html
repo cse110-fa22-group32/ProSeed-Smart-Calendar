@@ -1,17 +1,12 @@
-<!--
-    This html document is set to be the title page that should first open
-    when the user logs in. It contains options to sign in with the corresponding
-    fields, link to forgot password page, and create an account page.
--->
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ProSeed Login</title>
+        <title>Create an Account!</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./assets/styles/index.css">
+        <link rel="stylesheet" href="./assets/styles/createAcc.css">
     </head>
     <body>
         <div class="title">
@@ -20,18 +15,16 @@
         </div>
         <div class="mainContainer">
             <form class="loginFields">
-                <h1>Sign In</h4>
+                <button type="submit">Go Back!</button>
+                <h1 id="create">Create an Account</h4>
                 <div class="container">
                     <label for="uname">Username or Email</label>
                     <input type="text" placeholder="Enter Username" name="uname" class="field" required>
                     <label for="pword">Password</label>
                     <input type="password" placeholder="Enter Password" name="pword" class="field" required>
-                    <label><input type="checkbox" checked="unchecked" name="remember">Remember Me<br></label>
-                    <button type="submit" class="field">Login</button>
+                    <button type="submit" class="field">Next</button>
                 </div>
             </form>
-            <span>New here?<button type="submit">Create an Account</button></span>
-            <button type="submit">Forgot Password?</button>
         </div>
     </body>
 </html>
