@@ -7,6 +7,8 @@
  * Last Modified : 2022-11-16 4:30 PM
  */
 
+ export {Day};
+
 /** Class Day */
 class Day {
 

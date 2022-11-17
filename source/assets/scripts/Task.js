@@ -7,9 +7,13 @@
  * Last Modified : 2022-11-16 2:30 PM
  */
 
+ export {Task};
+
 /** Class Task TODO ADD MORE DESCRIPTION  */
 class Task {
 
+    static counter = 0;
+    
     /**
      * @author Guan Li
      * Constructs a task object from the class
@@ -24,7 +28,8 @@ class Task {
      */
     constructor(taskName, taskID, tags, dueDate, description, complete) {
         this.taskName = taskName;
-        this.taskID = taskID;
+        // this.taskID = taskID;
+        this.taskID = Task.counter++;
         this.tags = tags;
         this.dueDate = dueDate;
         this.description = description;

@@ -7,6 +7,8 @@
  * Last Modified : 2022-11-16 4:30 PM
  */
 
+ export {Year};
+
 /** Class Year */
 class Year {
 
@@ -19,9 +21,9 @@ class Year {
      * @param {boolean} isLeapYear boolean on if leap year
      * @param {Month[]} months months of year 
      */
-    constructor(currYear, isLeapYear, months) {
+    constructor(currYear, months) {
         this.currYear = currYear;
-        this.isLeapYear = isLeapYear;
+        this.isLeapYear = ((0 === this.curYear % 4) && (0 !== this.curYear % 100) || (0 === this.curYear % 400));
         this.months = months;
     }
 

@@ -7,7 +7,9 @@
  * Last Modified : 2022-11-16 4:30 PM
  */
 
-/** Class Month */
+ export {Month};
+
+ /** Class Month */
 class Month {
 
     /**

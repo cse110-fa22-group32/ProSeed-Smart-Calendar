@@ -7,8 +7,12 @@
  * Last Modified : 2022-11-16 2:30 PM
  */
 
+ export {Event};
+
 /** Class Event  */
 class Event {
+
+    static counter = 0;
 
     /**
      * @author Guan Li
@@ -22,11 +26,12 @@ class Event {
      * @param {string} location - location of event
      * @param {string} description - description of event
      */
-    constructor(startDay, endDay, eventName, eventID, location, description) {
+    constructor(startDay, endDay, eventName, location, description) {
         this.startDay = startDay;
         this.endDay = endDay;
         this.eventName = eventName;
-        this.eventID = eventID;
+        // this.eventID = eventID;
+        this.eventID = Event.counter++;
         this.location = location;
         this.description = description;
     }
