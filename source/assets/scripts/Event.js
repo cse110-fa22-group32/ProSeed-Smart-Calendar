@@ -18,13 +18,15 @@ class Event {
      * @param {string} startDay - start day of event
      * @param {string} endDay - end day of event
      * @param {string} eventName - name of event
+     * @param {string} eventID - unique ID of event
      * @param {string} location - location of event
      * @param {string} description - description of event
      */
-    constructor(startDay, endDay, eventName, location, description) {
+    constructor(startDay, endDay, eventName, eventID, location, description) {
         this.startDay = startDay;
         this.endDay = endDay;
         this.eventName = eventName;
+        this.eventID = eventID;
         this.location = location;
         this.description = description;
     }
@@ -57,6 +59,14 @@ class Event {
 
     /**
      * @author Guan Li
+     * @return eventID
+     */
+    get EventID() {
+        return this.eventID;
+    }
+
+    /**
+     * @author Guan Li
      * @return location
      */
     get Location() {
@@ -73,15 +83,16 @@ class Event {
 
     /**
      * @param: startDay,endDay, location, description
-     * @param startDay - the start day of the events
-     * @param endDay - the last day of the events
-     * @param location - the location of the events.
-     * @param description = the description of the events
+     * @param startDay - the start day of event
+     * @param endDay - the last day of event
+     * @param eventName - the name of event
+     * @param location - the location of events
+     * @param description - the description of event
      * 
      * @author Guan Li
      * @return an Event object
      */
-    createEvent(startDay, endDay, location, description){
+    createEvent(startDay, endDay, eventName, location, description){
         //TODO:
     }
 }

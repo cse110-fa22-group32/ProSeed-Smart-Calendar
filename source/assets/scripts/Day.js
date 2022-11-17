@@ -13,7 +13,7 @@ class Day {
     /**
      * @author Steven Khaw
      * Constructs a day object from the class
-     * @constructor 
+     * @constructor
      * 
      * @param {number} currDayInt number of day (1-31)
      * @param {string} currDayStr string representation of day ('Monday'...etc.)

@@ -15,11 +15,11 @@ class Calendar {
      * Constructs a calendar object from the class
      * @constructor 
      * 
-     * @param {string} title title of calendar
      * @param {string} lastUpdated last updated date; format: "MM-DD-YY"
+     * @param {string} title title of calendar
      * @param {string} calendarID unique ID for calendar
      * @param {Year[]} years years in calendar
-     * @param {User[]} users users able to access calendar
+     * @param {String[]} users users able to access calendar; format: "Firstname Lastname"
      */
     constructor(title, lastUpdated, calendarID, years, users) {
         this.title = title;
@@ -33,18 +33,18 @@ class Calendar {
 
     /**
      * @author Steven Khaw
-     * @return title
-     */
-    get Title() {
-        return this.title;
-    }
-
-    /**
-     * @author Steven Khaw
      * @return lastUpdated
      */
     get LastUpdated() {
         return this.lastUpdated;
+    }
+
+    /**
+     * @author Steven Khaw
+     * @return title
+     */
+     get Title() {
+        return this.title;
     }
 
     /**
