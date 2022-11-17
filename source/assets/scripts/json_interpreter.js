@@ -34,7 +34,7 @@ const testJson = `
       }
   ]
 }
-`
+`;
 
 
 /**
@@ -67,12 +67,12 @@ class Year {
     this.months.push(new Month(12, 31)); // Dec
   }
 
-/**
- * Check wheter this year is a leap year or not
- * @return {boolean} Return true if this year is a leap year
- */
+  /**
+   * Check wheter this year is a leap year or not
+   * @return {boolean} Return true if this year is a leap year
+   */
   isLeapYear() {
-    return ((0 == this.curYear % 4) && (0 != this.curYear % 100) || (0 == this.curYear % 400)); 
+    return ((0 === this.curYear % 4) && (0 !== this.curYear % 100) || (0 === this.curYear % 400)); 
   }
 
   curYear = 0;
@@ -91,7 +91,7 @@ class Month {
   constructor(iMonth, iCntDays) {
     this.curMonth = iMonth;
 
-    for(let i = 0; i < iCntDays; i++) {
+    for (let i = 0; i < iCntDays; i++) {
       this.days.push(new Day(i+1));
     }
   }
@@ -125,7 +125,7 @@ class Event {
    * @param {object} obj an object (likely created from json) that'll be copied 
    */
   constructor(obj) {
-    for(var key in obj)
+    for(let key in obj)
       this[key] = obj[key];
   }
 
@@ -215,7 +215,7 @@ class User {
    * @
    */
   constructor(obj) {
-    for(var key in obj)
+    for(let key in obj)
       this[key] = obj[key];
   }
 
@@ -317,13 +317,13 @@ function loadLocalData() {
  */
 function init() {
 
-  var e1 = new Event(JSON.parse('{"name":"e1","users":[1,2]}'));
-  console.log(e1);
-  e1.addToLocalCalendar(0);
+  // var e1 = new Event(JSON.parse('{"name":"e1","users":[1,2]}'));
+  // console.log(e1);
+  // e1.addToLocalCalendar(0);
 
-  var u1 = new User(JSON.parse('{"displayName":"john","username":"admin","password":"123"}'));
-  console.log(u1);
-  u1.addUserIndex(0);
+  // var u1 = new User(JSON.parse('{"displayName":"john","username":"admin","password":"123"}'));
+  // console.log(u1);
+  // u1.addUserIndex(0);
 
   loadJson(testJson);
   console.log(localCalendar);
