@@ -20,9 +20,7 @@ class User {
      * @param {string} userName - username of user
      * @param {string} password - password of user
      * @param {string} profileID - profileID of user
-     * @param {string : boolean} calendarID - Store calendar's key as string key 
-     * and their boolean whether or not calendar is visible to user;  
-     * format: {varName : varValue}.
+     * @param {string[]} calendarID - calendarIDs user has access to
      */
     constructor(firstName, lastName, username, password, profileID, calendarID) {
         this.firstName = firstName;
