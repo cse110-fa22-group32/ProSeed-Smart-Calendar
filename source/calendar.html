@@ -96,22 +96,22 @@
 				<div class="calendar-day-block"></div>
 			</div>
 			<div id="calendar-tail">
-				<button id="share-export" class="calendar-tail-btn">
+				<button id="share-export-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">error</span> Share or Export
 				</button>
-				<button id="add-event" class="calendar-tail-btn">
+				<button id="add-event-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">add_circle</span>Add Event
 				</button>
-				<button id="add-todo" class="calendar-tail-btn">
+				<button id="add-todo-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">add_circle</span>Add To-Do List
 				</button>
-				<button id="create-user" class="calendar-tail-btn">
+				<button id="create-user-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">add_circle</span>Create User
 				</button>
-				<button id="change-user" class="calendar-tail-btn">
+				<button id="change-user-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">add_circle</span>Change User
 				</button>
-				<button id="help" class="calendar-tail-btn">
+				<button id="help-btn" class="calendar-tail-btn">
 					<span class="material-symbols-outlined">help</span>
 				</button>
 			</div>
@@ -192,20 +192,31 @@
 			</tr>
 		</tbody>
 	</table>
-
-  <form id="new-event2" >
-    <fieldset>
-      <legend>Add An Event</legend>
-      <label for="title-txt">Date:
-        <input type="number" id="dateIn" name="dateIn" required>
-      </label>
-      <label for="title-lnk">Event:
-        <input type="text" id="eventIn" name="eventIn" required>
-      </label>
-    </fieldset>
-    <button type="submit">Add</button>
-    <!-- <button type="button" class="danger">Clear Local Storage</button> -->
-  </form>
+	<dialog id="add-event-dialog">
+		<form id="add-event-form" method="dialog">
+			<fieldset>
+				<legend>Add An Event</legend>
+				<label for="title">Title: 
+					<input class="title" name="title" placeholder="Title for the event.">
+				</label><br/>
+				<label for="date">Date:
+					<input type="date" name="date" class="date"/>
+				</label><br />
+				<label for="start-time">Start time:
+					<input type="time" name="start-time" class="start-time"/>
+				</label><br />
+				<label for="end-time">End time:
+					<input type="time" name="end-time" class="end-time"/>
+				</label><br />
+				<textarea class="summary" name="summary"></textarea>
+			</fieldset>
+			<div>
+				<button class="save" type="submit" >Save</button>
+				<button class="cancel" type="reset" >Cancel</button>
+			</div>
+		  </form>
+	</dialog>
+  
 
   <form id="remove-event" >
     <fieldset>
