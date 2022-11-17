@@ -1,7 +1,7 @@
 /**
  * Task.js
  * @author Guan Li
- * @summary File contains task class and functions.
+ * @summary File contains Task class and functions.
  * 
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
@@ -15,91 +15,60 @@ class Task {
      * Constructs a task object from the class
      * @constructor
      * 
-     * @param {string} taskName - Name of the task
-     * @param {string} tag - tags that the task belongs to. 
-     * @param {string} createdDate - the date that the task created on. format: 'MM/DD/YY HH:MM'
-     * @param {string} taskLastUpdated - the last time the task was updated. format: 'MM/DD/YY HH:MM'
-     * @param {string[]} workDates - the workDates //TODO format: 'MM/DD/YY HH:MM'
-     * @param {string} dueDate - the due dates on the task format: 'MM/DD/YY HH:MM'
-     * @param {string} taskDescription - the description of the task
-     * @param {Users[]} Users - The task user array " all person on task. "
+     * @param {string} taskName - name of task
+     * @param {string[]} tags - tags that task belongs to
+     * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
+     * @param {string} description - description of task
+     * @param {boolean} complete - boolean of task completion
      */
-    constructor(taskName, tag, createdDate, taskLastUpdated, workDates, dueDate,taskDescription, Users) {
+    constructor(taskName, tags, dueDate, description, complete) {
         this.taskName = taskName;
-        this.tag = tag;
-        this.createdDate = createdDate;
-        this.taskLastUpdated = taskLastUpdated;
-        this.workDates = workDates;
+        this.tags = tags;
         this.dueDate = dueDate;
-        this.taskDescription = taskDescription;
-        this.Users = Users;
+        this.description = description;
+        this.complete = complete;
     }
 
-    //Getters:
+    // Getters:
 
     /**
      * @author Guan Li
      * @return taskName
      */
-    get taskName() {
+    get TaskName() {
         return this.taskName;
     }
+
     /**
      * @author Guan Li
-     * @return tag
+     * @return tags
      */
-     get tag() {
-        return this.tag;
+    get Tags() {
+        return this.tags;
     }
-    /**
-     * @author Guan Li
-     * @return createdDate
-     */
-     get createdDate() {
-        return this.createdDate;
-    }
-    /**
-     * @author Guan Li
-     * @return taskLastUpdated
-     */
-     get taskLastUpdated() {
-        return this.taskLastUpdated;
-    }
-    /**
-     * @author Guan Li
-     * @return taskLastUploaded
-     */
-     get taskLastUpdated() {
-        return this.taskLastUpdated;
-    }
-    /**
-     * @author Guan Li
-     * @return workDates
-     */
-     get workDates() {
-        return this.workDates;
-    }
+
     /**
      * @author Guan Li
      * @return dueDate
      */
-     get dueDate() {
+    get DueDate() {
         return this.dueDate;
     }
+
     /**
      * @author Guan Li
-     * @return taskDescription
+     * @return description
      */
-     get taskDescription() {
-        return this.taskDescription;
+    get Description() {
+        return this.description;
     }
+
     /**
-     * @author Guan Li
-     * @return Users array lists.
+     * @author Steven Khaw
+     * @return complete
      */
-     get Users() {
-        return this.Users;
+    get Complete() {
+        return this.complete;
     }
-    
 }
 

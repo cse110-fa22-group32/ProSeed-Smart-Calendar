@@ -1,9 +1,10 @@
 /**
  * Day.js
  * @author Steven Khaw
- * @summary File contains day class and functions.
+ * @summary File contains Day class and functions.
  * 
- * Last updated: 11/16
+ * Created at : 2022-11-16 2:30 PM
+ * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Day */
@@ -11,23 +12,26 @@ class Day {
 
     /**
      * @author Steven Khaw
-     * Create a day object 
+     * Constructs a day object from the class
+     * @constructor 
      * 
-     * @constructor construct empty Day
+     * @param {number} currDayInt number of day (1-31)
+     * @param {string} currDayStr string representation of day ('Monday'...etc.)
+     * @param {Event[]} events events of day
+     * @param {Task[]} tasks tasks of day
      */
-    constructor(currDayInt, currDayStr, events, todos, users) {
+    constructor(currDayInt, currDayStr, events, tasks) {
         this.currDayInt = currDayInt;
         this.currDayStr = currDayStr;
         this.events = events;
-        this.todos = todos;
-        this.users = users;
+        this.tasks = tasks;
     }
 
-    //Getters:
+    // Getters:
 
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return currDayInt
      */
     get DayInt() {
         return this.currDayInt;
@@ -35,7 +39,7 @@ class Day {
     
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return currDayStr
      */
     get DayStr() {
         return this.currDayStr;
@@ -43,7 +47,7 @@ class Day {
 
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return events
      */
     get Events() {
         return this.events;
@@ -51,17 +55,9 @@ class Day {
 
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return tasks
      */
-    get Todos() {
-        return this.todos;
-    }
-
-    /**
-     * @author Steven Khaw
-     * This is the getter for current day
-     */
-    get Users() {
-        return this.users;
+    get Tasks() {
+        return this.tasks;
     }
 }

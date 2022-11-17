@@ -1,39 +1,43 @@
 /**
  * Month.js
  * @author Steven Khaw
- * @summary File contains month class and functions.
+ * @summary File contains Month class and functions.
  * 
- * Last updated: 11/16
+ * Created at : 2022-11-16 2:30 PM
+ * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Month */
 class Month {
 
     /**
-     * Create a month object 
+     * @author Steven Khaw
+     * Constructs a month object from the class
+     * @constructor 
      * 
-     * @constructor construct empty Month
+     * @param {number} currMonthInt number of month (1-12)
+     * @param {string} currMonthStr string representation of month ('January'...etc.)
+     * @param {Day[]} days days of month
      */
-    constructor(curMonthInt, currMonthStr, days, users) {
-        this.curMonthInt = curMonthInt;
+    constructor(currMonthInt, currMonthStr, days) {
+        this.currMonthInt = currMonthInt;
         this.currMonthStr = currMonthStr;
         this.days = days;
-        this.users = users;
     }
 
-    //Getters:
+    // Getters:
 
     /**
      * @author Steven Khaw
-     * This is the getter for current month number (1-12)
+     * @return currMonthInt
      */
     get MonthInt() {
-        return this.currMonth;
+        return this.currMonthInt;
     }
 
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return currMonthStr
      */
     get MonthStr() {
         return this.currMonthStr;
@@ -41,9 +45,9 @@ class Month {
 
     /**
      * @author Steven Khaw
-     * This is the getter for current day
+     * @return days
      */
-    get Users() {
-        return this.users;
+    get Days() {
+        return this.days;
     }
 }

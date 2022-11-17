@@ -1,7 +1,7 @@
 /**
  * User.js
  * @author Guan Li
- * @summary File contains user class and functions.
+ * @summary File contains User class and functions.
  * 
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
@@ -15,41 +15,44 @@ class User {
      * Constructs a user object from the class
      * @constructor
      * 
-     * @param {string} firstName - User's first name
-     * @param {string} lastName - User's last name
-     * @param {string} userName - User's account Username
-     * @param {string} password - User's account password
-     * @param {string} profileID - User's profile ID
-     * @param {varName : varValue} calendarID - Store as calendar key as key and their value as whether or not the calendar is visible shown.
+     * @param {string} firstName - firstname of user
+     * @param {string} lastName - lastname of user
+     * @param {string} userName - username of user
+     * @param {string} password - password of user
+     * @param {string} profileID - profileID of user
+     * @param {string : boolean} calendarID - Store calendar's key as string key 
+     * and their boolean whether or not calendar is visible to user;  
+     * format: {varName : varValue}.
      */
-    constructor(firstName, lastName, userName, password, profileID, calendarID) {
+    constructor(firstName, lastName, username, password, profileID, calendarID) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         //TODO: May change this struct a bit after certain code is modified.?
         this.profileID = profileID;
         this.calendarID = calendarID;
     }
 
-    //Getters:
+    // Getters:
 
     /**
      * @author Guan Li
-     * This is the getter for user's name.
+     * @return firstName, lastName
      */
     get Name() {
         return this.firstName, this.lastName;
     }
+
     /**
      * @author Guan Li
-     * This is the getter for account username:
+     * @return username
      */
-    get userName(){
-        return this.userName;
+    get Username() {
+        return this.username;
     }
 
-    //Methods:
+    // Methods:
 
     /**
      * @author Guan Li

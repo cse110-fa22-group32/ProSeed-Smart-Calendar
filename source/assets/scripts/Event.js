@@ -15,40 +15,60 @@ class Event {
      * Constructs a Event object from the class
      * @constructor
      * 
-     * @param {string} startDay - start day of the event
-     * @param {string} endDay - end day of the event.
-     * @param {string} eventName - name of the event;
-     * @param {string} location - Events location
-     * @param {string} description - events description;
-     * @param {Users[]} Useres - Contains all the users that are associated with the event.
+     * @param {string} startDay - start day of event
+     * @param {string} endDay - end day of event
+     * @param {string} eventName - name of event
+     * @param {string} location - location of event
+     * @param {string} description - description of event
      */
-    constructor(startDay,endDay,eventName,location,description,Users) {
+    constructor(startDay, endDay, eventName, location, description) {
         this.startDay = startDay;
         this.endDay = endDay;
         this.eventName = eventName;
         this.location = location;
         this.description = description;
-        this.Users = Users;
     }
 
-    //Getters:
-    get startDay() {
+    // Getters:
+
+    /**
+     * @author Guan Li
+     * @return startDay
+     */
+    get StartDay() {
         return this.startDay;
     }
-    get endDay() {
-        return this.startDay;
+
+    /**
+     * @author Guan Li
+     * @return endDay
+     */
+    get EndDay() {
+        return this.endDay;
     }
-    get eventName() {
-        return this.startDay;
+
+    /**
+     * @author Guan Li
+     * @return eventName
+     */
+    get EventName() {
+        return this.eventName;
     }
-    get location() {
-        return this.startDay;
+
+    /**
+     * @author Guan Li
+     * @return location
+     */
+    get Location() {
+        return this.location;
     }
-    get description() {
-        return this.startDay;
-    }
-    get Users() {
-        return this.startDay;
+
+    /**
+     * @author Guan Li
+     * @return eventDescription
+     */
+    get Description() {
+        return this.description;
     }
 
     /**
@@ -61,7 +81,7 @@ class Event {
      * @author Guan Li
      * @return an Event object
      */
-    createEvent(startDay,endDay, location, description){
+    createEvent(startDay, endDay, location, description){
         //TODO:
     }
 }

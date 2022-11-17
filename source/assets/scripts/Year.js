@@ -1,23 +1,53 @@
 /**
  * Year.js
  * @author Steven Khaw
- * @summary File contains year class and functions.
+ * @summary File contains Year class and functions.
  * 
- * Last updated: 11/16
+ * Created at : 2022-11-16 2:30 PM
+ * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Year */
 class Year {
 
     /**
-     * Create a year object 
+     * @author Steven Khaw
+     * Constructs a year object from the class
+     * @constructor 
      * 
-     * @constructor construct empty Year
+     * @param {number} currYear year of Year (2022)
+     * @param {boolean} isLeapYear boolean on if leap year
+     * @param {Month[]} months months of year 
      */
-    constructor(currYear, leapYear, months, users) {
-        this.curYear = currYear;
-        this.leapYear = leapYear;
+    constructor(currYear, isLeapYear, months) {
+        this.currYear = currYear;
+        this.isLeapYear = isLeapYear;
         this.months = months;
-        this.users = users;
+    }
+
+    // Getters:
+
+    /**
+     * @author Steven Khaw
+     * @return currYear
+     */
+    get Year() {
+        return this.currYear;
+    }
+
+    /**
+     * @author Steven Khaw
+     * @return isLeapYear
+     */
+    get LeapYear() {
+        return this.isLeapYear;
+    }
+
+    /**
+     * @author Steven Khaw
+     * @return months
+     */
+    get Months() {
+        return this.months;
     }
 }
