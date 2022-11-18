@@ -10,6 +10,7 @@
 /** Class Event  */
 class Event {
 
+    /** @type {number} */
     static counter = 0;
 
     /**
@@ -20,7 +21,6 @@ class Event {
      * @param {string} startDay - start day of event
      * @param {string} endDay - end day of event
      * @param {string} eventName - name of event
-     * @param {string} eventID - unique ID of event
      * @param {string} location - location of event
      * @param {string} description - description of event
      */
@@ -29,6 +29,7 @@ class Event {
         this.endDay = endDay;
         this.eventName = eventName;
         // this.eventID = eventID;
+        /** @type {number} */
         this.eventID = Event.counter++;
         this.location = location;
         this.description = description;
