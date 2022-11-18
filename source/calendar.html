@@ -13,12 +13,20 @@
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="assets/styles/calendar.css" />
+  <link rel="stylesheet" href="assets/styles/sidebar.css"/>
   <script src="assets/scripts/calendar_new.js" type="module"></script>
+	<script src="assets/scripts/day_view.js" type="module"></script>
 
 </head>
 
 <body>
 	<main>
+		<div class="sidebar hidden">
+			<h2 class="sidebar-title">DATE</h2>
+			<div class="sidebar-events"></div>
+			<h3 class="sidebar-title-2">To-Do List</h3>
+			<div class="sidebar-tasks"></div>
+		</div>
 		<div id="calendar">
 			<div id="calendar-title-bar">
 				<h1>ProSeed Calendar</h1>
