@@ -59,8 +59,7 @@ const testJson = `
 
 /**
  * Get the corresponding string of a day 
- * @param ind - order number of the day (1 - 7)
- * @param description - the description of event
+ * @param {number} ind - order number of the day (1 - 7)
  * @return corresponding string of the day
  */
 function getDayStr(ind) {
@@ -69,7 +68,7 @@ function getDayStr(ind) {
 
 /**
  * Get the corresponding string of a month 
- * @param ind - order number of the month (1 - 12)
+ * @param {number} ind - order number of the month (1 - 12)
  * @return corresponding string of the month
  */
 function getMonthStr(ind) {

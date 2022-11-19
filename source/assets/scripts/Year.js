@@ -21,7 +21,7 @@ class Year {
      */
     constructor(currYear, months) {
         this.currYear = currYear;
-        this.isLeapYear = ((0 === this.curYear % 4) && (0 !== this.curYear % 100) || (0 === this.curYear % 400));
+        this.isLeapYear = ((0 === this.currYear % 4) && (0 !== this.currYear % 100) || (0 === this.currYear % 400));
         this.months = months;
     }
 
