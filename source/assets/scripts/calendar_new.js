@@ -11,6 +11,31 @@ function init() {
 
 }
 
+//test function
+//update a day block in html view.
+function update_day_block(firstDayOfWeek,dayOfMonth,data){
+  const day_block = document.getElementById("day-block-"+String(firstDayOfWeek-1+dayOfMonth));
+  day_block.innerHTML = '';
+  let p = document.createElement("p");
+  p.innerHTML = dayOfMonth;
+  day_block.append(p);
+  let count = 0;
+  for (let d of data){
+    let p = document.createElement("p");
+    p.innerHTML = d;
+    day_block.append(p);
+    if(count>5) {
+      console.log(dayOfMonth.length)
+      p.innerHTML = String(data.length)+"+";
+      day_block.append(p);
+      break;
+    }
+    count++;
+  }
+}
+
+
+
 //dialog function for add event.
 function add_event(){
   //preload the element for further using.
@@ -31,19 +56,28 @@ function add_event(){
 
 
     //test code for append string to the day block.
-    let num = 0;
+    let firstDayOfWeek = 0;
+    let day = 0;
+    let event = [];
+
     for(let d of data) {
-      const day_block = document.getElementById("day-block-"+String(num));
-      let p = document.createElement("p");
-      p.innerHTML ="<p>"+d[0]+":"+d[1]+"</p>";
-      day_block.append(p);
-      num ++;
+      if(d[0]=="date"){
+        let date = new Date(d[1]);
+        day = date.getDate()+1;
+        date.setDate(1);
+        firstDayOfWeek = date.getDay();
+      }
+      if(d[0]=="title"){
+        event.push(d[1]);
+      }
     }
-    
-    //===========================
-    //update calendar here.
-    //using function update_day() to update a day event in the calendar.
-    //===========================
+    event.push("event 1");
+    event.push("event 2");
+    event.push("event 3");
+    event.push("event 4");
+    event.push("event 5");
+    event.push("event 6");
+    update_day_block(firstDayOfWeek,day,event);
 
   })
 
