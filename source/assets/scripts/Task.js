@@ -1,6 +1,6 @@
 /**
  * Task.js
- * @author Guan Li
+ * @author Guan Li, Steven Khaw, Christopher Han
  * @summary File contains Task class and functions.
  * 
  * Created at : 2022-11-16 2:30 PM
@@ -79,6 +79,41 @@ class Task {
      */
     get Complete() {
         return this.complete;
+    }
+    
+    
+    // Setters:
+    
+    /**
+     * @author Christopher Han
+     * @param {string} new task name
+     */
+    set modifyTaskName(newTaskName) {
+        this.taskName = newTaskName;
+    }
+    
+    /**
+     * @author Christopher Han
+     * @param {string[]} new tags
+     */
+    set modifyTaskTags(newTags) {
+        this.tags = newTags;
+    }
+    
+    /**
+     * @author Christopher Han
+     * @param {string} new due date
+     */
+    set modifyDueDate(newDueDate) {
+        this.dueDate = newDueDate;
+    }
+    
+    /**
+     * @author Christopher Han
+     * @param {string} new task description
+     */
+    set modifyTaskDescription(newTaskDescription) {
+        this.description = newTaskDescription;
     }
 }
 
