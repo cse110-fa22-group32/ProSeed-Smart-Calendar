@@ -76,18 +76,9 @@
  */
 function getWeekDayString(year, month, day) {
 
-    const DAYS_OF_WEEK_STRING = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    const MONTH_KEY = [1,4,4,0,2,5,0,3,6,1,4,6];
-    
-    const last2Year = parseInt(String(year).slice(-2));
-    const quarterLast2 = Math.trunc(last2Year / 2);
-    
-    let result = last2Year + quarterLast2 + day + MONTH_KEY[month - 1];
+    const DAYS_STRINGS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const MONTH_STRINGS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-    if (getIfLeapYear(year) && (month == 1 || month == 2)) result--;
-
-    /* For a Gregorian date, add 0 for 1900's, 6 for 2000's, 4 for 1700's, 2 for 1800's; for other years, add or subtract multiples of 400.
-    Add the last two digits of the year.
-    Divide by 7 and take the remainder. */
-    return DAYS_OF_WEEK_STRING[result - 1];
+    const date = new Date(MONTH_STRINGS[month - 1] + " " + String(day) + ", " + String(year));
+    return DAYS_STRINGS[date.getDay()];
 }
