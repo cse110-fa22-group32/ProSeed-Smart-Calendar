@@ -74,30 +74,27 @@ class Calendar {
     /**
      * @author Yuelin Dai
      * 
-     * Display days, events and tasks for inputted month
+     * Populate calendar view with days, events and tasks of inputted month
      * @param {number} year - year number (2000 - 3000)
      * @param {number} month - month number (1 - 12)
      */
     Show(year, month) {
         const dayBlockAr = document.getElementsByClassName('calendar-day-block');
 
+        // check week day of this month's first day
         const curMonthDay = new Date(String(year)+'-'+String(month)+'-'+String(1));
-
         const startDayIndex = (curMonthDay.getDay());
 
+        // get total days of this month
         const daysInMonth = new Date(year, month, 0).getDate();
 
-        // // skip filling events/tasks if no events/tasks for this month
-        // const noEventsTasks = (this.years[year-2000] == null) || (this.years[year-2000].months[month-1] == null);
-        
         // fill in dates, events and tasks
-        for(let blockCnt = 0; blockCnt < 42; blockCnt++) {
-
+        for(let blockCnt = 0; blockCnt < dayBlockAr.length; blockCnt++) {
             // clear previous data
             dayBlockAr[blockCnt].innerHTML = '';
 
-            if( blockCnt >= startDayIndex + daysInMonth || 
-                blockCnt < startDayIndex) {
+            if( blockCnt >= startDayIndex + daysInMonth // no display after end of month
+                || blockCnt < startDayIndex) { // no display before start of month
                 continue;
             }
             // fill in dates
@@ -105,24 +102,22 @@ class Calendar {
             (blockCnt-startDayIndex+1) +
                 '</p>';
 
-            // if(noEventsTasks) {
-            //     continue;
-            // }
-
-            // fill in events and tasks
+            // get current Day from calendar, fill it with events and tasks
             const curDay = this.years[year-2000].months[month-1].days[blockCnt-startDayIndex];
             if(curDay != null) {
-                console.log(curDay);
-                let fillCnt = 0;
-                let extraCnt = 0;
+                let fillCnt = 0; // # of events/tasks filled
+                let extraCnt = 0; // # of events/tasks hidden in "+n extra"
 
                 // fill in events
                 for(let curEvent of curDay.events) {
+
+                    // skip filling if too many have been filled
                     if(++fillCnt > 3) {
                         extraCnt++;
                         continue;
                     }
 
+                    // fill in event
                     dayBlockAr[blockCnt].innerHTML += 
                         '<div class="event-block">' +
                         curEvent.EventName +
@@ -131,18 +126,21 @@ class Calendar {
 
                 // fill in tasks
                 for(let curTask of curDay.tasks) {
+                    
+                    // skip filling if too many have been filled
                     if(++fillCnt > 3) {
                         extraCnt++;
                         continue;
                     }
 
+                    // fill in task
                     dayBlockAr[blockCnt].innerHTML += 
                         '<div class="task-block">' +
                         curTask.TaskName +
                         '</div>';
                 }
 
-                // if needed, insert extra entries
+                // if there are skips, display them as "+n extra"
                 if(extraCnt > 0) {
                     dayBlockAr[blockCnt].innerHTML += 
                         '<div class="extra-block">' +
