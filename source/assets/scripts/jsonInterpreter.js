@@ -36,9 +36,41 @@ const testJson = `
           "description":""
         },
         {
+          "startDay" : "11/01/22 11:11",
+          "endDay" : "11/02/22 11:11",
+          "eventName":"e1",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "11/03/22 11:11",
+          "endDay" : "11/04/22 11:11",
+          "eventName":"e2",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
           "startDay" : "10/01/22 11:11",
           "endDay" : "10/02/22 11:11",
           "eventName":"e1",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "10/05/22 11:11",
+          "endDay" : "10/06/22 11:11",
+          "eventName":"e4_test",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "10/05/22 13:11",
+          "endDay" : "10/06/22 15:11",
+          "eventName":"e5_test",
           "users":[0], 
           "location":"",
           "description":""
@@ -49,6 +81,22 @@ const testJson = `
             "taskName" : "task1",
             "tags" : " ",
             "dueDate" : "10/01/22 11:11",
+            "description" : " ",
+            "complete" : "false",
+            "users" : [0]
+        },
+        {
+            "taskName" : "task2",
+            "tags" : " ",
+            "dueDate" : "11/01/22 16:11",
+            "description" : " ",
+            "complete" : "false",
+            "users" : [0]
+        },
+        {
+            "taskName" : "task3",
+            "tags" : " ",
+            "dueDate" : "11/01/22 11:11",
             "description" : " ",
             "complete" : "false",
             "users" : [0]
@@ -95,17 +143,17 @@ function LoadJson(jsonStr) {
   let dateDict = {};
   for(let jsonEvent of jsonObj['eventsList']) {
       let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
-      if(!(jsonEvent.startDay in dateDict)) {
-          dateDict[jsonEvent.startDay] = {"events":[],"tasks":[]};
+      if(!(jsonEvent.startDay.substring(0,8) in dateDict)) {
+          dateDict[jsonEvent.startDay.substring(0,8)] = {"events":[],"tasks":[]};
       }
-      dateDict[jsonEvent.startDay].events.push(curEvent);
+      dateDict[jsonEvent.startDay.substring(0,8)].events.push(curEvent);
   }
   for(let jsonTask of jsonObj.tasksList) {
       let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
-      if(!(jsonTask.dueDate in dateDict)) {
-          dateDict[jsonTask.dueDate] = {"events":[],"tasks":[]};
+      if(!(jsonTask.dueDate.substring(0,8) in dateDict)) {
+          dateDict[jsonTask.dueDate.substring(0,8)] = {"events":[],"tasks":[]};
       }
-      dateDict[jsonTask.dueDate].tasks.push(curTask);
+      dateDict[jsonTask.dueDate.substring(0,8)].tasks.push(curTask);
   }
 
   let monthDict = {};
@@ -136,7 +184,7 @@ function LoadJson(jsonStr) {
   }
   for(const [yearStr, months] of Object.entries(yearDict)) {
       let curYear = new Year(yearStr-0, months);
-      yearList[yearStr - 2000 - 1] = curYear;
+      yearList[yearStr - 2000] = curYear;
   }
   let calendar = new Calendar(jsonObj.title, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);
 
