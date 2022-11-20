@@ -19,9 +19,9 @@ class Year {
      * @param {boolean} isLeapYear boolean on if leap year
      * @param {Month[]} months months of year 
      */
-    constructor(currYear, isLeapYear, months) {
+    constructor(currYear, months) {
         this.currYear = currYear;
-        this.isLeapYear = isLeapYear;
+        this.isLeapYear = ((0 === this.currYear % 4) && (0 !== this.currYear % 100) || (0 === this.currYear % 400));
         this.months = months;
     }
 

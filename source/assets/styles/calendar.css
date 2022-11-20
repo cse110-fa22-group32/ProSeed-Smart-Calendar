@@ -125,6 +125,45 @@ day block css setting for calendar
     
 }
 
+.date-block {
+    width: 80%;
+    height: 10%;
+    padding: 0.1em;
+}
+
+.event-block {
+    background-color:rgb(207, 174, 27);
+    
+    margin: auto;
+    width: 80%;
+    height: 15%;
+    border: 0.1em solid green;
+    padding: 0.1em;
+    vertical-align: middle;
+    
+}
+
+.task-block {
+    background-color:rgb(30, 230, 3);
+    
+    margin: auto;
+    width: 80%;
+    height: 15%;
+    border: 0.1em solid green;
+    padding: 0.1em;
+    
+}
+
+.extra-block {
+    background-color:rgb(20, 133, 209);
+    
+    margin: auto;
+    width: 80%;
+    height: 15%;
+    border: 0.1em solid green;
+    padding: 0.1em;
+}
+
 #calendar-day-main {
     display: var(--week-block-display);
     gap: var(--day-block-gap);

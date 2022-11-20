@@ -10,6 +10,9 @@
 /** Class Event  */
 class Event {
 
+    /** @type {number} */
+    static counter = 0;
+
     /**
      * @author Guan Li
      * Constructs a Event object from the class
@@ -18,15 +21,16 @@ class Event {
      * @param {string} startDay - start day of event
      * @param {string} endDay - end day of event
      * @param {string} eventName - name of event
-     * @param {string} eventID - unique ID of event
      * @param {string} location - location of event
      * @param {string} description - description of event
      */
-    constructor(startDay, endDay, eventName, eventID, location, description) {
+    constructor(startDay, endDay, eventName, location, description) {
         this.startDay = startDay;
         this.endDay = endDay;
         this.eventName = eventName;
-        this.eventID = eventID;
+        // this.eventID = eventID;
+        /** @type {number} */
+        this.eventID = Event.counter++;
         this.location = location;
         this.description = description;
     }

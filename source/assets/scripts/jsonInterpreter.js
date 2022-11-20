@@ -1,143 +1,218 @@
-// calendar.js
+/**
+ * JsonInterpreter.js
+ * @author Yuelin Dai
+ * @summary File contains JSON interpreter.
+ * 
+ * Created at : 2022-11-17 6:30 AM
+ * Last Modified : 2022-11-17 6:30 AM
+ */
 
-// Run the init() function when the page has loaded
-window.addEventListener('DOMContentLoaded', init);
+/**
+ * JSON string used for test
+ */
+const testJson = `
+{
+    "lastUpdated" : "",
+    "title" : "title1",
+    "calendarID" : "",
 
-const max_month_days = 60;
-const test_month_days = 30;
-var events_list = [];
-
-var start_col = 0;
-var start_row = 0;
-var num_disp_days = test_month_days;
-
-// Starts the program, all function calls trace back here
-function init() {
-
-  // initialize events list
-  for(let i = 0; i < max_month_days; i++) {
-    events_list.push([]);
+    "usersList" : [
+        {
+            "firstName" : "john",
+            "lastName" : "doe",
+            "username":"admin",
+            "password":"pwd",
+            "profieldID" : "123456",
+            "calenarID" : ""
+        }
+    ],
+    "eventsList" : [
+        {
+          "startDay" : "11/01/22 11:11",
+          "endDay" : "11/02/22 11:11",
+          "eventName":"event 1",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "11/01/22 11:11",
+          "endDay" : "11/02/22 11:11",
+          "eventName":"event 2",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "11/03/22 11:11",
+          "endDay" : "11/04/22 11:11",
+          "eventName":"event 2",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "10/01/22 11:11",
+          "endDay" : "10/02/22 11:11",
+          "eventName":"e1",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "10/05/22 11:11",
+          "endDay" : "10/06/22 11:11",
+          "eventName":"e4_test",
+          "users":[0], 
+          "location":"",
+          "description":""
+        },
+        {
+          "startDay" : "10/05/22 13:11",
+          "endDay" : "10/06/22 15:11",
+          "eventName":"e5_test",
+          "users":[0], 
+          "location":"",
+          "description":""
+        }
+    ],
+    "tasksList" : [
+        {
+            "taskName" : "task 1",
+            "tags" : " ",
+            "dueDate" : "10/01/22 11:11",
+            "description" : " ",
+            "complete" : "false",
+            "users" : [0]
+        },
+        {
+            "taskName" : "task 2",
+            "tags" : " ",
+            "dueDate" : "11/01/22 16:11",
+            "description" : " ",
+            "complete" : "false",
+            "users" : [0]
+        },
+        {
+            "taskName" : "task 3",
+            "tags" : " ",
+            "dueDate" : "11/01/22 11:11",
+            "description" : " ",
+            "complete" : "false",
+            "users" : [0]
+        }
+    ]
   }
-  events_list[5].push('event 1');
-  events_list[8].push('event 1');
-  events_list[19].push('event 1');
-  console.log(events_list.length);
-  
-  refreshCalendar();
+`;
 
-  initFormHandler();
+/**
+ * Get the corresponding string of a day 
+ * @param {number} ind - order number of the day (1 - 7)
+ * @return corresponding string of the day
+ */
+function getDayStr(ind) {
+    return ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", "Sunday"][ind-1];
 }
 
-function refreshCalendar() {
-  let filling = false;
-  let crt_day = 0;
-
-  const tbod = document.getElementsByTagName('tbody')[0];
-  const tr_ar = tbod.getElementsByTagName('tr');
-  
-  // clear calendar
-  for(let cur_row = 0; cur_row < 6; cur_row ++) {
-    for(let cur_col = 0; cur_col < 7; cur_col++) {
-      var td = tr_ar[cur_row].getElementsByTagName('td')[cur_col];
-      td.innerHTML = '';
-    }
-  }
-
-  // populate calendar
-  for(let cur_row = 0; cur_row < 6; cur_row ++) {
-
-    for(let cur_col = 0; cur_col < 7; cur_col++) {
-      if(!filling) {
-        if(cur_col >= start_col && cur_row >= start_row) {
-          filling = true;
-        }
-        else {
-          continue;
-        }
-      }
-
-      var td = tr_ar[cur_row].getElementsByTagName('td')[cur_col];
-      td.innerHTML = '' + 
-        (crt_day + 1);
-        ;
-
-      if(events_list[crt_day].length > 0) {
-        for(let ev in events_list[crt_day]) {
-          console.log(ev);
-          td.innerHTML += '<br>' + ev + ' : ' + events_list[crt_day][ev];
-        }
-      }
-      
-      crt_day++;
-      if(crt_day >= num_disp_days) {
-        break;
-      }
-    }
-
-
-    if(crt_day >= num_disp_days) {
-      break;
-    }
-  }
-
+/**
+ * Get the corresponding string of a month 
+ * @param {number} ind - order number of the month (1 - 12)
+ * @return corresponding string of the month
+ */
+function getMonthStr(ind) {
+    return ["January","February","March","April","May","June", "July", "August", "September", "October", "November", "December"][ind-1];
 }
 
+/**
+ * Converted the json string to a single calendar and a user array
+ * @param {String} jsonStr A json string that contains users, events, tasks
+ * @return an array containing the calendar and user array
+ */
+function LoadJson(jsonStr) {
 
+  let jsonObj = JSON.parse(jsonStr);
 
-function initFormHandler() {
+  // load all users
+  let userList = []; // array to store all user data
+  let userNames = []; // used to init calendar
+  for(let jsonUser of jsonObj['usersList']) {
+      let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
+      userList.push(curUser);
+      userNames.push(jsonUser.firstName + " " + jsonUser.lastName);
+  }
 
-  // register for "add"
-  var ref_form = document.getElementById("new-event2");
-  ref_form.addEventListener('submit', (event) => {
+  // store Event/Task by their startDay(excluding clocktime)
+  let dateDict = {};
+  for(let jsonEvent of jsonObj['eventsList']) {
+      let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
 
-    event.preventDefault();
+      // create new entry in dateDict if needed
+      if(!(jsonEvent.startDay.substring(0,8) in dateDict)) {
+          dateDict[jsonEvent.startDay.substring(0,8)] = {"events":[],"tasks":[]};
+      }
 
-    const form_elem = new FormData(ref_form);
-    let new_obj = {};
-    for(let ent of form_elem.entries()) {
-      new_obj[ent[0]] = ent[1];
-    }
-    
-    events_list[new_obj['dateIn'] - 1].push(new_obj['eventIn']);
+      // store Event by their startDay
+      dateDict[jsonEvent.startDay.substring(0,8)].events.push(curEvent);
+  }
+  for(let jsonTask of jsonObj.tasksList) {
+      let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
 
-    refreshCalendar();
-  });
+      // create new entry in dateDict if needed
+      if(!(jsonTask.dueDate.substring(0,8) in dateDict)) {
+          dateDict[jsonTask.dueDate.substring(0,8)] = {"events":[],"tasks":[]};
+      }
 
-  // register for "change starting date"
-  var ref_form2 = document.getElementById("month-setting");
-  ref_form2.addEventListener('submit', (event) => {
+      // store Task by their startDay
+      dateDict[jsonTask.dueDate.substring(0,8)].tasks.push(curTask);
+  }
 
-    event.preventDefault();
+  // store Day by their located year and month
+  let monthDict = {};
+  for (const [day, {events, tasks}] of Object.entries(dateDict)) {
+      let curDate = new Date(day);
+      let curDay = new Day(curDate.getDate(), getDayStr(curDate.getDay()), events, tasks);
 
-    const form_elem = new FormData(ref_form2);
-    let new_obj = {};
-    for(let ent of form_elem.entries()) {
-      new_obj[ent[0]] = ent[1];
-    }
+      // convert year and month to string, used below as key for monthDict
+      let yearMonthKey = String(curDate.getFullYear())+curDate.getMonth();
 
-    start_col = new_obj["startCol"];
-    start_row = new_obj["startRow"];
-    num_disp_days = new_obj["monthDays"];
+      // create new entry in monthDict if needed
+      if(!(yearMonthKey in monthDict)) {
+          monthDict[yearMonthKey] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+      }
 
-    refreshCalendar();
-  });
+      // store Day by their located year and month
+      monthDict[yearMonthKey][curDay.currDayInt-1] = curDay;
+  }
 
-  // register for "remove"
-  var ref_form3 = document.getElementById("remove-event");
-  ref_form3.addEventListener('submit', (event) => {
+  // store Month by their located year
+  let yearDict = {};
+  for(const [yearMonthKey, days] of Object.entries(monthDict)) {
+      let curMonthVal = yearMonthKey.substring(4, 6) - (-1);
+      let curYearStr = yearMonthKey.substring(0,4);
+      let curMonth = new Month(curMonthVal, getMonthStr(curMonthVal), days);
 
-    event.preventDefault();
+      // create new entry in yearDict if needed
+      if(!(curYearStr in yearDict)) {
+          yearDict[curYearStr] = [null, null, null, null, null, null, null, null, null, null, null, null];
+      }
 
-    const form_elem = new FormData(ref_form3);
-    let new_obj = {};
-    for(let ent of form_elem.entries()) {
-      new_obj[ent[0]] = ent[1];
-    }
+      // store Month by their located year
+      yearDict[curYearStr][curMonthVal-1] = curMonth;
+  }
 
-    events_list[new_obj['date']-1].splice(new_obj['index'], 1);
+  // store all 1000 years as null
+  let yearList = [];
+  for(let i = 0; i < 1000; i++) {
+      yearList.push(null);
+  }
 
-    refreshCalendar();
-  });
+  // fill yearList with year that has events
+  for(const [yearStr, months] of Object.entries(yearDict)) {
+      let curYear = new Year(yearStr-0, months);
+      yearList[yearStr - 2000] = curYear;
+  }
 
+  let calendar = new Calendar(jsonObj.title, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);
+
+  return [calendar, userList];
 }
-
