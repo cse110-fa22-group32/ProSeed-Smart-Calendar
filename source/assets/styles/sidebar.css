@@ -1,0 +1,140 @@
+/*
+***********************************************
+Media queries for 600px, 900px
+***********************************************
+*/
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --sb-width: 30%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  :root {
+    --sb-width: 30%;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  :root {
+    --sb-width: 20%;
+  }
+}
+
+/*
+***********************************************
+Root variables
+***********************************************
+*/
+
+:root {
+  --sb-height: calc(37.6px + 2*var(--calendar-margin) + var(--week-of-day-height) + 5*var(--day-block-gap) + 5*var(--day-block-height)); /*TODO: HARDCODED!*/
+  --sb-radius: 30px;
+}
+
+/*
+***********************************************
+Miscellaneous styling
+TODO: Outsource elsewhere
+***********************************************
+*/
+
+main {
+  display: flex;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#calendar {
+  flex: 1 1 auto;
+}
+
+/*
+***********************************************
+Sidebar styling
+***********************************************
+*/
+
+.sidebar-container {
+  width: 0;
+}
+
+.sidebar-container.sidebar-container-open {
+  width: var(--sb-width);
+  flex: 0 1 auto;
+}
+
+.sidebar {
+  background: #fff;
+  border: 2px solid black;
+  /*border-radius: var(--sb-radius);*/
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: var(--sb-height);
+  left: calc(-1 * var(--sb-width));
+  min-height: 500px;
+  position: absolute;
+  /*top: 25%; /*TODO: Make responsive*/
+  transition: transform 0s;
+  width: var(--sb-width);
+}
+
+.sidebar-title {
+  margin: 5px;
+}
+
+.sidebar-title-2 {
+  margin: 5px;
+}
+
+.sidebar.sidebar-open {
+  transform: translateX(100%);
+  transition: transform 0.5s ease-out;
+}
+
+/*
+***********************************************
+Sidebar event list styling
+***********************************************
+*/
+
+.sidebar-events {
+  border-bottom: 2px solid black;
+  flex: 1;
+  height: 90%;
+  transition: flex 0.5s ease;
+}
+
+/*
+***********************************************
+Sidebar to-do list styling
+***********************************************
+*/
+
+.sidebar-tasks {
+  height: 10%;
+  flex: 0;
+}
+
+.sidebar-tasks.sidebar-tasks-expanded {
+  flex: 1;
+  height: 90%;
+}
+
+.tasks-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.expand-tasks-btn {
+  font-size: 1rem;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}

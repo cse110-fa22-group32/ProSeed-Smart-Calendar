@@ -10,21 +10,25 @@
 /** Class Task TODO ADD MORE DESCRIPTION  */
 class Task {
 
+    /** @type {number} */
+    static counter = 0;
+    
     /**
      * @author Guan Li
      * Constructs a task object from the class
      * @constructor
      * 
      * @param {string} taskName - name of task
-     * @param {string} taskID - unique ID of task
      * @param {string[]} tags - tags that task belongs to
      * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
      * @param {string} description - description of task
      * @param {boolean} complete - boolean of task completion
      */
-    constructor(taskName, taskID, tags, dueDate, description, complete) {
+    constructor(taskName, tags, dueDate, description, complete) {
         this.taskName = taskName;
-        this.taskID = taskID;
+        // this.taskID = taskID;
+        /** @type {number} */
+        this.taskID = Task.counter++;
         this.tags = tags;
         this.dueDate = dueDate;
         this.description = description;
