@@ -7,7 +7,6 @@
  * Last Modified : 2022-11-18 4:30 PM
  */
 
-
 /**
  * @author Steven Khaw
  * returns whether a year is a leap year or not
@@ -63,7 +62,6 @@
     }
 }
 
-
 /**
  * @author Steven Khaw
  * returns the day of the week of an input date
@@ -82,3 +80,18 @@ function getWeekDayString(year, month, day) {
     const date = new Date(MONTH_STRINGS[month - 1] + " " + String(day) + ", " + String(year));
     return DAYS_STRINGS[date.getDay()];
 }
+
+/**
+ * @author Steven Khaw
+ * returns the current date in format: YYYY-MM-DD
+ * 
+ * @return {string} current date in format: YYYY-MM-DD
+ */
+function getWeekDayString() {
+
+    const date = new Date();
+    let currDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    return currDate;
+}
+
+console.log(getWeekDayString());
