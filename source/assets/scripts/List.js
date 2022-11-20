@@ -18,7 +18,7 @@ class List {
      * @param {string} title title of list
      * @param {string} lastUpdated last updated date; format: "MM-DD-YY"
      * @param {string} bindedCalendarID ID of the binded calendar
-     * @param {Task{}} tasks tasks in list, key is task's unique ID
+     * @param {{number: Task}} tasks tasks in list, key is task's unique ID
      */
     constructor(title, lastUpdated, bindedCalendarID, tasks) {
         this.title = title;
