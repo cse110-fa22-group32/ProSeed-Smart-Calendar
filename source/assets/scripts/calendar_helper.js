@@ -87,11 +87,9 @@ function getWeekDayString(year, month, day) {
  * 
  * @return {string} current date in format: YYYY-MM-DD
  */
-function getWeekDayString() {
+function getCurrentDay() {
 
     const date = new Date();
     let currDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
     return currDate;
 }
-
-console.log(getWeekDayString());
