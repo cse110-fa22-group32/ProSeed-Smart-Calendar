@@ -15,4 +15,4 @@ jobs:
           repository: cse110-fa22-group32/cse110-fa22-group32
       - uses: stefanoeb/eslint-action@1.0.2
         with:
-          files: source/
+          files: source/scripts
