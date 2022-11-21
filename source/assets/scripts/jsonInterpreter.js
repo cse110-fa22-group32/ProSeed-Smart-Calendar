@@ -111,7 +111,7 @@ const testJson = `
  * @return corresponding string of the day
  */
 function getDayStr(ind) {
-    return ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday", "Sunday"][ind-1];
+  return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][ind - 1];
 }
 
 /**
@@ -120,7 +120,7 @@ function getDayStr(ind) {
  * @return corresponding string of the month
  */
 function getMonthStr(ind) {
-    return ["January","February","March","April","May","June", "July", "August", "September", "October", "November", "December"][ind-1];
+  return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][ind - 1];
 }
 
 /**
@@ -135,81 +135,81 @@ function LoadJson(jsonStr) {
   // load all users
   let userList = []; // array to store all user data
   let userNames = []; // used to init calendar
-  for(let jsonUser of jsonObj['usersList']) {
-      let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
-      userList.push(curUser);
-      userNames.push(jsonUser.firstName + " " + jsonUser.lastName);
+  for (let jsonUser of jsonObj['usersList']) {
+    let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
+    userList.push(curUser);
+    userNames.push(jsonUser.firstName + " " + jsonUser.lastName);
   }
 
   // store Event/Task by their startDay(excluding clocktime)
   let dateDict = {};
-  for(let jsonEvent of jsonObj['eventsList']) {
-      let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
+  for (let jsonEvent of jsonObj['eventsList']) {
+    let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
 
-      // create new entry in dateDict if needed
-      if(!(jsonEvent.startDay.substring(0,8) in dateDict)) {
-          dateDict[jsonEvent.startDay.substring(0,8)] = {"events":[],"tasks":[]};
-      }
+    // create new entry in dateDict if needed
+    if (!(jsonEvent.startDay.substring(0, 8) in dateDict)) {
+      dateDict[jsonEvent.startDay.substring(0, 8)] = { "events": [], "tasks": [] };
+    }
 
-      // store Event by their startDay
-      dateDict[jsonEvent.startDay.substring(0,8)].events.push(curEvent);
+    // store Event by their startDay
+    dateDict[jsonEvent.startDay.substring(0, 8)].events.push(curEvent);
   }
-  for(let jsonTask of jsonObj.tasksList) {
-      let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
+  for (let jsonTask of jsonObj.tasksList) {
+    let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
 
-      // create new entry in dateDict if needed
-      if(!(jsonTask.dueDate.substring(0,8) in dateDict)) {
-          dateDict[jsonTask.dueDate.substring(0,8)] = {"events":[],"tasks":[]};
-      }
+    // create new entry in dateDict if needed
+    if (!(jsonTask.dueDate.substring(0, 8) in dateDict)) {
+      dateDict[jsonTask.dueDate.substring(0, 8)] = { "events": [], "tasks": [] };
+    }
 
-      // store Task by their startDay
-      dateDict[jsonTask.dueDate.substring(0,8)].tasks.push(curTask);
+    // store Task by their startDay
+    dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
   }
 
   // store Day by their located year and month
   let monthDict = {};
-  for (const [day, {events, tasks}] of Object.entries(dateDict)) {
-      let curDate = new Date(day);
-      let curDay = new Day(curDate.getDate(), getDayStr(curDate.getDay()), events, tasks);
+  for (const [day, { events, tasks }] of Object.entries(dateDict)) {
+    let curDate = new Date(day);
+    let curDay = new Day(curDate.getDate(), getDayStr(curDate.getDay()), events, tasks);
 
-      // convert year and month to string, used below as key for monthDict
-      let yearMonthKey = String(curDate.getFullYear())+curDate.getMonth();
+    // convert year and month to string, used below as key for monthDict
+    let yearMonthKey = String(curDate.getFullYear()) + curDate.getMonth();
 
-      // create new entry in monthDict if needed
-      if(!(yearMonthKey in monthDict)) {
-          monthDict[yearMonthKey] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-      }
+    // create new entry in monthDict if needed
+    if (!(yearMonthKey in monthDict)) {
+      monthDict[yearMonthKey] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+    }
 
-      // store Day by their located year and month
-      monthDict[yearMonthKey][curDay.currDayInt-1] = curDay;
+    // store Day by their located year and month
+    monthDict[yearMonthKey][curDay.currDayInt - 1] = curDay;
   }
 
   // store Month by their located year
   let yearDict = {};
-  for(const [yearMonthKey, days] of Object.entries(monthDict)) {
-      let curMonthVal = yearMonthKey.substring(4, 6) - (-1);
-      let curYearStr = yearMonthKey.substring(0,4);
-      let curMonth = new Month(curMonthVal, getMonthStr(curMonthVal), days);
+  for (const [yearMonthKey, days] of Object.entries(monthDict)) {
+    let curMonthVal = yearMonthKey.substring(4, 6) - (-1);
+    let curYearStr = yearMonthKey.substring(0, 4);
+    let curMonth = new Month(curMonthVal, getMonthStr(curMonthVal), days);
 
-      // create new entry in yearDict if needed
-      if(!(curYearStr in yearDict)) {
-          yearDict[curYearStr] = [null, null, null, null, null, null, null, null, null, null, null, null];
-      }
+    // create new entry in yearDict if needed
+    if (!(curYearStr in yearDict)) {
+      yearDict[curYearStr] = [null, null, null, null, null, null, null, null, null, null, null, null];
+    }
 
-      // store Month by their located year
-      yearDict[curYearStr][curMonthVal-1] = curMonth;
+    // store Month by their located year
+    yearDict[curYearStr][curMonthVal - 1] = curMonth;
   }
 
   // store all 1000 years as null
   let yearList = [];
-  for(let i = 0; i < 1000; i++) {
-      yearList.push(null);
+  for (let i = 0; i < 1000; i++) {
+    yearList.push(null);
   }
 
   // fill yearList with year that has events
-  for(const [yearStr, months] of Object.entries(yearDict)) {
-      let curYear = new Year(yearStr-0, months);
-      yearList[yearStr - 2000] = curYear;
+  for (const [yearStr, months] of Object.entries(yearDict)) {
+    let curYear = new Year(yearStr - 0, months);
+    yearList[yearStr - 2000] = curYear;
   }
 
   let calendar = new Calendar(jsonObj.title, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);

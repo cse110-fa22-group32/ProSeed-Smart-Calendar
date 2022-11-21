@@ -17,11 +17,15 @@
   text-align: center;
 }
 
-.name-container, .contact-info-container, .about-yourself-container {
+.name-container,
+.contact-info-container,
+.about-yourself-container {
   text-align: center;
 }
 
-.name-header, .contact-info-header, .about-yourself-header {
+.name-header,
+.contact-info-header,
+.about-yourself-header {
   text-align: left;
   padding-left: 20%;
 }
@@ -53,7 +57,7 @@
   border-radius: 25em;
   padding: 20px;
   width: 50%;
-  height: 15px; 
+  height: 15px;
   row-gap: 20px;
 }
 

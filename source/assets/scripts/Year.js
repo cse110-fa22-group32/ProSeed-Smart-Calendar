@@ -10,44 +10,44 @@
 /** Class Year */
 class Year {
 
-    /**
-     * @author Steven Khaw
-     * Constructs a year object from the class
-     * @constructor 
-     * 
-     * @param {number} currYear year of Year (2022)
-     * @param {boolean} isLeapYear boolean on if leap year
-     * @param {Month[]} months months of year 
-     */
-    constructor(currYear, months) {
-        this.currYear = currYear;
-        this.isLeapYear = ((0 === this.currYear % 4) && (0 !== this.currYear % 100) || (0 === this.currYear % 400));
-        this.months = months;
-    }
+  /**
+   * @author Steven Khaw
+   * Constructs a year object from the class
+   * @constructor 
+   * 
+   * @param {number} currYear year of Year (2022)
+   * @param {boolean} isLeapYear boolean on if leap year
+   * @param {Month[]} months months of year 
+   */
+  constructor(currYear, months) {
+    this.currYear = currYear;
+    this.isLeapYear = ((0 === this.currYear % 4) && (0 !== this.currYear % 100) || (0 === this.currYear % 400));
+    this.months = months;
+  }
 
-    // Getters:
+  // Getters:
 
-    /**
-     * @author Steven Khaw
-     * @return currYear
-     */
-    get Year() {
-        return this.currYear;
-    }
+  /**
+   * @author Steven Khaw
+   * @return currYear
+   */
+  get Year() {
+    return this.currYear;
+  }
 
-    /**
-     * @author Steven Khaw
-     * @return isLeapYear
-     */
-    get LeapYear() {
-        return this.isLeapYear;
-    }
+  /**
+   * @author Steven Khaw
+   * @return isLeapYear
+   */
+  get LeapYear() {
+    return this.isLeapYear;
+  }
 
-    /**
-     * @author Steven Khaw
-     * @return months
-     */
-    get Months() {
-        return this.months;
-    }
+  /**
+   * @author Steven Khaw
+   * @return months
+   */
+  get Months() {
+    return this.months;
+  }
 }
