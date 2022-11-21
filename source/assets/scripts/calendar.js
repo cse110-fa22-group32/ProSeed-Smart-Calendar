@@ -120,7 +120,7 @@ class Calendar {
      * @param {number} year - year number (2000 - 3000)
      * @param {number} month - month number (1 - 12)
      */
-     Show(year, month) {
+    Show(year, month) {
         const dayBlockAr = document.getElementsByClassName('calendar-day-block');
 
         // check week day of this month's first day
