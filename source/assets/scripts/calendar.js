@@ -80,7 +80,7 @@ class Calendar {
      * @author Yuelin Dai
      * @return a json string containing data
      */
-     Export(selectedYears, selectedMonths, selectedDays) {
+    Export(selectedYears, selectedMonths, selectedDays) {
         let eventsAr = [];
         let tasksAr = [];
 

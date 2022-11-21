@@ -128,6 +128,7 @@ function getMonthStr(ind) {
  * @param {String[]} jsonStrAr Include multiple json strings that contains users, events, tasks
  * 
  * @author Yuelin Dai
+ * @return an array containing the calendar and user array
  */
  function loadJson(jsonStrAr) {
 
@@ -227,14 +228,15 @@ function getMonthStr(ind) {
 }
 
 /**
+ * Temporarily deprecated, codacy doesn't accept window.URL
  * Write a json string to local drive
  * @param {String} exportJsonStr Json string that will be saved locally
  * 
  * @author Yuelin Dai
  */
-function download (exportJsonStr) {
-    let downloadLink = document.createElement("a");
-    downloadLink.download = "calendar.json";
-    downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
-    downloadLink.click();
-}
+// function download (exportJsonStr) {
+//     let downloadLink = document.createElement("a");
+//     downloadLink.download = "calendar.json";
+//     downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
+//     downloadLink.click();
+// }

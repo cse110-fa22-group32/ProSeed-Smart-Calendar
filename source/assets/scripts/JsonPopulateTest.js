@@ -19,11 +19,12 @@ function init() {
 
     // simple tests for reading/writing json from/to local drive
 
+    // temporarily deprecated
     // write json string to local drive
-    const downloadBtn = document.getElementById('download-btn');
-    downloadBtn.addEventListener('click', e => {
-        download(tuesJson);
-    });
+    // const downloadBtn = document.getElementById('download-btn');
+    // downloadBtn.addEventListener('click', e => {
+    //     download(tuesJson);
+    // });
 
     // read local drive
     const uploadBtn = document.getElementById('upload-btn');
