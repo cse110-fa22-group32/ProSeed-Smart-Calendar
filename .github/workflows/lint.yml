@@ -1,12 +1,18 @@
 name: Lint
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   eslint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+        with:
+          repository: cse110-fa22-group32/cse110-fa22-group32
       - uses: stefanoeb/eslint-action@1.0.2
         with:
           files: source/
