@@ -19,33 +19,28 @@
         <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
       </div>
       <div class="main-container">
-          <form class="login-form">
-            <h1 class="sign-in-header">Sign In</h1>
-            <div class="input-container">
-              <label for="uname" class="uname-label">Username or Email</label>
-              <input type="text" placeholder="Enter Username" name="uname" class="input-text-field" required>
-              <label for="pword" class="password-label">Password</label>
-              <input type="password" placeholder="Enter Password" name="pword" class="input-text-field" required>
-              <label>
-                <input type="checkbox" checked="unchecked" name="remember" class="remember-checkbox">
-                <span class="remember-label">Remember Me</span><br>
-              </label>
-              <a href="calendar.html">
-                <button type="submit" class="input-button-field">Login</button>
-              </a>
-            </div>
-          </form>
-          <span class="button-container">
-            <!-- <div class="create-account-text">New Here?</div> -->
-            <a href="create-account.html">
-              <button type="button" class="create-account-button">Create an Account</button>
-            </a>
-          </span>
-          <span class="button-container">
-            <a href="forgot-password.html">
-              <button type="button" class="forgot-password-button">Forgot Password?</button>
-            </a>
-          </span>
+        <h1 class="main-container-header">Sign In</h1>
+        <form class="login-form" action="calendar.html">
+          <div class="input-container">
+            <!-- <label for="email" class="email-label"></label> -->
+            <input type="text" placeholder="Email Address" name="email" class="input-text-field" required><br><br>
+            <!-- <label for="password" class="password-label"></label> -->
+            <input type="password" placeholder="Password" name="password" class="input-text-field" required>
+            <label>
+              <input type="checkbox" checked="unchecked" name="remember" class="remember-checkbox">
+              <span class="remember-label">Remember Me</span><br>
+            </label>
+            <button type="submit" class="input-button-field">Login</button>
+          </div>
+        </form>
+        <div class="button-container">
+          <a href="create-account.html">
+            <button type="button" class="create-account-button">Create an Account</button>
+          </a>
+          <a href="forgot-password.html">
+            <button type="button" class="forgot-password-button">Forgot Password?</button>
+          </a>
+        </div>
       </div>
   </body>
 </html>

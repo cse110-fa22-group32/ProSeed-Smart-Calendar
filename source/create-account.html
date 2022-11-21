@@ -9,24 +9,24 @@
     <link rel="stylesheet" href="./assets/styles/create-account.css">
   </head>
   <body>
-    <div class="title-container">
-      <h1 class="title-text">ProSeed</h1>
-      <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
-    </div>
-    <div class="mainContainer">
-      <form class="loginFields">
-        <a>
-            <button type="submit">Go Back!</button>
-        </a>
-        <h1 id="create">Create an Account</h1>
-        <div class="container">
-          <label for="uname">Username or Email</label>
-          <input type="text" placeholder="Enter Username" name="uname" class="field" required>
-          <label for="pword">Password</label>
-          <input type="password" placeholder="Enter Password" name="pword" class="field" required>
-          <button type="submit" class="field">Next</button>
-        </div>
-      </form>
-    </div>
+      <div class="title-container">
+        <h1 class="title-text">ProSeed</h1>
+        <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
+      </div>
+      <div class="main-container">
+        <h1 class="main-container-header">Create an Account</h1>
+        <form class="login-form" action="index.html">
+          <!-- <a href="index.html">
+            <button type="button" class="go-back-button">Go Back!</button>
+          </a> -->
+          <div class="input-container">
+            <!-- <label for="email">Email Address</label> -->
+            <input type="text" placeholder="Email Address" name="email" class="input-text-field" required><br><br>
+            <!-- <label for="password">Password</label> -->
+            <input type="password" placeholder="Password" name="password" class="input-text-field" required><br><br>
+            <button type="submit" class="input-button-field">Create Account</button>
+          </div>
+        </form>
+      </div>
   </body>
 </html>
