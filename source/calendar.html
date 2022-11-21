@@ -11,7 +11,8 @@
   <!-- <script src="assets/scripts/RecipeCard.js" type="module"></script> -->
 
   <!-- Main Stylesheets & Scripts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <link rel="stylesheet" href="assets/styles/calendar.css" />
   <script src="assets/scripts/calendar_new.js" type="module"></script>
   <!-- <script src="assets/scripts/calendar.js" type="module"></script> -->
@@ -25,9 +26,9 @@
   <script type="text/javascript" src="assets/scripts/List.js"></script>
   <script type="text/javascript" src="assets/scripts/JsonInterpreter.js"></script>
   <script type="text/javascript" src="assets/scripts/JsonPopulateTest.js"></script>
-  <link rel="stylesheet" href="assets/styles/sidebar.css"/>
+  <link rel="stylesheet" href="assets/styles/sidebar.css" />
   <script src="assets/scripts/calendar_new.js" type="module"></script>
-	<script src="assets/scripts/day_view.js"></script>
+  <script src="assets/scripts/day_view.js"></script>
 </head>
 
 <body>
@@ -49,88 +50,122 @@
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
         <p>Year</p>
-        <button id="calendar-title-bar-user" class="calendar-title-bar-btn">
-          <span class="material-symbols-outlined">account_circle</span>User
-        </button>
+        <a href="edit-profile.html">
+          <button id="calendar-title-bar-user" class="calendar-title-bar-btn">
+            <span class="material-symbols-outlined">account_circle</span>User
+          </button>
+        </a>
       </div>
     </div>
   </header>
-  
-	<main>
-		<div class="sidebar-container">
-			<div class="sidebar">
-				<h2 class="sidebar-title">DATE</h2>
-				<div class="sidebar-events"></div>
+
+  <main>
+    <div class="sidebar-container">
+      <div class="sidebar">
+        <h2 class="sidebar-title">DATE</h2>
+        <div class="sidebar-events"></div>
         <div class="tasks-head">
           <h3 class="sidebar-title-2">To-Do List</h3>
           <button class="expand-tasks-btn">^</button>
         </div>
-				<div class="sidebar-tasks"></div>
-			</div>
-		</div>
-		<div id="calendar">
-			<div id="calendar-head">
-				<h1>November 2022</h1>
-			</div>
-			<div id="calendar-day-main">
-				<div class="week-of-day"><p>Sunday</p></div>
-				<div class="week-of-day"><p>Monday</p></div>
-				<div class="week-of-day"><p>Tuesday</p></div>
-				<div class="week-of-day"><p>Wednesday</p></div>
-				<div class="week-of-day"><p>Thursday</p></div>
-				<div class="week-of-day"><p>Friday</p></div>
-				<div class="week-of-day"><p>Saturday</p></div>
-				<div id="day-block-0" class="calendar-day-block"><p>1</p></div>
-				<div id="day-block-1" class="calendar-day-block"><p>2</p></div>
-				<div id="day-block-2" class="calendar-day-block"><p>3</p><div>event 1</div><div>event 2</div><div>event 3</div><div>event 4</div></div>
-				<div id="day-block-3" class="calendar-day-block"><p>4</p></div>
-				<div id="day-block-4" class="calendar-day-block"><p>5</p></div>
-				<div id="day-block-5" class="calendar-day-block"><p>6</p></div>
-				<div id="day-block-6" class="calendar-day-block"><p>7</p></div>
+        <div class="sidebar-tasks"></div>
+      </div>
+    </div>
+    <div id="calendar">
+      <div id="calendar-head">
+        <h1>November 2022</h1>
+      </div>
+      <div id="calendar-day-main">
+        <div class="week-of-day">
+          <p>Sunday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Monday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Tuesday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Wednesday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Thursday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Friday</p>
+        </div>
+        <div class="week-of-day">
+          <p>Saturday</p>
+        </div>
+        <div id="day-block-0" class="calendar-day-block">
+          <p>1</p>
+        </div>
+        <div id="day-block-1" class="calendar-day-block">
+          <p>2</p>
+        </div>
+        <div id="day-block-2" class="calendar-day-block">
+          <p>3</p>
+          <div>event 1</div>
+          <div>event 2</div>
+          <div>event 3</div>
+          <div>event 4</div>
+        </div>
+        <div id="day-block-3" class="calendar-day-block">
+          <p>4</p>
+        </div>
+        <div id="day-block-4" class="calendar-day-block">
+          <p>5</p>
+        </div>
+        <div id="day-block-5" class="calendar-day-block">
+          <p>6</p>
+        </div>
+        <div id="day-block-6" class="calendar-day-block">
+          <p>7</p>
+        </div>
 
-				<!--can be create by javascript, just for the test-->
-				<div id="day-block-7" class="calendar-day-block"></div>
-				<div id="day-block-8" class="calendar-day-block"></div>
-				<div id="day-block-9" class="calendar-day-block"></div>
-				<div id="day-block-10" class="calendar-day-block"></div>
-				<div id="day-block-11" class="calendar-day-block"></div>
-				<div id="day-block-12" class="calendar-day-block"></div>
-				<div id="day-block-13" class="calendar-day-block"></div>
+        <!--can be create by javascript, just for the test-->
+        <div id="day-block-7" class="calendar-day-block"></div>
+        <div id="day-block-8" class="calendar-day-block"></div>
+        <div id="day-block-9" class="calendar-day-block"></div>
+        <div id="day-block-10" class="calendar-day-block"></div>
+        <div id="day-block-11" class="calendar-day-block"></div>
+        <div id="day-block-12" class="calendar-day-block"></div>
+        <div id="day-block-13" class="calendar-day-block"></div>
 
-				<div id="day-block-14" class="calendar-day-block"></div>
-				<div id="day-block-15" class="calendar-day-block"></div>
-				<div id="day-block-16" class="calendar-day-block"></div>
-				<div id="day-block-17" class="calendar-day-block"></div>
-				<div id="day-block-18" class="calendar-day-block"></div>
-				<div id="day-block-19" class="calendar-day-block"></div>
-				<div id="day-block-20" class="calendar-day-block"></div>
+        <div id="day-block-14" class="calendar-day-block"></div>
+        <div id="day-block-15" class="calendar-day-block"></div>
+        <div id="day-block-16" class="calendar-day-block"></div>
+        <div id="day-block-17" class="calendar-day-block"></div>
+        <div id="day-block-18" class="calendar-day-block"></div>
+        <div id="day-block-19" class="calendar-day-block"></div>
+        <div id="day-block-20" class="calendar-day-block"></div>
 
-				<div id="day-block-21" class="calendar-day-block"></div>
-				<div id="day-block-22" class="calendar-day-block"></div>
-				<div id="day-block-23" class="calendar-day-block"></div>
-				<div id="day-block-24" class="calendar-day-block"></div>
-				<div id="day-block-25" class="calendar-day-block"></div>
-				<div id="day-block-26" class="calendar-day-block"></div>
-				<div id="day-block-27" class="calendar-day-block"></div>
+        <div id="day-block-21" class="calendar-day-block"></div>
+        <div id="day-block-22" class="calendar-day-block"></div>
+        <div id="day-block-23" class="calendar-day-block"></div>
+        <div id="day-block-24" class="calendar-day-block"></div>
+        <div id="day-block-25" class="calendar-day-block"></div>
+        <div id="day-block-26" class="calendar-day-block"></div>
+        <div id="day-block-27" class="calendar-day-block"></div>
 
-				<div id="day-block-28" class="calendar-day-block"></div>
-				<div id="day-block-29" class="calendar-day-block"></div>
-				<div id="day-block-30" class="calendar-day-block"></div>
-				<div id="day-block-31" class="calendar-day-block"></div>
-				<div id="day-block-32" class="calendar-day-block"></div>
-				<div id="day-block-33" class="calendar-day-block"></div>
-				<div id="day-block-34" class="calendar-day-block"></div>
+        <div id="day-block-28" class="calendar-day-block"></div>
+        <div id="day-block-29" class="calendar-day-block"></div>
+        <div id="day-block-30" class="calendar-day-block"></div>
+        <div id="day-block-31" class="calendar-day-block"></div>
+        <div id="day-block-32" class="calendar-day-block"></div>
+        <div id="day-block-33" class="calendar-day-block"></div>
+        <div id="day-block-34" class="calendar-day-block"></div>
 
-				<div id="day-block-35" class="calendar-day-block"></div>
-				<div id="day-block-36" class="calendar-day-block"></div>
-				<div id="day-block-37" class="calendar-day-block"></div>
-				<div id="day-block-38" class="calendar-day-block"></div>
-				<div id="day-block-39" class="calendar-day-block"></div>
-				<div id="day-block-40" class="calendar-day-block"></div>
-				<div id="day-block-41" class="calendar-day-block"></div>
+        <div id="day-block-35" class="calendar-day-block"></div>
+        <div id="day-block-36" class="calendar-day-block"></div>
+        <div id="day-block-37" class="calendar-day-block"></div>
+        <div id="day-block-38" class="calendar-day-block"></div>
+        <div id="day-block-39" class="calendar-day-block"></div>
+        <div id="day-block-40" class="calendar-day-block"></div>
+        <div id="day-block-41" class="calendar-day-block"></div>
 
-			</div>
-	</main>
+      </div>
+  </main>
 
   <footer>
     <div id="calendar-tail">
@@ -168,52 +203,52 @@
       <form id="add-event-form" method="dialog">
         <fieldset>
           <legend>Add An Event</legend>
-          <label for="title">Title: 
+          <label for="title">Title:
             <input class="title" name="title" placeholder="Title for the event.">
-          </label><br/>
+          </label><br />
           <label for="date">Date:
-            <input type="date" name="date" class="date"/>
+            <input type="date" name="date" class="date" />
           </label><br />
           <label for="start-time">Start time:
-            <input type="time" name="start-time" class="start-time"/>
+            <input type="time" name="start-time" class="start-time" />
           </label><br />
           <label for="end-time">End time:
-            <input type="time" name="end-time" class="end-time"/>
+            <input type="time" name="end-time" class="end-time" />
           </label><br />
           <label for="location">Location:
-            <input name="location" class="location"/>
+            <input name="location" class="location" />
           </label><br />
           <label for="description">Description:<br />
             <textarea class="description" name="description"></textarea>
           </label><br />
         </fieldset>
         <div>
-          <button class="save" type="submit" >Save</button>
-          <button class="cancel" type="reset" >Cancel</button>
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" type="reset">Cancel</button>
         </div>
       </form>
     </dialog>
-  
+
     <dialog id="add-todo-dialog">
       <form id="add-todo-form" method="dialog">
         <fieldset>
           <legend>Add An To-do Task</legend>
-          <label for="title">Title: 
+          <label for="title">Title:
             <input class="title" name="title" placeholder="Title for the To-Do task.">
-          </label><br/>
+          </label><br />
           <label for="duedate">Due date:
-            <input type="datetime-local" name="due-date" class="duedate"/>
+            <input type="datetime-local" name="due-date" class="duedate" />
           </label><br />
           <label for="location">Location:
-            <input name="location" class="location"/>
+            <input name="location" class="location" />
           </label><br />
           <label for="description">Description:<br />
             <textarea class="description" name="description"></textarea>
           </label><br />
         </fieldset>
         <div>
-          <button class="save" type="submit" >Save</button>
-          <button class="cancel" type="reset" >Cancel</button>
+          <button class="save" type="submit">Save</button>
+          <button class="cancel" type="reset">Cancel</button>
         </div>
       </form>
     </dialog>

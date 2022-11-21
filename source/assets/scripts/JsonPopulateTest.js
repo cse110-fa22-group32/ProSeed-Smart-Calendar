@@ -104,13 +104,15 @@ window.addEventListener('DOMContentLoaded', init);
 
 
 function init() {
-    let b = LoadJson(testJson);
-    console.log(b);
+  let b = LoadJson(testJson);
+  console.log(b);
 
-    // console.log(b[2].SortedTasks); // array of tasks sorted by dueDate
+  b[0].Show(2022, 11);
 
-    b[0].Show(2022,11);
-    
+  // console.log(b[2].SortedTasks); // array of tasks sorted by dueDate
+
+  b[0].Show(2022,11);
+  
 }
 
 
