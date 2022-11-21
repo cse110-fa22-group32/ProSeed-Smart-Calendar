@@ -1,0 +1,24 @@
+.title-container {
+  text-align: center;
+}
+
+.field {
+  border-radius: 30px;
+  padding: 20px;
+  width: 100%;
+  font-size: 20px;
+}
+
+button {
+  box-sizing: content-box;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 25em;
+  padding: 20px;
+  width: 50%;
+  height: 15px; 
+}
