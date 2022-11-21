@@ -17,6 +17,22 @@
   text-align: center;
 }
 
+.name-container, .contact-info-container, .about-yourself-container {
+  text-align: center;
+}
+
+.name-header, .contact-info-header, .about-yourself-header {
+  text-align: left;
+  padding-left: 20%;
+}
+
+.text-inputfield {
+  border-radius: 30px;
+  width: 15em;
+  font-size: 14px;
+  text-align: center;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
