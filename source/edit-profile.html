@@ -16,7 +16,7 @@
     <div class="main-container">
       <h1 class="main-container-header">Edit Profile</h1>
       <!-- <img src="./assets/images/profile-pic.webp" width="10%" height="10%"> -->
-      <form class="edit-form">
+      <form class="edit-form" action="calendar.html">
         <div class="name-container">
           <h3 class="name-header">Name</h3>
           <span class="input-labels">Username:</span>
@@ -34,9 +34,18 @@
         <div class="about-yourself-container">
           <h3 class="about-yourself-header">About Yourself</h3>
           <span class="input-labels">Bio</span>
-          <input class="bio-text-intputfield" type="text">
-        </div>
+          <textarea class="bio-textarea" rows="5" placeholder="Description"></textarea>
+        </div><br>
+        <button class="edit-button" type="submit">Update Information</button>
       </form>
+      <div class="button-container">
+        <a href="calendar.html">
+          <button class="create-account-button" type="button">Return to Calendar</button>
+        </a>
+        <a href="forgot-password.html">
+          <button class="forgot-password-button" type="button">Change Password</button>
+        </a>
+      </div>
     </div>
   </body>
 </html>
