@@ -57,7 +57,7 @@ class Year {
    * @param {number[]} selectedDays - hold selected days (1-31); [-1] indicate all days
    * 
    * @author Yuelin Dai
-   * @return {[Event[], Task[]]} - array of events and array of tasks
+   * @return {Array<Array<Event>, Array<Task>>} - array of events and array of tasks
    */
   Export(selectedMonths, selectedDays) {
     let eventsAr = [];
