@@ -13,17 +13,16 @@
       <h1 class="title-text">ProSeed</h1>
       <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
     </div>
-    <div class="mainContainer">
-      <form class="loginFields">
-        <button type="submit">Go Back</button>
-        <h1>Add User Info</h4>
-        <div class="container">
-          <span>
-            <input type="text" placeholder="Enter First Name" name="fname" class="field" required>
-            <input type="text" placeholder="Enter Last Name" name="lname" class="field" required>
-          </span>
-          <input type="text" placeholder="Enter phone number" name="phnumber" class="field" required>                    
-          <button type="submit" class="field">Sign Up</button>
+    <div class="main-container">
+      <h1 class="main-container-header">Add User Info</h1>
+      <form class="login-form" action="middleground.html">
+        <div class="input-container">
+          <div class="name-container">
+            <input class="input-text" type="text" placeholder="First Name" name="firstname" required>
+            <input class="input-text" type="text" placeholder="Last Name" name="lastname" required>
+          </div>
+          <input class="input-text" type="text" placeholder="Phone Number" name="phonenumber" required><br><br>          
+          <button class="input-button" type="submit">Complete Account Setup</button>
         </div>
       </form>
     </div>
