@@ -50,4 +50,75 @@ class Month {
     get Days() {
         return this.days;
     }
+
+    /**
+     * Return events and tasks of selected days
+     * @param {number[]} selectedDays - hold selected days (1-31); [-1] indicate all days
+     * 
+     * @author Yuelin Dai
+     * @return {Array<Array<Event>, Array<Task>>} - array of events and array of tasks
+     */
+    Export(selectedDays) {
+        let eventsAr = [];
+        let tasksAr = [];
+
+        if(selectedDays[0] == -1) { // export events of all days
+            for(let curDay of this.days) {
+                if(curDay != null) {
+
+                    for(let curEvent of curDay.Events) { // collect events
+                        eventsAr.push( {
+                            "startDay" : curEvent.StartDay,
+                            "endDay" : curEvent.EndDay,
+                            "eventName" : curEvent.EventName,
+                            "users" : [0],
+                            "location" : curEvent.Lcation,
+                            "description" : curEvent.Description
+                        });
+                    }
+                    for(let curTask of curDay.Tasks) { // collect tasks
+                        tasksAr.push( {
+                            "taskName" : curTask.TaskName,
+                            "tags" : curTask.Tags,
+                            "dueDate" : curTask.DueDate,
+                            "description" : curTask.Description,
+                            "complete" : curTask.Complete,
+                            "users" : [0]
+                        });
+                    }
+
+                }
+            }
+        }
+        else { // export events of selected days
+            for(let curDay of selectedDays) {
+                if(this.days[curDay-1] != null) {
+                    
+                    for(let curEvent of this.days[curDay-1].Events) { // collect events
+                        eventsAr.push( {
+                            "startDay" : curEvent.StartDay,
+                            "endDay" : curEvent.EndDay,
+                            "eventName" : curEvent.EventName,
+                            "users" : [0],
+                            "location" : curEvent.Lcation,
+                            "description" : curEvent.Description
+                        });
+                    }
+                    for(let curTask of this.days[curDay-1].Tasks) { // collect tasks
+                        tasksAr.push( {
+                            "taskName" : curTask.TaskName,
+                            "tags" : curTask.Tags,
+                            "dueDate" : curTask.DueDate,
+                            "description" : curTask.Description,
+                            "complete" : curTask.Complete,
+                            "users" : [0]
+                        });
+                    }
+                }
+            }
+        }
+
+        return [eventsAr, tasksAr];
+    }
+    
 }
