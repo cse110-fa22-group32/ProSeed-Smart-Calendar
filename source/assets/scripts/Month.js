@@ -34,7 +34,7 @@ class Month {
   get MonthInt() {
     return this.currMonthInt;
   }
-
+  
   /**
    * @author Steven Khaw
    * @return currMonthStr
@@ -120,5 +120,4 @@ class Month {
 
     return [eventsAr, tasksAr];
   }
-
 }

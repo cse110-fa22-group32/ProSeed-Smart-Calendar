@@ -12,7 +12,7 @@ function init() {
 }
 
 //dialog function for add event.
-function add_event(){
+function add_event() {
   //preload the element for further using.
   const add_event_btn = document.getElementById("add-event-btn");
   const add_event_dialog = document.getElementById("add-event-dialog");
@@ -26,20 +26,20 @@ function add_event(){
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
-  event_form.addEventListener("submit",()=>{
+  event_form.addEventListener("submit", () => {
     const data = new FormData(event_form);
 
 
     //test code for append string to the day block.
     let num = 0;
-    for(let d of data) {
-      const day_block = document.getElementById("day-block-"+String(num));
+    for (let d of data) {
+      const day_block = document.getElementById("day-block-" + String(num));
       let p = document.createElement("p");
-      p.innerHTML ="<p>"+d[0]+":"+d[1]+"</p>";
+      p.innerHTML = "<p>" + d[0] + ":" + d[1] + "</p>";
       day_block.append(p);
-      num ++;
+      num++;
     }
-    
+
     //===========================
     //update calendar here.
     //using function update_day() to update a day event in the calendar.
@@ -48,19 +48,19 @@ function add_event(){
   })
 
   //display the dialog.
-  add_event_btn.addEventListener("click",()=>{
+  add_event_btn.addEventListener("click", () => {
     add_event_dialog.showModal();
   })
 
   //close dialog without save.
-  event_dialog_cancel.addEventListener("click",()=>{
+  event_dialog_cancel.addEventListener("click", () => {
     add_event_dialog.close();
   })
 
 }
 
 //dialog function for add todo list.
-function add_todo(){
+function add_todo() {
   //preload the element for further using.
   const add_todo_btn = document.getElementById("add-todo-btn");
   const add_todo_dialog = document.getElementById("add-todo-dialog");
@@ -72,20 +72,20 @@ function add_todo(){
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
-  todo_form.addEventListener("submit",()=>{
+  todo_form.addEventListener("submit", () => {
     const data = new FormData(todo_form);
 
 
     //test code for append string to the day block.
     let num = 0;
-    for(let d of data) {
-      const day_block = document.getElementById("day-block-"+String(num));
+    for (let d of data) {
+      const day_block = document.getElementById("day-block-" + String(num));
       let p = document.createElement("p");
-      p.innerHTML ="<p>"+d[0]+":"+d[1]+"</p>";
+      p.innerHTML = "<p>" + d[0] + ":" + d[1] + "</p>";
       day_block.append(p);
-      num ++;
+      num++;
     }
-    
+
     //===========================
     //update calendar here.
     //using function update_day() to update a day event in the calendar.
@@ -94,12 +94,12 @@ function add_todo(){
   })
 
   //display the dialog.
-  add_todo_btn.addEventListener("click",()=>{
+  add_todo_btn.addEventListener("click", () => {
     add_todo_dialog.showModal();
   })
 
   //close dialog without save.
-  todo_dialog_cancel.addEventListener("click",()=>{
+  todo_dialog_cancel.addEventListener("click", () => {
     add_todo_dialog.close();
   })
 

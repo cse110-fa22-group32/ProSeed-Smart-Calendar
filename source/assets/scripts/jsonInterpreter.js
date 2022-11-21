@@ -7,103 +7,6 @@
  * Last Modified : 2022-11-17 6:30 AM
  */
 
-/**
- * JSON string used for test
- */
-const testJson = `
-{
-    "lastUpdated" : "",
-    "title" : "title1",
-    "calendarID" : "",
-
-    "usersList" : [
-        {
-            "firstName" : "john",
-            "lastName" : "doe",
-            "username":"admin",
-            "password":"pwd",
-            "profieldID" : "123456",
-            "calenarID" : ""
-        }
-    ],
-    "eventsList" : [
-        {
-          "startDay" : "11/01/22 11:11",
-          "endDay" : "11/02/22 11:11",
-          "eventName":"event 1",
-          "users":[0], 
-          "location":"",
-          "description":""
-        },
-        {
-          "startDay" : "11/01/22 11:11",
-          "endDay" : "11/02/22 11:11",
-          "eventName":"event 2",
-          "users":[0], 
-          "location":"",
-          "description":""
-        },
-        {
-          "startDay" : "11/03/22 11:11",
-          "endDay" : "11/04/22 11:11",
-          "eventName":"event 2",
-          "users":[0], 
-          "location":"",
-          "description":""
-        },
-        {
-          "startDay" : "10/01/22 11:11",
-          "endDay" : "10/02/22 11:11",
-          "eventName":"e1",
-          "users":[0], 
-          "location":"",
-          "description":""
-        },
-        {
-          "startDay" : "10/05/22 11:11",
-          "endDay" : "10/06/22 11:11",
-          "eventName":"e4_test",
-          "users":[0], 
-          "location":"",
-          "description":""
-        },
-        {
-          "startDay" : "10/05/22 13:11",
-          "endDay" : "10/06/22 15:11",
-          "eventName":"e5_test",
-          "users":[0], 
-          "location":"",
-          "description":""
-        }
-    ],
-    "tasksList" : [
-        {
-            "taskName" : "task 1",
-            "tags" : " ",
-            "dueDate" : "10/01/22 11:11",
-            "description" : " ",
-            "complete" : "false",
-            "users" : [0]
-        },
-        {
-            "taskName" : "task 2",
-            "tags" : " ",
-            "dueDate" : "11/01/22 16:11",
-            "description" : " ",
-            "complete" : "false",
-            "users" : [0]
-        },
-        {
-            "taskName" : "task 3",
-            "tags" : " ",
-            "dueDate" : "11/01/22 11:11",
-            "description" : " ",
-            "complete" : "false",
-            "users" : [0]
-        }
-    ]
-  }
-`;
 
 /**
  * Get the corresponding string of a day 
@@ -132,7 +35,7 @@ function getMonthStr(ind) {
  */
 function loadJson(jsonStrAr) {
 
-  // load all users
+  // load all userS
   let userList = {}; // used to store all user data
   let userNames = new Set([]); // used to init calendar
 
@@ -144,6 +47,23 @@ function loadJson(jsonStrAr) {
       userList[jsonUser.firstName + " " + jsonUser.lastName] = curUser; // used to store all user data
       userNames.add(jsonUser.firstName + " " + jsonUser.lastName); // used to init calendar
     }
+
+  /*
+  let userList = []; // array to store all user data
+  let userNames = []; // used to init calendar
+  for (let jsonUser of jsonObj['usersList']) {
+    let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
+    userList.push(curUser);
+    userNames.push(jsonUser.firstName + " " + jsonUser.lastName);
+  }
+
+  // load all tasks
+  let taskList = new List(jsonObj.listTile, jsonObj.lastUpdated, jsonObj.calendarID, {});
+  for(let jsonTask of jsonObj.tasksList) {
+    let crtTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
+    taskList.AddTask(crtTask);
+    */
+
   }
 
   // store Event/Task by their startDay(excluding clocktime)
@@ -173,6 +93,30 @@ function loadJson(jsonStrAr) {
       // store Task by their startDay
       dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
     }
+
+  /*
+  for (let jsonEvent of jsonObj['eventsList']) {
+    let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
+
+    // create new entry in dateDict if needed
+    if (!(jsonEvent.startDay.substring(0, 8) in dateDict)) {
+      dateDict[jsonEvent.startDay.substring(0, 8)] = { "events": [], "tasks": [] };
+    }
+
+    // store Event by their startDay
+    dateDict[jsonEvent.startDay.substring(0, 8)].events.push(curEvent);
+  }
+  for (let jsonTask of jsonObj.tasksList) {
+    let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
+
+    // create new entry in dateDict if needed
+    if (!(jsonTask.dueDate.substring(0, 8) in dateDict)) {
+      dateDict[jsonTask.dueDate.substring(0, 8)] = { "events": [], "tasks": [] };
+    }
+
+    // store Task by their startDay
+    dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
+    */
   }
 
   // store Day by their located year and month
@@ -240,3 +184,11 @@ function loadJson(jsonStrAr) {
 //     downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
 //     downloadLink.click();
 // }
+
+/*
+  let calendar = new Calendar(jsonObj.calendarTitle, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);
+
+  return [calendar, userList, taskList];
+}
+*/
+

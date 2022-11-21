@@ -72,6 +72,7 @@ class Calendar {
   }
 
   /**
+
    * Export data of users and selected years, months, days to a json
    * @param {number[]} selectedYears - hold selected years (2000-3000); [-1] indicate all years
    * @param {number[]} selectedMonths - hold selected months (1-12); [-1] indicate all months
@@ -113,25 +114,25 @@ class Calendar {
     });
   }
 
-  /**
    * @author Yuelin Dai
    * 
    * Populate calendar view with days, events and tasks of inputted month
-   * @param {number} year - year number (2000 - 3000)
+   * @param {number} year - year number
    * @param {number} month - month number (1 - 12)
    */
   Show(year, month) {
     const dayBlockAr = document.getElementsByClassName('calendar-day-block');
 
     // check week day of this month's first day
-    const curMonthDay = new Date(String(year) + '-' + String(month) + '-' + String(1));
-    const startDayIndex = (curMonthDay.getDay());
+
+    const startDayIndex = getWeekDayIndex(year, month, 1);
 
     // get total days of this month
-    const daysInMonth = new Date(year, month, 0).getDate();
+    const daysInMonth = daysInMonth(year, month);
 
     // fill in dates, events and tasks
     for (let blockCnt = 0; blockCnt < dayBlockAr.length; blockCnt++) {
+
       // clear previous data
       dayBlockAr[blockCnt].innerHTML = '';
 
@@ -139,10 +140,10 @@ class Calendar {
         || blockCnt < startDayIndex) { // no display before start of month
         continue;
       }
+      
       // fill in dates
       dayBlockAr[blockCnt].innerHTML += '<p class="date-block">' +
-        (blockCnt - startDayIndex + 1) +
-        '</p>';
+        (blockCnt - startDayIndex + 1) + '</p>';
 
       // no display for empty month
       if (this.years[year - 2000] == null || this.years[year - 2000].months[month - 1] == null)
@@ -164,10 +165,8 @@ class Calendar {
           }
 
           // fill in event
-          dayBlockAr[blockCnt].innerHTML +=
-            '<div class="event-block">' +
-            curEvent.EventName +
-            '</div>';
+          dayBlockAr[blockCnt].innerHTML += '<div class="event-block">' +
+            curEvent.EventName + '</div>';
         }
 
         // fill in tasks
@@ -180,24 +179,18 @@ class Calendar {
           }
 
           // fill in task
-          dayBlockAr[blockCnt].innerHTML +=
-            '<div class="task-block">' +
-            curTask.TaskName +
-            '</div>';
+          dayBlockAr[blockCnt].innerHTML += '<div class="task-block">' +
+            curTask.TaskName + '</div>';
         }
 
         // if there are skips, display them as "+n extra"
         if (extraCnt > 0) {
-          dayBlockAr[blockCnt].innerHTML +=
-            '<div class="extra-block">' +
-            '+' + String(extraCnt) + ' extra' +
-            '</div>';
+          dayBlockAr[blockCnt].innerHTML += '<div class="extra-block">' +
+            '+' + String(extraCnt) + ' extra' + '</div>';
         }
 
       }
 
     }
-
-
   }
 }
