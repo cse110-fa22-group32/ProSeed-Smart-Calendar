@@ -2,14 +2,14 @@
   text-align: center;
 }
 
-.input-text-field {
+.input-text {
   border-radius: 30px;
   padding: 20px;
   width: 100%;
   font-size: 20px;
 }
 
-.input-button-field {
+.input-button {
   border-radius: 30px;
   padding: 20px;
   width: 100%;
@@ -25,6 +25,19 @@
   padding: 20px;
   width: 50%;
   height: 15px; 
+}
+
+.button-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+.sign-in-container {
+  text-align: center;
 }
 
 button {
