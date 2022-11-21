@@ -1,9 +1,7 @@
-
-
 /**
  * JSON string used for test
  */
- const testJson = `
+const testJson = `
  {
      "lastUpdated" : "",
      "calendarTitle" : "title1",
@@ -133,7 +131,7 @@ function init() {
     const fileBtn = document.getElementById('files');
     fileBtn.click();
   });
-  
+
   /* FROM PREVIOUS TEST
   let b = LoadJson(testJson);
   console.log(b);
@@ -144,22 +142,22 @@ function init() {
 
   b[0].Show(2022,11);
   */
-  
+
 }
 
-  // select local drive 
-  const fileBtn = document.getElementById('files');
-  fileBtn.addEventListener('change', async e => {
-    const [file] = e.target.files
+// select local drive 
+const fileBtn = document.getElementById('files');
+fileBtn.addEventListener('change', async e => {
+  const [file] = e.target.files
 
-    if (!file) {
-      console.log('no file');
-    }
-    else {
-      const data = await file.text();
-      console.log(data);
-    }
-  });
+  if (!file) {
+    console.log('no file');
+  }
+  else {
+    const data = await file.text();
+    console.log(data);
+  }
+});
 
 
 }
