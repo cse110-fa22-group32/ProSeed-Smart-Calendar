@@ -27,15 +27,28 @@ function getMonthStr(ind) {
 }
 
 /**
- * Converted the json string to a single calendar and a user array
- * @param {String} jsonStr A json string that contains users, events, tasks
+ * Convert multiple json strings to a single calendar and a user array
+ * @param {String[]} jsonStrAr Include multiple json strings that contains users, events, tasks
+ * 
+ * @author Yuelin Dai
  * @return an array containing the calendar and user array
  */
-function LoadJson(jsonStr) {
+function loadJson(jsonStrAr) {
 
-  let jsonObj = JSON.parse(jsonStr);
+  // load all userS
+  let userList = {}; // used to store all user data
+  let userNames = new Set([]); // used to init calendar
 
-  // load all users
+  for (let jsonStr of jsonStrAr) { // traverse each json to collect all users
+    let jsonObj = JSON.parse(jsonStr);
+
+    for (let jsonUser of jsonObj.usersList) {
+      let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
+      userList[jsonUser.firstName + " " + jsonUser.lastName] = curUser; // used to store all user data
+      userNames.add(jsonUser.firstName + " " + jsonUser.lastName); // used to init calendar
+    }
+
+  /*
   let userList = []; // array to store all user data
   let userNames = []; // used to init calendar
   for (let jsonUser of jsonObj['usersList']) {
@@ -49,10 +62,39 @@ function LoadJson(jsonStr) {
   for(let jsonTask of jsonObj.tasksList) {
     let crtTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
     taskList.AddTask(crtTask);
+    */
+
   }
 
   // store Event/Task by their startDay(excluding clocktime)
   let dateDict = {};
+  for (let jsonStr of jsonStrAr) { // traverse each json to collect all events/tasks
+    let jsonObj = JSON.parse(jsonStr);
+
+    for (let jsonEvent of jsonObj.eventsList) {
+      let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
+
+      // create new entry in dateDict if needed
+      if (!(jsonEvent.startDay.substring(0, 8) in dateDict)) {
+        dateDict[jsonEvent.startDay.substring(0, 8)] = { "events": [], "tasks": [] };
+      }
+
+      // store Event by their startDay
+      dateDict[jsonEvent.startDay.substring(0, 8)].events.push(curEvent);
+    }
+    for (let jsonTask of jsonObj.tasksList) {
+      let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
+
+      // create new entry in dateDict if needed
+      if (!(jsonTask.dueDate.substring(0, 8) in dateDict)) {
+        dateDict[jsonTask.dueDate.substring(0, 8)] = { "events": [], "tasks": [] };
+      }
+
+      // store Task by their startDay
+      dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
+    }
+
+  /*
   for (let jsonEvent of jsonObj['eventsList']) {
     let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
 
@@ -74,6 +116,7 @@ function LoadJson(jsonStr) {
 
     // store Task by their startDay
     dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
+    */
   }
 
   // store Day by their located year and month
@@ -122,7 +165,30 @@ function LoadJson(jsonStr) {
     yearList[yearStr - 2000] = curYear;
   }
 
+  let jsonObj = JSON.parse(jsonStrAr[0]); // use first json's metadata 
+  let calendar = new Calendar(jsonObj.title, jsonObj.lastUpdated, jsonObj.calendarID, yearList, Object.values(userNames));
+
+  return [calendar, Object.values(userList)];
+}
+
+/**
+ * Temporarily deprecated, codacy doesn't accept window.URL
+ * Write a json string to local drive
+ * @param {String} exportJsonStr Json string that will be saved locally
+ *
+ * @author Yuelin Dai
+ */
+// function download (exportJsonStr) {
+//     let downloadLink = document.createElement("a");
+//     downloadLink.download = "calendar.json";
+//     downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
+//     downloadLink.click();
+// }
+
+/*
   let calendar = new Calendar(jsonObj.calendarTitle, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);
 
   return [calendar, userList, taskList];
 }
+*/
+

@@ -72,6 +72,48 @@ class Calendar {
   }
 
   /**
+
+   * Export data of users and selected years, months, days to a json
+   * @param {number[]} selectedYears - hold selected years (2000-3000); [-1] indicate all years
+   * @param {number[]} selectedMonths - hold selected months (1-12); [-1] indicate all months
+   * @param {number[]} selectedDays - hold selected days (1-31); [-1] indicate all days
+   * 
+   * @author Yuelin Dai
+   * @return a json string containing data
+   */
+  Export(selectedYears, selectedMonths, selectedDays) {
+    let eventsAr = [];
+    let tasksAr = [];
+
+    if (selectedYears[0] == -1) { // export events of all years
+      for (let curYear of this.years) {
+        if (curYear != null) {
+          let [childEvents, childTasks] = curYear.Export(selectedMonths, selectedDays);
+          eventsAr = eventsAr.concat(childEvents);
+          tasksAr = tasksAr.concat(childTasks);
+        }
+      }
+    }
+    else { // export events of selected years
+      for (let curYear of selectedYears) {
+        if (this.years[curYear - 2000] != null) {
+          let [childEvents, childTasks] = this.years[curYear - 2000].Export(selectedMonths, selectedDays);
+          eventsAr = eventsAr.concat(childEvents);
+          tasksAr = tasksAr.concat(childTasks);
+        }
+      }
+    }
+
+    return JSON.stringify({
+      "lastUpdated": this.LastUpdated,
+      "title": this.Title,
+      "calendarID": this.CalendarID,
+      "usersList": this.Users,
+      "eventsList": eventsAr,
+      "tasksList": tasksAr
+    });
+  }
+
    * @author Yuelin Dai
    * 
    * Populate calendar view with days, events and tasks of inputted month
@@ -82,6 +124,7 @@ class Calendar {
     const dayBlockAr = document.getElementsByClassName('calendar-day-block');
 
     // check week day of this month's first day
+
     const startDayIndex = getWeekDayIndex(year, month, 1);
 
     // get total days of this month
@@ -97,10 +140,14 @@ class Calendar {
         || blockCnt < startDayIndex) { // no display before start of month
         continue;
       }
-
+      
       // fill in dates
       dayBlockAr[blockCnt].innerHTML += '<p class="date-block">' +
         (blockCnt - startDayIndex + 1) + '</p>';
+
+      // no display for empty month
+      if (this.years[year - 2000] == null || this.years[year - 2000].months[month - 1] == null)
+        continue;
 
       // get current Day from calendar, fill it with events and tasks
       const curDay = this.years[year - 2000].months[month - 1].days[blockCnt - startDayIndex];
@@ -141,7 +188,9 @@ class Calendar {
           dayBlockAr[blockCnt].innerHTML += '<div class="extra-block">' +
             '+' + String(extraCnt) + ' extra' + '</div>';
         }
+
       }
+
     }
   }
 }
