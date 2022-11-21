@@ -26,7 +26,6 @@ at 600px, 900px, 1200px.
     }
 }
 
-
 @media only screen and (min-width: 900px) {
     :root {
         --calendar-width: 100%;

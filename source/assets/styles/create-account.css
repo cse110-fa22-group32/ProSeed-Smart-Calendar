@@ -36,6 +36,10 @@
   padding: 20px;
 }
 
+.sign-in-container {
+  text-align: center;
+}
+
 button {
   box-sizing: content-box;
   margin: auto;

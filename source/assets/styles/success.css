@@ -2,14 +2,8 @@
   text-align: center;
 }
 
-.input-text {
-  border-radius: 30px;
-  padding: 20px;
-  width: 100%;
-  font-size: 20px;
-}
 
-.input-button {
+.redirect-button {
   border-radius: 30px;
   padding: 20px;
   width: 100%;

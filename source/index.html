@@ -1,37 +1,44 @@
 <!--
-    This html document is set to be the title page that should first open
-    when the user logs in. It contains options to sign in with the corresponding
-    fields, link to forgot password page, and create an account page.
+  This html document is set to be the title page that should first open
+  when the user logs in. It contains options to sign in with the corresponding
+  fields, link to forgot password page, and create an account page.
 -->
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>ProSeed Login</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./assets/styles/index.css">
-    </head>
-    <body>
-        <div class="title">
-            <h1>ProSeed</h1>
-            <h3>The Smart Calendar and To-Do List</h4>
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>ProSeed Login</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="./assets/styles/index.css">
+  </head>
+  <body>
+      <div class="title-container">
+        <h1 class="title-text">ProSeed</h1>
+        <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
+      </div>
+      <div class="main-container">
+        <h1 class="main-container-header">Sign In</h1>
+        <form class="login-form" action="calendar.html">
+          <div class="input-container">
+            <input class="input-text" type="text" placeholder="Email Address" name="email" required><br><br>
+            <input class="input-text" type="password" placeholder="Password" name="password" required>
+            <label>
+              <input class="remember-checkbox" type="checkbox" checked="unchecked" name="remember">
+              <span class="remember-label">Remember Me</span><br>
+            </label>
+            <button class="input-button" type="submit">Login</button>
+          </div>
+        </form>
+        <div class="button-container">
+          <a href="create-account.html">
+            <button class="create-account-button" type="button">Create an Account</button>
+          </a>
+          <a href="forgot-password.html">
+            <button class="forgot-password-button" type="button">Forgot Password?</button>
+          </a>
         </div>
-        <div class="mainContainer">
-            <form class="loginFields">
-                <h1>Sign In</h4>
-                <div class="container">
-                    <label for="uname">Username or Email</label>
-                    <input type="text" placeholder="Enter Username" name="uname" class="field" required>
-                    <label for="pword">Password</label>
-                    <input type="password" placeholder="Enter Password" name="pword" class="field" required>
-                    <label><input type="checkbox" checked="unchecked" name="remember">Remember Me<br></label>
-                    <button type="submit" class="field">Login</button>
-                </div>
-            </form>
-            <span>New here?<button type="submit">Create an Account</button></span>
-            <button type="submit">Forgot Password?</button>
-        </div>
-    </body>
+      </div>
+  </body>
 </html>
