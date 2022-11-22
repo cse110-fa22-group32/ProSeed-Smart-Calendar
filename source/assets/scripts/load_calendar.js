@@ -9,11 +9,11 @@ window.addEventListener("DOMContentLoaded", init);
 // Starts the program, all function calls trace back here
 function init() {
 
-  const NUMBER_OF_WEEKS_TO_INIT = 6;
+  // currDay format = [YYYY,MM,DD]
+  const currDay = getCurrentDay();
+  const numWeeks = getWeekCount(currDay[0],currDay[1]);
 
-  createCalendarHTML(NUMBER_OF_WEEKS_TO_INIT);
-
-  let currDay = getCurrentDay();
+  createCalendarHTML(numWeeks);
 
   loadCalendarHTML(currDay[0],currDay[1]);
 }
@@ -43,27 +43,26 @@ function createCalendarHTML(weeks) {
   }
 }
 
-function update_day_block(firstDayOfWeek,dayOfMonth,data){
-  const day_block = document.getElementById("day-block-"+String(firstDayOfWeek-1+dayOfMonth));
-  day_block.innerHTML = '';
-  let p = document.createElement("p");
-  p.innerHTML = dayOfMonth;
-  day_block.append(p);
-  let count = 0;
-  for (let d of data){
-    let p = document.createElement("p");
-    p.innerHTML = d;
-    day_block.append(p);
-    if(count>5) {
-      console.log(dayOfMonth.length)
-      p.innerHTML = String(data.length)+"+";
-      day_block.append(p);
-      break;
-    }
-    count++;
-  }
-}
-
+/**
+ * @author Steven Khaw
+ * @summary populates each day number into respective day-block-#
+ * 
+ * @param {number} year current year of month to populate calendar
+ * @param {number} month current month to populate calendar
+ */
 function loadCalendarHTML(year, month) {
+  
+  // populate variables
+  const numDays = getDaysInMonth(year,month);
+  let startingDay = getWeekDayIndex(year,month,1);
 
+  // add day number to each day block
+  for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
+    const currDayElement = document.getElementById("day-block-" + 
+        String(startingDay));
+    const newDayNumElement = document.createElement("p");
+
+    newDayNumElement.innerHTML = dayNum;
+    currDayElement.append(newDayNumElement);
+  }
 }
