@@ -29,21 +29,21 @@ function init() {
 
 
 /**
- * @author Yangming Guan,Steven Khaw
+ * @author Yangming Guan, Steven Khaw
  * @summary to show or hide last row of day block grid.
  * 
  * @param {number} weeks number of weeks you would like to load into calendar
  * @default weeks should be set to 6 by default
  */
 function HideLastRow(weeks) {
-  
+
   let extraDiv = document.querySelectorAll(".extra");
-  if (weeks == 6){
-    extraDiv.forEach((extra_div)=>extra_div.classList.remove('hidden'))
-  }else{
-    extraDiv.forEach((extra_div)=>extra_div.classList.add('hidden'))
+  if (weeks == 6) {
+    extraDiv.forEach((extra_div) => extra_div.classList.remove('hidden'))
+  } else {
+    extraDiv.forEach((extra_div) => extra_div.classList.add('hidden'))
   }
-  
+
 }
 
 /**
@@ -79,13 +79,12 @@ function createCalendarHTML(weeks) {
  * @param {number} year current year of month to populate calendar
  * @param {number} month current month to populate calendar
  */
- function loadCalendarHTML(year, month) {
+function loadCalendarHTML(year, month) {
 
   const headerString = String(indexToMonth(month)) + " " + String(year);
   const headerTextElement = document.querySelector("#calendar-head h1");
 
   headerTextElement.innerText = headerString;
-
 
   // populate variables
   const numDays = getDaysInMonth(year, month);
@@ -93,13 +92,13 @@ function createCalendarHTML(weeks) {
 
   //add last month day number to each day block
   let lastMonth = 0;
-  if (month == 0){
+  if (month == 0) {
     lastMonth = 11;
-  }else{
-    lastMonth = month-1
+  } else {
+    lastMonth = month - 1
   }
   let numDaysLastMonth = getDaysInMonth(year, lastMonth);
-  for (let l = startingDay-1;l > -1;l--,numDaysLastMonth--){
+  for (let l = startingDay - 1; l > -1; l--, numDaysLastMonth--) {
     const currDayElement = document.getElementById("day-block-" +
       String(l));
 
@@ -110,7 +109,6 @@ function createCalendarHTML(weeks) {
     currDayElement.classList.add('othermonth');
     currDayElement.appendChild(newDayNumElement);
   }
-
 
   // add day number to each day block
   for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
@@ -123,10 +121,10 @@ function createCalendarHTML(weeks) {
     currDayElement.classList.remove('othermonth');
     currDayElement.appendChild(newDayNumElement);
   }
-  
+
   // add next month day number to each day block
   let numDaysNextMonth = 1;
-  for (let dayNum = startingDay; dayNum < 42; dayNum++,numDaysNextMonth++) {
+  for (let dayNum = startingDay; dayNum < 42; dayNum++, numDaysNextMonth++) {
     const currDayElement = document.getElementById("day-block-" +
       String(dayNum));
 
@@ -138,8 +136,6 @@ function createCalendarHTML(weeks) {
     currDayElement.appendChild(newDayNumElement);
   }
 }
-  
-
 
 /**
  * @author Steven Khaw
@@ -165,7 +161,7 @@ function updateCalendarView(year, month) {
   // add day number to each day block
   for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
     const currDayElement = document.getElementById("day-block-" +
-        String(startingDay));
+      String(startingDay));
     const newDayNumElement = document.createElement("p");
 
     newDayNumElement.innerHTML = dayNum;
@@ -215,7 +211,7 @@ function traverseMonthEventListener() {
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
 
-      calendarData[0].Show(currDay[0],currDay[1]);
+      calendarData[0].Show(currDay[0], currDay[1]);
     }
     else { // go to previous month
       currDay[1]--;
@@ -227,8 +223,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
-      
-      calendarData[0].Show(currDay[0],currDay[1]);
+
+      calendarData[0].Show(currDay[0], currDay[1]);
     }
   });
 
@@ -247,7 +243,7 @@ function traverseMonthEventListener() {
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
 
-      calendarData[0].Show(currDay[0],currDay[1]);
+      calendarData[0].Show(currDay[0], currDay[1]);
     }
     else { // go to next month
       currDay[1]++;
@@ -259,8 +255,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
-      
-      calendarData[0].Show(currDay[0],currDay[1]);
+
+      calendarData[0].Show(currDay[0], currDay[1]);
     }
   });
 }
@@ -290,7 +286,7 @@ function traverseYearEventListener() {
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
 
-    calendarData[0].Show(currDay[0],currDay[1]);
+    calendarData[0].Show(currDay[0], currDay[1]);
   });
 
   yearBtnDown.addEventListener('click', function () { // go to next year
@@ -306,6 +302,6 @@ function traverseYearEventListener() {
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
 
-    calendarData[0].Show(currDay[0],currDay[1]);
+    calendarData[0].Show(currDay[0], currDay[1]);
   });
 }
