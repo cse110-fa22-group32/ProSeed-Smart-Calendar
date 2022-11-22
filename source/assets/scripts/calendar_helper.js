@@ -15,7 +15,7 @@
  *
  * @return {boolean} true if leap year, false if else
  */
-function getIfLeapYear(year) {
+ function getIfLeapYear(year) {
   return (year % 4 === 0);
 }
 
