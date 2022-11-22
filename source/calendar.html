@@ -13,8 +13,13 @@
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="assets/styles/calendar.css" />
-  <script src="assets/scripts/calendar_new.js" type="module"></script>
+  
+  <script type="text/javascript" src="assets/scripts/calendar_helper.js"></script>
+  <script type="module" src="assets/scripts/load_calendar.js"></script>
+  <script type="module" src="assets/scripts/calendar_new.js"></script>
+  <link rel="stylesheet" href="assets/styles/calendar.css"/>
+  
+
   <!-- <script src="assets/scripts/calendar.js" type="module"></script> -->
   <script type="text/javascript" src="assets/scripts/Event.js"></script>
   <script type="text/javascript" src="assets/scripts/Task.js"></script>
@@ -26,6 +31,8 @@
   <script type="text/javascript" src="assets/scripts/List.js"></script>
   <script type="text/javascript" src="assets/scripts/JsonInterpreter.js"></script>
   <script type="text/javascript" src="assets/scripts/JsonPopulateTest.js"></script>
+
+
   <link rel="stylesheet" href="assets/styles/sidebar.css" />
   <script src="assets/scripts/calendar_new.js" type="module"></script>
   <script src="assets/scripts/day_view.js"></script>
@@ -97,33 +104,15 @@
         <div class="week-of-day">
           <p>Saturday</p>
         </div>
-        <div id="day-block-0" class="calendar-day-block">
-          <p>1</p>
-        </div>
-        <div id="day-block-1" class="calendar-day-block">
-          <p>2</p>
-        </div>
-        <div id="day-block-2" class="calendar-day-block">
-          <p>3</p>
-          <div>event 1</div>
-          <div>event 2</div>
-          <div>event 3</div>
-          <div>event 4</div>
-        </div>
-        <div id="day-block-3" class="calendar-day-block">
-          <p>4</p>
-        </div>
-        <div id="day-block-4" class="calendar-day-block">
-          <p>5</p>
-        </div>
-        <div id="day-block-5" class="calendar-day-block">
-          <p>6</p>
-        </div>
-        <div id="day-block-6" class="calendar-day-block">
-          <p>7</p>
-        </div>
+        <!--  
+        <div id="day-block-0" class="calendar-day-block"></div>
+        <div id="day-block-1" class="calendar-day-block"></div>
+        <div id="day-block-2" class="calendar-day-block"></div>
+        <div id="day-block-3" class="calendar-day-block"></div>
+        <div id="day-block-4" class="calendar-day-block"></div>
+        <div id="day-block-5" class="calendar-day-block"></div>
+        <div id="day-block-6" class="calendar-day-block"></div>
 
-        <!--can be create by javascript, just for the test-->
         <div id="day-block-7" class="calendar-day-block"></div>
         <div id="day-block-8" class="calendar-day-block"></div>
         <div id="day-block-9" class="calendar-day-block"></div>
@@ -162,7 +151,9 @@
         <div id="day-block-38" class="calendar-day-block"></div>
         <div id="day-block-39" class="calendar-day-block"></div>
         <div id="day-block-40" class="calendar-day-block"></div>
-        <div id="day-block-41" class="calendar-day-block"></div>
+        <div id="day-block-41" class="calendar-day-block"></div> 
+        -->
+        <!-- START OF JS CREATED CODE -->
 
       </div>
   </main>

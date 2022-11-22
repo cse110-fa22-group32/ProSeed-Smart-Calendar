@@ -69,7 +69,7 @@ function getWeekDayIndex(year, month, day) {
 
 /**
  * @author Steven Khaw
- * returns the current date in format: YYYY-MM-DD
+ * returns the current date in format: [YYYY,MM,DD]
  *
  * @return {string[]} current date in format: [YYYY,MM,DD]
  */

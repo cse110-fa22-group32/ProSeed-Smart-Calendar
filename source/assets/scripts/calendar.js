@@ -114,6 +114,7 @@ class Calendar {
     });
   }
 
+  /**
    * @author Yuelin Dai
    * 
    * Populate calendar view with days, events and tasks of inputted month
@@ -124,11 +125,12 @@ class Calendar {
     const dayBlockAr = document.getElementsByClassName('calendar-day-block');
 
     // check week day of this month's first day
-
-    const startDayIndex = getWeekDayIndex(year, month, 1);
+    //const startDayIndex = getWeekDayIndex(year, month, 1);
+    const startDayIndex = (new Date(String(month) + " " + String(1) + ", " + String(year))).getDay();
 
     // get total days of this month
-    const daysInMonth = daysInMonth(year, month);
+    //const daysInMonth = daysInMonth(year, month);
+    const daysInMonth = new Date(year, month, 0).getDate()
 
     // fill in dates, events and tasks
     for (let blockCnt = 0; blockCnt < dayBlockAr.length; blockCnt++) {

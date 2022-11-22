@@ -143,22 +143,17 @@ function init() {
   b[0].Show(2022,11);
   */
 
+  // select local drive 
+  const fileBtn = document.getElementById('files');
+  fileBtn.addEventListener('change', async e => {
+    const [file] = e.target.files
+
+    if (!file) {
+      console.log('no file');
+    }
+    else {
+      const data = await file.text();
+      console.log(data);
+    }
+  });
 }
-
-// select local drive 
-const fileBtn = document.getElementById('files');
-fileBtn.addEventListener('change', async e => {
-  const [file] = e.target.files
-
-  if (!file) {
-    console.log('no file');
-  }
-  else {
-    const data = await file.text();
-    console.log(data);
-  }
-});
-
-
-}
-
