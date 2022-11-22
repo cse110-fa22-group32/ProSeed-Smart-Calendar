@@ -154,8 +154,6 @@ function add_todo(){
     let taskDueDate = String(taskMonth + "/" + taskDay + "/" + taskLastTwoYear
       + " " + taskHour + ":" + taskMinute);
 
-    console.log(taskTitle);
-
     const newTask = new Task(taskTitle,[],taskDueDate,taskDescription,false);
 
     // allocate empty year/month/day when needed
