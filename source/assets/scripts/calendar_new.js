@@ -109,7 +109,7 @@ function add_event(){
     // refresh calendar
     //resetCalendarHTML();
     numWeeks = getWeekCount(eventYear, eventMonth);
-    HideLastRow(numWeeks); // create day blocks
+    hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear,eventMonth);
   })
@@ -193,7 +193,7 @@ function add_todo(){
     // refresh calendar
     //resetCalendarHTML();
     numWeeks = getWeekCount(taskYear, taskMonth);
-    HideLastRow(numWeeks); // create day blocks
+    hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear,taskMonth);
   })

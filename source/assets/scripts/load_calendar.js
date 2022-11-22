@@ -17,7 +17,7 @@ function init() {
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   // create day blocks
-  HideLastRow(numWeeks);
+  hideLastRow(numWeeks);
 
   // populate day blocks with date number
   loadCalendarHTML(currDay[0], currDay[1]);
@@ -35,7 +35,7 @@ function init() {
  * @param {number} weeks number of weeks you would like to load into calendar
  * @default weeks should be set to 6 by default
  */
-function HideLastRow(weeks) {
+function hideLastRow(weeks) {
   
   let extraDiv = document.querySelectorAll(".extra");
   if (weeks == 6){
@@ -210,7 +210,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      HideLastRow(numWeeks);
+      hideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -223,7 +223,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      HideLastRow(numWeeks);
+      hideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -242,7 +242,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      HideLastRow(numWeeks);
+      hideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -255,7 +255,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      HideLastRow(numWeeks);
+      hideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -285,7 +285,7 @@ function traverseYearEventListener() {
     numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    HideLastRow(numWeeks);
+    hideLastRow(numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
@@ -301,7 +301,7 @@ function traverseYearEventListener() {
     numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    HideLastRow(numWeeks);
+    hideLastRow(numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
