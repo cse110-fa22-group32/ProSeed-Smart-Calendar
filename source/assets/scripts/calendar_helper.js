@@ -73,7 +73,7 @@ function getWeekDayIndex(year, month, day) {
  * 
  * @param {number} year year being checked
  * @param {number} month month being checked
- * @returns 
+ * @returns {number} number of weeks of input 
  */
 function getWeekCount(year, month) {
 
