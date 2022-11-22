@@ -75,16 +75,22 @@ function add_event(){
     const data = new FormData(event_form);
 
     let eventTitle = data.get("title");
-    let eventDate = new Date(data.get("date"));
+    // let eventDate = new Date(data.get("date"));
+    let eventDate = data.get("date"); // format: "YYYY-MM-DD"
     let eventStart =  data.get("start-time");
     let eventEnd = data.get("end-time");
     let eventLoc = data.get("location");
     let eventDescription = data.get("description");
 
-    let eventLastTwoYear = Number(String(eventDate.getFullYear()).slice(-2));
-    let eventYear = Number(eventDate.getFullYear());
-    let eventMonth = Number(eventDate.getMonth() + 1)
-    let eventDay = Number(eventDate.getDate());
+    // didn't use Date() since the date format "YYYY-MM-DD" sometimes leades to timezone change
+    // let eventLastTwoYear = Number(String(eventDate.getFullYear()).slice(-2));
+    // let eventYear = Number(eventDate.getFullYear());
+    // let eventMonth = Number(eventDate.getMonth() + 1)
+    // let eventDay = Number(eventDate.getDate());
+    let eventLastTwoYear = Number(eventDate.substring(2, 4));
+    let eventYear = Number(eventDate.substring(0, 4));
+    let eventMonth = Number(eventDate.substring(5, 7));
+    let eventDay = Number(eventDate.substring(8, 10));
 
     eventStart = String(eventMonth) + "/" + String(eventDay) + "/" 
         + eventLastTwoYear + " " + eventStart;
@@ -95,8 +101,19 @@ function add_event(){
     const newEvent = new Event(eventStart, eventEnd, eventTitle, 
         eventLoc, eventDescription);  
 
+    // allocate empty year/month/day when needed
+    if(calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
+      calendarData[0].years[eventLastTwoYear] = [null, null, null, null, null, null, null, null, null, null, null, null];
+    }
+    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1] == null) { // allocate 31 empty days
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+    }
+    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] == null) { // allocate one day
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] = new Day(eventDay, indexToDay(eventDay), [], []);
+    }
+        
     calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
-        days[eventDay].events.push(newEvent);
+        days[eventDay-1].events.push(newEvent);
     
     calendarData[0].Show(eventYear,eventMonth)
   })
