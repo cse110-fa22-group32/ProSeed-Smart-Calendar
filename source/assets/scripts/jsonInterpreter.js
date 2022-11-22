@@ -8,26 +8,6 @@
  */
 
 
-/*
- * Get the corresponding string of a day 
- * @param {number} ind - order number of the day (1 - 7)
- * @return corresponding string of the day
-
-function getDayStr(ind) {
-  return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][ind - 1];
-}
- */
-
-/*
- * Get the corresponding string of a month 
- * @param {number} ind - order number of the month (1 - 12)
- * @return corresponding string of the month
- 
-function getMonthStr(ind) {
-  return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][ind - 1];
-}
- */
-
 /**
  * Convert multiple json strings to a single calendar and a user array
  * @param {String[]} jsonStrAr Include multiple json strings that contains users, events, tasks
@@ -37,7 +17,7 @@ function getMonthStr(ind) {
  */
 function loadJson(jsonStrAr) {
 
-  // load all userS
+  // load all users
   let userList = {}; // used to store all user data
   let userNames = new Set([]); // used to init calendar
 

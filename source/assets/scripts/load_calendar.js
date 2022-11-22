@@ -75,7 +75,7 @@ function loadCalendarHTML(year, month) {
   // add day number to each day block
   for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
     const currDayElement = document.getElementById("day-block-" +
-      String(startingDay));
+        String(startingDay));
     const newDayNumElement = document.createElement("p");
 
     newDayNumElement.innerHTML = dayNum;

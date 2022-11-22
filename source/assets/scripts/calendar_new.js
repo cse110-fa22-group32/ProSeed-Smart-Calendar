@@ -33,26 +33,23 @@ function update_day_block(firstDayOfWeek,dayOfMonth,data){
   }
 }
 
-
-
 //dialog function for add event.
 function add_event(){
   //preload the element for further using.
   const add_event_btn = document.getElementById("add-event-btn");
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
-  const event_title = add_event_dialog.querySelector(".title");
+  /* const event_title = add_event_dialog.querySelector(".title");
   const event_date = add_event_dialog.querySelector(".date");
   const event_start_time = add_event_dialog.querySelector(".start-time");
   const event_end_time = add_event_dialog.querySelector(".end-time");
   const event_description = add_event_dialog.querySelector(".description");
-  const event_dialog_save = add_event_dialog.querySelector(".save");
+  const event_dialog_save = add_event_dialog.querySelector(".save"); */
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
-  event_form.addEventListener("submit",()=>{
+  /* event_form.addEventListener("submit",()=>{
     const data = new FormData(event_form);
-
 
     //test code for append string to the day block.
     let firstDayOfWeek = 0;
@@ -70,14 +67,52 @@ function add_event(){
         event.push(d[1]);
       }
     }
-    event.push("event 1");
-    event.push("event 2");
-    event.push("event 3");
-    event.push("event 4");
-    event.push("event 5");
-    event.push("event 6");
-    update_day_block(firstDayOfWeek,day,event);
 
+    update_day_block(firstDayOfWeek,day,event);
+  }) */
+
+  event_form.addEventListener("submit",()=>{
+    const data = new FormData(event_form);
+
+    let eventTitle = data.get("title");
+    let eventDate = new Date(data.get("date"));
+    let eventStart =  data.get("start-time");
+    let eventEnd = data.get("end-time");
+    let eventLoc = data.get("location");
+    let eventDescription = data.get("description");
+
+    if (eventStart === "") {
+      eventStart = String(eventDate.getMonth() + 1) + "/" 
+          + String(eventDate.getDate()) + "/" 
+          + String(eventDate.getFullYear()).slice(-2)
+          + " " + "00:00";
+    } else {
+      eventStart = String(eventDate.getMonth() + 1) + "/" 
+          + String(eventDate.getDate()) + "/" 
+          + String(eventDate.getFullYear()).slice(-2)
+          + " " + eventStart;
+    }
+
+    if (eventEnd === "") {
+      eventEnd = String(eventDate.getMonth() + 1) + "/" 
+          + String(eventDate.getDate()) + "/" 
+          + String(eventDate.getFullYear()).slice(-2)
+          + " " + "23:59";
+    } else {
+      eventEnd = String(eventDate.getMonth() + 1) + "/" 
+          + String(eventDate.getDate()) + "/" 
+          + String(eventDate.getFullYear()).slice(-2)
+          + " " + eventEnd;
+    }
+    
+    const newEvent = new Event(eventStart, eventEnd, eventTitle, 
+        eventLoc, eventDescription);
+
+    calendarData[0].years[eventDate.getFullYear()].
+        months[eventDate.getMonth()].days[eventDate.getDate()-1].
+        events.append(newEvent);
+    
+    calendarData[0].Show(eventDate.getFullYear(),eventDate.getMonth() + 1)
   })
 
   //display the dialog.
@@ -98,10 +133,10 @@ function add_todo(){
   const add_todo_btn = document.getElementById("add-todo-btn");
   const add_todo_dialog = document.getElementById("add-todo-dialog");
   const todo_form = add_todo_dialog.querySelector("#add-todo-form");
-  const todo_title = add_todo_dialog.querySelector(".title");
+  /* const todo_title = add_todo_dialog.querySelector(".title");
   const todo_date = add_todo_dialog.querySelector(".duedate");
   const todo_description = add_todo_dialog.querySelector(".description");
-  const todo_dialog_save = add_todo_dialog.querySelector(".save");
+  const todo_dialog_save = add_todo_dialog.querySelector(".save"); */
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
