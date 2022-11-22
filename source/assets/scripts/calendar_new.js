@@ -81,38 +81,24 @@ function add_event(){
     let eventLoc = data.get("location");
     let eventDescription = data.get("description");
 
-    if (eventStart === "") {
-      eventStart = String(eventDate.getMonth() + 1) + "/" 
-          + String(eventDate.getDate()) + "/" 
-          + String(eventDate.getFullYear()).slice(-2)
-          + " " + "00:00";
-    } else {
-      eventStart = String(eventDate.getMonth() + 1) + "/" 
-          + String(eventDate.getDate()) + "/" 
-          + String(eventDate.getFullYear()).slice(-2)
-          + " " + eventStart;
-    }
+    let eventLastTwoYear = Number(String(eventDate.getFullYear()).slice(-2));
+    let eventYear = Number(eventDate.getFullYear());
+    let eventMonth = Number(eventDate.getMonth() + 1)
+    let eventDay = Number(eventDate.getDate());
 
-    if (eventEnd === "") {
-      eventEnd = String(eventDate.getMonth() + 1) + "/" 
-          + String(eventDate.getDate()) + "/" 
-          + String(eventDate.getFullYear()).slice(-2)
-          + " " + "23:59";
-    } else {
-      eventEnd = String(eventDate.getMonth() + 1) + "/" 
-          + String(eventDate.getDate()) + "/" 
-          + String(eventDate.getFullYear()).slice(-2)
-          + " " + eventEnd;
-    }
+    eventStart = String(eventMonth) + "/" + String(eventDay) + "/" 
+        + eventLastTwoYear + " " + eventStart;
+
+    eventEnd = String(eventMonth) + "/" + String(eventDay) + "/" 
+      + eventLastTwoYear + " " + eventEnd;
     
     const newEvent = new Event(eventStart, eventEnd, eventTitle, 
-        eventLoc, eventDescription);
+        eventLoc, eventDescription);  
 
-    calendarData[0].years[eventDate.getFullYear()].
-        months[eventDate.getMonth()].days[eventDate.getDate()-1].
-        events.append(newEvent);
+    calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
+        days[eventDay].events.push(newEvent);
     
-    calendarData[0].Show(eventDate.getFullYear(),eventDate.getMonth() + 1)
+    calendarData[0].Show(eventYear,eventMonth)
   })
 
   //display the dialog.
