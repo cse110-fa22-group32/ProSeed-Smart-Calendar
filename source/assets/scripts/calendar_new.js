@@ -41,7 +41,7 @@ function update_day_block(firstDayOfWeek,dayOfMonth,data){
 }
 
 /**
- * @author Yangming Guan, Yuelin Dai
+ * @author Yuelin Dai,Yangming Guan
  * @summary pop dialog for add event.
  */
 function add_event(){
@@ -126,7 +126,7 @@ function add_event(){
 }
 
 /**
- * @author Yangming Guan, Steven Khaw
+ * @author Steven Khaw,Yangming Guan
  * @summary pop a dialog for add todo list.
  */
 function add_todo(){
@@ -191,7 +191,7 @@ function add_todo(){
     currDay = [taskYear, taskMonth, taskDay];
 
     // refresh calendar
-    resetCalendarHTML();
+    //resetCalendarHTML();
     numWeeks = getWeekCount(taskYear, taskMonth);
     HideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
