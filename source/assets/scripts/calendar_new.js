@@ -4,9 +4,9 @@ window.addEventListener("DOMContentLoaded", init);
 // Starts the program, all function calls trace back here
 function init() {
 
-  //add_event();
+  add_event();
 
-  //add_todo();
+  add_todo();
 
 }
 
