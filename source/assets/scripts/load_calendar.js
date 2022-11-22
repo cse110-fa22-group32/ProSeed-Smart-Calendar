@@ -44,7 +44,7 @@ function createCalendarHTML(weeks) {
       newDivElement.className = "calendar-day-block";
       newDivElement.id = String("day-block-" + totalCount++);
 
-      calendarElement.append(newDivElement);
+      calendarElement.appendChild(newDivElement);
     }
   }
 }
@@ -77,7 +77,7 @@ function loadCalendarHTML(year, month) {
     const newDayNumElement = document.createElement("p");
 
     newDayNumElement.innerHTML = dayNum;
-    currDayElement.append(newDayNumElement);
+    currDayElement.appendChild(newDayNumElement);
   }
 }
 
