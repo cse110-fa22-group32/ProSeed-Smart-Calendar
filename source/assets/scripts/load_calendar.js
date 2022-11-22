@@ -35,13 +35,8 @@ function init() {
  * @param {number} weeks number of weeks you would like to load into calendar
  * @default weeks should be set to 6 by default
  */
-<<<<<<< HEAD
-function hideLastRow(weeks) {
-  
-=======
 function HideLastRow(weeks) {
 
->>>>>>> 34056407241145d6f0e148983166d27564f1bf93
   let extraDiv = document.querySelectorAll(".extra");
   if (weeks == 6) {
     extraDiv.forEach((extra_div) => extra_div.classList.remove('hidden'))
