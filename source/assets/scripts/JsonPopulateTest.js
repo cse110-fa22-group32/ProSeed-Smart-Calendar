@@ -132,17 +132,6 @@ function init() {
     fileBtn.click();
   });
 
-  /* FROM PREVIOUS TEST
-  let b = LoadJson(testJson);
-  console.log(b);
-
-  b[0].Show(2022, 11);
-
-  // console.log(b[2].SortedTasks); // array of tasks sorted by dueDate
-
-  b[0].Show(2022,11);
-  */
-
   // select local drive 
   const fileBtn = document.getElementById('files');
   fileBtn.addEventListener('change', async e => {
