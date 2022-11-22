@@ -121,3 +121,5 @@ class Task {
   }
 }
 
+// Defining the class Task as a custom element to create task elements
+customElements.define('task', Task);
