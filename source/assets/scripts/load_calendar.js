@@ -129,8 +129,7 @@ function createCalendarHTML(weeks) {
   for (let dayNum = startingDay; dayNum < 42; dayNum++,numDaysNextMonth++) {
     const currDayElement = document.getElementById("day-block-" +
       String(dayNum));
-      console.log(dayNum)
-      console.log(currDayElement)
+
     currDayElement.innerHTML = '';
     const newDayNumElement = document.createElement("p");
 
