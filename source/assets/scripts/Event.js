@@ -99,5 +99,25 @@ class Event {
   createEvent(startDay, endDay, eventName, location, description) {
     //TODO:
   }
+
+  /**
+   * Function to overrite the event objects
+   * @param: startDay,endDay, location, description
+   * @param {string} startDay - start day of event
+   * @param {string} endDay - end day of event
+   * @param {string} eventName - name of event
+   * @param {string} location - location of event
+   * @param {string} description - description of event
+   * 
+   * @author Younus Ahmad
+   * @return an Event object
+   */
+  modifyEvent(startDay, endDay, eventName, location, description) {
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.eventName = eventName;
+    this.location = location;
+    this.description = description;
+  }
 }
 
