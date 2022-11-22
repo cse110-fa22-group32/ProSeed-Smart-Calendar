@@ -4,7 +4,7 @@
  * @summary Helper functions for the calendar
  *
  * Created at : 2022-11-18 2:00 PM
- * Last Modified : 2022-11-18 4:30 PM
+ * Last Modified : 2022-11-21 11:30 PM
  */
 
 /**
@@ -56,20 +56,6 @@ function getDaysInMonth(year, month) {
  function indexToDay(dayIndex) {
   return ["Monday","Tuesday","Wednesday","Thursday","Friday", 
       "Saturday","Sunday"][dayIndex - 1];
-}
-
-/**
- * @author Steven Khaw
- * @summary returns month string
- *
- * @param {number} year year being checked
- * @param {number} month month being checked (1-12)
- *
- * @return {number} days in a month given year
- */
- function indexToMonth(month) {
-  return ["January","February","March","April","May","June","July","August",
-      "September","October","November","December"][month - 1];
 }
 
 /**

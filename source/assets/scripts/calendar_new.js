@@ -9,6 +9,7 @@ function init() {
   add_todo();
 
 }
+
 /**
  * @author Yangming Guan
  * @summary update a day block in html view.
@@ -25,13 +26,13 @@ function update_day_block(firstDayOfWeek,dayOfMonth,data){
   p.innerHTML = dayOfMonth;
   day_block.append(p);
   let count = 0;
-  for (let d of data){
+  for (let d of data) {
     let p = document.createElement("p");
     p.innerHTML = d;
     day_block.append(p);
-    if(count>5) {
+    if (count > 5) {
       console.log(dayOfMonth.length)
-      p.innerHTML = String(data.length)+"+";
+      p.innerHTML = String(data.length) + "+";
       day_block.append(p);
       break;
     }
@@ -39,10 +40,8 @@ function update_day_block(firstDayOfWeek,dayOfMonth,data){
   }
 }
 
-
-
 /**
- * @author Yuelin Dai,Yangming Guan
+ * @author Yangming Guan, Yuelin Dai
  * @summary pop dialog for add event.
  */
 function add_event(){
@@ -50,87 +49,61 @@ function add_event(){
   const add_event_btn = document.getElementById("add-event-btn");
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
-  /* const event_title = add_event_dialog.querySelector(".title");
-  const event_date = add_event_dialog.querySelector(".date");
-  const event_start_time = add_event_dialog.querySelector(".start-time");
-  const event_end_time = add_event_dialog.querySelector(".end-time");
-  const event_description = add_event_dialog.querySelector(".description");
-  const event_dialog_save = add_event_dialog.querySelector(".save"); */
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
 
-  //when submit button is clicked in the form.
-  /* event_form.addEventListener("submit",()=>{
-    const data = new FormData(event_form);
-
-    //test code for append string to the day block.
-    let firstDayOfWeek = 0;
-    let day = 0;
-    let event = [];
-
-    for(let d of data) {
-      if(d[0]=="date"){
-        let date = new Date(d[1]);
-        day = date.getDate()+1;
-        date.setDate(1);
-        firstDayOfWeek = date.getDay();
-      }
-      if(d[0]=="title"){
-        event.push(d[1]);
-      }
-    }
-
-    update_day_block(firstDayOfWeek,day,event);
-  }) */
-
-  event_form.addEventListener("submit",()=>{
+  event_form.addEventListener("submit", () => {
     const data = new FormData(event_form);
 
     let eventTitle = data.get("title");
-    // let eventDate = new Date(data.get("date"));
     let eventDate = data.get("date"); // format: "YYYY-MM-DD"
-    let eventStart =  data.get("start-time");
+    let eventStart = data.get("start-time");
     let eventEnd = data.get("end-time");
     let eventLoc = data.get("location");
     let eventDescription = data.get("description");
 
-    // didn't use Date() since the date format "YYYY-MM-DD" sometimes leades to timezone change
-    // let eventLastTwoYear = Number(String(eventDate.getFullYear()).slice(-2));
-    // let eventYear = Number(eventDate.getFullYear());
-    // let eventMonth = Number(eventDate.getMonth() + 1)
-    // let eventDay = Number(eventDate.getDate());
     let eventLastTwoYear = Number(eventDate.substring(2, 4));
     let eventYear = Number(eventDate.substring(0, 4));
     let eventMonth = Number(eventDate.substring(5, 7));
     let eventDay = Number(eventDate.substring(8, 10));
 
-    eventStart = String(eventMonth) + "/" + String(eventDay) + "/" 
-        + eventLastTwoYear + " " + eventStart;
+    eventStart = String(eventMonth) + "/" + String(eventDay) + "/"
+      + eventLastTwoYear + " " + eventStart;
 
-    eventEnd = String(eventMonth) + "/" + String(eventDay) + "/" 
+    eventEnd = String(eventMonth) + "/" + String(eventDay) + "/"
       + eventLastTwoYear + " " + eventEnd;
-    
-    const newEvent = new Event(eventStart, eventEnd, eventTitle, 
-        eventLoc, eventDescription);  
+
+    const newEvent = new Event(eventStart, eventEnd, eventTitle,
+      eventLoc, eventDescription);
 
     // allocate empty year/month/day when needed
-    if(calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
+    if (calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
       calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
-      calendarData[0].years[eventLastTwoYear].months = [null, null, null, null, null, null, null, null, null, null, null, null];
-      
+      calendarData[0].years[eventLastTwoYear].months =
+        [null, null, null, null, null, null, null, null,
+          null, null, null, null];
+
       console.log('new year');
     }
-    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1] == null) { // allocate 31 empty days
-      calendarData[0].years[eventLastTwoYear].months[eventMonth-1] = new Month(eventMonth, indexToMonth(eventMonth), []);
-      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+
+    if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null) { // allocate 31 empty days
+      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] =
+        new Month(eventMonth, indexToMonth(eventMonth), []);
+      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days =
+        [null, null, null, null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null, null, null, null, null];
       console.log('new month');
     }
-    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] == null) { // allocate one day
-      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] = new Day(eventDay, indexToDay(eventDay), [], []);
+
+    if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
+      days[eventDay - 1] == null) { // allocate one day
+      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
+        days[eventDay - 1] = new Day(eventDay, indexToDay(eventDay), [], []);
     }
-        
+
     calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
-        days[eventDay-1].events.push(newEvent);
-    
+      days[eventDay - 1].events.push(newEvent);
+
     currDay = [eventYear, eventMonth, eventDay];
 
     // refresh calendar
@@ -138,23 +111,22 @@ function add_event(){
     numWeeks = getWeekCount(eventYear, eventMonth);
     HideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
-    calendarData[0].Show(eventYear,eventMonth)
+    calendarData[0].Show(eventYear,eventMonth);
   })
 
   //display the dialog.
-  add_event_btn.addEventListener("click",()=>{
+  add_event_btn.addEventListener("click", () => {
     add_event_dialog.showModal();
   })
 
   //close dialog without save.
-  event_dialog_cancel.addEventListener("click",()=>{
+  event_dialog_cancel.addEventListener("click", () => {
     add_event_dialog.close();
   })
-
 }
 
 /**
- * @author Yangming Guan
+ * @author Yangming Guan, Steven Khaw
  * @summary pop a dialog for add todo list.
  */
 function add_todo(){
@@ -162,41 +134,77 @@ function add_todo(){
   const add_todo_btn = document.getElementById("add-todo-btn");
   const add_todo_dialog = document.getElementById("add-todo-dialog");
   const todo_form = add_todo_dialog.querySelector("#add-todo-form");
-  /* const todo_title = add_todo_dialog.querySelector(".title");
-  const todo_date = add_todo_dialog.querySelector(".duedate");
-  const todo_description = add_todo_dialog.querySelector(".description");
-  const todo_dialog_save = add_todo_dialog.querySelector(".save"); */
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
-  todo_form.addEventListener("submit",()=>{
+  todo_form.addEventListener("submit", () => {
     const data = new FormData(todo_form);
 
+    let taskTitle = data.get("title");
+    let taskDate = data.get("due-date"); // format: "YYYY-MM-DDTHH:MM"
+    let taskDescription = data.get("description");
 
-    //test code for append string to the day block.
-    let num = 0;
-    for(let d of data) {
-      const day_block = document.getElementById("day-block-"+String(num));
-      let p = document.createElement("p");
-      p.innerHTML ="<p>"+d[0]+":"+d[1]+"</p>";
-      day_block.append(p);
-      num ++;
+    let taskLastTwoYear = Number(taskDate.substring(2, 4));
+    let taskYear = Number(taskDate.substring(0, 4));
+    let taskMonth = Number(taskDate.substring(5, 7));
+    let taskDay = Number(taskDate.substring(8, 10));
+    let taskHour = Number(taskDate.substring(11,13));
+    let taskMinute = Number(taskDate.substring(14,16));
+
+    let taskDueDate = String(taskMonth + "/" + taskDay + "/" + taskLastTwoYear
+      + " " + taskHour + ":" + taskMinute);
+
+    console.log(taskTitle);
+
+    const newTask = new Task(taskTitle,[],taskDueDate,taskDescription,false);
+
+    // allocate empty year/month/day when needed
+    if (calendarData[0].years[taskLastTwoYear] == null) { // allocate 12 empty months
+      calendarData[0].years[taskLastTwoYear] = new Year(taskYear, []);
+      calendarData[0].years[taskLastTwoYear].months =
+        [null, null, null, null, null, null, null, null,
+          null, null, null, null];
+
+      console.log('new year');
     }
-    
-    //===========================
-    //update calendar here.
-    //using function update_day() to update a day event in the calendar.
-    //===========================
 
+    if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] == null) { // allocate 31 empty days
+      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] =
+        new Month(taskMonth, indexToMonth(taskMonth), []);
+      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days =
+        [null, null, null, null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null, null, null, null,
+          null, null, null, null, null, null, null, null, null, null, null];
+      
+      console.log('new month');
+    }
+
+    if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].
+      days[taskDay - 1] == null) { // allocate one day
+      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].
+        days[taskDay - 1] = new Day(taskDay, indexToDay(taskDay), [], []);
+    }
+
+    calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].
+      days[taskDay - 1].tasks.push(newTask);
+
+    currDay = [taskYear, taskMonth, taskDay];
+
+    // refresh calendar
+    resetCalendarHTML();
+    numWeeks = getWeekCount(taskYear, taskMonth);
+    createCalendarHTML(numWeeks); // create day blocks
+    loadCalendarHTML(taskYear, taskMonth);
+    calendarData[0].Show(taskYear,taskMonth);
   })
 
   //display the dialog.
-  add_todo_btn.addEventListener("click",()=>{
+  add_todo_btn.addEventListener("click", () => {
     add_todo_dialog.showModal();
   })
 
   //close dialog without save.
-  todo_dialog_cancel.addEventListener("click",()=>{
+  todo_dialog_cancel.addEventListener("click", () => {
     add_todo_dialog.close();
   })
 
