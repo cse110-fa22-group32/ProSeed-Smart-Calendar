@@ -15,7 +15,7 @@
  *
  * @return {boolean} true if leap year, false if else
  */
-function getIfLeapYear(year) {
+ function getIfLeapYear(year) {
   return (year % 4 === 0);
 }
 
@@ -71,11 +71,10 @@ function getWeekDayIndex(year, month, day) {
  * @author Steven Khaw
  * returns the current date in format: YYYY-MM-DD
  *
- * @return {string} current date in format: YYYY-MM-DD
+ * @return {string[]} current date in format: [YYYY,MM,DD]
  */
 function getCurrentDay() {
 
   const date = new Date();
-  let currDate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-  return currDate;
+  return [String(date.getFullYear()),String(date.getMonth() + 1),String(date.getDate())];
 }
