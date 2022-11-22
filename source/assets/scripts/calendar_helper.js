@@ -21,7 +21,7 @@
 
 /**
  * @author Steven Khaw
- * returns how many days in month given year and month
+ * @summary returns how many days in month given year and month
  *
  * @param {number} year year being checked
  * @param {number} month month being checked (1-12)
@@ -34,7 +34,47 @@ function getDaysInMonth(year, month) {
 
 /**
  * @author Steven Khaw
- * returns the day of the week of an input date
+ * @summary returns month string
+ *
+ * @param {number} monthIndex month being checked (1-12)
+ *
+ * @return {string} month of given index input
+ */
+ function indexToMonth(monthIndex) {
+  return ["January","February","March","April","May","June","July","August",
+      "September","October","November","December"][monthIndex - 1];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns day of week string
+ *
+ * @param {number} dayIndex day being checked
+ *
+ * @return {string} day of given index input
+ */
+ function indexToDay(dayIndex) {
+  return ["Monday","Tuesday","Wednesday","Thursday","Friday", 
+      "Saturday","Sunday"][dayIndex - 1];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns month string
+ *
+ * @param {number} year year being checked
+ * @param {number} month month being checked (1-12)
+ *
+ * @return {number} days in a month given year
+ */
+ function indexToMonth(month) {
+  return ["January","February","March","April","May","June","July","August",
+      "September","October","November","December"][month - 1];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns the day of the week of an input date
  *
  * @param {number} year year being checked
  * @param {number} month month being checked
@@ -87,7 +127,7 @@ function getWeekCount(year, month) {
 
 /**
  * @author Steven Khaw
- * returns the current date in format: [YYYY,MM,DD]
+ * @summary returns the current date in format: [YYYY,MM,DD]
  *
  * @return {string[]} current date in format: [YYYY,MM,DD]
  */

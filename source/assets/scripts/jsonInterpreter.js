@@ -8,23 +8,25 @@
  */
 
 
-/**
+/*
  * Get the corresponding string of a day 
  * @param {number} ind - order number of the day (1 - 7)
  * @return corresponding string of the day
- */
+
 function getDayStr(ind) {
   return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][ind - 1];
 }
+ */
 
-/**
+/*
  * Get the corresponding string of a month 
  * @param {number} ind - order number of the month (1 - 12)
  * @return corresponding string of the month
- */
+ 
 function getMonthStr(ind) {
   return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][ind - 1];
 }
+ */
 
 /**
  * Convert multiple json strings to a single calendar and a user array
@@ -123,7 +125,7 @@ function loadJson(jsonStrAr) {
   let monthDict = {};
   for (const [day, { events, tasks }] of Object.entries(dateDict)) {
     let curDate = new Date(day);
-    let curDay = new Day(curDate.getDate(), getDayStr(curDate.getDay()), events, tasks);
+    let curDay = new Day(curDate.getDate(), indexToDay(curDate.getDay()), events, tasks);
 
     // convert year and month to string, used below as key for monthDict
     let yearMonthKey = String(curDate.getFullYear()) + curDate.getMonth();
@@ -142,7 +144,7 @@ function loadJson(jsonStrAr) {
   for (const [yearMonthKey, days] of Object.entries(monthDict)) {
     let curMonthVal = yearMonthKey.substring(4, 6) - (-1);
     let curYearStr = yearMonthKey.substring(0, 4);
-    let curMonth = new Month(curMonthVal, getMonthStr(curMonthVal), days);
+    let curMonth = new Month(curMonthVal, indexToMonth(curMonthVal), days);
 
     // create new entry in yearDict if needed
     if (!(curYearStr in yearDict)) {
