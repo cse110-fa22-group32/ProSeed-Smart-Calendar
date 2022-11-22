@@ -52,7 +52,7 @@ function getWeekDayString(year, month, day) {
 
 /**
  * @author Steven Khaw
- * returns the integer day of the week of an input date
+ * @summary calculates the integer day of the week of an input date
  * index = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
  *
  * @param {number} year year being checked
@@ -69,7 +69,25 @@ function getWeekDayIndex(year, month, day) {
 
 /**
  * @author Steven Khaw
- * returns the current date in format: YYYY-MM-DD
+ * @summary calculates how many weeks in month
+ * 
+ * @param {number} year year being checked
+ * @param {number} month month being checked
+ * @returns {number} number of weeks of input 
+ */
+function getWeekCount(year, month) {
+
+  var firstOfMonth = new Date(year,month - 1,1);
+  var lastOfMonth = new Date(year,month,0);
+
+  var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+
+  return Math.ceil(used / 7);
+}
+
+/**
+ * @author Steven Khaw
+ * returns the current date in format: [YYYY,MM,DD]
  *
  * @return {string[]} current date in format: [YYYY,MM,DD]
  */
