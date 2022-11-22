@@ -105,12 +105,11 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
 
   // create a calendar object from hard-coded json
-  let calendarData = loadJson([testJson]);
-  // console.log(b);
+  calendarData = loadJson([testJson]);
 
   // export calendar to json with different range of time selections
-  let tuesJson = calendarData[0].Export([2022, 2023], [11], [1]);
-  let thursJson = calendarData[0].Export([-1], [11], [3]);
+  let tuesJson = calendarData[0].Export([-1], [-1], [1]);
+  let thursJson = calendarData[0].Export([-1], [-1], [3]);
 
   // create a calendar object from multiple json
   calendarData = loadJson([tuesJson, thursJson]);
@@ -125,14 +124,14 @@ function init() {
   //     download(tuesJson);
   // });
 
-  // read local drive
+  // read local drive, to do that first...
   const uploadBtn = document.getElementById('upload-btn');
   uploadBtn.addEventListener('click', e => {
     const fileBtn = document.getElementById('files');
     fileBtn.click();
   });
 
-  // select local drive 
+  // ...first, select local drive 
   const fileBtn = document.getElementById('files');
   fileBtn.addEventListener('change', async e => {
     const [file] = e.target.files
@@ -145,4 +144,6 @@ function init() {
       console.log(data);
     }
   });
+
+
 }
