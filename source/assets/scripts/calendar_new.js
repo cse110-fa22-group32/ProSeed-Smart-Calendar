@@ -103,10 +103,15 @@ function add_event(){
 
     // allocate empty year/month/day when needed
     if(calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
-      calendarData[0].years[eventLastTwoYear] = [null, null, null, null, null, null, null, null, null, null, null, null];
+      calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
+      calendarData[0].years[eventLastTwoYear].months = [null, null, null, null, null, null, null, null, null, null, null, null];
+      
+      console.log('new year');
     }
     if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1] == null) { // allocate 31 empty days
-      calendarData[0].years[eventLastTwoYear].months[eventMonth-1] = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1] = new Month(eventMonth, indexToMonth(eventMonth), []);
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+      console.log('new month');
     }
     if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] == null) { // allocate one day
       calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] = new Day(eventDay, indexToDay(eventDay), [], []);
@@ -115,6 +120,13 @@ function add_event(){
     calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
         days[eventDay-1].events.push(newEvent);
     
+    currDay = [eventYear, eventMonth, eventDay];
+
+    // refresh calendar
+    resetCalendarHTML();
+    numWeeks = getWeekCount(eventYear, eventMonth);
+    createCalendarHTML(numWeeks); // create day blocks
+    loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear,eventMonth)
   })
 

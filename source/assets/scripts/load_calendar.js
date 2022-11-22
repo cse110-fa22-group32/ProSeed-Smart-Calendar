@@ -7,12 +7,13 @@
 window.addEventListener("DOMContentLoaded", init);
 
 let calendarData;
+let currDay;
 
 // Starts the program, all function calls trace back here
 function init() {
 
   // currDay format = [YYYY,MM,DD]
-  let currDay = getCurrentDay();
+  currDay = getCurrentDay();
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   // create day blocks
@@ -104,7 +105,7 @@ function resetCalendarHTML() {
  */
 function traverseMonthEventListener() {
 
-  let currDay = getCurrentDay();
+  currDay = getCurrentDay();
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   const monthBtnUp = document.getElementById('calendar-month-btn-up');
@@ -181,7 +182,7 @@ function traverseMonthEventListener() {
 */
 function traverseYearEventListener() {
 
-  let currDay = getCurrentDay();
+  currDay = getCurrentDay();
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   const yearBtnUp = document.getElementById('calendar-year-btn-up');
