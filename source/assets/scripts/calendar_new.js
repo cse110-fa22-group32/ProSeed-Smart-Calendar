@@ -31,14 +31,14 @@ function add_event() {
 
 
     //test code for append string to the day block.
-    let num = 0;
-    for (let d of data) {
-      const day_block = document.getElementById("day-block-" + String(num));
-      let p = document.createElement("p");
-      p.innerHTML = "<p>" + d[0] + ":" + d[1] + "</p>";
-      day_block.append(p);
-      num++;
-    }
+    // let num = 0;
+    // for (let d of data) {
+    //   const day_block = document.getElementById("day-block-" + String(num));
+    //   let p = document.createElement("p");
+    //   p.innerHTML = "<p>" + d[0] + ":" + d[1] + "</p>";
+    //   day_block.append(p);
+    //   num++;
+    // }
 
     //===========================
     //update calendar here.

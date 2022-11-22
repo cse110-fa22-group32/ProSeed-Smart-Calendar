@@ -113,7 +113,7 @@ class Calendar {
       "tasksList": tasksAr
     });
   }
-
+  /*
    * @author Yuelin Dai
    * 
    * Populate calendar view with days, events and tasks of inputted month
