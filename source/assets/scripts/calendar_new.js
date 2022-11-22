@@ -193,7 +193,7 @@ function add_todo(){
     // refresh calendar
     resetCalendarHTML();
     numWeeks = getWeekCount(taskYear, taskMonth);
-    createCalendarHTML(numWeeks); // create day blocks
+    HideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear,taskMonth);
   })
