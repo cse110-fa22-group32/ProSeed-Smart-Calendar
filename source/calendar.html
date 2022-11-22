@@ -150,7 +150,7 @@
         <fieldset>
           <legend>Add An Event</legend>
           <label for="title">Title:
-            <input class="title" name="title" placeholder="Event Title." required>
+            <input class="title" name="title" placeholder="Event Title" required>
           </label><br>
           <label for="date">Date:
             <input type="date" name="date" class="date" required>
@@ -180,17 +180,17 @@
         <fieldset>
           <legend>Add An To-do Task</legend>
           <label for="title">Title:
-            <input class="title" name="title" placeholder="Title for the To-Do task.">
-          </label><br />
+            <input class="title" name="title" placeholder="Task Title" required>
+          </label><br>
           <label for="duedate">Due date:
-            <input type="datetime-local" name="due-date" class="duedate" />
-          </label><br />
-          <label for="location">Location:
-            <input name="location" class="location" />
-          </label><br />
-          <label for="description">Description:<br />
+            <input type="datetime-local" name="due-date" class="duedate" required>
+          </label><br>
+          <!-- <label for="location">Location:
+            <input name="location" class="location">
+          </label><br> -->
+          <label for="description">Description:<br>
             <textarea class="description" name="description"></textarea>
-          </label><br />
+          </label><br>
         </fieldset>
         <div>
           <button class="save" type="submit">Save</button>
