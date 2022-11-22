@@ -6,7 +6,7 @@
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
-var calendarData;
+let calendarData;
 
 // Starts the program, all function calls trace back here
 function init() {
