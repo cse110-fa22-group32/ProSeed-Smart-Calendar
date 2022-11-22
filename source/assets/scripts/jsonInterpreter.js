@@ -8,26 +8,6 @@
  */
 
 
-/*
- * Get the corresponding string of a day 
- * @param {number} ind - order number of the day (1 - 7)
- * @return corresponding string of the day
-
-function getDayStr(ind) {
-  return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][ind - 1];
-}
- */
-
-/*
- * Get the corresponding string of a month 
- * @param {number} ind - order number of the month (1 - 12)
- * @return corresponding string of the month
- 
-function getMonthStr(ind) {
-  return ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][ind - 1];
-}
- */
-
 /**
  * Convert multiple json strings to a single calendar and a user array
  * @param {String[]} jsonStrAr Include multiple json strings that contains users, events, tasks
@@ -37,7 +17,7 @@ function getMonthStr(ind) {
  */
 function loadJson(jsonStrAr) {
 
-  // load all userS
+  // load all users
   let userList = {}; // used to store all user data
   let userNames = new Set([]); // used to init calendar
 
@@ -49,22 +29,6 @@ function loadJson(jsonStrAr) {
       userList[jsonUser.firstName + " " + jsonUser.lastName] = curUser; // used to store all user data
       userNames.add(jsonUser.firstName + " " + jsonUser.lastName); // used to init calendar
     }
-
-  /*
-  let userList = []; // array to store all user data
-  let userNames = []; // used to init calendar
-  for (let jsonUser of jsonObj['usersList']) {
-    let curUser = new User(jsonUser.firstName, jsonUser.lastName, jsonUser.username, jsonUser.password, jsonUser.profileID, jsonUser.calendarID);
-    userList.push(curUser);
-    userNames.push(jsonUser.firstName + " " + jsonUser.lastName);
-  }
-
-  // load all tasks
-  let taskList = new List(jsonObj.listTile, jsonObj.lastUpdated, jsonObj.calendarID, {});
-  for(let jsonTask of jsonObj.tasksList) {
-    let crtTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
-    taskList.AddTask(crtTask);
-    */
 
   }
 
@@ -96,29 +60,6 @@ function loadJson(jsonStrAr) {
       dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
     }
 
-  /*
-  for (let jsonEvent of jsonObj['eventsList']) {
-    let curEvent = new Event(jsonEvent.startDay, jsonEvent.endDay, jsonEvent.eventName, jsonEvent.location, jsonEvent.description);
-
-    // create new entry in dateDict if needed
-    if (!(jsonEvent.startDay.substring(0, 8) in dateDict)) {
-      dateDict[jsonEvent.startDay.substring(0, 8)] = { "events": [], "tasks": [] };
-    }
-
-    // store Event by their startDay
-    dateDict[jsonEvent.startDay.substring(0, 8)].events.push(curEvent);
-  }
-  for (let jsonTask of jsonObj.tasksList) {
-    let curTask = new Task(jsonTask.taskName, jsonTask.tags, jsonTask.dueDate, jsonTask.description, jsonTask.complete);
-
-    // create new entry in dateDict if needed
-    if (!(jsonTask.dueDate.substring(0, 8) in dateDict)) {
-      dateDict[jsonTask.dueDate.substring(0, 8)] = { "events": [], "tasks": [] };
-    }
-
-    // store Task by their startDay
-    dateDict[jsonTask.dueDate.substring(0, 8)].tasks.push(curTask);
-    */
   }
 
   // store Day by their located year and month
@@ -186,11 +127,3 @@ function loadJson(jsonStrAr) {
 //     downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
 //     downloadLink.click();
 // }
-
-/*
-  let calendar = new Calendar(jsonObj.calendarTitle, jsonObj.lastUpdated, jsonObj.calendarID, yearList, userNames);
-
-  return [calendar, userList, taskList];
-}
-*/
-

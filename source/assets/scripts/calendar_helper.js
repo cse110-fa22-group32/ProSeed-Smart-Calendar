@@ -84,7 +84,8 @@ function getDaysInMonth(year, month) {
  */
 function getWeekDayString(year, month, day) {
 
-  const DAYS_STRINGS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const DAYS_STRINGS = ["Sunday","Monday","Tuesday","Wednesday",
+      "Thursday","Friday","Saturday"];
 
   const date = new Date(month + " " + String(day) + ", " + String(year));
   return DAYS_STRINGS[date.getDay()];
@@ -103,7 +104,8 @@ function getWeekDayString(year, month, day) {
  */
 function getWeekDayIndex(year, month, day) {
 
-  const date = new Date(String(month) + " " + String(day) + ", " + String(year));
+  const date = new Date(String(month) + " " + String(day) + ", " 
+      + String(year));
   return date.getDay();
 }
 
@@ -134,5 +136,6 @@ function getWeekCount(year, month) {
 function getCurrentDay() {
 
   const date = new Date();
-  return [String(date.getFullYear()),String(date.getMonth() + 1),String(date.getDate())];
+  return [String(date.getFullYear()),String(date.getMonth() + 1),
+      String(date.getDate())];
 }

@@ -40,8 +40,9 @@ function update_day_block(firstDayOfWeek,dayOfMonth,data){
 }
 
 
+
 /**
- * @author Yangming Guan
+ * @author Yuelin Dai,Yangming Guan
  * @summary pop dialog for add event.
  */
 function add_event(){
@@ -49,18 +50,17 @@ function add_event(){
   const add_event_btn = document.getElementById("add-event-btn");
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
-  const event_title = add_event_dialog.querySelector(".title");
+  /* const event_title = add_event_dialog.querySelector(".title");
   const event_date = add_event_dialog.querySelector(".date");
   const event_start_time = add_event_dialog.querySelector(".start-time");
   const event_end_time = add_event_dialog.querySelector(".end-time");
   const event_description = add_event_dialog.querySelector(".description");
-  const event_dialog_save = add_event_dialog.querySelector(".save");
+  const event_dialog_save = add_event_dialog.querySelector(".save"); */
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
-  event_form.addEventListener("submit",()=>{
+  /* event_form.addEventListener("submit",()=>{
     const data = new FormData(event_form);
-
 
     //test code for append string to the day block.
     let firstDayOfWeek = 0;
@@ -78,14 +78,67 @@ function add_event(){
         event.push(d[1]);
       }
     }
-    event.push("event 1");
-    event.push("event 2");
-    event.push("event 3");
-    event.push("event 4");
-    event.push("event 5");
-    event.push("event 6");
-    update_day_block(firstDayOfWeek,day,event);
 
+    update_day_block(firstDayOfWeek,day,event);
+  }) */
+
+  event_form.addEventListener("submit",()=>{
+    const data = new FormData(event_form);
+
+    let eventTitle = data.get("title");
+    // let eventDate = new Date(data.get("date"));
+    let eventDate = data.get("date"); // format: "YYYY-MM-DD"
+    let eventStart =  data.get("start-time");
+    let eventEnd = data.get("end-time");
+    let eventLoc = data.get("location");
+    let eventDescription = data.get("description");
+
+    // didn't use Date() since the date format "YYYY-MM-DD" sometimes leades to timezone change
+    // let eventLastTwoYear = Number(String(eventDate.getFullYear()).slice(-2));
+    // let eventYear = Number(eventDate.getFullYear());
+    // let eventMonth = Number(eventDate.getMonth() + 1)
+    // let eventDay = Number(eventDate.getDate());
+    let eventLastTwoYear = Number(eventDate.substring(2, 4));
+    let eventYear = Number(eventDate.substring(0, 4));
+    let eventMonth = Number(eventDate.substring(5, 7));
+    let eventDay = Number(eventDate.substring(8, 10));
+
+    eventStart = String(eventMonth) + "/" + String(eventDay) + "/" 
+        + eventLastTwoYear + " " + eventStart;
+
+    eventEnd = String(eventMonth) + "/" + String(eventDay) + "/" 
+      + eventLastTwoYear + " " + eventEnd;
+    
+    const newEvent = new Event(eventStart, eventEnd, eventTitle, 
+        eventLoc, eventDescription);  
+
+    // allocate empty year/month/day when needed
+    if(calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
+      calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
+      calendarData[0].years[eventLastTwoYear].months = [null, null, null, null, null, null, null, null, null, null, null, null];
+      
+      console.log('new year');
+    }
+    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1] == null) { // allocate 31 empty days
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1] = new Month(eventMonth, indexToMonth(eventMonth), []);
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+      console.log('new month');
+    }
+    if(calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] == null) { // allocate one day
+      calendarData[0].years[eventLastTwoYear].months[eventMonth-1].days[eventDay-1] = new Day(eventDay, indexToDay(eventDay), [], []);
+    }
+        
+    calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
+        days[eventDay-1].events.push(newEvent);
+    
+    currDay = [eventYear, eventMonth, eventDay];
+
+    // refresh calendar
+    resetCalendarHTML();
+    numWeeks = getWeekCount(eventYear, eventMonth);
+    createCalendarHTML(numWeeks); // create day blocks
+    loadCalendarHTML(eventYear, eventMonth);
+    calendarData[0].Show(eventYear,eventMonth)
   })
 
   //display the dialog.
@@ -109,10 +162,10 @@ function add_todo(){
   const add_todo_btn = document.getElementById("add-todo-btn");
   const add_todo_dialog = document.getElementById("add-todo-dialog");
   const todo_form = add_todo_dialog.querySelector("#add-todo-form");
-  const todo_title = add_todo_dialog.querySelector(".title");
+  /* const todo_title = add_todo_dialog.querySelector(".title");
   const todo_date = add_todo_dialog.querySelector(".duedate");
   const todo_description = add_todo_dialog.querySelector(".description");
-  const todo_dialog_save = add_todo_dialog.querySelector(".save");
+  const todo_dialog_save = add_todo_dialog.querySelector(".save"); */
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
 
   //when submit button is clicked in the form.
