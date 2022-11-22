@@ -6,6 +6,8 @@
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
+var calendarData;
+
 // Starts the program, all function calls trace back here
 function init() {
 
@@ -122,6 +124,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
+
+      calendarData[0].Show(currDay[0],currDay[1]);
     }
     else { // go to previous month
       currDay[1]--;
@@ -133,6 +137,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
+      
+      calendarData[0].Show(currDay[0],currDay[1]);
     }
   });
 
@@ -150,6 +156,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
+
+      calendarData[0].Show(currDay[0],currDay[1]);
     }
     else { // go to next month
       currDay[1]++;
@@ -161,6 +169,8 @@ function traverseMonthEventListener() {
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
+      
+      calendarData[0].Show(currDay[0],currDay[1]);
     }
   });
 }
@@ -189,6 +199,8 @@ function traverseYearEventListener() {
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
+
+    calendarData[0].Show(currDay[0],currDay[1]);
   });
 
   yearBtnDown.addEventListener('click', function () { // go to next year
@@ -203,5 +215,7 @@ function traverseYearEventListener() {
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
+
+    calendarData[0].Show(currDay[0],currDay[1]);
   });
 }
