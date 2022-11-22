@@ -10,10 +10,17 @@ function init() {
 
 }
 
-//test function
-//update a day block in html view.
-function update_day_block(firstDayOfWeek, dayOfMonth, data) {
-  const day_block = document.getElementById("day-block-" + String(firstDayOfWeek - 1 + dayOfMonth));
+/**
+ * @author Yangming Guan
+ * @summary update a day block in html view.
+ * 
+ * @param {number} firstDayOfWeek first day of week day.
+ * @param {number} dayOfMonth the day of month
+ * @param {Array} data json data.
+ * @default firstDayOfWeek should be greter than 0.
+ */
+function update_day_block(firstDayOfWeek,dayOfMonth,data){
+  const day_block = document.getElementById("day-block-"+String(firstDayOfWeek-1+dayOfMonth));
   day_block.innerHTML = '';
   let p = document.createElement("p");
   p.innerHTML = dayOfMonth;
@@ -33,9 +40,11 @@ function update_day_block(firstDayOfWeek, dayOfMonth, data) {
   }
 }
 
-//dialog function for add event.
-function add_event() {
-
+/**
+ * @author Yangming Guan, Yuelin Dai
+ * @summary pop dialog for add event.
+ */
+function add_event(){
   //preload the element for further using.
   const add_event_btn = document.getElementById("add-event-btn");
   const add_event_dialog = document.getElementById("add-event-dialog");
@@ -98,9 +107,9 @@ function add_event() {
     currDay = [eventYear, eventMonth, eventDay];
 
     // refresh calendar
-    resetCalendarHTML();
+    //resetCalendarHTML();
     numWeeks = getWeekCount(eventYear, eventMonth);
-    createCalendarHTML(numWeeks); // create day blocks
+    HideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear,eventMonth);
   })
@@ -116,8 +125,11 @@ function add_event() {
   })
 }
 
-//dialog function for add todo list.
-function add_todo() {
+/**
+ * @author Yangming Guan, Steven Khaw
+ * @summary pop a dialog for add todo list.
+ */
+function add_todo(){
   //preload the element for further using.
   const add_todo_btn = document.getElementById("add-todo-btn");
   const add_todo_dialog = document.getElementById("add-todo-dialog");

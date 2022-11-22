@@ -182,6 +182,10 @@ day block css setting for calendar
   display: none
 }
 
+.othermonth p {
+  color:rgb(52, 56, 45);
+}
+
 /*
 ***********************************************
 function button setting for calendar
