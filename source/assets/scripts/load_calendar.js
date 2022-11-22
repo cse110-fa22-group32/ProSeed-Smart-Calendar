@@ -14,7 +14,7 @@ function init() {
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   // create day blocks
-  createCalendarHTML(numWeeks);
+  HideLastRow(numWeeks);
 
   // populate day blocks with date number
   loadCalendarHTML(currDay[0], currDay[1]);
@@ -22,6 +22,23 @@ function init() {
   // adds event listeners to buttons
   traverseMonthEventListener();
   traverseYearEventListener();
+}
+
+
+/**
+ * @author Yangming Guan,Steven Khaw
+ * @summary to show or hide last row of day block grid.
+ * 
+ * @param {number} weeks number of weeks you would like to load into calendar
+ * @default weeks should be set to 6 by default
+ */
+function HideLastRow(weeks) {
+  let extraDiv = document.querySelectorAll(".extra");
+  if (weeks == 6){
+    extraDiv.forEach((extra_div)=>extra_div.classList.remove('hidden'))
+  }else{
+    extraDiv.forEach((extra_div)=>extra_div.classList.add('hidden'))
+  }
 }
 
 /**
@@ -50,6 +67,76 @@ function createCalendarHTML(weeks) {
 }
 
 /**
+ * @author Steven Khaw,Yangming Guan
+ * @summary update each day number into respective day-block-# 
+ * and update month year header
+ * 
+ * @param {number} year current year of month to populate calendar
+ * @param {number} month current month to populate calendar
+ */
+ function loadCalendarHTML(year, month) {
+
+  const headerString = String(indexToMonth(month)) + " " + String(year);
+  const headerTextElement = document.querySelector("#calendar-head h1");
+
+  headerTextElement.innerText = headerString;
+
+
+  // populate variables
+  const numDays = getDaysInMonth(year, month);
+  let startingDay = getWeekDayIndex(year, month, 1);
+
+  //add last month day number to each day block
+  let lastMonth = 0;
+  if (month == 0){
+    lastMonth = 11;
+  }else{
+    lastMonth = month-1
+  }
+  let numDaysLastMonth = getDaysInMonth(year, lastMonth);
+  for (let l = startingDay-1;l > -1;l--,numDaysLastMonth--){
+    const currDayElement = document.getElementById("day-block-" +
+      String(l));
+    currDayElement.innerHTML = '';
+    const newDayNumElement = document.createElement("p");
+
+    newDayNumElement.innerHTML = numDaysLastMonth;
+    currDayElement.classList.add('othermonth');
+    currDayElement.appendChild(newDayNumElement);
+  }
+
+
+  // add day number to each day block
+  for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
+    const currDayElement = document.getElementById("day-block-" +
+      String(startingDay));
+    
+    currDayElement.innerHTML = '';
+    const newDayNumElement = document.createElement("p");
+
+    newDayNumElement.innerHTML = dayNum;
+    currDayElement.classList.remove('othermonth');
+    currDayElement.appendChild(newDayNumElement);
+  }
+  
+  // add next month day number to each day block
+  let numDaysNextMonth = 1;
+  for (let dayNum = startingDay; dayNum < 42; dayNum++,numDaysNextMonth++) {
+    const currDayElement = document.getElementById("day-block-" +
+      String(dayNum));
+    
+    currDayElement.innerHTML = '';
+    const newDayNumElement = document.createElement("p");
+
+    newDayNumElement.innerHTML = numDaysNextMonth;
+    currDayElement.classList.add('othermonth');
+    currDayElement.appendChild(newDayNumElement);
+  }
+}
+  
+
+
+/**
  * @author Steven Khaw
  * @summary populates each day number into respective day-block-# 
  * and adds month year header
@@ -57,7 +144,7 @@ function createCalendarHTML(weeks) {
  * @param {number} year current year of month to populate calendar
  * @param {number} month current month to populate calendar
  */
-function loadCalendarHTML(year, month) {
+function updateCalendarView(year, month) {
 
   const headerString = String(indexToMonth(month)) + " " + String(year);
   const headerElement = document.getElementById("calendar-head");
@@ -109,7 +196,7 @@ function traverseMonthEventListener() {
   const monthBtnDown = document.getElementById('calendar-month-btn-down');
 
   monthBtnUp.addEventListener('click', function () {
-    resetCalendarHTML();
+    //resetCalendarHTML();
 
     if (currDay[1] === 1) { // go to previous year's December
       currDay[0]--;
@@ -118,7 +205,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      createCalendarHTML(numWeeks);
+      HideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -129,7 +216,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      createCalendarHTML(numWeeks);
+      HideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -137,7 +224,7 @@ function traverseMonthEventListener() {
   });
 
   monthBtnDown.addEventListener('click', function () {
-    resetCalendarHTML();
+    //resetCalendarHTML();
 
     if (currDay[1] === 12) { // go to next year's january
       currDay[0]++;
@@ -146,7 +233,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      createCalendarHTML(numWeeks);
+      HideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -157,7 +244,7 @@ function traverseMonthEventListener() {
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
-      createCalendarHTML(numWeeks);
+      HideLastRow(numWeeks);
 
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
@@ -178,28 +265,28 @@ function traverseYearEventListener() {
   const yearBtnDown = document.getElementById('calendar-year-btn-down');
 
   yearBtnUp.addEventListener('click', function () { // go to previous year
-    resetCalendarHTML();
+    //resetCalendarHTML();
 
     currDay[0]--;
 
     numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    createCalendarHTML(numWeeks);
+    HideLastRow(numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
   });
 
   yearBtnDown.addEventListener('click', function () { // go to next year
-    resetCalendarHTML();
+    //resetCalendarHTML();
 
     currDay[0]++;
 
     numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    createCalendarHTML(numWeeks);
+    HideLastRow(numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
