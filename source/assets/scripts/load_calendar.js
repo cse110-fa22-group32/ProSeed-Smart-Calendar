@@ -36,12 +36,14 @@ function init() {
  * @default weeks should be set to 6 by default
  */
 function HideLastRow(weeks) {
+  
   let extraDiv = document.querySelectorAll(".extra");
   if (weeks == 6){
     extraDiv.forEach((extra_div)=>extra_div.classList.remove('hidden'))
   }else{
     extraDiv.forEach((extra_div)=>extra_div.classList.add('hidden'))
   }
+  
 }
 
 /**
@@ -100,6 +102,7 @@ function createCalendarHTML(weeks) {
   for (let l = startingDay-1;l > -1;l--,numDaysLastMonth--){
     const currDayElement = document.getElementById("day-block-" +
       String(l));
+
     currDayElement.innerHTML = '';
     const newDayNumElement = document.createElement("p");
 
@@ -113,7 +116,6 @@ function createCalendarHTML(weeks) {
   for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
     const currDayElement = document.getElementById("day-block-" +
       String(startingDay));
-    
     currDayElement.innerHTML = '';
     const newDayNumElement = document.createElement("p");
 
@@ -127,7 +129,8 @@ function createCalendarHTML(weeks) {
   for (let dayNum = startingDay; dayNum < 42; dayNum++,numDaysNextMonth++) {
     const currDayElement = document.getElementById("day-block-" +
       String(dayNum));
-    
+      console.log(dayNum)
+      console.log(currDayElement)
     currDayElement.innerHTML = '';
     const newDayNumElement = document.createElement("p");
 

@@ -134,9 +134,9 @@ function add_event(){
     currDay = [eventYear, eventMonth, eventDay];
 
     // refresh calendar
-    resetCalendarHTML();
+    //resetCalendarHTML();
     numWeeks = getWeekCount(eventYear, eventMonth);
-    createCalendarHTML(numWeeks); // create day blocks
+    HideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear,eventMonth)
   })

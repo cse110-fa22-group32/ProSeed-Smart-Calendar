@@ -136,12 +136,13 @@ class Calendar {
     for (let blockCnt = 0; blockCnt < dayBlockAr.length; blockCnt++) {
 
       // clear previous data
-      dayBlockAr[blockCnt].innerHTML = '';
-
+      
       if (blockCnt >= startDayIndex + daysInMonth // no display after end of month
         || blockCnt < startDayIndex) { // no display before start of month
         continue;
       }
+
+      dayBlockAr[blockCnt].innerHTML = '';
       
       // fill in dates
       dayBlockAr[blockCnt].innerHTML += '<p class="date-block">' +
