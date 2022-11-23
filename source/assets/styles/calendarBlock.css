@@ -3,6 +3,22 @@ font-family: sans-serif;
 margin: 0;
 padding: 0; 
 }
+
+.gridView{
+  display: flex;
+  grid-template-columns: auto auto auto;
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.grid-item{
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
 a {
     text-decoration: none;
 }
@@ -63,3 +79,4 @@ time {
     color: #70757A;
     font-size: 12px;
 }
+

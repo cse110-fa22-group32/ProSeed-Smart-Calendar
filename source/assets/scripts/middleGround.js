@@ -98,19 +98,25 @@ function createView(calendars){
     
     for (let i = 0; i < calendars.length; i++){
 
-        const calendar = document.createElement("calendar-block");
-        calendar.data = calendars[i];
-        console.log(calendars[i].calendarTitle);
+        // const calendar = document.createElement("calendar-block");
+        // calendar.data = calendars[i];
+        // console.log(calendars[i].calendarTitle);
+
+        let gridContainer = document.createElement("div");
+        gridContainer.className = "grid-item";
+
         let article = document.createElement("article");
-        article.innerHTML = `<p>HELLO WORLD</p>`;
 
         article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
         <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].calendarTitle}</a> </p>
         <p class="organization"> Calendar ID : ${calendars[i].calendarID}</p>
         <p class="ingredients"> Last Updated : ${calendars[i].lastUpdated}</p>`;
 
-        calendar.appendChild(article);
-        middleGroundContainer.appendChild(calendar);
+        // calendar.appendChild(article);
+        
+        gridContainer.appendChild(article);
+        middleGroundContainer.appendChild(gridContainer);
+
     }
 }
 
