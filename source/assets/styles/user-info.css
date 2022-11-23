@@ -27,13 +27,14 @@
   height: 15px;
 }
 
-.button-container {
+.name-container {
   display: flex;
-  align-content: center;
   justify-content: center;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 105%;
   gap: 10px;
-  padding: 20px;
+  padding-bottom: 20px;
 }
 
 button {

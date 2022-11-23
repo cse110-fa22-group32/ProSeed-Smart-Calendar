@@ -23,9 +23,11 @@ function init() {
  * Adds event listeners to trigger day view sidebar
  */
 function addListeners() {
-  const dayNumbers = document.querySelectorAll('.calendar-day-block > p');
+  const dayNumbers = document.querySelectorAll('.calendar-day-block');
   dayNumbers.forEach(num => {
-    num.addEventListener('click', viewDay);
+    num.style.cursor = 'pointer';
+    num.onclick = viewDay;
+    //num.addEventListener('click', viewDay);
   });
 
   addExpandListener();

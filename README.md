@@ -1,6 +1,6 @@
 # cse110-fa22-group32
 
-We are still in the brainstorming progress for our project.
+We are creating a productivity app that combines a calender and a todo list into one! It works fully offline and also creates an exportable file that you can send to someone else so they can see/modify their own version of their calendar as well!
 
 **Team members:**
 - Jonathan Hsu - Lead
@@ -15,7 +15,6 @@ We are still in the brainstorming progress for our project.
 - Haoyi Wang
 
 **Meeting Times:**
-Monday and Friday we will have standups in Discord chat.  
-Wednesday 6-6:30pm we will have an in-person discussion about the progress.
+Monday, Wednesday, and Friday we will have standups in Discord.  
 
 [**Link to team.md**](/admin/team.md)

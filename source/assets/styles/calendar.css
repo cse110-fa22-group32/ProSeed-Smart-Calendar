@@ -5,55 +5,54 @@ at 600px, 900px, 1200px.
 ***********************************************
 */
 @media only screen and (max-width: 600px) {
-    :root {
-        --calendar-width: 100%;
-        --week-title-display: inline;
-        --week-block-display:grid;
-        --day-block-height: 90px;
-        --day-block-width: 90px;
-        --grid-template-columns: repeat(7, 90px);
-    }
+  :root {
+    --calendar-width: 100%;
+    --week-title-display: inline;
+    --week-block-display: grid;
+    --day-block-height: 90px;
+    --day-block-width: 90px;
+    --grid-template-columns: repeat(7, 90px);
+  }
 }
 
 @media only screen and (min-width: 600px) {
-    :root {
-        --calendar-width: 100%;
-        --week-title-display: inline;
-        --week-block-display:grid;
-        --day-block-height: 90px;
-        --day-block-width: 100%;
-        --grid-template-columns: repeat(7, 1fr);
-    }
+  :root {
+    --calendar-width: 100%;
+    --week-title-display: inline;
+    --week-block-display: grid;
+    --day-block-height: 90px;
+    --day-block-width: 100%;
+    --grid-template-columns: repeat(7, 1fr);
+  }
 }
 
-
 @media only screen and (min-width: 900px) {
-    :root {
-        --calendar-width: 100%;
-        --week-title-display: inline;
-        --week-block-display:grid;
-        --day-block-height: 120px;
-        --day-block-width: 100%;
-        --grid-template-columns: repeat(7, 1fr);
-    }
+  :root {
+    --calendar-width: 100%;
+    --week-title-display: inline;
+    --week-block-display: grid;
+    --day-block-height: 120px;
+    --day-block-width: 100%;
+    --grid-template-columns: repeat(7, 1fr);
+  }
 }
 
 
 @media only screen and (min-width: 1200px) {
-    :root {
-        --calendar-width: 100%;
-        --week-title-display: inline;
-        --week-block-display:grid;
-        --day-block-height: 170px;
-        --day-block-width: 100%;
-        --grid-template-columns: repeat(7, 1fr);
-    }
+  :root {
+    --calendar-width: 100%;
+    --week-title-display: inline;
+    --week-block-display: grid;
+    --day-block-height: 170px;
+    --day-block-width: 100%;
+    --grid-template-columns: repeat(7, 1fr);
+  }
 }
 
 :root {
-    --week-of-day-height: 40px;
-    --day-block-gap: 2px;
-    --calendar-margin: 3px;
+  --week-of-day-height: 40px;
+  --day-block-gap: 2px;
+  --calendar-margin: 3px;
 }
 
 /*
@@ -62,44 +61,45 @@ title bar and head css setting for calendar
 ***********************************************
 */
 #calendar {
-    display: inline;
-    gap: 0%;
+  display: inline;
+  gap: 0%;
 }
 
 #calendar-title-bar {
-    width: 100%;
-    background-color:rgb(137, 149, 160);
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  background-color: rgb(137, 149, 160);
+  display: flex;
+  justify-content: space-between;
 }
 
 #calendar-head {
-    margin-top: var(--calendar-margin);
-    background-color:rgb(137, 149, 160);
-    width: var(--calendar-width);
+  margin-top: var(--calendar-margin);
+  background-color: rgb(137, 149, 160);
+  width: var(--calendar-width);
 }
 
-#calendar-head h1{
-    margin:0%;
+#calendar-head h1 {
+  margin: 0%;
 }
 
 #calendar-title-bar-conponent {
-    background-color:rgb(92, 106, 120);
-    display: flex; 
-    justify-content:center;
+  background-color: rgb(92, 106, 120);
+  display: flex;
+  justify-content: center;
 }
 
 .calendar-title-bar-btn {
-    margin:10px;
-    border-color: rgb(92, 106, 120);
-    width: 50px;
-    height: 50px;
-    background-color:rgb(92, 106, 120);
+  margin: 10px;
+  border-color: rgb(92, 106, 120);
+  width: 50px;
+  height: 50px;
+  background-color: rgb(92, 106, 120);
 }
 
 .calendar-title-bar-btn:hover {
-    background-color: RoyalBlue;
+  background-color: RoyalBlue;
 }
+
 /*
 ***********************************************
 day block css setting for calendar
@@ -107,78 +107,83 @@ day block css setting for calendar
 */
 
 .week-of-day {
-    display: var(--week-title-display);
-    background-color:rgb(92, 106, 120);
-    margin:0%;
-    padding:0%;
-    height: var(--week-of-day-height);
-    width: var(--day-block-width);
+  display: var(--week-title-display);
+  background-color: rgb(92, 106, 120);
+  margin: 0%;
+  padding: 0%;
+  height: var(--week-of-day-height);
+  width: var(--day-block-width);
 }
-.week-of-day p{
-    text-align: center;
+
+.week-of-day p {
+  text-align: center;
 }
 
 .calendar-day-block {
-    background-color:rgb(137, 149, 160);
-    height: var(--day-block-height);
-    width: var(--day-block-width);
-    
+  background-color: rgb(137, 149, 160);
+  height: var(--day-block-height);
+  width: var(--day-block-width);
+
 }
 
 .date-block {
-    width: 80%;
-    height: 10%;
-    padding: 0.1em;
+  width: 80%;
+  height: 10%;
+  padding: 0.1em;
 }
 
 .event-block {
-    background-color:rgb(207, 174, 27);
-    
-    margin: auto;
-    width: 80%;
-    height: 15%;
-    border: 0.1em solid green;
-    padding: 0.1em;
-    vertical-align: middle;
-    
+  background-color: rgb(207, 174, 27);
+
+  margin: auto;
+  width: 80%;
+  height: 15%;
+  border: 0.1em solid green;
+  padding: 0.1em;
+  vertical-align: middle;
+
 }
 
 .task-block {
-    background-color:rgb(30, 230, 3);
-    
-    margin: auto;
-    width: 80%;
-    height: 15%;
-    border: 0.1em solid green;
-    padding: 0.1em;
-    
+  background-color: rgb(30, 230, 3);
+
+  margin: auto;
+  width: 80%;
+  height: 15%;
+  border: 0.1em solid green;
+  padding: 0.1em;
+
 }
 
 .extra-block {
-    background-color:rgb(20, 133, 209);
-    
-    margin: auto;
-    width: 80%;
-    height: 15%;
-    border: 0.1em solid green;
-    padding: 0.1em;
+  background-color: rgb(20, 133, 209);
+
+  margin: auto;
+  width: 80%;
+  height: 15%;
+  border: 0.1em solid green;
+  padding: 0.1em;
 }
 
 #calendar-day-main {
-    display: var(--week-block-display);
-    gap: var(--day-block-gap);
-    grid-template-columns: var(--grid-template-columns)
+  display: var(--week-block-display);
+  gap: var(--day-block-gap);
+  grid-template-columns: var(--grid-template-columns)
 }
 
 .calendar-day-block p {
-    color:blue;
-    margin:0%;
-    padding:0%;
-    border: 0;
+  color: blue;
+  margin: 0%;
+  padding: 0%;
+  border: 0;
 }
 
 .hidden {
-    display:none
+  display: none
+}
+
+.othermonth p {
+  color:rgb(52, 56, 45);
 }
 
 /*
@@ -187,18 +192,19 @@ function button setting for calendar
 ***********************************************
 */
 #calendar-tail {
-    width: var(--calendar-width);
-    margin-top: var(--calendar-margin);
-    background-color:rgb(137, 149, 160);
+  width: var(--calendar-width);
+  margin-top: var(--calendar-margin);
+  background-color: rgb(137, 149, 160);
 }
+
 .calendar-tail-btn {
-    margin:10px;
-    border-color: rgb(92, 106, 120);
-    width: 150px;
-    height: 40px;
-    background-color:rgb(92, 106, 120);
+  margin: 10px;
+  border-color: rgb(92, 106, 120);
+  width: 150px;
+  height: 40px;
+  background-color: rgb(92, 106, 120);
 }
 
 .calendar-tail-btn:hover {
-    background-color: RoyalBlue;
+  background-color: RoyalBlue;
 }
