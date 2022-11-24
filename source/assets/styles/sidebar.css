@@ -85,6 +85,10 @@ Sidebar styling
   width: var(--sb-width);
 }
 
+.sidebar-elongate {
+  height: calc(var(--sb-height) + var(--day-block-height)) !important;
+}
+
 .sidebar-title {
   margin: 5px;
 }

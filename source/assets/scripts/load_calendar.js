@@ -39,10 +39,13 @@ function init() {
 function hideLastRow(weeks) {
 
   let extraDiv = document.querySelectorAll(".extra");
+  let sidebar = document.querySelector("body > main > div.sidebar-container > div");
   if (weeks == 6) {
     extraDiv.forEach((extra_div) => extra_div.classList.remove('hidden'))
+    sidebar.classList.add('sidebar-elongate');
   } else {
     extraDiv.forEach((extra_div) => extra_div.classList.add('hidden'))
+    sidebar.classList.remove('sidebar-elongate');
   }
 
 }
