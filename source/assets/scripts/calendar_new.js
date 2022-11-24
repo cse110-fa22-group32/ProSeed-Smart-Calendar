@@ -92,6 +92,7 @@ function add_event(){
         [null, null, null, null, null, null, null, null, null, null,
           null, null, null, null, null, null, null, null, null, null,
           null, null, null, null, null, null, null, null, null, null, null];
+
       console.log('new month');
     }
 
@@ -107,7 +108,7 @@ function add_event(){
     currDay = [eventYear, eventMonth, eventDay];
 
     // refresh calendar
-    //resetCalendarHTML();
+    // resetCalendarHTML();
     numWeeks = getWeekCount(eventYear, eventMonth);
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
