@@ -8,6 +8,7 @@ function init() {
 
   add_todo();
 
+  logout();
 }
 
 /**
@@ -206,5 +207,32 @@ function add_todo(){
   todo_dialog_cancel.addEventListener("click", () => {
     add_todo_dialog.close();
   })
+
+}
+
+/**
+ * @author Younus Ahmad
+ * @summary Opens a popup asking whether user wants to logout
+ */
+function logout() {
+  const logout_btn = document.getElementById("calendar-title-bar-logout");
+  const logout_dialog = document.getElementById("logout-dialog");
+  const logout_cancel = document.getElementById("cancel-logout");
+  const logout_confirm = document.getElementById("confirm-logout");
+
+  logout_btn.addEventListener("click", () => {
+    logout_dialog.showModal();
+  })
+
+  logout_confirm.addEventListener("click", () => {
+    location.href = "index.html";
+  })
+
+  logout_cancel.addEventListener("click", () => {
+    logout_dialog.close();
+  })
+
+
+
 
 }
