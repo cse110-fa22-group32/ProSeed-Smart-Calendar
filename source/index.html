@@ -26,22 +26,16 @@
     <h1 class="main-container-header">Sign In</h1>
     <form class="login-form" id="login-form">
       <div class="input-container">
-        <input class="input-text" id="email-input" type="text" placeholder="Email Address" name="email" required><br><br>
-        <input class="input-text" id="password-input" type="password" placeholder="Password" name="password" required>
-        <label>
-          <input class="remember-checkbox" type="checkbox" checked="unchecked" name="remember">
-          <span class="remember-label">Remember Me</span><br>
-        </label>
-        <input class="input-button" id="submit-button" type="submit" value="Login"></input>
+        <input class="input-text" type="text" placeholder="Email Address" name="email" required><br><br>
+        <input class="input-text" type="password" placeholder="Password" name="password" required>
+        <input class="remember-checkbox" type="checkbox" id="remember">
+        <label for="remember">Remember Me</label>
+        <button class="input-button" type="submit">Login</button>
       </div>
     </form>
     <div class="button-container">
-      <a href="create-account.html">
-        <button class="create-account-button" type="button">Create an Account</button>
-      </a>
-      <a href="forgot-password.html">
-        <button class="forgot-password-button" type="button">Forgot Password?</button>
-      </a>
+      <button class="create-account-button" type="button" onclick="location.href='create-account.html'">Create an Account</button>
+      <button class="forgot-password-button" type="button" onclick="location.href='forgot-password.html'">Forgot Password?</button>
     </div>
   </div>
 </body>
