@@ -212,20 +212,20 @@ function add_todo() {
  * @summary Opens a popup asking whether user wants to logout
  */
 function logout() {
-  const logout_btn = document.getElementById("calendar-title-bar-logout");
-  const logout_dialog = document.getElementById("logout-dialog");
-  const logout_cancel = document.getElementById("cancel-logout");
-  const logout_confirm = document.getElementById("confirm-logout");
+  const logoutBtn = document.getElementById("calendar-title-bar-logout");
+  const logoutDialog = document.getElementById("logout-dialog");
+  const logoutCancel = document.getElementById("cancel-logout");
+  const logoutConfirm = document.getElementById("confirm-logout");
 
-  logout_btn.addEventListener("click", () => {
-    logout_dialog.showModal();
+  logoutBtn.addEventListener("click", () => {
+    logoutDialog.showModal();
   })
 
-  logout_confirm.addEventListener("click", () => {
+  logoutConfirm.addEventListener("click", () => {
     location.href = "index.html";
   })
 
-  logout_cancel.addEventListener("click", () => {
-    logout_dialog.close();
+  logoutCancel.addEventListener("click", () => {
+    logoutDialog.close();
   })
 }
