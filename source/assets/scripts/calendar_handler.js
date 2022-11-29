@@ -5,9 +5,7 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
 
   add_event();
-
   add_todo();
-
 }
 
 /**
