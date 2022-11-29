@@ -10,9 +10,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ProSeed Login</title>
-  <meta name="description" content="">
+  <meta name="description" content="Login page for ProSeed">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./assets/styles/index.css">
+  <script type="text/javascript" src="assets/scripts/login_helper.js"></script>
+  <script type="text/javascript" src="assets/scripts/login_handler.js"></script>
 </head>
 
 <body>
@@ -22,24 +24,18 @@
   </div>
   <div class="main-container">
     <h1 class="main-container-header">Sign In</h1>
-    <form class="login-form" action="middle-ground.html">
+    <form class="login-form" id="login-form">
       <div class="input-container">
         <input class="input-text" type="text" placeholder="Email Address" name="email" required><br><br>
         <input class="input-text" type="password" placeholder="Password" name="password" required>
-        <label>
-          <input class="remember-checkbox" type="checkbox" checked="unchecked" name="remember">
-          <span class="remember-label">Remember Me</span><br>
-        </label>
+        <input class="remember-checkbox" type="checkbox" id="remember">
+        <label for="remember">Remember Me</label>
         <button class="input-button" type="submit">Login</button>
       </div>
     </form>
     <div class="button-container">
-      <a href="create-account.html">
-        <button class="create-account-button" type="button">Create an Account</button>
-      </a>
-      <a href="forgot-password.html">
-        <button class="forgot-password-button" type="button">Forgot Password?</button>
-      </a>
+      <button class="create-account-button" type="button" onclick="location.href='create-account.html'">Create an Account</button>
+      <button class="forgot-password-button" type="button" onclick="location.href='forgot-password.html'">Forgot Password?</button>
     </div>
   </div>
 </body>
