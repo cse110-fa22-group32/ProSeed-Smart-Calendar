@@ -10,9 +10,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ProSeed Login</title>
-  <meta name="description" content="">
+  <meta name="description" content="Login page for ProSeed">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./assets/styles/index.css">
+  <script type="text/javascript" src="assets/scripts/login_helper.js"></script>
+  <script type="text/javascript" src="assets/scripts/login_handler.js"></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
   </div>
   <div class="main-container">
     <h1 class="main-container-header">Sign In</h1>
-    <form class="login-form" action="middle-ground.html">
+    <form class="login-form" id="login-form">
       <div class="input-container">
         <input class="input-text" type="text" placeholder="Email Address" name="email" required><br><br>
         <input class="input-text" type="password" placeholder="Password" name="password" required>
