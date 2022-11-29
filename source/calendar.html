@@ -58,10 +58,8 @@
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
         <p>Year</p>
-        <button id="calendar-title-bar-user" class="calendar-title-bar-btn">
-          <a href="edit-profile.html">
+        <button id="calendar-title-bar-user" class="calendar-title-bar-btn" onclick="location.href='edit-profile.html'">
             <span class="material-symbols-outlined">account_circle</span>User
-          </a>
         </button>
       </div>
     </div>
@@ -184,12 +182,13 @@
       </button>
       <button id="upload-btn" class="calendar-tail-btn">
         <span class="material-symbols-outlined">Arrow_Upward</span>
-        <input type="file" style="display:none" id="files"/>
+        <!-- TODO: The element "input" must not appear as a descendant of the "button" element  -->
+        <!-- <input type="file" style="display:none" id="files"/> -->
       </button>
     </div>
 
     <dialog id="confirm-delete">
-      <form method="dialog">
+      <form method=dialog>
         <h2>Confirm delete?</h2>
         <div>
           <button name="cancel">Cancel</button>
@@ -199,7 +198,7 @@
     </dialog>
 
     <dialog id="add-event-dialog">
-      <form id="add-event-form" method="dialog">
+      <form id="add-event-form" method=dialog>
         <fieldset>
           <legend>Add An Event</legend>
           <label for="title">Title:
@@ -229,20 +228,20 @@
     </dialog>
 
     <dialog id="add-todo-dialog">
-      <form id="add-todo-form" method="dialog">
+      <form id="add-todo-form" method=dialog>
         <fieldset>
           <legend>Add An To-do Task</legend>
-          <label for="title">Title:
-            <input class="title" id="title" placeholder="Task Title" required>
+          <label for="tasktitle">Title:
+            <input class="title" id="tasktitle" placeholder="Task Title" required>
           </label><br>
           <label for="duedate">Due date:
-            <input type="datetime-local" id="due-date" class="duedate" required>
+            <input type="datetime-local" id="duedate" class="duedate" required>
           </label><br>
           <!-- <label for="location">Location:
             <input name="location" class="location">
           </label><br> -->
-          <label for="description">Description:<br>
-            <textarea class="description" id="description"></textarea>
+          <label for="todo-description">Description:<br>
+            <textarea class="description" id="todo-description"></textarea>
           </label><br>
         </fieldset>
         <div>
