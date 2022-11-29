@@ -30,13 +30,13 @@
   Peng
   - CI/CD pipeline work (added JSDocs and build tests)
   
-  Steven
+  Steven C.
   - Filmed video, worked with Yuelin 
   
   Yuelin
   - Implemented events + tasks and backend json interactions. In real time updated calendar events as user added them
   
-  Steven
+  Steven K.
   - Worked with Yuelin on backend adding events, recorded video
   
   Yangming
