@@ -25,6 +25,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
 article {
     align-items: center;
     border: 1px solid rgb(223, 225, 229);
@@ -36,17 +37,7 @@ article {
     padding: 0 16px 16px 16px;
     width: 178px;
 }
-div.rating {
-    align-items: center;
-    column-gap: 5px;
-    display: flex;
-}
-div.rating>img {
-    height: auto;
-    display: inline-block;
-    object-fit: scale-down;
-    width: 78px;
-}
+
 article>img {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -55,13 +46,13 @@ article>img {
     margin-left: -16px;
     width: calc(100% + 32px);
 }
-p.ingredients {
+p.texts {
     height: 32px;
     line-height: 16px;
     padding-top: 4px;
     overflow: hidden;
 }
-p.organization {
+p.innerText {
     color: black !important;
 }
 p.title {

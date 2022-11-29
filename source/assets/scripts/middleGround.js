@@ -109,8 +109,8 @@ function createView(calendars){
 
         article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
         <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].calendarTitle}</a> </p>
-        <p class="organization"> Calendar ID : ${calendars[i].calendarID}</p>
-        <p class="ingredients"> Last Updated : ${calendars[i].lastUpdated}</p>`;
+        <p class="innerText"> Calendar ID : ${calendars[i].calendarID}</p>
+        <p class="texts"> Last Updated : ${calendars[i].lastUpdated}</p>`;
 
         // calendar.appendChild(article);
         
