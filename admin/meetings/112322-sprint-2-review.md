@@ -2,7 +2,7 @@
 
 # GT Corp. (Team 32)
 
-## 11/14/22 9:00-9:30pm ~ Discord
+## 11/23/22 9:00-9:30pm ~ Discord
 
 ### **Attendance**
 
