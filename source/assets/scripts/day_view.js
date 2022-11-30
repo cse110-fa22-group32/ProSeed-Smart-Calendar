@@ -54,8 +54,6 @@
          let day = e.currentTarget.querySelector('p').innerHTML;
          if(calendarData[0].years[String(currDay[0]-2000)].months[String(currDay[1]-1)].days[day-1] != null){
            let days = calendarData[0].years[String(currDay[0]-2000)].months[String(currDay[1]-1)].days[day-1]
-           console.log("hah")
-           console.log(days)
            let eventArray = [];
            let dotoArray = [];
            let count = 0;
