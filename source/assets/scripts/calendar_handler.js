@@ -215,13 +215,13 @@ function logout() {
 
   logoutBtn.addEventListener('click', () => {
     logoutDialog.showModal();
-  })
+  });
 
   logoutConfirm.addEventListener('click', () => {
     location.href = 'index.html';
-  })
+  });
 
   logoutCancel.addEventListener('click', () => {
     logoutDialog.close();
-  })
+  });
 }
