@@ -1,7 +1,5 @@
 // Run the init() function when the page has loaded
-window.addEventListener('DOMContentLoaded', (event) => {
-  console.log('DOM fully loaded');
-});
+window.addEventListener('DOMContentLoaded', init);
 
 // Starts the program, all function calls trace back here
 function init() {
