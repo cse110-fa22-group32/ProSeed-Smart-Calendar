@@ -9,6 +9,14 @@ function init() {
   logout();
 }
 
+
+const EMPTY_YEAR = [null, null, null, null, null, null, null, null,
+  null, null, null, null];
+
+const EMPTY_MONTH = [null, null, null, null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null, null, null, null,
+  null, null, null, null, null, null, null, null, null, null, null];
+
 /**
  * @author Yangming Guan
  * @summary update a day block in html view.
@@ -74,27 +82,25 @@ function add_event() {
     const newEvent = new Event(eventStart, eventEnd, eventTitle,
       eventLoc, eventDescription);
 
-    // allocate empty year/month/day when needed
+    // allocate empty year if needed
     if (calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
       calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
-      calendarData[0].years[eventLastTwoYear].months =
-        [null, null, null, null, null, null, null, null,
-          null, null, null, null];
+      calendarData[0].years[eventLastTwoYear].months = EMPTY_YEAR;
 
       console.log('new year');
     }
 
+    // allocate empty month if needed
     if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null) { // allocate 31 empty days
       calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] =
         new Month(eventMonth, indexToMonth(eventMonth), []);
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days =
-        [null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null, null, null, null, null];
+      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days 
+          = EMPTY_MONTH;
 
       console.log('new month');
     }
 
+    // allocate empty month if needed
     if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
       days[eventDay - 1] == null) { // allocate one day
       calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].
@@ -156,27 +162,25 @@ function add_todo() {
 
     const newTask = new Task(taskTitle, [], taskDueDate, taskDescription, false);
 
-    // allocate empty year/month/day when needed
+    // allocate empty year if needed
     if (calendarData[0].years[taskLastTwoYear] == null) { // allocate 12 empty months
       calendarData[0].years[taskLastTwoYear] = new Year(taskYear, []);
-      calendarData[0].years[taskLastTwoYear].months =
-        [null, null, null, null, null, null, null, null,
-          null, null, null, null];
+      calendarData[0].years[taskLastTwoYear].months = EMPTY_YEAR;
 
       console.log('new year');
     }
 
+    // allocate empty month if needed
     if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] == null) { // allocate 31 empty days
       calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] =
         new Month(taskMonth, indexToMonth(taskMonth), []);
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days =
-        [null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null, null, null, null,
-          null, null, null, null, null, null, null, null, null, null, null];
+      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days 
+          = EMPTY_MONTH;
 
       console.log('new month');
     }
 
+    // allocate empty day if needed
     if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].
       days[taskDay - 1] == null) { // allocate one day
       calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].
