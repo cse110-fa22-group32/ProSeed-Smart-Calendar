@@ -3,7 +3,7 @@
  * NOTE: this already is added in JsonPopulateTest.js with a "usersList" object, I can either use
  * that one or this one created.
  */
-const testJson = `
+const loginList = `
   {
     "usersList" : [
       {
@@ -28,6 +28,22 @@ const testJson = `
         "username":"csEnjoyer@yahoo.com",
         "password":"co0l4Swag",
         "profieldID" : "342234",
+        "calenarID" : ""
+      },
+      {
+        "firstName" : "steven",
+        "lastName" : "khaw",
+        "username":"skhaw@ucsd.edu",
+        "password":"This123",
+        "profieldID" : "10052001",
+        "calenarID" : ""
+      },
+      {
+        "firstName" : "stephen",
+        "lastName" : "khaw",
+        "username":"stkhaw@ucsd.edu",
+        "password":"This123",
+        "profieldID" : "11052002",
         "calenarID" : ""
       }
     ],
@@ -88,7 +104,7 @@ function ensureEmail() {
  * @returns True if there exists some user with that password combo, false otherwise
  */
 function authenticateLogin(email, password) {
-  const userData = loadJson([testJson]);
+  const userData = loadJson([loginList]);
   const userList = userData[1];
 
   for (let user of userList) {
