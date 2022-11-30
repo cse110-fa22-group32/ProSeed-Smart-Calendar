@@ -1,5 +1,5 @@
 /**
- * JSON string used to store user lists. 
+ * JSON string used to store user lists.
  * NOTE: this already is added in JsonPopulateTest.js with a "usersList" object, I can either use
  * that one or this one created.
  */
@@ -38,8 +38,8 @@ const testJson = `
 
 /**
  * @author Steven Khaw
- * @summary 
- * 
+ * @summary
+ *
  * Created at : 2022-11-28 3:30 PM
  * Last Modified : 2022-11-28 4:00 PM
  */
@@ -48,10 +48,8 @@ const testJson = `
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-
   ensureEmail();
 }
-
 
 /**
  * @author Steven Khaw, Younus Ahmad
@@ -64,11 +62,20 @@ function ensureEmail() {
     const emailInputElement = document.getElementById("email-input");
     const passwordInputElement = document.getElementById("password-input");
 
-    let authenticated = authenticateLogin(emailInputElement.value, passwordInputElement.value);
-    if ((isEmail(emailInputElement.value) && isStrongPassword(passwordInputElement.value) && authenticated)) {
+    let authenticated = authenticateLogin(
+      emailInputElement.value,
+      passwordInputElement.value
+    );
+    if (
+      isEmail(emailInputElement.value) &&
+      isStrongPassword(passwordInputElement.value) &&
+      authenticated
+    ) {
       formElement.action = "middle-ground.html";
     } else {
-      alert("Incorrect username/password combination provided or incorrectly formatted");
+      alert(
+        "Incorrect username/password combination provided or incorrectly formatted"
+      );
       formElement.action = "index.html";
     }
   });
