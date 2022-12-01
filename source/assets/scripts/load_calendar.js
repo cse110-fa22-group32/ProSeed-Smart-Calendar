@@ -272,7 +272,7 @@ function traverseMonthEventListener() {
  */
 function traverseYearEventListener() {
   currDay = getCurrentDay();
-  let numWeeks = getWeekCount(currDay[0], currDay[1]);
+  let _numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   const yearBtnUp = document.getElementById("calendar-year-btn-up");
   const yearBtnDown = document.getElementById("calendar-year-btn-down");
@@ -283,10 +283,10 @@ function traverseYearEventListener() {
 
     currDay[0]--;
 
-    numWeeks = getWeekCount(currDay[0], currDay[1]);
+    _numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    hideLastRow(numWeeks);
+    hideLastRow(_numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
@@ -300,10 +300,10 @@ function traverseYearEventListener() {
 
     currDay[0]++;
 
-    numWeeks = getWeekCount(currDay[0], currDay[1]);
+    _numWeeks = getWeekCount(currDay[0], currDay[1]);
 
     // create day blocks
-    hideLastRow(numWeeks);
+    hideLastRow(_numWeeks);
 
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
