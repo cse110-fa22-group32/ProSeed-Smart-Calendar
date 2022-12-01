@@ -92,7 +92,7 @@
               //===================
               //delete method here for event, or have some other idea.
               //==================
-
+              console.log(event.id)
              });
            });
  
