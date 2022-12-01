@@ -47,7 +47,7 @@
   * @param {boolean} isEvent - is this call from event type delete.
   */
  function callDelete(event,year,month,day,isEvent){
-  shadowClick = 2;
+  shadowClick = 1;
   let eventID = event.currentTarget.getRootNode().host.shadowRoot.querySelector("#Id");
   let id = parseInt(eventID.innerHTML);
   console.log(event)
@@ -136,6 +136,7 @@
             sideBarEvent.append(event_block);
             let deleteBtun = event_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click",(btnEvnet)=>{
+              btnEvnet.stopPropagation()
               console.log(btnEvnet.currentTarget.getRootNode().host);
               callDelete(btnEvnet,currentYear,currentMont,day,true)
             });
@@ -148,6 +149,7 @@
             todo_block.todoData = task;
             let deleteBtun = todo_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click",(btnEvnet)=>{
+              btnEvnet.stopPropagation()
               console.log(btnEvnet.currentTarget.parentNode);
               callDelete(btnEvnet,currentYear,currentMont,day,false)
             });
@@ -196,8 +198,9 @@
         }else{
          shadowClick--;
         }
-        document.removeEventListener('click', arguments.callee);
+        //document.removeEventListener('click', arguments.callee);
       }
+      document.removeEventListener('click', arguments.callee);
      });
   }
  
