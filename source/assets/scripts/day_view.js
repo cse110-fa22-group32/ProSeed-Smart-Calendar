@@ -198,9 +198,9 @@
         }else{
          shadowClick--;
         }
-        //document.removeEventListener('click', arguments.callee);
+        document.removeEventListener('click', arguments.callee);
       }
-      document.removeEventListener('click', arguments.callee);
+      //document.removeEventListener('click', arguments.callee);
      });
   }
  
