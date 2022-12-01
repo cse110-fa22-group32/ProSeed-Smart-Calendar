@@ -98,12 +98,10 @@ const testJson = `
  `;
 
 // Run the init() function when the page has loaded
-window.addEventListener('DOMContentLoaded', init);
-
+window.addEventListener("DOMContentLoaded", init);
 
 // no comments since this one is just for test and will be removed in final product
 function init() {
-
   // create a calendar object from hard-coded json
   calendarData = loadJson([testJson]);
 
@@ -132,7 +130,7 @@ function init() {
   //   fileBtn.click();
   // });
 
-  // // ...first, select local drive 
+  // // ...first, select local drive
   // const fileBtn = document.getElementById('files');
   // fileBtn.addEventListener('change', async e => {
   //   const [file] = e.target.files
@@ -145,6 +143,4 @@ function init() {
   //     console.log(data);
   //   }
   // });
-
-
 }
