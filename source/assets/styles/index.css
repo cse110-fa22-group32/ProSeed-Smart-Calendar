@@ -1,14 +1,14 @@
 @font-face {
-  font-family: Mochiy Pop One;
+  font-family: 'Mochiy Pop One';
   src: url(../fonts/MochiyPopOne-Regular.ttf);
 }
 
 @font-face {
-  font-family: Inter;
+  font-family: 'Inter';
   src: url(../fonts/Inter-VariableFont.ttf);
 }
 
-body {
+body { 
   background: url(../images/splash.png);
   background-size: cover;
 }
@@ -80,7 +80,7 @@ border-radius: 50px;
   font-size: 20px;
 }
 
-.input-button {
+#input-button {
   border-radius: 30px;
   padding: 20px;
   width: 100%;
