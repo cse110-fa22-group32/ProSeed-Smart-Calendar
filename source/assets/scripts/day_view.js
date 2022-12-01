@@ -140,6 +140,12 @@
               console.log(btnEvnet.currentTarget.getRootNode().host);
               callDelete(btnEvnet,currentYear,currentMont,day,true)
             });
+
+            // hide events if needed
+            const todoList = document.querySelector('.sidebar-tasks');
+            if (todoList.classList.contains('.sidebar-tasks-expanded')) {
+              event_block.classList.add("hidden");
+            } 
           });
 
           //add data to the new event-block
@@ -154,6 +160,12 @@
               callDelete(btnEvnet,currentYear,currentMont,day,false)
             });
             sideBarTask.append(todo_block);
+            
+            // hide tasks if needed
+            const todoList = document.querySelector('.sidebar-tasks');
+            if (!todoList.classList.contains('.sidebar-tasks-expanded')) {
+              todo_block.classList.add("hidden");
+            }
           });
           
         }
@@ -198,7 +210,8 @@
         }else{
          shadowClick--;
         }
-        document.removeEventListener('click', arguments.callee);
+        // document.removeEventListener('click', arguments.callee);
+        document.removeEventListener('click', addExitListener);
       }
       //document.removeEventListener('click', arguments.callee);
      });

@@ -118,6 +118,9 @@ function loadCalendarHTML(year, month) {
   for (let dayNum = 1; dayNum - 1 < numDays; dayNum++, startingDay++) {
     const currDayElement = document.getElementById("day-block-" +
       String(startingDay));
+    if(currDayElement == null) {
+      console.log('null');
+    }
     currDayElement.innerHTML = '';
     const newDayNumElement = document.createElement("p");
 
@@ -203,7 +206,7 @@ function traverseMonthEventListener() {
   monthBtnUp.addEventListener('click', function () {
     //resetCalendarHTML();
 
-    if (currDay[1] === 1) { // go to previous year's December
+    if (Number(currDay[1]) === 1) { // go to previous year's December
       currDay[0]--;
       currDay[1] = 12;
 
@@ -235,7 +238,7 @@ function traverseMonthEventListener() {
   monthBtnDown.addEventListener('click', function () {
     //resetCalendarHTML();
 
-    if (currDay[1] === 12) { // go to next year's january
+    if (Number(currDay[1]) === 12) { // go to next year's january
       currDay[0]++;
       currDay[1] = 1;
 
