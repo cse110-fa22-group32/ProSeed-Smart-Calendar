@@ -68,6 +68,7 @@ function add_event() {
     let eventLoc = data.get('location');
     let eventDescription = data.get('description');
 
+
     let eventLastTwoYear = Number(eventDate.substring(2, 4));
     let eventYear = Number(eventDate.substring(0, 4));
     let eventMonth = Number(eventDate.substring(5, 7));

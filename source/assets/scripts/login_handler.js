@@ -45,6 +45,14 @@ const loginList = `
         "password":"This123",
         "profieldID" : "11052002",
         "calenarID" : ""
+      },
+      {
+        "firstName" : "aedan",
+        "lastName" : "bailey",
+        "username":"apbailey@ucsd.edu",
+        "password":"urmom",
+        "profieldID" : "09152002",
+        "calenarID" : ""
       }
     ],
     "eventsList" : [],
