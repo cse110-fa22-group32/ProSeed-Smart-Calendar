@@ -35,6 +35,15 @@
  
    addExpandListener();
  }
+
+
+ function callDelete(event,year,month,day,isTask,ID){
+
+ }
+
+
+
+
  
  /**
   * @author Steven Chin, Yangming Guan
@@ -43,8 +52,10 @@
   */
  function viewDay(e) {
    //looking for the event list
-   if(calendarData[0].years[String(currDay[0]-2000)] != null){
-     if(calendarData[0].years[String(currDay[0]-2000)].months[String(currDay[1]-1)] != null){
+   let currentYear = String(currDay[0]-2000);
+   let currentMont = String(currDay[1]-1)
+   if(calendarData[0].years[currentYear] != null){
+     if(calendarData[0].years[currentYear].months[currentMont] != null){
        //clear side bar
        let sideBarEvent = document.querySelector('.sidebar-events');
        sideBarEvent.innerHTML = '';
@@ -61,7 +72,7 @@
            //create the data for the event-block
            for (let event of days.Events) {
              eventArray.push({
-               "id": count,
+               "id": event.eventID,
                "title": event.EventName,
                "start": event.StartDay.split(" ")[1],
                "end": event.EndDay.split(" ")[1],
@@ -69,13 +80,13 @@
              count++;
            }
  
-           //create the data for the event-block
+           //create the data for the task-block
            count = 0;
-           for (let event of days.Tasks) {
+           for (let task of days.Tasks) {
              dotoArray.push({
-               "id": count,
-               "title": event.TaskName,
-               "due": event.DueDate.split(" ")[1],
+               "id": task.taskID,
+               "title": task.TaskName,
+               "due": task.DueDate,
              });
              count++;
            }
