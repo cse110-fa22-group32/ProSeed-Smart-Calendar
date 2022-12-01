@@ -180,21 +180,16 @@
    hideTodo(); // TODO: Do not hide when clicking on current day number again
  }
 
- function hideSideBarListener(){
-  document.click(function() {
-    hideSidebar();
-  });
- }
+
 
  /**
   * @author Steven Chin, Yangming Guan
   * Adds event listener to hide sidebar upon clicking outside of sidebar
   */
- /*
   function addExitListener() {
-    document.addEventListener('click', e => {
-      if (!e.target.closest('.sidebar')) {
-        console.log(shadowClick+"hidesidebar");
+    document.addEventListener('click', function docClick(event){
+      if (!event.target.closest('.sidebar')) {
+        console.log(shadowClick+" addEventListener");
         if(shadowClick == 0){
          console.log("hidesidebar");
          hideSidebar();
@@ -203,22 +198,23 @@
         }
         document.removeEventListener('click', arguments.callee);
       }
-    });
+     });
   }
- */
+ 
  /**
   * @author Steven Chin
   * Adds event listener to hide sidebar upon clicking outside of sidebar
   */
+ /*
  function addExitListener() {
    document.addEventListener('click', e => {
      if (!e.target.closest('.sidebar')) {
-       console.log(shadowClick+"hidesidebar");
+       //console.log(shadowClick+"hidesidebar");
        hideSidebar();
        document.removeEventListener('click', arguments.callee);
      }
    });
- }
+ }*/
  
  /**
   * @author Steven Chin
