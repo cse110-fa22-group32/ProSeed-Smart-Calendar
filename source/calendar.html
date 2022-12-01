@@ -214,27 +214,27 @@
         <fieldset>
           <legend>Add An Event</legend>
           <label for="title">Title:
-            <input class="title" id="title" placeholder="Event Title" required>
+            <input class="title" id="title" name="title" placeholder="Event Title" required>
           </label><br>
           <label for="date">Date:
-            <input type="date" id="date" class="date" required>
+            <input type="date" id="date" name="date" class="date" required>
           </label><br>
           <label for="start-time">Start time:
-            <input type="time" id="start-time" class="start-time" required>
+            <input type="time" id="start-time" name="start-time" class="start-time" required>
           </label><br>
           <label for="end-time">End time:
-            <input type="time" id="end-time" class="end-time" required>
+            <input type="time" id="end-time" name="end-time" class="end-time" required>
           </label><br>
           <label for="location">Location:
-            <input id="location" class="location">
+            <input id="location" name="location" class="location">
           </label><br>
           <label for="description">Description:<br>
-            <textarea id="description" name="description"></textarea>
+            <textarea id="description" name="description" ></textarea>
           </label><br>
         </fieldset>
         <div>
-          <button class="save" type="submit" id="save-event-btn">Save</button>
-          <button class="cancel" type="reset" id="cancel-event-btn">Cancel</button>
+          <button class="save" type="submit" id="save-event-btn" name="save-event-btn">Save</button>
+          <button class="cancel" type="reset" id="cancel-event-btn" name="cancel-event-btn">Cancel</button>
         </div>
       </form>
     </dialog>
@@ -244,21 +244,21 @@
         <fieldset>
           <legend>Add An To-do Task</legend>
           <label for="tasktitle">Title:
-            <input class="title" id="tasktitle" placeholder="Task Title" required>
+            <input class="title" id="tasktitle" name="tasktitle" placeholder="Task Title" required>
           </label><br>
           <label for="duedate">Due date:
-            <input type="datetime-local" id="duedate" class="duedate" required>
+            <input type="datetime-local" id="duedate" name="duedate" class="duedate" required>
           </label><br>
           <!-- <label for="location">Location:
             <input name="location" class="location">
           </label><br> -->
           <label for="todo-description">Description:<br>
-            <textarea class="description" id="todo-description"></textarea>
+            <textarea class="description" id="todo-description" name="todo-description"></textarea>
           </label><br>
         </fieldset>
         <div>
-          <button class="save" type="submit" id="save-todo-button">Save</button>
-          <button class="cancel" type="reset" id="cancel-todo-button">Cancel</button>
+          <button class="save" type="submit" id="save-todo-button" name="save-todo-button">Save</button>
+          <button class="cancel" type="reset" id="cancel-todo-button" name="cancel-todo-button">Cancel</button>
         </div>
       </form>
     </dialog>
