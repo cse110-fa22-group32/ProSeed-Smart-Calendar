@@ -104,25 +104,33 @@ window.addEventListener('DOMContentLoaded', init);
 // no comments since this one is just for test and will be removed in final product
 function init() {
 
-  // create a calendar object from hard-coded json
-  calendarData = loadJson([testJson]);
+  if (!getJsonFromLocalStorage()) {
+    // when there's no json file in localStorage, load testJson
 
-  // export calendar to json with different range of time selections
-  let tuesJson = calendarData[0].Export([-1], [-1], [1]);
-  let thursJson = calendarData[0].Export([-1], [-1], [3]);
+    // create a calendar object from hard-coded json
+    let calData = loadJson([testJson]);
 
-  // create a calendar object from multiple json
-  calendarData = loadJson([tuesJson, thursJson]);
-  calendarData[0].Show(2022, 11);
+    loadCalendarData(calData);
 
-  // simple tests for reading/writing json from/to local drive
+    // export calendar to json with different range of time selections
+    let tuesJson = calendarData[0].Export([-1], [-1], [1]);
+    let thursJson = calendarData[0].Export([-1], [-1], [3]);
 
-  // temporarily deprecated
-  // write json string to local drive
-  // const downloadBtn = document.getElementById('download-btn');
-  // downloadBtn.addEventListener('click', e => {
-  //     download(tuesJson);
-  // });
+    // create a calendar object from multiple json
+    calendarData = loadJson([tuesJson, thursJson]);
+    calendarData[0].Show(2022, 12);
+
+    // simple tests for reading/writing json from/to local drive
+
+    // temporarily deprecated
+    // write json string to local drive
+    // const downloadBtn = document.getElementById('download-btn');
+    // downloadBtn.addEventListener('click', e => {
+    //     download(tuesJson);
+    // });
+  }
+  // auto save calendar to local storage
+  saveJsonToLocalStorage(calendarData[0]);
 
   // read local drive, to do that first...
   const uploadBtn = document.getElementById('upload-btn');
@@ -144,6 +152,5 @@ function init() {
       console.log(data);
     }
   });
-
 
 }

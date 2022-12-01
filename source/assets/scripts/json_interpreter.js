@@ -7,6 +7,11 @@
  * Last Modified : 2022-11-17 6:30 AM
  */
 
+ window.addEventListener("DOMContentLoaded", init);
+
+ function init() {
+  //getJsonFromLocalStorage();
+ }
 
 /**
  * Convert multiple json strings to a single calendar and a user array
@@ -127,3 +132,68 @@ function loadJson(jsonStrAr) {
 //     downloadLink.href = window.URL.createObjectURL(new Blob([exportJsonStr]));
 //     downloadLink.click();
 // }
+
+/**
+* @author Christopher Han
+* @summary gets JSON file of calendar object from local storage if one exists
+*
+* @return true/false whether there exists a calendar object in local storage
+*/
+
+function getJsonFromLocalStorage() {
+  // get calendar from local storage
+  let jsonStr = localStorage.getItem('jsonStr');
+
+  // if there's no calendar in local storage, return false
+  if (!jsonStr) {
+    return false;
+  }
+
+  // if there exists a calendar in local storage, load that calendar
+  let calData = loadJson([jsonStr]);
+  loadCalendarData(calData);
+
+  // get displaying date from local storage
+  let displayDate = JSON.parse(localStorage.getItem('displayDate'));
+
+  // converts json string to numbers
+  for (let i = 0; i < displayDate.length; i++) {
+    displayDate[i] = Number(displayDate[i]);
+  }
+
+  // initialize the display of the calendar based on the last displayed date
+  initializeCalendarDisplay(displayDate);
+  calendarData[0].Show(displayDate[0], displayDate[1]);
+
+  return true;
+}
+
+/**
+* @author Christopher Han
+* @summary saves the calendar data and displaying data into local storage
+*
+* @param {calendar} calendarData the data of the calendar to be stored in local storage
+*/
+
+function saveJsonToLocalStorage(calendarData) {
+  localStorage.setItem('jsonStr', calendarData.Export([-1], [-1], [-1]));
+  saveDisplayDateToLocalStorage();
+}
+
+/**
+* @author Christopher Han
+* @summary saves displaying date into local storage
+*/
+
+function saveDisplayDateToLocalStorage() {
+  localStorage.setItem('displayDate', JSON.stringify(displayDate()));
+}
+
+/**
+* @author Christopher Han
+* @summary clears local storage
+*/
+
+function clearLocalStorage() {
+  localStorage.clear();
+}

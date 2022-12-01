@@ -14,6 +14,33 @@ function init() {
 
   // currDay format = [YYYY,MM,DD]
   currDay = getCurrentDay();
+  initializeCalendarDisplay(currDay);
+
+  // adds event listeners to buttons
+  traverseMonthEventListener();
+  traverseYearEventListener();
+}
+
+/**
+ * @author Christopher Han
+ * @summary to assign the value of global variable calendarData
+ * 
+ * @param {calendar} inputData data of calendar to be loaded
+ */
+
+function loadCalendarData(inputData) {
+  calendarData = inputData;
+}
+
+/**
+ * @author Christopher Han and others
+ * @summary to assign the value of global variable currDay
+ * 
+ * @param {calendar} inputDay date of calendar to be initialized
+ */
+
+function initializeCalendarDisplay(inputDay) {
+  currDay = inputDay;
   let numWeeks = getWeekCount(currDay[0], currDay[1]);
 
   // create day blocks
@@ -21,10 +48,6 @@ function init() {
 
   // populate day blocks with date number
   loadCalendarHTML(currDay[0], currDay[1]);
-
-  // adds event listeners to buttons
-  traverseMonthEventListener();
-  traverseYearEventListener();
 }
 
 
@@ -230,6 +253,9 @@ function traverseMonthEventListener() {
 
       calendarData[0].Show(currDay[0], currDay[1]);
     }
+
+    // auto save displayed date to local storage
+    saveDisplayDateToLocalStorage();
   });
 
   monthBtnDown.addEventListener('click', function () {
@@ -262,6 +288,9 @@ function traverseMonthEventListener() {
 
       calendarData[0].Show(currDay[0], currDay[1]);
     }
+
+    // auto save displayed date to local storage
+    saveDisplayDateToLocalStorage();
   });
 }
 
@@ -291,6 +320,9 @@ function traverseYearEventListener() {
     loadCalendarHTML(currDay[0], currDay[1]);
 
     calendarData[0].Show(currDay[0], currDay[1]);
+
+    // auto save displayed date to local storage
+    saveDisplayDateToLocalStorage();
   });
 
   yearBtnDown.addEventListener('click', function () { // go to next year
@@ -307,5 +339,18 @@ function traverseYearEventListener() {
     loadCalendarHTML(currDay[0], currDay[1]);
 
     calendarData[0].Show(currDay[0], currDay[1]);
+
+    // auto save displayed date to local storage
+    saveDisplayDateToLocalStorage();
   });
+}
+
+/**
+* @author Christopher Han
+* @summary returns the current month/year being displayed
+*
+* @return the current month/year being displayed
+*/
+function displayDate() {
+  return currDay;
 }

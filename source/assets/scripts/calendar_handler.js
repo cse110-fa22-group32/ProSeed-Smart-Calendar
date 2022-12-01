@@ -114,6 +114,9 @@ function add_event() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear, eventMonth);
+
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
   })
 
   //display the dialog.
@@ -190,6 +193,9 @@ function add_todo() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear, taskMonth);
+
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
   })
 
   //display the dialog.
@@ -214,6 +220,8 @@ function logout() {
   const logoutConfirm = document.getElementById('confirm-logout');
 
   logoutBtn.addEventListener('click', () => {
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
     logoutDialog.showModal();
   });
 
