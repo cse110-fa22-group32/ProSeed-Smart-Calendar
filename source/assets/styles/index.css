@@ -1,5 +1,76 @@
+@font-face {
+  font-family: Mochiy Pop One;
+  src: url(../fonts/MochiyPopOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: Inter;
+  src: url(../fonts/Inter-VariableFont.ttf);
+}
+
+body {
+  background: url(../images/splash.png);
+  background-size: cover;
+}
+
 .title-container {
   text-align: center;
+}
+
+.title-text {
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 87px;
+  /* identical to box height */
+
+  color: #54CB9C;
+}
+
+.title-caption {
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 36px;
+
+  color: #309C71;
+}
+
+.main-container {
+  /* display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 25em;
+  padding: 20px;
+  width: 50%;
+  height: 15px; */
+
+  position: absolute;
+  width: 500px;
+  height: 632px;
+  left: 470px;
+  top: 196px;
+
+background: #F0FCEE;
+border-radius: 50px;
+}
+
+.main-container-header {
+  /* position: absolute;
+  width: 131px;
+  height: 48px;
+  left: 0px;
+  top: -300px; */
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #54CB9C;
 }
 
 .input-text {
@@ -13,21 +84,16 @@
   border-radius: 30px;
   padding: 20px;
   width: 100%;
-  font-size: 20px;
+  font-size: 32px;
   box-sizing: content-box;
   margin: auto;
   border-radius: 25em;
   text-align: center;
-}
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  border-radius: 25em;
-  padding: 20px;
-  width: 50%;
-  height: 15px;
+  color: white;
+
+  background: #54CB9C;
+  border-radius: 50px;
 }
 
 .button-container {
