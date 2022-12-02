@@ -7,13 +7,13 @@ describe('Testing Login Functionality', () => {
 	  const title = await page.title();
       expect(title).toBe('ProSeed Login');
 	}, 10000);
-	it('Attempting to login with random email/pass', async () => {
+	it('Attempting to login with random email/pass', async () =>{
 		const email = "dlfjalfjl";
 		const password = "jdlkfjalkjflkad";
 		await page.$eval('input[id=email-input]', (el,value) => el.value = value, email);
 		await page.$eval('input[id=password-input]', (el,value) => el.value = value, password);
 		await page.$eval('button[type=submit]', el => el.click());
-		await page.waitForNavigation({ waitUntil: 'load' }), title = await page.title();
+		const title = await page.title();
         expect(title).toBe('ProSeed Login');
 	}, 10000);
 	it('Attempting to login with real login', async () => {
@@ -22,12 +22,12 @@ describe('Testing Login Functionality', () => {
 		await page.$eval('input[id=email-input]', (el,value) => el.value = value, email);
 		await page.$eval('input[id=password-input]', (el,value) => el.value = value, password);
 		await page.$eval('button[type=submit]', el => el.click());
-		await page.waitForNavigation({ waitUntil: 'load' }), title = await page.title();
-        expect(title).toBe('ProSeed Login');
+		const title = await page.title();
+        expect(title).toBe('ProSeed');
 
 	}, 10000);
 	it('Make sure signed in works', async () => {
 		const title = await page.title();
-		expect(title).toBe('ProSeed Login');
+		expect(title).toBe('ProSeed');
 	}, 10000);
 });
