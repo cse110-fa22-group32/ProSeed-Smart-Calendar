@@ -1,0 +1,45 @@
+.title-container {
+  text-align: center;
+}
+
+.input-text {
+  border-radius: 30px;
+  padding: 20px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.input-button {
+  border-radius: 30px;
+  padding: 20px;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 25em;
+  padding: 20px;
+  width: 50%;
+  height: 15px;
+}
+
+.name-container {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 105%;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+button {
+  box-sizing: content-box;
+  margin: auto;
+  border-radius: 25em;
+  text-align: center;
+}
