@@ -217,12 +217,31 @@ document.addEventListener('DOMContentLoaded', function() {
     let calendars = getCalendarFromStorage();
     // console.log(calendars[0].calendarTitle);
     createView(calendars);
-    //TODO: ADD LISTENERS?
+
+    let createNewCalendar = document.querySelector("#new-calendar-button");
+    createNewCalendar.addEventListener("click", function(){
+      let text;
+      
+      //Store the new empty json file into local storage.
+      
+      //Update view:
+      createView(calendars);
+    })
+
+    let uploadNewCalendar = document.querySelector("#upload-calendar-button");
+    uploadNewCalendar.addEventListener("click", function(){
+      //Store the new empty json file into local storage.
+      
+      //Update view:
+      createView(calendars);
+    })
+
 }, false);
 
 //Add calendars into middleGround containers.
 function createView(calendars){
     let middleGroundContainer = document.querySelector("#Calendars");
+    middleGroundContainer.innerHTML = ""; // Clear the html first.
     
     for (let i = 0; i < calendars.length; i++){
 
@@ -237,8 +256,7 @@ function createView(calendars){
 
         article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
         <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].calendarTitle}</a> </p>
-        <p class="innerText"> Calendar ID : ${calendars[i].calendarID}</p>
-        <p class="texts"> Last Updated : ${calendars[i].lastUpdated}</p>`;
+        <p class="innerText"> Calendar ID : ${calendars[i].calendarID}</p>`;
 
         // calendar.appendChild(article);
         
