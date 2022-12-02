@@ -220,13 +220,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let createNewCalendar = document.querySelector("#new-calendar-button");
     createNewCalendar.addEventListener("click", function(){
-      let text;
-      
+      //Enable the form
+      document.getElementById("myForm").style.display = "block";
       //Store the new empty json file into local storage.
       
       //Update view:
       createView(calendars);
     })
+
+    // let closeButton = document.querySelector(".btn-cancel");
+    // closeButton = this.addEventListener("click", function(){
+    //   //Hide the form
+    //   document.getElementById("myForm").style.display = "none";
+    // });
 
     let uploadNewCalendar = document.querySelector("#upload-calendar-button");
     uploadNewCalendar.addEventListener("click", function(){
@@ -234,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       //Update view:
       createView(calendars);
-    })
+    });
 
 }, false);
 
@@ -272,4 +278,12 @@ function getCalendarFromStorage(){
         return [];
     }
     return JSON.parse(localStorage.getItem("calendars"));
+}
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
 }

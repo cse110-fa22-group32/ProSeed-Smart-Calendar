@@ -25,6 +25,18 @@
       <div id="calendar-title-bar-conponent">
         <button class="title-button", id="new-calendar-button" > New Calendar</button>
         <button class="title-button", id="upload-calendar-button"> Upload Calendar</button>
+        <!-- Change the following div: -->
+        <div class="form-popup" id="myForm">
+          <form class="form-container">
+            <h1>New Calendar Information</h1>
+            
+            <label for="email"><b>Calendar Title</b></label>
+            <input type="text" placeholder="Enter title" name="calendar-title" required>
+                        
+            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+          </form>
+        </div>
       </div>
 
     </div>
