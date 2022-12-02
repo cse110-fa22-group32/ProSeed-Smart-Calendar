@@ -228,11 +228,22 @@ document.addEventListener('DOMContentLoaded', function() {
       createView(calendars);
     })
 
-    // let closeButton = document.querySelector(".btn-cancel");
+    // let closeButton = document.querySelector("#btn-cancel");
     // closeButton = this.addEventListener("click", function(){
     //   //Hide the form
     //   document.getElementById("myForm").style.display = "none";
     // });
+
+    let submitButton = document.querySelector("#btn-submit");
+    submitButton = this.addEventListener("click", function(){
+      //Hide the form
+      //Grab the submissions.
+      let calendarName = document.getElementById("calendar-name").value;
+      //TODO: Fill out a json file with the calendar Titles.
+      console.log("calendarName");
+      //TODO: Store it into the local storage.
+
+    });
 
     let uploadNewCalendar = document.querySelector("#upload-calendar-button");
     uploadNewCalendar.addEventListener("click", function(){
