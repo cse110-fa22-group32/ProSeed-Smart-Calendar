@@ -72,6 +72,7 @@ function callDelete(event, year, month, day, isEvent) {
   updateSideBar(day);
   calendarData[0].Show(currDay[0], currDay[1]);
   shadowClick = 0;
+  saveJsonToLocalStorage(calendarData[0]);
 }
 
 /**
@@ -203,6 +204,7 @@ function updateSideBar(day) {
 
   const sidebarTitleElem = document.querySelector(".sidebar-title");
   sidebarTitleElem.textContent = currDayString;
+
   if (calendarData[0].years[currentYear] != null) {
     if (calendarData[0].years[currentYear].months[currentMont] != null) {
       //clear side bar
@@ -210,6 +212,7 @@ function updateSideBar(day) {
       sideBarEvent.innerHTML = "";
       let sideBarTask = document.querySelector(".sidebar-tasks");
       sideBarTask.innerHTML = "";
+
       if (currDayElement.classList.contains("othermonth") == false) {
         //let day = e.currentTarget.querySelector('p').innerHTML;
         if (
@@ -314,6 +317,7 @@ function updateSideBar(day) {
 function viewDay(e) {
   //looking for the event list
   let day = e.currentTarget.querySelector("p").innerHTML;
+
   updateSideBar(day);
   populateSidebar(e);
   showSidebar();
@@ -355,12 +359,14 @@ function addExpandListener() {
 }
 
 /**
+
  * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to expand to-do list and shrink event list
  */
 function showTodo() {
   const taskHeaderElem = document.querySelector(".tasks-head");
   taskHeaderElem.style.borderRadius = "0px 0px 0px 0px";
+
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "⌄";
   const todoList = document.querySelector(".sidebar-tasks");
@@ -384,12 +390,14 @@ function showTodo() {
 }
 
 /**
+
  * @author Steven Chin,Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
 function hideTodo() {
   const taskHeaderElem = document.querySelector(".tasks-head");
   taskHeaderElem.style.borderRadius = "0px 0px 30px 0px";
+
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "^";
   const todoList = document.querySelector(".sidebar-tasks");

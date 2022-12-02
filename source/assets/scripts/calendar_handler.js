@@ -99,12 +99,53 @@ function add_event() {
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
+  const start_time_input = document.getElementById("start-time");
+  const end_time_input = document.getElementById("end-time");
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
 
+  // event listener for edge case that event start time must be before end time on input change for start time
+  start_time_input.addEventListener("change", () => {
+    // get the inputted start and end times for the event and convert them into array of numbers [hour, minute]
+    let start_time = start_time_input.value.split(":");
+    let end_time = end_time_input.value.split(":");
+    for (let i = 0; i < start_time.length; i++) {
+      start_time[i] = Number(start_time[i]);
+      end_time[i] = Number(end_time[i]);
+    }
+
+    // if start time is after end time, or if end time hasn't been set, set/reset end time to the same time as start time
+    if (start_time[0] > end_time[0] || start_time[1] > end_time[1]) {
+      end_time_input.value = start_time_input.value;
+    }
+  });
+
+  // event listener for edge case that event start time must be before end time on input change for end time
+  end_time_input.addEventListener("change", () => {
+    // if there's no start time input, return
+    if (!start_time_input.value) {
+      return;
+    }
+
+    // get the inputted start and end times for the event and convert them into array of numbers [hour, minute]
+    let start_time = start_time_input.value.split(":");
+    let end_time = end_time_input.value.split(":");
+    for (let i = 0; i < start_time.length; i++) {
+      start_time[i] = Number(start_time[i]);
+      end_time[i] = Number(end_time[i]);
+    }
+
+    // if start time is after end time, set/reset start time to the same time as end time
+    if (start_time[0] > end_time[0] || start_time[1] > end_time[1]) {
+      start_time_input.value = end_time_input.value;
+    }
+  });
+
   event_form.addEventListener("submit", () => {
+    let info = eventEditInfo.value.split(" ");
+    //check if this action is edit.
     if (eventIsEdit.value === "true") {
-      let info = eventEditInfo.value.split(" ");
+      console.log(calendarData[0]);
       let eventList =
         calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].Events;
       for (let i = 0; i < eventList.length; i++) {
@@ -196,8 +237,10 @@ function add_event() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear, eventMonth);
-  });
 
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
+  });
   //display the dialog.
   add_event_btn.addEventListener("click", () => {
     add_event_dialog.showModal();
@@ -229,6 +272,7 @@ function add_todo() {
   todo_form.addEventListener("submit", () => {
     if (eventIsEdit.value === "true") {
       let info = eventEditInfo.value.split(" ");
+      console.log(calendarData[0]);
       let taskList =
         calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].tasks;
       for (let i = 0; i < taskList.length; i++) {
@@ -315,6 +359,8 @@ function add_todo() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear, taskMonth);
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
   });
 
   //display the dialog.
@@ -341,6 +387,9 @@ function logout() {
   const logoutConfirm = document.getElementById("confirm-logout");
 
   logoutBtn.addEventListener("click", () => {
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
+
     logoutDialog.showModal();
   });
 
