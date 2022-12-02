@@ -17,7 +17,7 @@ body {
   text-align: center;
 }
 
-#title-text {
+#title-header {
   font-family: 'Mochiy Pop One';
   font-style: normal;
   font-weight: 400;
@@ -38,10 +38,11 @@ body {
 }
 
 #main-container {
-  position: absolute;
-  width: 30%;
-  height: 30%;
-  justify-content:center;
+  width: 300px;
+  height: 320px;
+
+  padding: 50px;
+  margin: auto;
 
   background: #F0FCEE;
   border-radius: 50px;
@@ -50,46 +51,47 @@ body {
 #main-container-header {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 600;
+  font-weight: 1000;
   font-size: 40px;
-  line-height: 48px;
+  line-height: 24px;
 
   color: #54CB9C;
 }
 
-#email-input-label {
+#email-input-label, #password-input-label, #remember-box-label {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+
+  padding-bottom: 6px;
   
   color: #000000;
 }
 
-#password-input-label {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
+#email-input, #password-input {
+  box-sizing: border-box;
+  width: 300px;
+  height: 48px;
   font-size: 20px;
-  line-height: 24px;
 
-  color: #000000;
+  padding: 16px;
+
+  background: #FFFFFF;
+  border: 1px solid #309C71;
+  border-radius: 50px;
 }
 
-#remember-box-label {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-
-  color: #000000;
+#remember-box {
+  background: #FFFFFF;
+  border: 1px solid #309C71;
+  border-radius: 5px;
 }
 
 #input-button {
-  padding: 20px;
-  width: 80%;
+  width: 300px;
+  height: 60px;
   font-size: 32px;
 
   color: white;
