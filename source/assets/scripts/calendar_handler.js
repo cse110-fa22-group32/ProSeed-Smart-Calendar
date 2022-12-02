@@ -8,54 +8,12 @@ function init() {
   logout();
 }
 
-const EMPTY_YEAR = [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-];
+const EMPTY_YEAR = 
+  [null,null,null,null,null,null,null,null,null,null,null,null];
 
-const EMPTY_MONTH = [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-];
+const EMPTY_MONTH = [null,null,null,null,null,null,null,null,null,null,null,
+  null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+  null,null,null,null,null];
 
 /**
  * @author Yangming Guan
