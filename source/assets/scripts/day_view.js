@@ -88,13 +88,7 @@ function updateSideBar(day) {
     "day-block-" + String(startingDay - 1 + parseInt(day))
   );
 
-  let currDayString =
-    currDay[1] +
-    "/" +
-    day +
-    "/" +
-    currDay[0] +
-    " " +
+  let currDayString = currDay[1] + "/" + day + "/" + currDay[0] + " " +
     getWeekDayString(currDay[0], currDay[1], currDay[2]);
 
   const sidebarTitleElem = document.querySelector(".sidebar-title");
