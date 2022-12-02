@@ -360,6 +360,4 @@ function traverseYearEventListener() {
 function displayDate() {
   return currDay;
 }
-    //drawCalendar();
-  });
-}
+

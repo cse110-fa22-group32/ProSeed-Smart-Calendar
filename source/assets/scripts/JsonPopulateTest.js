@@ -131,8 +131,7 @@ function init() {
   saveJsonToLocalStorage(calendarData[0]);
 
   // read local drive, to do that first...
-
-  const uploadBtn = document.getElementById("upload-btn");
+  /* const uploadBtn = document.getElementById("upload-btn");
   uploadBtn.addEventListener("click", (e) => {
     const fileBtn = document.getElementById("files");
     fileBtn.click();
@@ -149,5 +148,5 @@ function init() {
       const data = await file.text();
       console.log(data);
     }
-  });
+  }); */
 }
