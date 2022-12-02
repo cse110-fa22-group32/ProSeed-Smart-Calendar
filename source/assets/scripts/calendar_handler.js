@@ -142,7 +142,7 @@ function add_event() {
   event_form.addEventListener("submit", () => {
     const data = new FormData(event_form);
 
-    let eventTitle = data.get("title");
+    let eventTitle = data.get("eventTitle");
     let eventDate = data.get("date"); // format: 'YYYY-MM-DD'
     let eventStart = data.get("start-time");
     let eventEnd = data.get("end-time");
@@ -250,7 +250,7 @@ function add_todo() {
   todo_form.addEventListener("submit", () => {
     const data = new FormData(todo_form);
 
-    let taskTitle = data.get("title");
+    let taskTitle = data.get("taskTitle");
     let taskDate = data.get("due-date"); // format: 'YYYY-MM-DDTHH:MM'
     let taskDescription = data.get("description");
 
