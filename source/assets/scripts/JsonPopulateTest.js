@@ -98,8 +98,7 @@ const testJson = `
  `;
 
 // Run the init() function when the page has loaded
-window.addEventListener('DOMContentLoaded', init);
-
+window.addEventListener("DOMContentLoaded", init);
 
 // no comments since this one is just for test and will be removed in final product
 function init() {
@@ -132,24 +131,22 @@ function init() {
   saveJsonToLocalStorage(calendarData[0]);
 
   // read local drive, to do that first...
-  const uploadBtn = document.getElementById('upload-btn');
-  uploadBtn.addEventListener('click', e => {
-    const fileBtn = document.getElementById('files');
+  const uploadBtn = document.getElementById("upload-btn");
+  uploadBtn.addEventListener("click", (e) => {
+    const fileBtn = document.getElementById("files");
     fileBtn.click();
   });
 
-  // ...first, select local drive 
-  const fileBtn = document.getElementById('files');
-  fileBtn.addEventListener('change', async e => {
-    const [file] = e.target.files
+  // ...first, select local drive
+  const fileBtn = document.getElementById("files");
+  fileBtn.addEventListener("change", async (e) => {
+    const [file] = e.target.files;
 
     if (!file) {
-      console.log('no file');
-    }
-    else {
+      console.log("no file");
+    } else {
       const data = await file.text();
       console.log(data);
     }
   });
-
 }
