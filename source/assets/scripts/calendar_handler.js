@@ -8,54 +8,12 @@ function init() {
   logout();
 }
 
-const EMPTY_YEAR = [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-];
+const EMPTY_YEAR = 
+  [null,null,null,null,null,null,null,null,null,null,null,null];
 
-const EMPTY_MONTH = [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-];
+const EMPTY_MONTH = [null,null,null,null,null,null,null,null,null,null,null,
+  null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
+  null,null,null,null,null];
 
 /**
  * @author Yangming Guan
@@ -80,7 +38,6 @@ function update_day_block(firstDayOfWeek, dayOfMonth, data) {
     p.innerHTML = d;
     day_block.append(p);
     if (count > 5) {
-      console.log(dayOfMonth.length);
       p.innerHTML = String(data.length) + "+";
       day_block.append(p);
       break;
