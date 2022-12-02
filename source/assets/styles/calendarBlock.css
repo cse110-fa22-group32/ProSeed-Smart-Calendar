@@ -1,22 +1,24 @@
 * {
-font-family: sans-serif;
-margin: 0;
-padding: 0; 
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #c7ffa7;
 }
 
-.gridView{
-  display: flex;
-  grid-template-columns: auto auto auto;
-  background-color: #ffffff;
-  padding: 10px;
-}
-
-.grid-item{
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
-  text-align: center;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+    background-color: #ccdec1; 
+    padding: 20px;
+  }
+  
+.grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
 a {
@@ -71,3 +73,14 @@ time {
     font-size: 12px;
 }
 
+#button {
+    line-height: 12px;
+    width: 18px;
+    font-size: 8pt;
+    font-family: tahoma;
+    margin-top: 1px;
+    margin-right: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+}
