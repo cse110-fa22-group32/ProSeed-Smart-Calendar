@@ -27,17 +27,58 @@ Not every page from the prototype is included in this specification. There are b
 ![#767ad5](https://placehold.co/25x25/767ad5/767ad5.png) `#767ad5`
 
 ## Branding
+![brand tagline](branding/brand-tagline.svg)
 
+![brand no tagline](branding/brand.svg)
+![brand 60% opacity](branding/brand-60-opacity.svg)
+![brand no tagline](branding/brand.svg)
+
+![brand leaf icon](branding/leaf.svg)
+
+## Icons
+![down arrow](icons/arrow-down-circle.svg)
+
+![up arrow](icons/arrow-up-circle.svg)
+![up arrow 60% opacity](icons/arrow-up-circle-60-opacity.svg)
+![up arrow blue](icons/arrow-up-circle-blue.svg)
+
+![plus circle](icons/plus-circle.svg)
+
+![minus circle](icons/minus-circle.svg)
+
+![check circle red](icons/check-circle-red.svg)
+![check circle blue](icons/check-circle-blue.svg)
+
+![help circle](icons/help-circle.svg)
+
+![trash icon](icons/trash.svg)
+![trash icon red](icons/trash-red.svg)
+
+![chevron down](icons/chevron-down.svg)
+![chevron up](icons/chevron-up.svg)
+
+![calendar icon](icons/calendar.svg)
+![calendar icon 60% opacity](icons/calendar-60-opacity.svg)
+
+## Fonts
+- [Mochiy Pop One](https://fonts.google.com/specimen/Mochiy+Pop+One?query=mochiy)
+- [Inter](https://fonts.google.com/specimen/Inter?query=inter)
+  - Regular
+  - Semi Bold
 ## Sign In Pages
 ### Splash Image
 ![splash](images/splash.png)
 ### Sign in
 ![sign in](images/sign-in-spec.png)
 ## Middleground
-### Main page
+### Main Page
 ![middleground](images/middleground-spec.png)
-### Delete pages
-#### Delete page 1
+### Delete Pages
+#### Delete Page 1
 ![delete-1](images/delete-spec-1.png)
-#### Delete page 2
+#### Delete Page 2
 ![delete-2](images/delete-spec-2.png)
+### Delete Page 3
+![delete-3](images/delete-spec-3.png)
+## Share Pages
+![share-1](images/share-spec-1.png)
