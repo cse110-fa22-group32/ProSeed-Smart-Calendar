@@ -73,6 +73,7 @@
   }
   updataSideBar(day);
   calendarData[0].Show(currDay[0], currDay[1]);
+  saveJsonToLocalStorage(calendarData[0]);
   console.log("finish updataSidebar");
   console.log(shadowClick);
  }

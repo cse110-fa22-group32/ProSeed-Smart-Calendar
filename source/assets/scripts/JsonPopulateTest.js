@@ -103,7 +103,6 @@ window.addEventListener('DOMContentLoaded', init);
 
 // no comments since this one is just for test and will be removed in final product
 function init() {
-
   if (!getJsonFromLocalStorage()) {
     // when there's no json file in localStorage, load testJson
 
