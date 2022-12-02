@@ -126,6 +126,7 @@ function callEdit(event, year, month, day, isEvent) {
       calendarData[0].years[year].months[month].days[day - 1].Events;
     for (let i = 0; i < eventList.length; i++) {
       if (eventList[i].eventID === id) {
+        //put all the info to the dialog.
         let add_event_dialog = document.getElementById("add-event-dialog");
         let eventTitle = document.getElementById("event-title");
         let date = document.getElementById("date");
@@ -152,6 +153,7 @@ function callEdit(event, year, month, day, isEvent) {
       calendarData[0].years[year].months[month].days[day - 1].tasks;
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].taskID === id) {
+        //put all the info to the dialog.
         let add_todo_dialog = document.getElementById("add-todo-dialog");
         let todoTitle = document.getElementById("task-title");
         let deuDate = document.getElementById("due-date");

@@ -196,8 +196,6 @@ function add_event() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear, eventMonth);
-    shadowClick = 0;
-    console.log(shadowClick);
   });
 
   //display the dialog.
@@ -206,9 +204,10 @@ function add_event() {
   });
 
   //close dialog without save.
-  event_dialog_cancel.addEventListener("click", () => {
+  event_dialog_cancel.addEventListener("click", (e) => {
+    e.stopPropagation();
     add_event_dialog.close();
-    shadowClick = 0;
+    eventIsEdit.value = "false";
   });
 }
 
@@ -316,7 +315,6 @@ function add_todo() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear, taskMonth);
-    shadowClick = 0;
   });
 
   //display the dialog.
@@ -325,9 +323,10 @@ function add_todo() {
   });
 
   //close dialog without save.
-  todo_dialog_cancel.addEventListener("click", () => {
+  todo_dialog_cancel.addEventListener("click", (e) => {
+    e.stopPropagation();
     add_todo_dialog.close();
-    shadowClick = 0;
+    eventIsEdit.value = "false";
   });
 }
 
