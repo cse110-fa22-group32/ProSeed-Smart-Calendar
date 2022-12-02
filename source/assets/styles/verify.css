@@ -20,7 +20,7 @@ button {
   box-sizing: content-box;
 }
 
-.mainContainer {
+.main-container {
   display: flex;
   flex-direction: column;
   margin: auto;

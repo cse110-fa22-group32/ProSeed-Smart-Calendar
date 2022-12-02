@@ -1,20 +1,22 @@
 //create a event block in side bar.
 
-class EventBlock extends HTMLElement{
-    constructor(){
-        super();
-        this.attachShadow({mode:'open'});
-        const divBlock = document.createElement('div');
-        const style = document.createElement('style');
+class EventBlock extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    const divBlock = document.createElement("div");
+    const style = document.createElement("style");
 
-        style.innerHTML = `
+    style.innerHTML = `
             div {
-                border:white 2px solid;
-                background-color: yellow;
-                margin: 0%;
+                border-style: none;        
+                margin-top: 10px;
                 display: grid;
-                height: 30px;
+                height: 40px;
                 grid-template-columns: repeat(22, auto);
+                background: #54CB9C;
+                border-radius: 62.5407px;
+                padding-left: 10px
             }
             #Id {
                 display: none;
@@ -48,21 +50,31 @@ class EventBlock extends HTMLElement{
             }
             #delete {
                 align-self: center;
+                border-radius: 50px;
+                width: 32px;
+                height: 32px;
+                background: #F47676;
                 grid-column-start: 15;
                 grid-column-end: 17;
             }
             #edit {
                 align-self: center;
+                border-radius: 50px;
+                width: 32px;
+                height: 32px;
+                background: #F4F276;
                 grid-column-start: 18;
                 grid-column-end: 20;
             }
+            #delete:hover, #edit:hover {
+                background-color: RoyalBlue;
+              }
         `;
 
-        this.shadowRoot.append(style,divBlock);
+    this.shadowRoot.append(style, divBlock);
+  }
 
-    }
-
-/**
+  /**
    * @param {Object} data - The data to pass into the <event-block>, must be of the
    * following format:
    * {
@@ -72,17 +84,16 @@ class EventBlock extends HTMLElement{
    *    "end": "string"
    * }
    */
-    set eventData(data){
-        const article = this.shadowRoot.querySelector('div');
-        article.innerHTML = `
+  set eventData(data) {
+    const article = this.shadowRoot.querySelector("div");
+    article.innerHTML = `
         <p id="Id">${data.id}</p>
         <h3 id="title">${data.title}</h3>
         <h4 id="start">${data.start}->${data.end}</h4>
         <button id="delete">D</button>
         <button id="edit">E</button>
         `;
-    }
+  }
 }
 
-
-customElements.define('event-block', EventBlock);
+customElements.define("event-block", EventBlock);
