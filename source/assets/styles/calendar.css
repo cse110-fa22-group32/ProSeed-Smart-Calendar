@@ -199,6 +199,9 @@ day block css setting for calendar
 }
 
 .event-block {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -217,6 +220,9 @@ day block css setting for calendar
 }
 
 .task-block {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   font-weight: 400;
