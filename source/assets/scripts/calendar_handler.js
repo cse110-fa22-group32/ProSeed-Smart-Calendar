@@ -57,8 +57,47 @@ function add_event() {
   const add_event_dialog = document.getElementById('add-event-dialog');
   const event_form = add_event_dialog.querySelector('#add-event-form');
   const event_dialog_cancel = add_event_dialog.querySelector('.cancel');
+  const start_time_input = document.getElementById("start-time");
+  const end_time_input = document.getElementById("end-time");
 
-  event_form.addEventListener('submit', () => {
+  // event listener for edge case that event start time must be before end time on input change for start time
+  start_time_input.addEventListener("change", () => {
+    // get the inputted start and end times for the event and convert them into array of numbers [hour, minute]
+    let start_time = start_time_input.value.split(":");
+    let end_time = end_time_input.value.split(":");
+    for (let i = 0; i < start_time.length; i++) {
+      start_time[i] = Number(start_time[i]);
+      end_time[i] = Number(end_time[i]);
+    }
+
+    // if start time is after end time, or if end time hasn't been set, set/reset end time to the same time as start time
+    if (start_time[0] > end_time[0] || start_time[1] > end_time[1]) {
+      end_time_input.value = start_time_input.value;
+    }
+  });
+
+  // event listener for edge case that event start time must be before end time on input change for end time
+  end_time_input.addEventListener("change", () => {
+    // if there's no start time input, return
+    if (!start_time_input.value) {
+      return;
+    }
+
+    // get the inputted start and end times for the event and convert them into array of numbers [hour, minute]
+    let start_time = start_time_input.value.split(":");
+    let end_time = end_time_input.value.split(":");
+    for (let i = 0; i < start_time.length; i++) {
+      start_time[i] = Number(start_time[i]);
+      end_time[i] = Number(end_time[i]);
+    }
+
+    // if start time is after end time, set/reset start time to the same time as end time
+    if (start_time[0] > end_time[0] || start_time[1] > end_time[1]) {
+      start_time_input.value = end_time_input.value;
+    }
+  });
+
+  event_form.addEventListener("submit", () => {
     const data = new FormData(event_form);
 
     let eventTitle = data.get("event-title");
@@ -83,13 +122,15 @@ function add_event() {
       eventLoc, eventDescription);
 
     // allocate empty year if needed
-    if (calendarData[0].years[eventLastTwoYear] == null) { // allocate 12 empty months
+    if (calendarData[0].years[eventLastTwoYear] == null) { 
+      // allocate 12 empty months
       calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
       calendarData[0].years[eventLastTwoYear].months = EMPTY_YEAR;
     }
 
     // allocate empty month if needed
-    if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null) { // allocate 31 empty days
+    if (calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null) { 
+      // allocate 31 empty days
       calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] =
         new Month(eventMonth, indexToMonth(eventMonth), []);
       calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days 
@@ -114,6 +155,9 @@ function add_event() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
     calendarData[0].Show(eventYear, eventMonth);
+
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
   })
 
   //display the dialog.
@@ -191,6 +235,9 @@ function add_todo() {
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
     calendarData[0].Show(taskYear, taskMonth);
+
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
   })
 
   //display the dialog.
@@ -215,6 +262,8 @@ function logout() {
   const logoutConfirm = document.getElementById('confirm-logout');
 
   logoutBtn.addEventListener('click', () => {
+    // auto save calendar to local storage
+    saveJsonToLocalStorage(calendarData[0]);
     logoutDialog.showModal();
   });
 
