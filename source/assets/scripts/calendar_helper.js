@@ -1,3 +1,6 @@
+
+ module.exports = { getIfLeapYear, getDaysInMonth, indexToMonth, indexToDay, getWeekDayString, getWeekDayIndex, getWeekCount, getCurrentDay };
+
 /**
  * calendar_helper.js
  * @author Steven Khaw
