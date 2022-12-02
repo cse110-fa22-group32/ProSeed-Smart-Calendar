@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Mochiy Pop One';
+  src: url(../fonts/MochiyPopOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(../fonts/Inter-VariableFont.ttf);
+}
+
 /*
 ***********************************************
 the display size of calendar depend on the screen size
@@ -6,7 +16,6 @@ at 600px, 900px, 1200px.
 */
 @media only screen and (max-width: 600px) {
   :root {
-    --calendar-width: 100%;
     --week-title-display: inline;
     --week-block-display: grid;
     --day-block-height: 90px;
@@ -17,7 +26,6 @@ at 600px, 900px, 1200px.
 
 @media only screen and (min-width: 600px) {
   :root {
-    --calendar-width: 100%;
     --week-title-display: inline;
     --week-block-display: grid;
     --day-block-height: 90px;
@@ -28,7 +36,6 @@ at 600px, 900px, 1200px.
 
 @media only screen and (min-width: 900px) {
   :root {
-    --calendar-width: 100%;
     --week-title-display: inline;
     --week-block-display: grid;
     --day-block-height: 120px;
@@ -40,7 +47,6 @@ at 600px, 900px, 1200px.
 
 @media only screen and (min-width: 1200px) {
   :root {
-    --calendar-width: 100%;
     --week-title-display: inline;
     --week-block-display: grid;
     --day-block-height: 170px;
@@ -50,9 +56,14 @@ at 600px, 900px, 1200px.
 }
 
 :root {
+  --calendar-width: 95vw;
   --week-of-day-height: 40px;
-  --day-block-gap: 2px;
-  --calendar-margin: 3px;
+  --day-block-gap: 0.3vw;
+  --calendar-margin: 20px;
+}
+
+body {
+  background: #bae4d3;
 }
 
 /*
@@ -61,43 +72,111 @@ title bar and head css setting for calendar
 ***********************************************
 */
 #calendar {
+  margin-left: auto;
+  margin-right: auto;
   display: inline;
-  gap: 0%;
+  width: 95vw;
 }
 
 #calendar-title-bar {
   width: 100%;
-  background-color: rgb(137, 149, 160);
+  background: #309C71;
   display: flex;
   justify-content: space-between;
 }
 
+#leaf-icon {
+  width: 45px;
+  height: 45px;
+}
+
+#calendar-title-bar-header {
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 48px;
+
+  padding-top: 12px;
+  padding-bottom: 6px;
+
+  color: #FFFFFF;
+}
+
 #calendar-head {
   margin-top: var(--calendar-margin);
-  background-color: rgb(137, 149, 160);
-  width: var(--calendar-width);
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  padding-top: 16px;
+  padding-left: 32px;
+  padding-bottom: 26px;
+
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #FFFFFF;
+
+  background: #309C71;
+  border-radius: 37.5244px 37.5244px 0px 0px;
+}
+
+#calendar-buffer {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  height: 0.15vw;
+
+  background: #309C71;
+  border-radius: 0px 0px 37.5244px 37.5244px;
 }
 
 #calendar-head h1 {
   margin: 0%;
 }
 
-#calendar-title-bar-conponent {
-  background-color: rgb(92, 106, 120);
+#calendar-title-bar-component {
+  border-radius: 50px;
   display: flex;
   justify-content: center;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: #54CB9C;
 }
 
 .calendar-title-bar-btn {
   margin: 10px;
-  border-color: rgb(92, 106, 120);
   width: 50px;
   height: 50px;
-  background-color: rgb(92, 106, 120);
+  border-radius: 50px;
+  border: none;
+  
+  background-color: #309C71;
+  color: #FFFFFF;
 }
 
 .calendar-title-bar-btn:hover {
   background-color: RoyalBlue;
+}
+
+.material-symbols-outlines {
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-size: 9px;
+
+  color: #FFFFFF;
+}
+
+#month-label, #year-label {
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-size: 16px;
+
+  color: #FFFFFF;
 }
 
 /*
@@ -107,23 +186,24 @@ day block css setting for calendar
 */
 
 .week-of-day {
-  display: var(--week-title-display);
-  background-color: rgb(92, 106, 120);
-  margin: 0%;
-  padding: 0%;
-  height: var(--week-of-day-height);
-  width: var(--day-block-width);
-}
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
 
-.week-of-day p {
+  display: var(--week-title-display);
+  width: var(--day-block-width);
+  height: var(--week-of-day-height);
+  background-color: #54CB9C;
+
   text-align: center;
 }
 
 .calendar-day-block {
-  background-color: rgb(137, 149, 160);
+  background: #F0FCEE;
   height: var(--day-block-height);
   width: var(--day-block-width);
-
 }
 
 .date-block {
@@ -167,12 +247,26 @@ day block css setting for calendar
 
 #calendar-day-main {
   display: var(--week-block-display);
-  gap: var(--day-block-gap);
-  grid-template-columns: var(--grid-template-columns)
+  gap: 0.15vw;
+  grid-template-columns: var(--grid-template-columns);
+
+  margin-left: 1vw;
+  margin-right: 1vw;
+
+  color: #FFFFFF;
+
+  background: #309C71;
+  border-radius: 37.5244px;
 }
 
 .calendar-day-block p {
-  color: blue;
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 31.2704px;
+  line-height: 45px;
+
+  color: #000000;
   margin: 0%;
   padding: 0%;
   border: 0;
@@ -182,8 +276,8 @@ day block css setting for calendar
   display: none
 }
 
-.othermonth p {
-  color:rgb(52, 56, 45);
+.othermonth {
+  background: #C2DBBD;;
 }
 
 /*
@@ -192,17 +286,30 @@ function button setting for calendar
 ***********************************************
 */
 #calendar-tail {
-  width: var(--calendar-width);
   margin-top: var(--calendar-margin);
-  background-color: rgb(137, 149, 160);
+  background: #309C71;
 }
 
 .calendar-tail-btn {
   margin: 10px;
-  border-color: rgb(92, 106, 120);
-  width: 150px;
-  height: 40px;
-  background-color: rgb(92, 106, 120);
+  margin-right: 0px;
+  width: 50px;
+  height: 50px;
+
+  border-style: none;
+  border-radius: 50px;
+  background-color: #309C71;
+  color: #FFFFFF;
+}
+
+.tail-label {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 50px;
+
+  color: #FFFFFF;
 }
 
 .calendar-tail-btn:hover {

@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Mochiy Pop One';
+  src: url(../fonts/MochiyPopOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url(../fonts/Inter-VariableFont.ttf);
+}
+
 /*
 ***********************************************
 Media queries for 600px, 900px
@@ -33,13 +43,6 @@ Root variables
   --sb-radius: 30px;
 }
 
-/*
-***********************************************
-Miscellaneous styling
-TODO: Outsource elsewhere
-***********************************************
-*/
-
 main {
   display: flex;
 }
@@ -70,8 +73,9 @@ Sidebar styling
 }
 
 .sidebar {
-  background: #fff;
+  background: #54CB9C;
   border: 2px solid black;
+  border-radius: 0px 30px 30px 0px;
   /*border-radius: var(--sb-radius);*/
   box-sizing: border-box;
   display: flex;
@@ -90,7 +94,15 @@ Sidebar styling
 }
 
 .sidebar-title {
-  margin: 5px;
+  margin-left: 15px;
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+
+  color: #FFFFFF;
+  
 }
 
 .sidebar-title-2 {
@@ -109,10 +121,21 @@ Sidebar event list styling
 */
 
 .sidebar-events {
-  border-bottom: 2px solid black;
+  
   flex: 1;
   height: 90%;
   transition: flex 0.5s ease;
+
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: #000000;
+}
+
+.sidebar-events > div {
+  background-color: #F0FCEE;
 }
 
 /*

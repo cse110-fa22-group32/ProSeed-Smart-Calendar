@@ -39,24 +39,29 @@
 <body>
   <header>
     <div id="calendar-title-bar">
-      <h1>ProSeed Calendar</h1>
-      <div id="calendar-title-bar-conponent">
+
+      <div id="calendar-title-bar-header">
+        <img id="leaf-icon" src="assets/images/icons/leaf.png">
+        ProSeed Calendar
+      </div>
+
+      <div id="calendar-title-bar-component">
         <button id="calendar-month-btn-up" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_upward</span>
         </button>
         <button id="calendar-month-btn-down" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
-        <p>Month</p>
+        <p id="month-label">Month</p>
         <button id="calendar-year-btn-up" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_upward</span>
         </button>
         <button id="calendar-year-btn-down" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
-        <p>Year</p>
+        <p id="year-label">Year</p>
         <button id="calendar-title-bar-user" class="calendar-title-bar-btn" onclick="location.href='edit-profile.html'">
-            <span class="material-symbols-outlined">account_circle</span>User
+          <span class="material-symbols-outlined">account_circle</span>User
         </button>
           </button>
         </a>
@@ -90,32 +95,36 @@
         <div class="sidebar-tasks"></div>
       </div>
     </div>
+
+
     <div id="calendar">
       <div id="calendar-head">
         <h1></h1>
       </div>
       <div id="calendar-day-main">
+
         <div class="week-of-day">
-          <p>Sunday</p>
+          Sunday
         </div>
         <div class="week-of-day">
-          <p>Monday</p>
+          Monday
         </div>
         <div class="week-of-day">
-          <p>Tuesday</p>
+          Tuesday
         </div>
         <div class="week-of-day">
-          <p>Wednesday</p>
+          Wednesday
         </div>
         <div class="week-of-day">
-          <p>Thursday</p>
+          Thursday
         </div>
         <div class="week-of-day">
-          <p>Friday</p>
+          Friday
         </div>
         <div class="week-of-day">
-          <p>Saturday</p>
+          Saturday
         </div>
+        
         <div id="day-block-0" class="calendar-day-block"></div>
         <div id="day-block-1" class="calendar-day-block"></div>
         <div id="day-block-2" class="calendar-day-block"></div>
@@ -166,36 +175,24 @@
         <div id="day-block-41" class="calendar-day-block extra"></div>
         
       </div>
+
+      <div id="calendar-buffer"></div>
     </div>
+
   </main>
 
   <footer>
     <div id="calendar-tail">
-      <button id="share-export-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">error</span> Share or Export
-      </button>
       <button id="add-event-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">add_circle</span>Add Event
+        <span class="material-symbols-outlined">add_circle</span>
       </button>
+      <span class="tail-label">Add event</span>
       <button id="add-todo-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">add_circle</span>Add To-Do List
+        <span class="material-symbols-outlined">add_circle</span>
       </button>
-      <button id="create-user-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">add_circle</span>Create User
-      </button>
-      <button id="change-user-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">add_circle</span>Change User
-      </button>
+      <span class="tail-label">Add task</span>
       <button id="help-btn" class="calendar-tail-btn">
         <span class="material-symbols-outlined">help</span>
-      </button>
-      <button id="download-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">Arrow_Downward</span>
-      </button>
-      <button id="upload-btn" class="calendar-tail-btn">
-        <span class="material-symbols-outlined">Arrow_Upward</span>
-        <!-- TODO: The element "input" must not appear as a descendant of the "button" element  -->
-        <!-- <input type="file" style="display:none" id="files"/> -->
       </button>
     </div>
 
