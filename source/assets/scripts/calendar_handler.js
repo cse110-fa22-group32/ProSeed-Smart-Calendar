@@ -38,7 +38,6 @@ function update_day_block(firstDayOfWeek, dayOfMonth, data) {
     p.innerHTML = d;
     day_block.append(p);
     if (count > 5) {
-      console.log(dayOfMonth.length)
       p.innerHTML = String(data.length) + '+';
       day_block.append(p);
       break;
