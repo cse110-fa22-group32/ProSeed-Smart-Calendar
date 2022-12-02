@@ -88,8 +88,14 @@ function updateSideBar(day) {
     "day-block-" + String(startingDay - 1 + parseInt(day))
   );
 
-  let currDayString = currDay[1] + "/" + day + "/" + currDay[0] 
-    + " " + getWeekDayString(currDay[0],currDay[1],currDay[2]);
+  let currDayString =
+    currDay[1] +
+    "/" +
+    day +
+    "/" +
+    currDay[0] +
+    " " +
+    getWeekDayString(currDay[0], currDay[1], currDay[2]);
 
   const sidebarTitleElem = document.querySelector(".sidebar-title");
   sidebarTitleElem.textContent = currDayString;
@@ -191,7 +197,7 @@ function viewDay(e) {
   showSidebar();
   e.stopPropagation();
   addExitListener();
-  hideTodo(); 
+  hideTodo();
 }
 
 /**
@@ -218,7 +224,6 @@ function addExitListener() {
  * Adds event listener to expand to-do list
  */
 function addExpandListener() {
-
   const taskHeaderElem = document.querySelector(".tasks-head");
   taskHeaderElem.addEventListener("click", () => {
     const todoList = document.querySelector(".sidebar-tasks");

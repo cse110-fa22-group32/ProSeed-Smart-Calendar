@@ -1,13 +1,13 @@
 //create a todo block in side bar.
 
-class TodoBlock extends HTMLElement{
-    constructor(){
-        super();
-        this.attachShadow({mode:'open'});
-        const divBlock = document.createElement('div');
-        const style = document.createElement('style');
+class TodoBlock extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    const divBlock = document.createElement("div");
+    const style = document.createElement("style");
 
-        style.innerHTML = `
+    style.innerHTML = `
         div {
             border-style: none;        
             margin-top: 10px;
@@ -72,11 +72,10 @@ class TodoBlock extends HTMLElement{
         }
         `;
 
-        this.shadowRoot.append(style,divBlock);
+    this.shadowRoot.append(style, divBlock);
+  }
 
-    }
-
-/**
+  /**
    * @param {Object} data - The data to pass into the <todo-block>, must be of the
    * following format:
    * {
@@ -85,16 +84,16 @@ class TodoBlock extends HTMLElement{
    *    "due" : "string"
    * }
    */
-    set todoData(data){
-        const article = this.shadowRoot.querySelector('div');
-        article.innerHTML = `
+  set todoData(data) {
+    const article = this.shadowRoot.querySelector("div");
+    article.innerHTML = `
         <h3 id="Id">${data.id}</h3>
         <h3 id="title">${data.title}</h3>
         <h4 id="start">${data.due}</h4>
         <button id="delete">D</button>
         <button id="edit">E</button>
         `;
-    }
+  }
 }
 
-customElements.define('todo-block', TodoBlock);
+customElements.define("todo-block", TodoBlock);

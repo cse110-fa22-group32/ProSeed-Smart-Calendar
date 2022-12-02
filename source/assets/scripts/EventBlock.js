@@ -1,13 +1,13 @@
 //create a event block in side bar.
 
-class EventBlock extends HTMLElement{
-    constructor(){
-        super();
-        this.attachShadow({mode:'open'});
-        const divBlock = document.createElement('div');
-        const style = document.createElement('style');
+class EventBlock extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    const divBlock = document.createElement("div");
+    const style = document.createElement("style");
 
-        style.innerHTML = `
+    style.innerHTML = `
             div {
                 border-style: none;        
                 margin-top: 10px;
@@ -71,11 +71,10 @@ class EventBlock extends HTMLElement{
               }
         `;
 
-        this.shadowRoot.append(style,divBlock);
+    this.shadowRoot.append(style, divBlock);
+  }
 
-    }
-
-/**
+  /**
    * @param {Object} data - The data to pass into the <event-block>, must be of the
    * following format:
    * {
@@ -85,17 +84,16 @@ class EventBlock extends HTMLElement{
    *    "end": "string"
    * }
    */
-    set eventData(data){
-        const article = this.shadowRoot.querySelector('div');
-        article.innerHTML = `
+  set eventData(data) {
+    const article = this.shadowRoot.querySelector("div");
+    article.innerHTML = `
         <p id="Id">${data.id}</p>
         <h3 id="title">${data.title}</h3>
         <h4 id="start">${data.start}->${data.end}</h4>
         <button id="delete">D</button>
         <button id="edit">E</button>
         `;
-    }
+  }
 }
 
-
-customElements.define('event-block', EventBlock);
+customElements.define("event-block", EventBlock);
