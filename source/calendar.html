@@ -13,8 +13,8 @@
 
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
-  <link rel="stylesheet" href="assets/styles/calendar.css"/>
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="assets/styles/calendar.css" />
   <script type="text/javascript" src="assets/scripts/calendar_helper.js"></script>
   <script type="text/javascript" src="assets/scripts/load_calendar.js"></script>
   <script type="text/javascript" src="assets/scripts/calendar_handler.js"></script>
@@ -49,21 +49,23 @@
         <button id="calendar-month-btn-up" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_upward</span>
         </button>
+        <p id="month-label">Month</p>
         <button id="calendar-month-btn-down" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
-        <p id="month-label">Month</p>
+        
         <button id="calendar-year-btn-up" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_upward</span>
         </button>
+        <p id="year-label">Year</p>
         <button id="calendar-year-btn-down" class="calendar-title-bar-btn">
           <span class="material-symbols-outlined">arrow_downward</span>
         </button>
-        <p id="year-label">Year</p>
+        
         <button id="calendar-title-bar-user" class="calendar-title-bar-btn" onclick="location.href='edit-profile.html'">
-          <span class="material-symbols-outlined">account_circle</span>User
+          <span class="material-symbols-outlined">account_circle</span>
         </button>
-          </button>
+        </button>
         </a>
         <button id="calendar-title-bar-logout" class="calendar-title-bar-btn">
           <span class="material-symbols-outlines">Logout</span>
@@ -124,7 +126,7 @@
         <div class="week-of-day">
           Saturday
         </div>
-        
+
         <div id="day-block-0" class="calendar-day-block"></div>
         <div id="day-block-1" class="calendar-day-block"></div>
         <div id="day-block-2" class="calendar-day-block"></div>
@@ -132,7 +134,7 @@
         <div id="day-block-4" class="calendar-day-block"></div>
         <div id="day-block-5" class="calendar-day-block"></div>
         <div id="day-block-6" class="calendar-day-block"></div>
-        
+
         <div id="day-block-7" class="calendar-day-block"></div>
         <div id="day-block-8" class="calendar-day-block"></div>
         <div id="day-block-9" class="calendar-day-block"></div>
@@ -173,12 +175,9 @@
         <div id="day-block-39" class="calendar-day-block extra"></div>
         <div id="day-block-40" class="calendar-day-block extra"></div>
         <div id="day-block-41" class="calendar-day-block extra"></div>
-        
       </div>
-
       <div id="calendar-buffer"></div>
     </div>
-
   </main>
 
   <footer>
@@ -226,7 +225,7 @@
             <input id="location" name="location" class="location">
           </label><br>
           <label for="description">Description:<br>
-            <textarea id="description" name="description" ></textarea>
+            <textarea id="description" name="description"></textarea>
           </label><br>
         </fieldset>
         <div>

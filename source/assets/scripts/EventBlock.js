@@ -9,12 +9,14 @@ class EventBlock extends HTMLElement{
 
         style.innerHTML = `
             div {
-                border:white 2px solid;
-                background-color: yellow;
-                margin: 0%;
+                border-style: none;        
+                margin-top: 10px;
                 display: grid;
-                height: 30px;
+                height: 40px;
                 grid-template-columns: repeat(22, auto);
+                background: #54CB9C;
+                border-radius: 62.5407px;
+                padding-left: 10px
             }
             #Id {
                 display: none;
@@ -48,14 +50,25 @@ class EventBlock extends HTMLElement{
             }
             #delete {
                 align-self: center;
+                border-radius: 50px;
+                width: 32px;
+                height: 32px;
+                background: #F47676;
                 grid-column-start: 15;
                 grid-column-end: 17;
             }
             #edit {
                 align-self: center;
+                border-radius: 50px;
+                width: 32px;
+                height: 32px;
+                background: #F4F276;
                 grid-column-start: 18;
                 grid-column-end: 20;
             }
+            #delete:hover, #edit:hover {
+                background-color: RoyalBlue;
+              }
         `;
 
         this.shadowRoot.append(style,divBlock);

@@ -1,11 +1,11 @@
 /**
  * day_view.js
- * @author Steven Chin
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * @summary File contains functions for sidebar visibility and population
  * @fileoverview
  *
  * Created at : 2022-11-18 12:11 AM;
- * Last Modified : 2022-11-18
+ * Last Modified : 2022-12-1 9:20 PM
  */
 
 window.addEventListener("DOMContentLoaded", init);
@@ -52,15 +52,9 @@ function callDelete(event, year, month, day, isEvent) {
     .getRootNode()
     .host.shadowRoot.querySelector("#Id");
   let id = parseInt(eventID.innerHTML);
-  console.log(event);
-  console.log(year);
-  console.log(month);
-  console.log(day);
-  console.log(isEvent);
   if (isEvent) {
     let eventList =
       calendarData[0].years[year].months[month].days[day - 1].Events;
-    console.log(eventList);
     for (let i = 0; i < eventList.length; i++) {
       if (eventList[i].eventID === id) {
         eventList.splice(i, 1);
@@ -75,10 +69,8 @@ function callDelete(event, year, month, day, isEvent) {
       }
     }
   }
-  updataSideBar(day);
+  updateSideBar(day);
   calendarData[0].Show(currDay[0], currDay[1]);
-  console.log("finish updataSidebar");
-  console.log(shadowClick);
 }
 
 /**
@@ -86,13 +78,21 @@ function callDelete(event, year, month, day, isEvent) {
  * updata the display of side bar.
  * @param {string} day - date day
  */
-function updataSideBar(day) {
+function updateSideBar(day) {
+  // 2022 -> 22
   let currentYear = String(currDay[0] - 2000);
+  // 12 -> 11 (December)
   let currentMont = String(currDay[1] - 1);
   let startingDay = getWeekDayIndex(currDay[0], currDay[1], 1);
   let currDayElement = document.getElementById(
     "day-block-" + String(startingDay - 1 + parseInt(day))
   );
+
+  let currDayString = currDay[1] + "/" + day + "/" + currDay[0] 
+    + " " + getWeekDayString(currDay[0],currDay[1],currDay[2]);
+
+  const sidebarTitleElem = document.querySelector(".sidebar-title");
+  sidebarTitleElem.textContent = currDayString;
   if (calendarData[0].years[currentYear] != null) {
     if (calendarData[0].years[currentYear].months[currentMont] != null) {
       //clear side bar
@@ -100,7 +100,6 @@ function updataSideBar(day) {
       sideBarEvent.innerHTML = "";
       let sideBarTask = document.querySelector(".sidebar-tasks");
       sideBarTask.innerHTML = "";
-      console.log(currDayElement);
       if (currDayElement.classList.contains("othermonth") == false) {
         //let day = e.currentTarget.querySelector('p').innerHTML;
         if (
@@ -140,14 +139,12 @@ function updataSideBar(day) {
 
           //add data to the new event-block
           eventArray.forEach((event) => {
-            console.log(event.end);
             let event_block = document.createElement("event-block");
             event_block.eventData = event;
             sideBarEvent.append(event_block);
             let deleteBtun = event_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
-              console.log(btnEvnet.currentTarget.getRootNode().host);
               callDelete(btnEvnet, currentYear, currentMont, day, true);
             });
 
@@ -160,13 +157,11 @@ function updataSideBar(day) {
 
           //add data to the new event-block
           dotoArray.forEach((task) => {
-            console.log(task.end);
             let todo_block = document.createElement("todo-block");
             todo_block.todoData = task;
             let deleteBtun = todo_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
-              console.log(btnEvnet.currentTarget.parentNode);
               callDelete(btnEvnet, currentYear, currentMont, day, false);
             });
             sideBarTask.append(todo_block);
@@ -191,12 +186,12 @@ function updataSideBar(day) {
 function viewDay(e) {
   //looking for the event list
   let day = e.currentTarget.querySelector("p").innerHTML;
-  updataSideBar(day);
+  updateSideBar(day);
   populateSidebar(e);
   showSidebar();
   e.stopPropagation();
   addExitListener();
-  hideTodo(); // TODO: Do not hide when clicking on current day number again
+  hideTodo(); 
 }
 
 /**
@@ -206,9 +201,7 @@ function viewDay(e) {
 function addExitListener() {
   document.addEventListener("click", function docClick(event) {
     if (!event.target.closest(".sidebar")) {
-      console.log(shadowClick + " addEventListener");
       if (shadowClick == 0) {
-        console.log("hidesidebar");
         hideSidebar();
       } else {
         shadowClick--;
@@ -221,27 +214,13 @@ function addExitListener() {
 }
 
 /**
- * @author Steven Chin
- * Adds event listener to hide sidebar upon clicking outside of sidebar
- */
-/*
- function addExitListener() {
-   document.addEventListener('click', e => {
-     if (!e.target.closest('.sidebar')) {
-       //console.log(shadowClick+"hidesidebar");
-       hideSidebar();
-       document.removeEventListener('click', arguments.callee);
-     }
-   });
- }*/
-
-/**
- * @author Steven Chin
+ * @author Steven Chin, Steven Khaw
  * Adds event listener to expand to-do list
  */
 function addExpandListener() {
-  const expandBtn = document.querySelector(".expand-tasks-btn");
-  expandBtn.addEventListener("click", () => {
+
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.addEventListener("click", () => {
     const todoList = document.querySelector(".sidebar-tasks");
     if (todoList.classList.contains(".sidebar-tasks-expanded")) {
       hideTodo();
@@ -252,10 +231,12 @@ function addExpandListener() {
 }
 
 /**
- * @author Steven Chin, Yangming Guan
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to expand to-do list and shrink event list
  */
 function showTodo() {
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.style.borderRadius = "0px 0px 0px 0px";
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "⌄";
   const todoList = document.querySelector(".sidebar-tasks");
@@ -279,10 +260,12 @@ function showTodo() {
 }
 
 /**
- * @author Steven Chin,Yangming Guan
+ * @author Steven Chin,Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
 function hideTodo() {
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.style.borderRadius = "0px 0px 30px 0px";
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "^";
   const todoList = document.querySelector(".sidebar-tasks");

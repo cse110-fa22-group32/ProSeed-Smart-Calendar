@@ -213,36 +213,63 @@ day block css setting for calendar
 }
 
 .event-block {
-  background-color: rgb(207, 174, 27);
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18.7622px;
+  line-height: 27px;
+  color: #000000;
+  
+  background-color: #54CB9C;
 
   margin: auto;
   width: 80%;
   height: 15%;
   border: 0.1em solid green;
   padding: 0.1em;
+  padding-left: 6px;
   vertical-align: middle;
-
+  border-radius: 62.5407px;
 }
 
 .task-block {
-  background-color: rgb(30, 230, 3);
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18.7622px;
+  line-height: 27px;
+  color: #000000;
+  
+  background-color: #309C71;
 
   margin: auto;
   width: 80%;
   height: 15%;
   border: 0.1em solid green;
   padding: 0.1em;
-
+  padding-left: 6px;
+  vertical-align: middle;
+  border-radius: 62.5407px;
 }
 
 .extra-block {
-  background-color: rgb(20, 133, 209);
+  font-family: 'Mochiy Pop One';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18.7622px;
+  line-height: 27px;
+  color: #000000;
+
+  background-color: #767AD5;
 
   margin: auto;
   width: 80%;
   height: 15%;
   border: 0.1em solid green;
   padding: 0.1em;
+  padding-left: 6px;
+  vertical-align: middle;
+  border-radius: 62.5407px;
 }
 
 #calendar-day-main {
