@@ -20,48 +20,48 @@ const testJson = `
      ],
      "eventsList" : [
          {
-           "startDay" : "11/01/22 11:11",
-           "endDay" : "11/02/22 11:11",
+           "startDay" : "12/01/22 9:11",
+           "endDay" : "12/01/22 10:11",
            "eventName":"event 1",
            "users":[0], 
            "location":"",
            "description":""
          },
          {
-           "startDay" : "11/01/22 11:11",
-           "endDay" : "11/02/22 11:11",
+           "startDay" : "12/01/22 10:11",
+           "endDay" : "12/01/22 11:11",
            "eventName":"event 2",
            "users":[0], 
            "location":"",
            "description":""
          },
          {
-           "startDay" : "11/03/22 11:11",
-           "endDay" : "11/04/22 11:11",
+           "startDay" : "12/03/22 11:11",
+           "endDay" : "12/03/22 11:31",
            "eventName":"event 2",
            "users":[0], 
            "location":"",
            "description":""
          },
          {
-           "startDay" : "10/01/22 11:11",
-           "endDay" : "10/02/22 11:11",
+           "startDay" : "11/01/22 10:11",
+           "endDay" : "11/01/22 11:11",
            "eventName":"e1",
            "users":[0], 
            "location":"",
            "description":""
          },
          {
-           "startDay" : "10/05/22 11:11",
-           "endDay" : "10/06/22 11:11",
+           "startDay" : "11/05/22 9:11",
+           "endDay" : "11/05/22 10:11",
            "eventName":"e4_test",
            "users":[0], 
            "location":"",
            "description":""
          },
          {
-           "startDay" : "10/05/22 13:11",
-           "endDay" : "10/06/22 15:11",
+           "startDay" : "11/05/22 11:11",
+           "endDay" : "11/05/22 11:21",
            "eventName":"e5_test",
            "users":[0], 
            "location":"",
@@ -72,7 +72,7 @@ const testJson = `
          {
              "taskName" : "task 2",
              "tags" : " ",
-             "dueDate" : "11/01/22 16:11",
+             "dueDate" : "12/01/22 16:11",
              "description" : " ",
              "complete" : "false",
              "users" : [0]
@@ -80,7 +80,7 @@ const testJson = `
          {
              "taskName" : "task 3",
              "tags" : " ",
-             "dueDate" : "11/01/22 11:11",
+             "dueDate" : "12/01/22 11:11",
              "description" : " ",
              "complete" : "false",
              "users" : [0]
@@ -88,7 +88,7 @@ const testJson = `
          {
              "taskName" : "task 1",
              "tags" : " ",
-             "dueDate" : "10/01/22 11:11",
+             "dueDate" : "11/01/22 11:11",
              "description" : " ",
              "complete" : "false",
              "users" : [0]
@@ -131,6 +131,7 @@ function init() {
   saveJsonToLocalStorage(calendarData[0]);
 
   // read local drive, to do that first...
+
   const uploadBtn = document.getElementById("upload-btn");
   uploadBtn.addEventListener("click", (e) => {
     const fileBtn = document.getElementById("files");

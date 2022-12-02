@@ -61,12 +61,12 @@ function add_event() {
   event_form.addEventListener('submit', () => {
     const data = new FormData(event_form);
 
-    let eventTitle = data.get('title');
-    let eventDate = data.get('date'); // format: 'YYYY-MM-DD'
-    let eventStart = data.get('start-time');
-    let eventEnd = data.get('end-time');
-    let eventLoc = data.get('location');
-    let eventDescription = data.get('description');
+    let eventTitle = data.get("event-title");
+    let eventDate = data.get("date"); // format: 'YYYY-MM-DD'
+    let eventStart = data.get("start-time");
+    let eventEnd = data.get("end-time");
+    let eventLoc = data.get("location");
+    let eventDescription = data.get("description");
 
     let eventLastTwoYear = Number(eventDate.substring(2, 4));
     let eventYear = Number(eventDate.substring(0, 4));
@@ -145,9 +145,10 @@ function add_todo() {
   todo_form.addEventListener('submit', () => {
     const data = new FormData(todo_form);
 
-    let taskTitle = data.get('title');
-    let taskDate = data.get('due-date'); // format: 'YYYY-MM-DDTHH:MM'
-    let taskDescription = data.get('description');
+    let taskTitle = data.get("task-title");
+    let taskDate = data.get("due-date"); // format: 'YYYY-MM-DDTHH:MM'
+    let taskDescription = data.get("description");
+
 
     let taskLastTwoYear = Number(taskDate.substring(2, 4));
     let taskYear = Number(taskDate.substring(0, 4));

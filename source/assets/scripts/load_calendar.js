@@ -209,6 +209,22 @@ function resetCalendarHTML() {
 }
 
 /**
+ * @author Yuelin Dai
+ * @summary draw calendar view based on current day and active calendar object
+ */
+function drawCalendar() {
+  let numWeeks = getWeekCount(currDay[0], currDay[1]);
+
+  // create day blocks
+  hideLastRow(numWeeks);
+
+  // populate day blocks with date number
+  loadCalendarHTML(currDay[0], currDay[1]);
+
+  calendarData[0].Show(currDay[0], currDay[1]);
+}
+
+/**
  * @author Christopher Han, Steven Khaw
  * @summary adds event listeners to buttons that traverse months
  */
@@ -222,7 +238,7 @@ function traverseMonthEventListener() {
   monthBtnUp.addEventListener("click", function () {
     //resetCalendarHTML();
 
-    if (currDay[1] === 1) {
+    if (Number(currDay[1]) === 1) {
       // go to previous year's December
       currDay[0]--;
       currDay[1] = 12;
@@ -236,19 +252,13 @@ function traverseMonthEventListener() {
       loadCalendarHTML(currDay[0], currDay[1]);
 
       calendarData[0].Show(currDay[0], currDay[1]);
+
+      //drawCalendar();
     } else {
       // go to previous month
       currDay[1]--;
 
-      numWeeks = getWeekCount(currDay[0], currDay[1]);
-
-      // create day blocks
-      hideLastRow(numWeeks);
-
-      // populate day blocks with date number
-      loadCalendarHTML(currDay[0], currDay[1]);
-
-      calendarData[0].Show(currDay[0], currDay[1]);
+      drawCalendar();
     }
 
     // auto save displayed date to local storage
@@ -258,11 +268,12 @@ function traverseMonthEventListener() {
   monthBtnDown.addEventListener("click", function () {
     //resetCalendarHTML();
 
-    if (currDay[1] === 12) {
+    if (Number(currDay[1]) === 12) {
       // go to next year's january
       currDay[0]++;
       currDay[1] = 1;
 
+
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
@@ -272,19 +283,13 @@ function traverseMonthEventListener() {
       loadCalendarHTML(currDay[0], currDay[1]);
 
       calendarData[0].Show(currDay[0], currDay[1]);
+      //drawCalendar();
+
     } else {
       // go to next month
       currDay[1]++;
 
-      numWeeks = getWeekCount(currDay[0], currDay[1]);
-
-      // create day blocks
-      hideLastRow(numWeeks);
-
-      // populate day blocks with date number
-      loadCalendarHTML(currDay[0], currDay[1]);
-
-      calendarData[0].Show(currDay[0], currDay[1]);
+      drawCalendar();
     }
 
     // auto save displayed date to local storage
@@ -321,6 +326,8 @@ function traverseYearEventListener() {
 
     // auto save displayed date to local storage
     saveDisplayDateToLocalStorage();
+    //drawCalendar();
+
   });
 
   yearBtnDown.addEventListener("click", function () {
@@ -352,4 +359,7 @@ function traverseYearEventListener() {
  */
 function displayDate() {
   return currDay;
+}
+    //drawCalendar();
+  });
 }

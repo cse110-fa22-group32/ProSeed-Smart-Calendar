@@ -1,47 +1,92 @@
-.title-container {
+@font-face {
+  font-family: "Mochiy Pop One";
+  src: url("../fonts/MochiyPopOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter-VariableFont.ttf");
+}
+
+body { 
+  background: url("../images/splash.png");
+  background-size: cover;
+}
+
+#title-container {
   text-align: center;
 }
 
-.input-text {
-  border-radius: 30px;
-  padding: 20px;
-  width: 100%;
+#title-header {
+  font-family: 'Mochiy Pop One', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 87px;
+  color: #54CB9C;
+}
+
+#title-caption {
+  font-family: 'Mochiy Pop One', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 36px;
+  color: #309C71;
+}
+
+#main-container {
+  width: 300px;
+  height: 320px;
+  padding: 50px;
+  margin: auto;
+  background: #F0FCEE;
+  border-radius: 50px;
+}
+
+#main-container-header {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 40px;
+  line-height: 24px;
+  color: #54CB9C;
+}
+
+#email-input-label, #password-input-label, #remember-box-label {
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: 20px;
+  line-height: 24px;
+  padding-bottom: 6px;
+  color: #000;
 }
 
-.input-button {
-  border-radius: 30px;
-  padding: 20px;
-  width: 100%;
+#email-input, #password-input {
+  box-sizing: border-box;
+  width: 300px;
+  height: 48px;
   font-size: 20px;
-  box-sizing: content-box;
-  margin: auto;
-  border-radius: 25em;
-  text-align: center;
+  padding: 16px;
+  background: #FFF;
+  border: 1px solid #309C71;
+  border-radius: 50px;
 }
 
-.main-container {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  border-radius: 25em;
-  padding: 20px;
-  width: 50%;
-  height: 15px;
+#remember-box {
+  background: #FFF;
+  border: 1px solid #309C71;
+  border-radius: 5px;
 }
 
-.button-container {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  text-align: center;
-  gap: 10px;
-  padding: 20px;
+#input-button {
+  width: 300px;
+  height: 60px;
+  font-size: 32px;
+  color: white;
+  background: #54CB9C;
+  border-radius: 50px;
 }
 
-button {
-  box-sizing: content-box;
-  margin: auto;
-  border-radius: 25em;
-  text-align: center;
-}
+
