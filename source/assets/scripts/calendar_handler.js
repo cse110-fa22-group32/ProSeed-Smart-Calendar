@@ -99,10 +99,24 @@ function add_event() {
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
+  const event_date = document.getElementById("date");
   const start_time_input = document.getElementById("start-time");
   const end_time_input = document.getElementById("end-time");
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
+
+  event_date.addEventListener('change', () => {
+    let inputDate = event_date.value.split('-');
+
+    for (let i = 0; i < inputDate.length; i++) {
+      inputDate[i] = Number(inputDate[i]);
+    }
+
+    if (inputDate[0] < 2000) {
+      alert('Events can only be set to year 2000 or after!');
+      event_date.value = ('2000-01-01');
+    }
+  });
 
   // event listener for edge case that event start time must be before end time on input change for start time
   start_time_input.addEventListener("change", () => {
@@ -145,9 +159,9 @@ function add_event() {
     let info = eventEditInfo.value.split(" ");
     //check if this action is edit.
     if (eventIsEdit.value === "true") {
-      console.log(calendarData[0]);
+      console.log(calendarData);
       let eventList =
-        calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].Events;
+        calendarData.years[info[1]].months[info[2]].days[info[3] - 1].Events;
       for (let i = 0; i < eventList.length; i++) {
         if (eventList[i].eventID === parseInt(info[0])) {
           eventList.splice(i, 1);
@@ -197,36 +211,36 @@ function add_event() {
     );
 
     // allocate empty year if needed
-    if (calendarData[0].years[eventLastTwoYear] == null) {
+    if (calendarData.years[eventLastTwoYear] == null) {
       // allocate 12 empty months
-      calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
-      calendarData[0].years[eventLastTwoYear].months = EMPTY_YEAR;
+      calendarData.years[eventLastTwoYear] = new Year(eventYear, []);
+      calendarData.years[eventLastTwoYear].months = EMPTY_YEAR;
     }
 
     // allocate empty month if needed
     if (
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1] == null
     ) {
       // allocate 31 empty days
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] =
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1] =
         new Month(eventMonth, indexToMonth(eventMonth), []);
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days =
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days =
         EMPTY_MONTH;
     }
 
     // allocate empty month if needed
     if (
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
         eventDay - 1
       ] == null
     ) {
       // allocate one day
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
         eventDay - 1
       ] = new Day(eventDay, indexToDay(eventDay), [], []);
     }
 
-    calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+    calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
       eventDay - 1
     ].events.push(newEvent);
 
@@ -237,10 +251,10 @@ function add_event() {
     numWeeks = getWeekCount(eventYear, eventMonth);
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
-    calendarData[0].Show(eventYear, eventMonth);
+    calendarData.Show(eventYear, eventMonth);
 
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
   });
   //display the dialog.
   add_event_btn.addEventListener("click", () => {
@@ -265,16 +279,31 @@ function add_todo() {
   const add_todo_dialog = document.getElementById("add-todo-dialog");
   const todo_form = add_todo_dialog.querySelector("#add-todo-form");
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
-
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
+  const due_date_input = document.getElementById('due-date');
+
+  due_date_input.addEventListener('change', () => {
+    console.log(due_date_input.value);
+    let dueDate = due_date_input.value.slice(0, 10).split('-');
+    console.log(dueDate);
+
+    for (let i = 0; i < dueDate.length; i++) {
+      dueDate[i] = Number(dueDate[i]);
+    }
+
+    if (dueDate[0] < 2000) {
+      alert('Tasks can only be set to year 2000 or after!');
+      due_date_input.value = ('2000-01-01T00:00');
+    }
+  });
 
   //when submit button is clicked in the form.
   todo_form.addEventListener("submit", () => {
     if (eventIsEdit.value === "true") {
       let info = eventEditInfo.value.split(" ");
       let taskList =
-        calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].tasks;
+        calendarData.years[info[1]].months[info[2]].days[info[3] - 1].tasks;
       for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].taskID === parseInt(info[0])) {
           taskList.splice(i, 1);
@@ -288,7 +317,7 @@ function add_todo() {
 
     let taskTitle = data.get("task-title");
     let taskDate = data.get("due-date"); // format: 'YYYY-MM-DDTHH:MM'
-    let taskDescription = data.get("description");
+    let taskDescription = data.get("todo-description");
 
     let taskLastTwoYear = Number(taskDate.substring(2, 4));
     let taskYear = Number(taskDate.substring(0, 4));
@@ -318,37 +347,37 @@ function add_todo() {
     );
 
     // allocate empty year if needed
-    if (calendarData[0].years[taskLastTwoYear] == null) {
+    if (calendarData.years[taskLastTwoYear] == null) {
       // allocate 12 empty months
-      calendarData[0].years[taskLastTwoYear] = new Year(taskYear, []);
-      calendarData[0].years[taskLastTwoYear].months = EMPTY_YEAR;
+      calendarData.years[taskLastTwoYear] = new Year(taskYear, []);
+      calendarData.years[taskLastTwoYear].months = EMPTY_YEAR;
     }
 
     // allocate empty month if needed
-    if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] == null) {
+    if (calendarData.years[taskLastTwoYear].months[taskMonth - 1] == null) {
       // allocate 31 empty days
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] = new Month(
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1] = new Month(
         taskMonth,
         indexToMonth(taskMonth),
         []
       );
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days =
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days =
         EMPTY_MONTH;
     }
 
     // allocate empty day if needed
     if (
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
         taskDay - 1
       ] == null
     ) {
       // allocate one day
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
         taskDay - 1
       ] = new Day(taskDay, indexToDay(taskDay), [], []);
     }
 
-    calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+    calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
       taskDay - 1
     ].tasks.push(newTask);
 
@@ -359,9 +388,9 @@ function add_todo() {
     numWeeks = getWeekCount(taskYear, taskMonth);
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
-    calendarData[0].Show(taskYear, taskMonth);
+    calendarData.Show(taskYear, taskMonth);
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
   });
 
   //display the dialog.
@@ -389,7 +418,7 @@ function logout() {
 
   logoutBtn.addEventListener("click", () => {
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
 
     logoutDialog.showModal();
   });
