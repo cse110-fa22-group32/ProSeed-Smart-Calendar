@@ -145,9 +145,9 @@ function add_event() {
     let info = eventEditInfo.value.split(" ");
     //check if this action is edit.
     if (eventIsEdit.value === "true") {
-      console.log(calendarData[0]);
+      console.log(calendarData);
       let eventList =
-        calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].Events;
+        calendarData.years[info[1]].months[info[2]].days[info[3] - 1].Events;
       for (let i = 0; i < eventList.length; i++) {
         if (eventList[i].eventID === parseInt(info[0])) {
           eventList.splice(i, 1);
@@ -196,36 +196,36 @@ function add_event() {
     );
 
     // allocate empty year if needed
-    if (calendarData[0].years[eventLastTwoYear] == null) {
+    if (calendarData.years[eventLastTwoYear] == null) {
       // allocate 12 empty months
-      calendarData[0].years[eventLastTwoYear] = new Year(eventYear, []);
-      calendarData[0].years[eventLastTwoYear].months = EMPTY_YEAR;
+      calendarData.years[eventLastTwoYear] = new Year(eventYear, []);
+      calendarData.years[eventLastTwoYear].months = EMPTY_YEAR;
     }
 
     // allocate empty month if needed
     if (
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] == null
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1] == null
     ) {
       // allocate 31 empty days
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1] =
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1] =
         new Month(eventMonth, indexToMonth(eventMonth), []);
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days =
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days =
         EMPTY_MONTH;
     }
 
     // allocate empty month if needed
     if (
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
         eventDay - 1
       ] == null
     ) {
       // allocate one day
-      calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+      calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
         eventDay - 1
       ] = new Day(eventDay, indexToDay(eventDay), [], []);
     }
 
-    calendarData[0].years[eventLastTwoYear].months[eventMonth - 1].days[
+    calendarData.years[eventLastTwoYear].months[eventMonth - 1].days[
       eventDay - 1
     ].events.push(newEvent);
 
@@ -236,10 +236,10 @@ function add_event() {
     numWeeks = getWeekCount(eventYear, eventMonth);
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(eventYear, eventMonth);
-    calendarData[0].Show(eventYear, eventMonth);
+    calendarData.Show(eventYear, eventMonth);
 
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
   });
   //display the dialog.
   add_event_btn.addEventListener("click", () => {
@@ -272,9 +272,9 @@ function add_todo() {
   todo_form.addEventListener("submit", () => {
     if (eventIsEdit.value === "true") {
       let info = eventEditInfo.value.split(" ");
-      console.log(calendarData[0]);
+      console.log(calendarData);
       let taskList =
-        calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].tasks;
+        calendarData.years[info[1]].months[info[2]].days[info[3] - 1].tasks;
       for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].taskID === parseInt(info[0])) {
           taskList.splice(i, 1);
@@ -317,37 +317,37 @@ function add_todo() {
     );
 
     // allocate empty year if needed
-    if (calendarData[0].years[taskLastTwoYear] == null) {
+    if (calendarData.years[taskLastTwoYear] == null) {
       // allocate 12 empty months
-      calendarData[0].years[taskLastTwoYear] = new Year(taskYear, []);
-      calendarData[0].years[taskLastTwoYear].months = EMPTY_YEAR;
+      calendarData.years[taskLastTwoYear] = new Year(taskYear, []);
+      calendarData.years[taskLastTwoYear].months = EMPTY_YEAR;
     }
 
     // allocate empty month if needed
-    if (calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] == null) {
+    if (calendarData.years[taskLastTwoYear].months[taskMonth - 1] == null) {
       // allocate 31 empty days
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1] = new Month(
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1] = new Month(
         taskMonth,
         indexToMonth(taskMonth),
         []
       );
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days =
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days =
         EMPTY_MONTH;
     }
 
     // allocate empty day if needed
     if (
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
         taskDay - 1
       ] == null
     ) {
       // allocate one day
-      calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+      calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
         taskDay - 1
       ] = new Day(taskDay, indexToDay(taskDay), [], []);
     }
 
-    calendarData[0].years[taskLastTwoYear].months[taskMonth - 1].days[
+    calendarData.years[taskLastTwoYear].months[taskMonth - 1].days[
       taskDay - 1
     ].tasks.push(newTask);
 
@@ -358,9 +358,9 @@ function add_todo() {
     numWeeks = getWeekCount(taskYear, taskMonth);
     hideLastRow(numWeeks); // create day blocks
     loadCalendarHTML(taskYear, taskMonth);
-    calendarData[0].Show(taskYear, taskMonth);
+    calendarData.Show(taskYear, taskMonth);
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
   });
 
   //display the dialog.
@@ -388,7 +388,7 @@ function logout() {
 
   logoutBtn.addEventListener("click", () => {
     // auto save calendar to local storage
-    saveJsonToLocalStorage(calendarData[0]);
+    saveJsonToLocalStorage(calendarData);
 
     logoutDialog.showModal();
   });
