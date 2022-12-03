@@ -116,7 +116,9 @@ function init() {
 
     // create a calendar object from multiple json
     calendarData = loadJson([tuesJson, thursJson]);
-    calendarData[0].Show(2022, 12);
+
+    let currDay = getCurrentDay();
+    calendarData[0].Show(currDay[0], currDay[1]);
 
     // simple tests for reading/writing json from/to local drive
 
