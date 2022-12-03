@@ -7,12 +7,7 @@
  * Last Modified : 2022-11-21 8:30 PM
  */
 
-
-/**
- * This is currently just a dummy version
- * TODO: Fix
- */
-
+//Create a dummy data array to store dummy calendars.
 let data_array =  [{
     "lastUpdated" : "10/12/2022",
     "calendarTitle" : "Personal",
@@ -207,94 +202,130 @@ let data_array =  [{
   }]
 
 
-
-// When the html is loaded
-document.addEventListener('DOMContentLoaded', function() {
-
+function dummyCalendarSetup(){
     //Load the information into local storage: DEMO:
     localStorage.setItem("calendars", JSON.stringify(data_array));
-
-    let calendars = getCalendarFromStorage();
-    // console.log(calendars[0].calendarTitle);
-    createView(calendars);
-
-    let createNewCalendar = document.querySelector("#new-calendar-button");
-    createNewCalendar.addEventListener("click", function(){
-      //Enable the form
-      document.getElementById("myForm").style.display = "block";
-      //Store the new empty json file into local storage.
-      
-      //Update view:
-      createView(calendars);
-    })
-
-    // let closeButton = document.querySelector("#btn-cancel");
-    // closeButton = this.addEventListener("click", function(){
-    //   //Hide the form
-    //   document.getElementById("myForm").style.display = "none";
-    // });
-
-    let submitButton = document.querySelector("#btn-submit");
-    submitButton = this.addEventListener("click", function(){
-      //Hide the form
-      //Grab the submissions.
-      let calendarName = document.getElementById("calendar-name").value;
-      //TODO: Fill out a json file with the calendar Titles.
-      console.log("calendarName");
-      //TODO: Store it into the local storage.
-
-    });
-
-    let uploadNewCalendar = document.querySelector("#upload-calendar-button");
-    uploadNewCalendar.addEventListener("click", function(){
-      //Store the new empty json file into local storage.
-      
-      //Update view:
-      createView(calendars);
-    });
-
-}, false);
-
-//Add calendars into middleGround containers.
-function createView(calendars){
-    let middleGroundContainer = document.querySelector("#Calendars");
-    middleGroundContainer.innerHTML = ""; // Clear the html first.
-    
-    for (let i = 0; i < calendars.length; i++){
-
-        // const calendar = document.createElement("calendar-block");
-        // calendar.data = calendars[i];
-        // console.log(calendars[i].calendarTitle);
-
-        let gridContainer = document.createElement("div");
-        gridContainer.className = "grid-item";
-
-        let article = document.createElement("article");
-
-        article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
-        <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].calendarTitle}</a> </p>
-        <p class="innerText"> Calendar ID : ${calendars[i].calendarID}</p>`;
-
-        // calendar.appendChild(article);
-        
-        gridContainer.appendChild(article);
-        middleGroundContainer.appendChild(gridContainer);
-
-    }
 }
 
 //Get calendar json from storage:
 function getCalendarFromStorage(){
-    if(!localStorage.getItem("calendars")){
-        return [];
-    }
-    return JSON.parse(localStorage.getItem("calendars"));
+  if(!localStorage.getItem("calendars")){
+      return [];
+  }
+  return JSON.parse(localStorage.getItem("calendars"));
 }
 
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
+//takes in a parameter calendar and save it to storage
+function saveNewCalendarToStorage(json_file){
+  let oldCalendarStorage = getCalendarFromStorage();
+  oldCalendarStorage.push(json_file);
+  localStorage.setItem('calendars', JSON.stringify(oldCalendarStorage));
+  localStorage.setItem('test', JSON.stringify(oldCalendarStorage));
+}
+
+//Add calendars into middleGround containers.
+function createView(calendars){
+
+  if (calendars == null){
+    return null;
+  }
+  else{
+    let middleGroundContainer = document.querySelector("#Calendars");
+    middleGroundContainer.innerHTML = ""; // Clear the html first.
+    
+    for (let i = 0; i < calendars.length; i++){
+        // const calendar = document.createElement("calendar-block");
+        // calendar.data = calendars[i];
+        // console.log(calendars[i].calendarTitle);
+        let gridContainer = document.createElement("div");
+        gridContainer.className = "grid-item";
+        let article = document.createElement("article");
+        article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
+        <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].title}</a> </p>
+        <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>`;
+        gridContainer.appendChild(article);
+        middleGroundContainer.appendChild(gridContainer);
+    }
+  }
+}
+
+function openForm(){
+    //Display the form:
+    document.getElementById("myForm").style.display = "block";  
 }
 
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
+
+
+// When the html is loaded
+document.addEventListener('DOMContentLoaded', function() {
+
+  // dummyCalendarSetup();
+
+  // Grab the calendar from local storage and save it into a variable.
+  let calendars = getCalendarFromStorage();
+  //Create view for the calendar Populate the calendar objects.
+  createView(calendars);
+
+  //Grab the buttons and their button ids.
+  let createNewCalendar = document.querySelector("#new-calendar-button");
+  let currentCalendarBtn = document.querySelector("#current-calendar-button");
+  let uploadNewCalendar = document.querySelector("#upload-calendar-button");
+  let submitButton = document.querySelector("#btn-submit");
+
+  submitButton.addEventListener("click", function(){
+    //Grab the submissions.
+    let calendarName = document.getElementById("calendar-name").value;
+    //TODO: Fill out a json file with the calendar Titles.
+    // console.log(calendarName);
+
+    // let Year, month, day = getCurrentDay()
+    // currentDate = Year + month + day;
+    // console.log(currentDate);
+
+    //TODO: Store it into the local storage.
+    let newCalendar = {
+      "lastUpdated": getCurrentDay()[0] + "/" + getCurrentDay()[1] + "/" + + getCurrentDay()[2],
+      "title": calendarName,
+      "calendarID": getCurrentDay()[0] + getCurrentDay()[1] + getCurrentDay()[2] + "-" + calendarName,
+      "usersList": [],
+      "eventsList": [],
+      "tasksList": [],
+      "usersList" : [
+        
+      ],
+      "eventsList" : [
+        
+      ],
+      "tasksList" : [
+        
+      ]
+    }
+    saveNewCalendarToStorage(newCalendar);
+    });
+
+    // Open up a form and create a button .
+    createNewCalendar.addEventListener("click", function(){
+      // //Enable the form
+      document.getElementById("myForm").style.display = "block";
+      //Store the new empty json file into local storage.
+
+      //Update view:
+      createView(calendars);
+    })
+
+    currentCalendarBtn.addEventListener("click", function(){
+      //Go to calendar.html
+      location.href = "./calendar.html";
+    })
+
+    uploadNewCalendar.addEventListener("click", function(){      
+      //Update view:
+      createView(calendars);
+    });
+
+    console.log(getCurrentDay()[0]);
+
+}, false);
