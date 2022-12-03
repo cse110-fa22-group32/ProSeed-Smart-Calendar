@@ -258,10 +258,7 @@ function updateSideBar(day) {
             let deleteBtun = event_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
-              var result = window.confirm("Do you want to delete this event?");
-              if (result) {
-                callDelete(btnEvnet, currentYear, currentMont, day, true);
-              }
+              callDelete(btnEvnet, currentYear, currentMont, day, true);
             });
 
             let editButton = event_block.shadowRoot.querySelector("#edit");
@@ -284,10 +281,8 @@ function updateSideBar(day) {
             let deleteBtun = todo_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
+              callDelete(btnEvnet, currentYear, currentMont, day, false);
               var result = window.confirm("Do you want to delete this task?");
-              if (result) {
-                callDelete(btnEvnet, currentYear, currentMont, day, false);
-              }
             });
             let editButton = todo_block.shadowRoot.querySelector("#edit");
             editButton.addEventListener("click", (btnEvnet) => {
