@@ -36,7 +36,7 @@ function loadCalendarData(inputData) {
  * @author Christopher Han and others
  * @summary to assign the value of global variable currDay
  *
- * @param {[string]} inputDay date of calendar to be initialized
+ * @param {calendar} inputDay date of calendar to be initialized
  */
 
 function initializeCalendarDisplay(inputDay) {
