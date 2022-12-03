@@ -10,6 +10,8 @@ Not every page from the prototype is included in this specification. There are b
 
 ![#36b080](https://placehold.co/25x25/36b080/36b080.png) `#36b080` 60% = `rgba(54, 176, 128, 0.6)`
 
+![#d7f7d1](https://placehold.co/25x25/d7f7d1/d7f7d1.png) `#d7f7d1`
+
 ![#c2dbbd](https://placehold.co/25x25/c2dbbd/c2dbbd.png) `#c2dbbd`
 
 ![#f0fcee](https://placehold.co/25x25/f0fcee/f0fcee.png) `#f0fcee` 60% = `rgba(240, 252, 238, 0.6)`
@@ -67,7 +69,10 @@ Not every page from the prototype is included in this specification. There are b
   - Semi Bold
 ## Sign In Pages
 ### Splash Image
-![splash](images/splash.png)
+#### PNG
+![splash png](images/splash.png)
+#### Vector
+![splash svg](images/splash.svg)
 ### Sign in
 ![sign in](images/sign-in-spec.png)
 ## Middleground
