@@ -243,6 +243,7 @@ function updateSideBar(day) {
           count = 0;
           for (let task of days.Tasks) {
             dotoArray.push({
+              checked: task.complete,
               id: task.taskID,
               title: task.TaskName,
               due: task.DueDate,
@@ -279,6 +280,27 @@ function updateSideBar(day) {
             let todo_block = document.createElement("todo-block");
             todo_block.todoData = task;
             let deleteBtun = todo_block.shadowRoot.querySelector("#delete");
+            let checkBox = todo_block.shadowRoot.querySelector("#check");
+            checkBox.checked = task["checked"];
+
+            //chcek box save the check state.
+            checkBox.addEventListener("change", (event) => {
+              let eventID = event.currentTarget
+                .getRootNode()
+                .host.shadowRoot.querySelector("#Id");
+              let taskList =
+                calendarData[0].years[currentYear].months[currentMont].days[
+                  day - 1
+                ].tasks;
+              let id = parseInt(eventID.innerHTML);
+              for (let i = 0; i < taskList.length; i++) {
+                if (taskList[i].taskID === id) {
+                  console.log(checkBox.checked);
+                  taskList[i].complete = checkBox.checked;
+                }
+              }
+            });
+
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
               callDelete(btnEvnet, currentYear, currentMont, day, false);

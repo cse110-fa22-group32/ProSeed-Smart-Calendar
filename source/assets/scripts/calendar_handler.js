@@ -273,7 +273,6 @@ function add_todo() {
   todo_form.addEventListener("submit", () => {
     if (eventIsEdit.value === "true") {
       let info = eventEditInfo.value.split(" ");
-      console.log(calendarData[0]);
       let taskList =
         calendarData[0].years[info[1]].months[info[2]].days[info[3] - 1].tasks;
       for (let i = 0; i < taskList.length; i++) {
