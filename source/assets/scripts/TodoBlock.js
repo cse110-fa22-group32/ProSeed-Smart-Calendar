@@ -87,6 +87,7 @@ class TodoBlock extends HTMLElement {
   set todoData(data) {
     const article = this.shadowRoot.querySelector("div");
     article.innerHTML = `
+        <input type="checkbox" id="check">
         <h3 id="Id">${data.id}</h3>
         <h3 id="title">${data.title}</h3>
         <h4 id="start">${data.due}</h4>

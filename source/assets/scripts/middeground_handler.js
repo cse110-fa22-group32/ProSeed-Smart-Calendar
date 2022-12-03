@@ -87,7 +87,7 @@ const testingJson2 = `
 `
 
 function init() {
-  isNewCalendar();
+  //isNewCalendar();
   validateDict();
   addDictPair("2022123-16",testingJson);
   addDictPair("2022123-18",testingJson2);

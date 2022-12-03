@@ -168,6 +168,7 @@ function add_event() {
         }
       }
       eventIsEdit.value = "false";
+      updateSideBar(info[3]);
     }
     const data = new FormData(event_form);
 
@@ -301,7 +302,6 @@ function add_todo() {
   todo_form.addEventListener("submit", () => {
     if (eventIsEdit.value === "true") {
       let info = eventEditInfo.value.split(" ");
-      console.log(calendarData);
       let taskList =
         calendarData.years[info[1]].months[info[2]].days[info[3] - 1].tasks;
       for (let i = 0; i < taskList.length; i++) {
@@ -310,6 +310,7 @@ function add_todo() {
         }
       }
       eventIsEdit.value = "false";
+      updateSideBar(info[3]);
     }
 
     const data = new FormData(todo_form);
