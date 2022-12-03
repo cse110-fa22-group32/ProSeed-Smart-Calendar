@@ -282,7 +282,6 @@ function updateSideBar(day) {
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
               callDelete(btnEvnet, currentYear, currentMont, day, false);
-              var result = window.confirm("Do you want to delete this task?");
             });
             let editButton = todo_block.shadowRoot.querySelector("#edit");
             editButton.addEventListener("click", (btnEvnet) => {
