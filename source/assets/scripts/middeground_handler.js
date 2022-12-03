@@ -134,7 +134,7 @@ function addDictPair(calendarKey, calendarJson) {
   let calendarObj = loadJson([calendarJson]);
 
   // loads calendarJSON into diction with respective key
-  calendarDict[String(calendarKey)] = JSON.parse(calendarObj.Export([-1],[-1],[-1]));
+  calendarDict[String(calendarKey)] = JSON.parse(calendarObj[0].Export([-1],[-1],[-1]));
 
   // store updated dict back to localStorage
   localStorage.setItem("calendarDict",JSON.stringify(calendarDict));
@@ -187,9 +187,9 @@ function loadCalendarFromDict() {
     loadCalendarData(calendarObj);
   
     let currDay = getCurrentDay();
-    calendarData.Show(currDay[0], currDay[1]);
+    calendarData[0].Show(currDay[0], currDay[1]);
   }
   
   // auto save calendar to local storage
-  saveJsonToLocalStorage(calendarData);
+  saveJsonToLocalStorage(calendarData[0]);
 }

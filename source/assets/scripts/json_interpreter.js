@@ -193,8 +193,7 @@ function loadJson(jsonStrAr) {
     Object.values(userNames)
   );
 
-  /* return [calendar, Object.values(userList)]; */
-  return calendar;
+  return [calendar, Object.values(userList)];
 }
 
 /**
@@ -241,7 +240,7 @@ function getJsonFromLocalStorage() {
 
   // initialize the display of the calendar based on the last displayed date
   initializeCalendarDisplay(displayDate);
-  calendarData.Show(displayDate[0], displayDate[1]);
+  calendarData[0].Show(displayDate[0], displayDate[1]);
 
   return true;
 }

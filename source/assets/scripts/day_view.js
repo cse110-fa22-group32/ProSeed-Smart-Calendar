@@ -54,7 +54,7 @@ function callDelete(event, year, month, day, isEvent) {
   let id = parseInt(eventID.innerHTML);
   if (isEvent) {
     let eventList =
-      calendarData.years[year].months[month].days[day - 1].Events;
+      calendarData[0].years[year].months[month].days[day - 1].Events;
     for (let i = 0; i < eventList.length; i++) {
       if (eventList[i].eventID === id) {
         eventList.splice(i, 1);
@@ -62,7 +62,7 @@ function callDelete(event, year, month, day, isEvent) {
     }
   } else {
     let taskList =
-      calendarData.years[year].months[month].days[day - 1].tasks;
+      calendarData[0].years[year].months[month].days[day - 1].tasks;
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].taskID === id) {
         taskList.splice(i, 1);
@@ -70,9 +70,9 @@ function callDelete(event, year, month, day, isEvent) {
     }
   }
   updateSideBar(day);
-  calendarData.Show(currDay[0], currDay[1]);
+  calendarData[0].Show(currDay[0], currDay[1]);
   shadowClick = 0;
-  saveJsonToLocalStorage(calendarData);
+  saveJsonToLocalStorage(calendarData[0]);
 }
 
 /**
@@ -124,7 +124,7 @@ function callEdit(event, year, month, day, isEvent) {
   let id = parseInt(eventID.innerHTML);
   if (isEvent) {
     let eventList =
-      calendarData.years[year].months[month].days[day - 1].Events;
+      calendarData[0].years[year].months[month].days[day - 1].Events;
     for (let i = 0; i < eventList.length; i++) {
       if (eventList[i].eventID === id) {
         //put all the info to the dialog.
@@ -151,7 +151,7 @@ function callEdit(event, year, month, day, isEvent) {
     }
   } else {
     let taskList =
-      calendarData.years[year].months[month].days[day - 1].tasks;
+      calendarData[0].years[year].months[month].days[day - 1].tasks;
     for (let i = 0; i < taskList.length; i++) {
       if (taskList[i].taskID === id) {
         //put all the info to the dialog.
@@ -175,7 +175,7 @@ function callEdit(event, year, month, day, isEvent) {
     }
   }
   updateSideBar(day);
-  calendarData.Show(currDay[0], currDay[1]);
+  calendarData[0].Show(currDay[0], currDay[1]);
 }
 
 /**
@@ -205,8 +205,8 @@ function updateSideBar(day) {
   const sidebarTitleElem = document.querySelector(".sidebar-title");
   sidebarTitleElem.textContent = currDayString;
 
-  if (calendarData.years[currentYear] != null) {
-    if (calendarData.years[currentYear].months[currentMont] != null) {
+  if (calendarData[0].years[currentYear] != null) {
+    if (calendarData[0].years[currentYear].months[currentMont] != null) {
       //clear side bar
       let sideBarEvent = document.querySelector(".sidebar-events");
       sideBarEvent.innerHTML = "";
@@ -216,12 +216,12 @@ function updateSideBar(day) {
       if (currDayElement.classList.contains("othermonth") == false) {
         //let day = e.currentTarget.querySelector('p').innerHTML;
         if (
-          calendarData.years[String(currDay[0] - 2000)].months[
+          calendarData[0].years[String(currDay[0] - 2000)].months[
             String(currDay[1] - 1)
           ].days[day - 1] != null
         ) {
           let days =
-            calendarData.years[String(currDay[0] - 2000)].months[
+            calendarData[0].years[String(currDay[0] - 2000)].months[
               String(currDay[1] - 1)
             ].days[day - 1];
           let eventArray = [];
@@ -289,7 +289,7 @@ function updateSideBar(day) {
                 .getRootNode()
                 .host.shadowRoot.querySelector("#Id");
               let taskList =
-                calendarData.years[currentYear].months[currentMont].days[
+                calendarData[0].years[currentYear].months[currentMont].days[
                   day - 1
                 ].tasks;
               let id = parseInt(eventID.innerHTML);

@@ -87,6 +87,11 @@ title bar and head css setting for calendar
 #leaf-icon {
   width: 45px;
   height: 45px;
+  margin-left: 10px;
+}
+
+#leaf-link {
+  color: transparent;
 }
 
 #calendar-title-bar-header {

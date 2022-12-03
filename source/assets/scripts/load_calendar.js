@@ -222,7 +222,7 @@ function drawCalendar() {
   // populate day blocks with date number
   loadCalendarHTML(currDay[0], currDay[1]);
 
-  calendarData.Show(currDay[0], currDay[1]);
+  calendarData[0].Show(currDay[0], currDay[1]);
 }
 
 /**
@@ -252,7 +252,7 @@ function traverseMonthEventListener() {
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
 
-      calendarData.Show(currDay[0], currDay[1]);
+      calendarData[0].Show(currDay[0], currDay[1]);
 
       //drawCalendar();
     } else {
@@ -283,7 +283,7 @@ function traverseMonthEventListener() {
       // populate day blocks with date number
       loadCalendarHTML(currDay[0], currDay[1]);
 
-      calendarData.Show(currDay[0], currDay[1]);
+      calendarData[0].Show(currDay[0], currDay[1]);
       //drawCalendar();
 
     } else {
@@ -323,7 +323,7 @@ function traverseYearEventListener() {
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
 
-    calendarData.Show(currDay[0], currDay[1]);
+    calendarData[0].Show(currDay[0], currDay[1]);
 
     // auto save displayed date to local storage
     saveDisplayDateToLocalStorage();
@@ -345,7 +345,7 @@ function traverseYearEventListener() {
     // populate day blocks with date number
     loadCalendarHTML(currDay[0], currDay[1]);
 
-    calendarData.Show(currDay[0], currDay[1]);
+    calendarData[0].Show(currDay[0], currDay[1]);
 
     // auto save displayed date to local storage
     saveDisplayDateToLocalStorage();
