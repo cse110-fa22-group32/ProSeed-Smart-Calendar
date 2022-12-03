@@ -2,8 +2,8 @@
 Link to high fidelity prototype: [Figma](https://www.figma.com/proto/vJAL9jNYD1M3XEjxaxH0cd/ProSeed-Prototype?page-id=0%3A1&node-id=3%3A3&viewport=623%2C-370%2C1.79&scaling=scale-down&starting-point-node-id=3%3A3)
 
 Not every page from the prototype is included in this specification. There are broadly three main divisions (sign in, middleground, calendar), and pages within the same division can be assumed to have the same color scheme unless otherwise specified in this document.
-## Color Scheme
 
+## Color Scheme
 ![#54cb9c](https://placehold.co/25x25/54cb9c/54cb9c.png) `#54cb9c` 60% = `rgba(84, 203, 156, 0.6)`
 
 ![#309c71](https://placehold.co/25x25/309c71/309c71.png) `#309c71` 60% = `rgba(48, 156, 113, 0.6)`
@@ -67,23 +67,30 @@ Not every page from the prototype is included in this specification. There are b
 - [Inter](https://fonts.google.com/specimen/Inter?query=inter)
   - Regular
   - Semi Bold
+
 ## Sign In Pages
 ### Splash Image
 #### PNG
 ![splash png](images/splash.png)
 #### Vector
 ![splash svg](images/splash.svg)
-### Sign in
-![sign in](images/sign-in-spec.png)
+
+### Color Specifications
+#### Index
+![sign in colors 1](images/sign-in-spec-colors-1.png)
+
 ## Middleground
-### Main Page
-![middleground](images/middleground-spec.png)
-### Delete Pages
-#### Delete Page 1
-![delete-1](images/delete-spec-1.png)
-#### Delete Page 2
-![delete-2](images/delete-spec-2.png)
-### Delete Page 3
-![delete-3](images/delete-spec-3.png)
-## Share Pages
-![share-1](images/share-spec-1.png)
+### Color Specifications
+#### Main Page
+![middleground](images/middleground-spec-colors.png)
+
+#### Delete Pages
+##### Delete Page 1
+![delete-1](images/delete-calendar-spec-colors-1.png)
+##### Delete Page 2
+![delete-2](images/delete-calendar-spec-colors-2.png)
+#### Delete Page 3
+![delete-3](images/delete-calendar-spec-colors-3.png)
+
+#### Share Pages
+![share-1](images/share-calendar-spec-colors-1.png)
