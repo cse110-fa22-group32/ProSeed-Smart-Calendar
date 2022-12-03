@@ -289,13 +289,12 @@ function updateSideBar(day) {
                 .getRootNode()
                 .host.shadowRoot.querySelector("#Id");
               let taskList =
-                calendarData[0].years[currentYear].months[currentMont].days[
+                calendarData.years[currentYear].months[currentMont].days[
                   day - 1
                 ].tasks;
               let id = parseInt(eventID.innerHTML);
               for (let i = 0; i < taskList.length; i++) {
                 if (taskList[i].taskID === id) {
-                  console.log(checkBox.checked);
                   taskList[i].complete = checkBox.checked;
                 }
               }
