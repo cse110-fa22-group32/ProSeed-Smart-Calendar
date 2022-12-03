@@ -99,10 +99,24 @@ function add_event() {
   const add_event_dialog = document.getElementById("add-event-dialog");
   const event_form = add_event_dialog.querySelector("#add-event-form");
   const event_dialog_cancel = add_event_dialog.querySelector(".cancel");
+  const event_date = document.getElementById("date");
   const start_time_input = document.getElementById("start-time");
   const end_time_input = document.getElementById("end-time");
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
+
+  event_date.addEventListener('change', () => {
+    let inputDate = event_date.value.split('-');
+
+    for (let i = 0; i < inputDate.length; i++) {
+      inputDate[i] = Number(inputDate[i]);
+    }
+
+    if (inputDate[0] < 2000) {
+      alert('Events can only be set to year 2000 or after!');
+      event_date.value = ('2000-01-01');
+    }
+  });
 
   // event listener for edge case that event start time must be before end time on input change for start time
   start_time_input.addEventListener("change", () => {
@@ -264,9 +278,24 @@ function add_todo() {
   const add_todo_dialog = document.getElementById("add-todo-dialog");
   const todo_form = add_todo_dialog.querySelector("#add-todo-form");
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
-
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
+  const due_date_input = document.getElementById('due-date');
+
+  due_date_input.addEventListener('change', () => {
+    console.log(due_date_input.value);
+    let dueDate = due_date_input.value.slice(0, 10).split('-');
+    console.log(dueDate);
+
+    for (let i = 0; i < dueDate.length; i++) {
+      dueDate[i] = Number(dueDate[i]);
+    }
+
+    if (dueDate[0] < 2000) {
+      alert('Tasks can only be set to year 2000 or after!');
+      due_date_input.value = ('2000-01-01T00:00');
+    }
+  });
 
   //when submit button is clicked in the form.
   todo_form.addEventListener("submit", () => {
