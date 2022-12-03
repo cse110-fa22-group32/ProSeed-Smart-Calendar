@@ -287,7 +287,7 @@ function add_todo() {
 
     let taskTitle = data.get("task-title");
     let taskDate = data.get("due-date"); // format: 'YYYY-MM-DDTHH:MM'
-    let taskDescription = data.get("description");
+    let taskDescription = data.get("todo-description");
 
     let taskLastTwoYear = Number(taskDate.substring(2, 4));
     let taskYear = Number(taskDate.substring(0, 4));
