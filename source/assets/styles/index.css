@@ -9,7 +9,8 @@
 }
 
 body { 
-  background: url("../images/splash.png");
+  background: url("../images/splash.svg");
+  background-color: #d7f7d1;
   background-size: cover;
 }
 
@@ -22,7 +23,7 @@ body {
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
-  line-height: 87px;
+  line-height: 88px;
   color: #54CB9C;
 }
 
