@@ -330,6 +330,8 @@ function button setting for calendar
 
 /* Help popup container - can be anything you want */
 .popup {
+  font-family: Inter, sans-serif;
+  font-style: normal;
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -337,6 +339,7 @@ function button setting for calendar
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  margin-top: 10px;
 }
 
 /* The actual popup */
@@ -347,7 +350,7 @@ function button setting for calendar
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 0;
+  padding: 10px;
   position: absolute;
   z-index: 1;
   bottom: 125%;

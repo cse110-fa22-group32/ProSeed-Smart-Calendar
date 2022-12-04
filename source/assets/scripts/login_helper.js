@@ -31,3 +31,12 @@ function isStrongPassword(password) {
   const pwRegex = /^[a-zA-Z]\w{3,19}$/;
   return pwRegex.test(password);
 }
+
+/**
+ * @author Haoyi Wang
+ * @summary Shows popup
+ */
+function helpPopup() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}

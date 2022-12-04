@@ -210,7 +210,7 @@
           alt="plus circle icon"
         />
         <span class="tail-label">Add task</span>
-        <span class="popup" onclick="myFunction()">
+        <span class="popup" onclick="helpPopup()">
           <img 
           id="help-btn" 
           class="calendar-tail-btn"
@@ -223,13 +223,6 @@
             particular date, click on the "Add Event" or "Add Task" buttons 
             at the bottom of your screen. 
           </span>
-          <script>
-            // When the user clicks on <div>, open the popup
-            function myFunction() {
-              var popup = document.getElementById("myPopup");
-              popup.classList.toggle("show");
-            }
-          </script>
         </span>
       </div>
       
@@ -372,9 +365,6 @@
           </div>
         </form>
       </dialog>
-
-      
-
     </footer>
   </body>
 </html>

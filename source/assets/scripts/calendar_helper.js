@@ -125,3 +125,12 @@ function getCurrentDay() {
   return [String(date.getFullYear()),String(date.getMonth() + 1),
       String(date.getDate())];
 }
+
+/**
+ * @author Haoyi Wang
+ * @summary Shows popup
+ */
+ function helpPopup() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
