@@ -7,6 +7,7 @@
  * Last Modified : 2022-11-21 8:30 PM
  */
 
+
 /**
  * @author Guan Li
  * @summary Create a dummy calendar to use. Now discarded.
@@ -14,8 +15,8 @@
  * @return NONE
  */
 function dummyCalendarSetup(){
-    //Load the information into local storage: DEMO:
-    localStorage.setItem("calendars", JSON.stringify(data_array));
+  //Load the information into local storage: DEMO:
+  localStorage.setItem("calendars", JSON.stringify(data_array));
 }
 
 /**
@@ -60,25 +61,25 @@ function createView(calendars){
     middleGroundContainer.innerHTML = ""; // Clear the html first.
     
     for (let i = 0; i < calendars.length; i++){
-        // const calendar = document.createElement("calendar-block");
-        // calendar.data = calendars[i];
-        // console.log(calendars[i].calendarTitle);
-        let gridContainer = document.createElement("div");
-        gridContainer.className = "grid-item";
-        let article = document.createElement("article");
-        article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
-        <p class="title"> <a> Title : ${calendars[i].title}</a> </p>
-        <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>
-        <div class="row">
-        <div class="column">
-        <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}> Enter calendar </button>
-        </div>
-        <div class="column">
-        <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}> Remove calendar </button>
-        </div>
-        </div>`;
-        gridContainer.appendChild(article);
-        middleGroundContainer.appendChild(gridContainer);
+      // const calendar = document.createElement("calendar-block");
+      // calendar.data = calendars[i];
+      // console.log(calendars[i].calendarTitle);
+      let gridContainer = document.createElement("div");
+      gridContainer.className = "grid-item";
+      let article = document.createElement("article");
+      article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
+      <p class="title"> <a> Title : ${calendars[i].title}</a> </p>
+      <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>
+      <div class="row">
+      <div class="column">
+      <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}> Enter calendar </button>
+      </div>
+      <div class="column">
+      <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}> Remove calendar </button>
+      </div>
+      </div>`;
+      gridContainer.appendChild(article);
+      middleGroundContainer.appendChild(gridContainer);
     }
   }
 }
