@@ -77,20 +77,36 @@ Not every page from the prototype is included in this specification. There are b
 
 ### Color Specifications
 #### Index
-![sign in colors 1](images/sign-in-spec-colors-1.png)
+![sign in page colors](images/specs-colors/sign-in-spec-colors-1.png)
+
+### Font Specifications
+#### Index
+![sign in page fonts](images/specs-fonts/sign-in-spec-fonts.png)
 
 ## Middleground
 ### Color Specifications
 #### Main Page
-![middleground](images/middleground-spec-colors.png)
+![middleground colors](images/specs-colors/middleground-spec-colors.png)
 
 #### Delete Pages
-##### Delete Page 1
-![delete-1](images/delete-calendar-spec-colors-1.png)
-##### Delete Page 2
-![delete-2](images/delete-calendar-spec-colors-2.png)
-#### Delete Page 3
-![delete-3](images/delete-calendar-spec-colors-3.png)
+![delete calendar select page 1 colors](images/specs-colors/delete-calendar-spec-colors-1.png)
+![delete calendar select page 2 colors](images/specs-colors/delete-calendar-spec-colors-2.png)
+![delete calendar confirmation page colors](images/specs-colors/delete-calendar-spec-colors-3.png)
 
 #### Share Pages
-![share-1](images/share-calendar-spec-colors-1.png)
+![share calendar select page colors](images/specs-colors/share-calendar-spec-colors-1.png)
+
+### Font Specifications
+#### Main Page
+![middleground empty fonts](images/specs-fonts/middleground-spec-fonts-1.png)
+![middleground fonts](images/specs-fonts/middleground-spec-fonts-2.png)
+
+#### Create Page
+![create calendar fonts](images/specs-fonts/create-calendar-spec-fonts.png)
+
+#### Import Page
+![import calendar fonts](images/specs-fonts/import-calendar-spec-fonts.png)
+
+#### Delete Pages
+![delete calendar select page fonts](images/specs-fonts/delete-spec-fonts-1.png)
+![delete calendar confirmation page fonts](images/specs-fonts/delete-spec-fonts-2.png)
