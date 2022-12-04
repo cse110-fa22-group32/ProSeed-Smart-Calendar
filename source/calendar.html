@@ -210,13 +210,87 @@
           alt="plus circle icon"
         />
         <span class="tail-label">Add task</span>
-        <img 
+        <span class="popup" onclick="myFunction()">
+          <img 
           id="help-btn" 
           class="calendar-tail-btn"
           src="assets/images/icons/help-circle.svg" 
           alt="help icon"
-        />
+          />
+          <span class="popuptext" id="myPopup">This is the calendar. 
+            To traverse the calendar, use the ↓ or ↑ found on the top right of 
+            your screen. To add an event or a task to your to-do list on a 
+            particular date, click on the "Add Event" or "Add Task" buttons 
+            at the bottom of your screen. 
+          </span>
+          <script>
+            // When the user clicks on <div>, open the popup
+            function myFunction() {
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+            }
+          </script>
+          <style>
+            /* Popup container - can be anything you want */
+            .popup {
+              position: relative;
+              display: inline-block;
+              cursor: pointer;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+            }
+            
+            /* The actual popup */
+            .popup .popuptext {
+              visibility: hidden;
+              width: 160px;
+              background-color: #555;
+              color: #fff;
+              text-align: center;
+              border-radius: 6px;
+              padding: 8px 0;
+              position: absolute;
+              z-index: 1;
+              bottom: 125%;
+              left: 50%;
+              margin-left: -80px;
+            }
+            
+            /* Popup arrow */
+            .popup .popuptext::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              margin-left: -5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: #555 transparent transparent transparent;
+            }
+            
+            /* Toggle this class - hide and show the popup */
+            .popup .show {
+              visibility: visible;
+              -webkit-animation: fadeIn 1s;
+              animation: fadeIn 1s;
+            }
+            
+            /* Add animation (fade in the popup) */
+            @-webkit-keyframes fadeIn {
+              from {opacity: 0;} 
+              to {opacity: 1;}
+            }
+            
+            @keyframes fadeIn {
+              from {opacity: 0;}
+              to {opacity:1 ;}
+            }
+          </style>
+        </span>
       </div>
+      
 
       <dialog id="confirm-delete">
         <form method="dialog">
@@ -327,9 +401,6 @@
                 required
               /> </label
             ><br>
-            <!-- <label for="location">Location:
-            <input name="location" class="location">
-          </label><br> -->
             <label for="todo-description"
               >Description:<br>
               <textarea
@@ -360,80 +431,8 @@
         </form>
       </dialog>
 
-      <div class="popup" onclick="myFunction()">Need help? Click me!
-        <span class="popuptext" id="myPopup">Now you see the calendar page. To add an event or a to-do 
-          list on a particular date, click the date, then select the functionality "Add Event" or "Add To-Do List" 
-          and fill in the corresponding information. To share or export your calendar, click "Share or Export".  
-          To create a new user, click "Create User". To change the user, click "Change User". To download the page, 
-          click"↓". To upload files from your device, click "↑".
-        </span>
-      </div>
-      <script>
-        // When the user clicks on <div>, open the popup
-        function myFunction() {
-          var popup = document.getElementById("myPopup");
-          popup.classList.toggle("show");
-        }
-      </script>
-      <style>
-        /* Popup container - can be anything you want */
-        .popup {
-          position: relative;
-          display: inline-block;
-          cursor: pointer;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-        
-        /* The actual popup */
-        .popup .popuptext {
-          visibility: hidden;
-          width: 160px;
-          background-color: #555;
-          color: #fff;
-          text-align: center;
-          border-radius: 6px;
-          padding: 8px 0;
-          position: absolute;
-          z-index: 1;
-          bottom: 125%;
-          left: 50%;
-          margin-left: -80px;
-        }
-        
-        /* Popup arrow */
-        .popup .popuptext::after {
-          content: "";
-          position: absolute;
-          top: 100%;
-          left: 50%;
-          margin-left: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: #555 transparent transparent transparent;
-        }
-        
-        /* Toggle this class - hide and show the popup */
-        .popup .show {
-          visibility: visible;
-          -webkit-animation: fadeIn 1s;
-          animation: fadeIn 1s;
-        }
-        
-        /* Add animation (fade in the popup) */
-        @-webkit-keyframes fadeIn {
-          from {opacity: 0;} 
-          to {opacity: 1;}
-        }
-        
-        @keyframes fadeIn {
-          from {opacity: 0;}
-          to {opacity:1 ;}
-        }
-      </style>
-    </div>
+      
+
     </footer>
   </body>
 </html>
