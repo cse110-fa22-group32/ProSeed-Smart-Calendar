@@ -1,11 +1,10 @@
+<!DOCTYPE html>
 <!--
   This html document is set to be the title page that should first open
   when the user logs in. It contains options to sign in with the corresponding
   fields, link to forgot password page, and create an account page.
 -->
-<!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,29 +14,32 @@
   <link rel="stylesheet" href="./assets/styles/index.css">
   <script type="text/javascript" src="assets/scripts/login_helper.js"></script>
   <script type="text/javascript" src="assets/scripts/login_handler.js"></script>
+  <script type="application/javascript" src="assets/scripts/json_interpreter.js"></script>
+  <script type="application/javascript" src="assets/scripts/User.js"></script>
+  <script type="text/javascript" src="assets/scripts/Calendar.js"></script>
 </head>
 
 <body>
-  <div class="title-container">
-    <h1 class="title-text">ProSeed</h1>
-    <h3 class="title-caption">The Smart Calendar and To-Do List</h3>
+  <div id="title-container">
+    <h1 id="title-header">ProSeed</h1>
+    <h3 id="title-caption">The Smart Calendar and To-Do List</h3>
   </div>
-  <div class="main-container">
-    <h1 class="main-container-header">Sign In</h1>
-    <form class="login-form" id="login-form">
-      <div class="input-container">
-        <input class="input-text" type="text" placeholder="Email Address" name="email" required><br><br>
-        <input class="input-text" type="password" placeholder="Password" name="password" required>
-        <input class="remember-checkbox" type="checkbox" id="remember">
-        <label for="remember">Remember Me</label>
-        <button class="input-button" type="submit">Login</button>
+
+  <div id="main-container">
+    <div id="main-container-header">Sign In</div><br>
+    <form id="login-form">
+      <div id="input-container">
+        <div id="email-input-label">Username or email</div>
+        <input id="email-input" type="text" required><br><br>
+        <div id="password-input-label">Password</div>
+        <input id="password-input" type="password" required><br><br>
+        <input id="remember-box" type="checkbox">
+        <span id="remember-box-label">Keep me signed in</span><br><br>
+        <button id="input-button" type="submit">Sign In</button>
       </div>
     </form>
-    <div class="button-container">
-      <button class="create-account-button" type="button" onclick="location.href='create-account.html'">Create an Account</button>
-      <button class="forgot-password-button" type="button" onclick="location.href='forgot-password.html'">Forgot Password?</button>
-    </div>
   </div>
+    
 </body>
 
 </html>
