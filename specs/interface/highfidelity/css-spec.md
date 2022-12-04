@@ -69,47 +69,47 @@ Not every page from the prototype is included in this specification. There are b
   - Semi Bold
 
 ## Sign In Pages
-### Splash Image
+### Splash Images
 #### PNG
 ![splash png](images/splash.png)
 #### Vector
 ![splash svg](images/splash.svg)
 
-### Color Specifications
-#### Index
+### Sign In Color Specifications
+#### Index Colors
 ![sign in page colors](images/specs-colors/sign-in-spec-colors-1.png)
 
-### Font Specifications
-#### Index
+### Sign In Font Specifications
+#### Index Fonts
 ![sign in page fonts](images/specs-fonts/sign-in-spec-fonts.png)
 
 ## Middleground
-### Color Specifications
-#### Main Page
+### Middleground Color Specifications
+#### Main Page Colors
 ![middleground colors](images/specs-colors/middleground-spec-colors.png)
 
-### Import Page
+### Import Page Colors
 ![import calendar page colors](images/specs-colors/import-calendar-spec-colors.png)
 
-#### Delete Pages
+#### Delete Pages Colors
 ![delete calendar select page 1 colors](images/specs-colors/delete-calendar-spec-colors-1.png)
 ![delete calendar select page 2 colors](images/specs-colors/delete-calendar-spec-colors-2.png)
 ![delete calendar confirmation page colors](images/specs-colors/delete-calendar-spec-colors-3.png)
 
-#### Share Pages
+#### Share Pages Colors
 ![share calendar select page colors](images/specs-colors/share-calendar-spec-colors-1.png)
 
-### Font Specifications
-#### Main Page
+### Middleground Font Specifications
+#### Main Page Fonts
 ![middleground empty fonts](images/specs-fonts/middleground-spec-fonts-1.png)
 ![middleground fonts](images/specs-fonts/middleground-spec-fonts-2.png)
 
-#### Create Page
+#### Create Page Fonts
 ![create calendar fonts](images/specs-fonts/create-calendar-spec-fonts.png)
 
-#### Import Page
+#### Import Page Fonts
 ![import calendar fonts](images/specs-fonts/import-calendar-spec-fonts.png)
 
-#### Delete Pages
+#### Delete Pages Fonts
 ![delete calendar select page fonts](images/specs-fonts/delete-spec-fonts-1.png)
 ![delete calendar confirmation page fonts](images/specs-fonts/delete-spec-fonts-2.png)
