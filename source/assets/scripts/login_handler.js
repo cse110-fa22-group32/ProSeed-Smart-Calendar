@@ -87,7 +87,7 @@ function ensureEmail() {
       isStrongPassword(passwordInputElement.value) &&
       authenticated
     ) {
-      formElement.action = "middle-ground.html";
+      location.href = "./middle-ground.html";
     } else {
       alert(
         "Incorrect username/password combination provided or incorrectly formatted"
