@@ -37,6 +37,6 @@ function isStrongPassword(password) {
  * @summary Shows popup
  */
 function helpPopup() {
-  var popup = document.getElementById("myPopup");
+  var popup = document.getElementById("my-popup");
   popup.classList.toggle("show");
 }
