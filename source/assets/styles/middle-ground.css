@@ -12,39 +12,39 @@
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background: #54CB9C;
+  background: #54cb9c;
 }
 
-b{
+b {
   background: white;
 }
 
-h2{
+h2 {
   background: white;
   font-size: 30;
 }
 
-label{
-  background: #54CB9C;
+label {
+  background: #54cb9c;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
-  background: #54CB9C;
+  background: #54cb9c;
   padding: 10px;
   align-self: center;
 }
 
 .grid-item {
   margin: auto;
-  background: #36B080;
+  background: #36b080;
   border-radius: 30px;
   padding: 20px;
   font-size: 30px;
   text-align: center;
   border-radius: 15px;
-  border: #FFFFFF solid;
+  border: #ffffff solid;
 }
 
 a {
@@ -84,26 +84,26 @@ p.title {
   -webkit-box-orient: vertical;
   background: #36b080;
 
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
   line-height: 30px;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 p:not(.title),
 span,
 time {
   background: #36b080;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 30px;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #button {
@@ -113,11 +113,10 @@ time {
   font-family: tahoma;
   margin-top: 1px;
   margin-right: 2px;
-  position:absolute;
-  top:0;
-  right:0;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-
 
 #calendar-title-bar {
   width: 100%;
@@ -145,7 +144,7 @@ time {
   margin-left: 10px;
 }
 
-.title-button{
+.title-button {
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   color: #fff;
@@ -156,7 +155,7 @@ time {
   padding-right: 10px;
   background: #54cb9c;
   border-radius: 50px;
-  border: #FFFFFF solid;
+  border: #ffffff solid;
 }
 
 #calendar-title-bar-conponent {
@@ -197,7 +196,8 @@ time {
 }
 
 /* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
+.form-container input[type="text"],
+.form-container input[type="password"] {
   width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -206,20 +206,21 @@ time {
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
   background-color: #ddd;
   outline: none;
 }
 
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   opacity: 0.8;
 }
 
@@ -229,13 +230,14 @@ time {
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover,
+.open-button:hover {
   opacity: 1;
 }
 
 /* why is this not working? TODO: */
-.key-button{
-  background-color: #4CAF50; /* Green */
+.key-button {
+  background-color: #4caf50; /* Green */
   border: black;
   color: white;
   padding: 10px 15px;
@@ -251,11 +253,11 @@ time {
 }
 
 #remove-calendar {
-  background: #9C3030;
+  background: #9c3030;
   border-radius: 50px;
 }
 
-.key-button:hover{
+.key-button:hover {
   background-color: #3c8b3f; /* Green */
   border: black;
   color: white;
@@ -285,5 +287,5 @@ time {
   margin: auto;
   height: 100%;
   width: 100%;
-  background-color: #36B080;
+  background-color: #36b080;
 }
