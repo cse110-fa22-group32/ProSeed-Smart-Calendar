@@ -1,6 +1,6 @@
 /**
  * middleGround.js
- * @author Guan Li
+ * @author Guan Li, Steven Khaw
  * @summary File is used to populate calendar into middle ground for calendar view.
  * 
  * Created at : 2022-11-21 2:30 PM
@@ -10,8 +10,6 @@
 /**
  * @author Guan Li
  * @summary Get calenar json file from storage.
- * 
- * @return NONE
  */
 function getCalendarFromStorage(){
   if(!localStorage.getItem("calendars")){
@@ -23,49 +21,61 @@ function getCalendarFromStorage(){
 /**
  * @author Guan Li
  * @summary takes in a parameter calendar and save it to storage
- * 
- * @return NONE
  */
 function saveNewCalendarToStorage(json_file){
   let oldCalendarStorage = getCalendarFromStorage();
   oldCalendarStorage.push(json_file);
-  localStorage.setItem('calendars', JSON.stringify(oldCalendarStorage));
-  localStorage.setItem('test', JSON.stringify(oldCalendarStorage));
+  localStorage.setItem("calendars", JSON.stringify(oldCalendarStorage));
 }
 
 /**
- * @author Guan Li
+ * @author Guan Li, Steven Khaw
  * @summary Add all the calendar to middle ground from the local storage
- * 
- * @return NONE
  */
 function createView(calendars){
 
-  if (calendars == null){
-    return null;
+  if (calendars == null) {
+    return;
   }
-  else{
+  else {
     let middleGroundContainer = document.querySelector("#Calendars");
     middleGroundContainer.innerHTML = ""; // Clear the html first.
     
     for (let i = 0; i < calendars.length; i++){
-      // const calendar = document.createElement("calendar-block");
-      // calendar.data = calendars[i];
-      // console.log(calendars[i].calendarTitle);
       let gridContainer = document.createElement("div");
       gridContainer.className = "grid-item";
       let article = document.createElement("article");
-      article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
-      <p class="title"> <a> Title : ${calendars[i].title}</a> </p>
-      <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>
-      <div class="row">
-      <div class="column">
-      <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}> Enter calendar </button>
-      </div>
-      <div class="column">
-      <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}> Remove calendar </button>
-      </div>
-      </div>`;
+      if (!calendars[i][0]) {
+        article.innerHTML = `
+        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <p class="title">Title: ${calendars[i].title}</p>
+        <p class="innerText">Last Updated: ${calendars[i].lastUpdated}</p>
+        <div class="row">
+          <div class="column">
+            <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}>Open calendar</button>
+          </div>
+          <div class="column">
+            <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}>Delete calendar</button>
+          </div>
+        </div>
+        `;
+      } else {
+        article.innerHTML = `
+        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <p class="title">Title: ${calendars[i][0].title}</p>
+        <p class="innerText">Last Updated: ${calendars[i][0].lastUpdated}</p>
+        <div class="row">
+          <div class="column">
+            <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i][0].calendarID}>Open calendar</button>
+          </div>
+          <div class="column">
+            <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i][0].calendarID}>Delete calendar</button>
+          </div>
+        </div>
+        `;
+      }
+      
+
       gridContainer.appendChild(article);
       middleGroundContainer.appendChild(gridContainer);
     }
@@ -75,8 +85,6 @@ function createView(calendars){
 /**
  * @author Guan Li
  * @summary Open the form for user input
- * 
- * @return NONE
  */
 function openForm(){
   //Display the form:
@@ -86,8 +94,6 @@ function openForm(){
 /**
  * @author Guan Li
  * @summary Close the form for user input
- * 
- * @return NONE
  */
 function closeForm() {
   document.getElementById("myForm").style.display = "none";
@@ -146,21 +152,17 @@ document.addEventListener('DOMContentLoaded', function() {
       let newCalendar = {
         "lastUpdated": getCurrentDay()[0] + "/" + getCurrentDay()[1] + "/" + + getCurrentDay()[2],
         "title": calendarName,
-        "calendarID": getCurrentDay()[0] + getCurrentDay()[1] + getCurrentDay()[2] + "-" + calendarName,
+        "calendarID": getCurrentDay()[0] + getCurrentDay()[1] + getCurrentDay()[2] + "-" + String(calendarName.length),
         "usersList": [],
         "eventsList": [],
-        "tasksList": [],
-        "usersList" : [
-          
-        ],
-        "eventsList" : [
-          
-        ],
-        "tasksList" : [
-          
-        ]
+        "tasksList": []
       }
+
+      validateDict();
+      addDictPair(String(newCalendar.calendarID),JSON.stringify(newCalendar));
+
       saveNewCalendarToStorage(newCalendar);
+      calendars = getCalendarFromStorage();
       createView(calendars);
     }
     });
@@ -185,14 +187,19 @@ document.addEventListener('DOMContentLoaded', function() {
         var file = e.target.files[0];
         if (file.type == "application/json"){
           const object = await parseJsonFile(file);
-          // console.log(object)
+
+          validateDict();
+          addDictPair(String(object[0].calendarID),JSON.stringify(object[0]));
+
           saveNewCalendarToStorage(object);
           location.reload();
         } 
       }
+
       input.click();
       
       //Update view:
+      calendars = getCalendarFromStorage();
       createView(calendars);
     });
 
@@ -200,16 +207,48 @@ document.addEventListener('DOMContentLoaded', function() {
     //Grab all enter calendar.
     const enterCalendarBtn = document.querySelectorAll(".key-button");
 
-    enterCalendarBtn.forEach(enterCalendarBtn =>{
+    enterCalendarBtn.forEach((enterCalendarBtn) => {
       enterCalendarBtn.addEventListener("click", event=>{
-        console.log(event.target.name);
-        if(event.target.id == "enter-calendar"){
+
+        // if enter button is clicked
+        if (event.target.id == "enter-calendar") {
+
+          // updates key of calendar to view
+          removeKey();
+          storeKey(event.target.name);
+
+          //clears jsonStr from localStorage
+          isNewCalendar();
+
 
           location.href = "./calendar.html";
         }
-        // else if(event.target.id == "remove-calendar"){
-        //   remove calendar
-        // }
+
+        // if remove button is clicked
+        else if(event.target.id == "remove-calendar"){
+
+          // removes key from dictionary 
+          removeDictPair(event.target.name);
+
+          // removes calendar from middle-ground localStorage
+          for (let i = 0; i < calendars.length; i++) {
+            if (!calendars[i][0]) {
+              if (calendars[i].calendarID == event.target.name) {
+                calendars.splice(i,1);
+                localStorage.setItem("calendars",JSON.stringify(calendars));
+                location.reload();
+                createView(calendars);
+              }
+            } else {
+              if (calendars[i][0].calendarID == event.target.name) {
+                calendars.splice(i,1);
+                localStorage.setItem("calendars",JSON.stringify(calendars));
+                location.reload();
+                createView(calendars);
+              }
+            }
+          }
+        }
       });
     });
 }, false);

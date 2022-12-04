@@ -254,6 +254,7 @@ function getJsonFromLocalStorage() {
 
 function saveJsonToLocalStorage(calendarData) {
   localStorage.setItem("jsonStr", calendarData.Export([-1], [-1], [-1]));
+  addDictPair(String(calendarData.calendarID),calendarData.Export([-1], [-1], [-1]));
   saveDisplayDateToLocalStorage();
 }
 
