@@ -29,7 +29,11 @@ jobs:
       - name: Prepare Test
         run: npm install --save-dev jest babel-jest @babel/core @babel/preset-env puppeteer jest-puppeteer
 
+      # Runs a single command using the runners shell
+      - name: Unit Test
+        run:  npm test __tests__/calendar_helper.test.js
+
       # Runs a set of commands using the runners shell
       - name: E2E test
         run: |
-          npm test __tests__/demo.test.js
+          npm test __tests__/login.test.js
