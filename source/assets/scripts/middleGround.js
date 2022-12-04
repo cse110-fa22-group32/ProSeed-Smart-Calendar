@@ -7,18 +7,6 @@
  * Last Modified : 2022-11-21 8:30 PM
  */
 
-
-/**
- * @author Guan Li
- * @summary Create a dummy calendar to use. Now discarded.
- * 
- * @return NONE
- */
-function dummyCalendarSetup(){
-  //Load the information into local storage: DEMO:
-  localStorage.setItem("calendars", JSON.stringify(data_array));
-}
-
 /**
  * @author Guan Li
  * @summary Get calenar json file from storage.
@@ -113,11 +101,11 @@ function closeForm() {
  */
 async function parseJsonFile(file) {
   return new Promise((resolve, reject) => {
-    const fileReader = new FileReader()
-    fileReader.onload = event => resolve(JSON.parse(event.target.result))
-    fileReader.onerror = error => reject(error)
-    fileReader.readAsText(file)
-  })
+    const fileReader = new FileReader();
+    fileReader.onload = event => resolve(JSON.parse(event.target.result));
+    fileReader.onerror = error => reject(error);
+    fileReader.readAsText(file);
+  });
 }
 
 /**
@@ -132,9 +120,6 @@ function goToCalendar(){
 
 // When the html is loaded
 document.addEventListener('DOMContentLoaded', function() {
-
-  // dummyCalendarSetup();
-
   // Grab the calendar from local storage and save it into a variable.
   let calendars = getCalendarFromStorage();
   //Create view for the calendar Populate the calendar objects.
@@ -222,19 +207,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
           location.href = "./calendar.html";
         }
-        else if(event.target.id == "remove-calendar"){
-
-        }
+        // else if(event.target.id == "remove-calendar"){
+        //   remove calendar
+        // }
       });
     });
-
-
-    // //------------------------------------------------------
-    // let All_Buttons = document.querySelector('#key-button');
-    // All_Buttons.onclick=e=>
-    // {
-    //   if (e.target.id!='key-button') return // ignore other clicks on area
-    //     console.log(`You selected: ${e.target.id.toUpperCase()}`)
-    // }
-
 }, false);
