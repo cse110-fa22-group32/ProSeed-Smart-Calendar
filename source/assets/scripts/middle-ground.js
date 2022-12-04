@@ -168,19 +168,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Open up a form to ask for user new input.
-    createNewCalendar.addEventListener("click", function(){
+    createNewCalendar.addEventListener("click", function() {
       // //Enable the form
       document.getElementById("myForm").style.display = "block";
     })
 
     // Direct you straight to current Calendar.html
-    currentCalendarBtn.addEventListener("click", function(){
+    currentCalendarBtn.addEventListener("click", function() {
       //Go to calendar.html
       location.href = "./calendar.html";
     })
 
     // Open up a view and update
-    uploadNewCalendar.addEventListener("click", function(){
+    uploadNewCalendar.addEventListener("click", function() {
       var input = document.createElement('input');
       input.type = 'file';
       input.onchange = async e => { 
