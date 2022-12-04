@@ -2,6 +2,20 @@
     font-family: sans-serif;
     margin: 0;
     padding: 0;
+    background-color: lightgreen;
+}
+
+b{
+  background-color: white;
+}
+
+h2{
+  background-color: white;
+  font-size: 30;
+}
+
+label{
+  background-color: white;
 }
 
 article{
@@ -180,3 +194,8 @@ time {
     opacity: 1;
   }
   
+  /* why is this not working? TODO: */
+  .key-button{
+    padding: 10px 24px;
+    background-color: red;
+  }
