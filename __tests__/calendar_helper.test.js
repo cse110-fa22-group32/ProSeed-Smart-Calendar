@@ -50,6 +50,6 @@ test('getWeekCount', () => {
 });
 
 test('getCurrentDay', () => {
-	// whatever day it is today
-	expect(calendar_helper.getCurrentDay()).toStrictEqual(["2022","12","2"]);
+	let today = new Date();
+	expect(calendar_helper.getCurrentDay()).toStrictEqual([`${today.getFullYear()}` ,`${today.getMonth() + 1}`,`${today.getDate()}`]);
 });
