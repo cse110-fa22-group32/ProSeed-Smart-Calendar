@@ -11,9 +11,16 @@ let currDay;
 
 // Starts the program, all function calls trace back here
 function init() {
+  
   // currDay format = [YYYY,MM,DD]
   currDay = getCurrentDay();
   initializeCalendarDisplay(currDay);
+
+  // clears jsonStr from localStorage
+  isNewCalendar();
+
+  // loads calendar based on current key stored
+  loadCalendarFromDict();
 
   // adds event listeners to buttons
   traverseMonthEventListener();

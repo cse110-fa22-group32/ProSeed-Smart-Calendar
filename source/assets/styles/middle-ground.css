@@ -1,0 +1,288 @@
+@font-face {
+  font-family: "Mochiy Pop One";
+  src: url("../fonts/MochiyPopOne-Regular.ttf");
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/Inter-VariableFont.ttf");
+}
+
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #54cb9c;
+}
+
+b {
+  background: white;
+}
+
+h2 {
+  background: white;
+  font-size: 30;
+}
+
+label {
+  background: #54cb9c;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  background: #54cb9c;
+  padding: 10px;
+  align-self: center;
+}
+
+.grid-item {
+  margin: auto;
+  background: #36b080;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 15px;
+  border: #fff solid;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+article {
+  background-color: #36b080;
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: 120px 30px 30px 50px 10px;
+  height: auto;
+  row-gap: 5px;
+  padding: 0 16px 16px;
+  width: 180px;
+  margin: auto;
+}
+
+p.texts {
+  height: 32px;
+  line-height: 16px;
+  padding-top: 4px;
+  overflow: hidden;
+}
+
+p.inner-text {
+  color: white !important;
+}
+
+p.title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  background: #36b080;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  color: #fff;
+}
+
+p:not(.title),
+span,
+time {
+  background: #36b080;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+}
+
+#button {
+  line-height: 12px;
+  width: 18px;
+  font-size: 8pt;
+  font-family: Inter, sans-serif;
+  margin-top: 1px;
+  margin-right: 2px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#calendar-title-bar {
+  width: 100%;
+  background: #309c71;
+  display: flex;
+  justify-content: space-between;
+}
+
+#calendar-title-bar-header {
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 48px;
+  padding-top: 12px;
+  padding-bottom: 6px;
+  color: #fff;
+  background: #309c71;
+}
+
+#leaf-icon {
+  background: #309c71;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.title-button {
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
+  color: #fff;
+  margin: 10px;
+  width: 120px;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #54cb9c;
+  border-radius: 50px;
+  border: #fff solid;
+}
+
+#calendar-title-bar-conponent {
+  background: #309c71;
+  display: flex;
+  justify-content: center;
+}
+
+/* Adding Form to the button */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+  opacity: 1;
+}
+
+/* why is this not working? TODO: */
+.key-button {
+  background-color: #4caf50; /* Green */
+  border: black;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#enter-calendar {
+  background: #309c71;
+  border-radius: 50px;
+}
+
+#remove-calendar {
+  background: #9c3030;
+  border-radius: 50px;
+}
+
+.key-button:hover {
+  background-color: #3c8b3f; /* Green */
+  border: black;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  background: #36b080;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  margin: auto;
+  align-self: center;
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#calander-icon {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  background-color: #36b080;
+}
