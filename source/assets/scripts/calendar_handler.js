@@ -105,16 +105,16 @@ function add_event() {
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
 
-  event_date.addEventListener('change', () => {
-    let inputDate = event_date.value.split('-');
+  event_date.addEventListener("change", () => {
+    let inputDate = event_date.value.split("-");
 
     for (let i = 0; i < inputDate.length; i++) {
       inputDate[i] = Number(inputDate[i]);
     }
 
     if (inputDate[0] < 2000) {
-      alert('Events can only be set to year 2000 or after!');
-      event_date.value = ('2000-01-01');
+      alert("Events can only be set to year 2000 or after!");
+      event_date.value = "2000-01-01";
     }
   });
 
@@ -281,11 +281,11 @@ function add_todo() {
   const todo_dialog_cancel = add_todo_dialog.querySelector(".cancel");
   const eventEditInfo = document.getElementById("edit-info");
   const eventIsEdit = document.getElementById("is-edit");
-  const due_date_input = document.getElementById('due-date');
+  const due_date_input = document.getElementById("due-date");
 
-  due_date_input.addEventListener('change', () => {
+  due_date_input.addEventListener("change", () => {
     console.log(due_date_input.value);
-    let dueDate = due_date_input.value.slice(0, 10).split('-');
+    let dueDate = due_date_input.value.slice(0, 10).split("-");
     console.log(dueDate);
 
     for (let i = 0; i < dueDate.length; i++) {
@@ -293,8 +293,8 @@ function add_todo() {
     }
 
     if (dueDate[0] < 2000) {
-      alert('Tasks can only be set to year 2000 or after!');
-      due_date_input.value = ('2000-01-01T00:00');
+      alert("Tasks can only be set to year 2000 or after!");
+      due_date_input.value = "2000-01-01T00:00";
     }
   });
 

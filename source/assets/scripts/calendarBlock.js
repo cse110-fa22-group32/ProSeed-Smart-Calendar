@@ -2,31 +2,29 @@
  * CalendarBlock.js
  * @author Guan Li
  * @summary A shadow DOM to implement the calendar blocks.
- * 
+ *
  * Created at : 2022-11-21 2:30 PM
  * Last Modified : 2022-11-21 8:30 PM
  */
-
 
 /**
  * THIS FILE DOSN"T WORK. DON"T LOOK
  */
 
- class CalendarBlock extends HTMLElement {
-    // Called once when document.createElement('recipe-card') is called, or
-    // the element is written into the DOM directly as <recipe-card>
-    constructor() {
-  
-      //Inheritation: Initlaize the objects.
-      super(); // Inheret everything from HTMLElement
-  
-      //Attach the shadow DOM to this Web Component (leave the mode open)
-      let shadowElement = this.attachShadow({mode:"open"})
-      //Create an <article> element - This will hold our markup once our data is set
-      let article = document.createElement("article");
-      //Create a style element - This will hold all of the styles for the Web Component
-      let style = document.createElement("style");
-      style.textContent = `
+class CalendarBlock extends HTMLElement {
+  // Called once when document.createElement('recipe-card') is called, or
+  // the element is written into the DOM directly as <recipe-card>
+  constructor() {
+    //Inheritation: Initlaize the objects.
+    super(); // Inheret everything from HTMLElement
+
+    //Attach the shadow DOM to this Web Component (leave the mode open)
+    let shadowElement = this.attachShadow({ mode: "open" });
+    //Create an <article> element - This will hold our markup once our data is set
+    let article = document.createElement("article");
+    //Create a style element - This will hold all of the styles for the Web Component
+    let style = document.createElement("style");
+    style.textContent = `
       * {
       font-family: sans-serif;
       margin: 0;
@@ -93,32 +91,32 @@
         font-size: 12px;
       }
     `;
-      //Insert all of the styles into the <style> element you just made
+    //Insert all of the styles into the <style> element you just made
     //   const linkElem = document.createElement("link");
-    //   linkElem.setAttribute("href", "../styles/calendarBlock.css");  
-      // Append the <style> and <article> elements to the Shadow DOM
-      shadowElement.append(style);
-      shadowElement.append(article);
-    }
-    /**
-     * Called when the .data property is set on this element.
-     * @param {Object} data - The data to pass into the <recipe-card>, must be of the
-     *                        following format:
-     *                        {
-     *                          "lastUpdated" : "",
-     *                          "title" : "Work's calendar",
-     *                          "calendarID" : "",
-     *                        }
-     */
-    set data(data){
-        if (!data) return;
-        let article = this.shadowRoot.querySelector("article");
+    //   linkElem.setAttribute("href", "../styles/calendarBlock.css");
+    // Append the <style> and <article> elements to the Shadow DOM
+    shadowElement.append(style);
+    shadowElement.append(article);
+  }
+  /**
+   * Called when the .data property is set on this element.
+   * @param {Object} data - The data to pass into the <recipe-card>, must be of the
+   *                        following format:
+   *                        {
+   *                          "lastUpdated" : "",
+   *                          "title" : "Work's calendar",
+   *                          "calendarID" : "",
+   *                        }
+   */
+  set data(data) {
+    if (!data) return;
+    let article = this.shadowRoot.querySelector("article");
     //     article.innerHTML = `<img src= "../middle_ground_test_file_temp/calendarIcon.png" alt= "calendar">
     //     <p class="title"> <a href="../calendar.html">${data["title"]}</a> </p>
     //   <p class="organization">${data["lastUpdated"]}</p>
     //   <p class="ingredients">${data["calendarID"]}</p>`;
-        article.innerHTML = `<p>HELLO WORLD</p>`;
-    }
- }
+    article.innerHTML = `<p>HELLO WORLD</p>`;
+  }
+}
 
- customElements.define("calendar-block", CalendarBlock);
+customElements.define("calendar-block", CalendarBlock);

@@ -1,8 +1,8 @@
 /**
  * middleground_handler.js
  * @author Steven Khaw
- * @summary 
- * 
+ * @summary
+ *
  * Created at : 2022-12-2 10:00 PM
  * Last Modified : 2022-12-3 2:00 AM
  */
@@ -10,26 +10,25 @@
 // Run the init() function when the page has loaded
 window.addEventListener("DOMContentLoaded", init);
 
-function init() {
-}
+function init() {}
 
 /**
  * @author Steven Khaw
- * @summary creates dictionary in local storage if it does not exist 
+ * @summary creates dictionary in local storage if it does not exist
  */
 function validateDict() {
   let calendarDict = localStorage.getItem("calendarDict");
-  
-  // if calendarDict DNE in localStorage, create it 
-  if (!calendarDict) localStorage.setItem("calendarDict",JSON.stringify({}));
+
+  // if calendarDict DNE in localStorage, create it
+  if (!calendarDict) localStorage.setItem("calendarDict", JSON.stringify({}));
 }
 
 /**
  * @author Steven Khaw
  * @summary adds or updates key and value pair to local storage dictionary
- * 
- * @param {string} calendarKey 
- * @param {string} calendarJson 
+ *
+ * @param {string} calendarKey
+ * @param {string} calendarJson
  */
 function addDictPair(calendarKey, calendarJson) {
   let calendarDict = localStorage.getItem("calendarDict");
@@ -52,10 +51,12 @@ function addDictPair(calendarKey, calendarJson) {
   let calendarObj = loadJson([calendarJson]);
 
   // loads calendarJSON into dictionary with respective key
-  calendarDict[String(calendarKey)] = JSON.parse(calendarObj[0].Export([-1],[-1],[-1]));
+  calendarDict[String(calendarKey)] = JSON.parse(
+    calendarObj[0].Export([-1], [-1], [-1])
+  );
 
   // store updated dict back to localStorage
-  localStorage.setItem("calendarDict",JSON.stringify(calendarDict));
+  localStorage.setItem("calendarDict", JSON.stringify(calendarDict));
 }
 
 function removeDictPair(calendarKey) {
@@ -76,17 +77,17 @@ function removeDictPair(calendarKey) {
   }
 
   // store updated dict back to localStorage
-  localStorage.setItem("calendarDict",JSON.stringify(calendarDict));
+  localStorage.setItem("calendarDict", JSON.stringify(calendarDict));
 }
 
 /**
  * @author Steven Khaw
  * @summary stores calendarKey into localStorage
- * 
- * @param {string} calendarKey 
+ *
+ * @param {string} calendarKey
  */
 function storeKey(calendarKey) {
-  localStorage.setItem("loadCalendarKey",calendarKey);
+  localStorage.setItem("loadCalendarKey", calendarKey);
 }
 
 /**
@@ -107,35 +108,34 @@ function isNewCalendar() {
 
 /**
  * @author Steven Khaw, Christopher Han
- * @summary loads calendar based on what is stored in loadCalendarKey in 
+ * @summary loads calendar based on what is stored in loadCalendarKey in
  * local storage
  */
 function loadCalendarFromDict() {
-
   // when there's no json file in localStorage, load testJson
   if (!getJsonFromLocalStorage()) {
     let loadCalendarKey = localStorage.getItem("loadCalendarKey");
     let calendarDict = localStorage.getItem("calendarDict");
-  
+
     // check to ensure items exist in localStorage
     if (!loadCalendarKey || !calendarDict) {
       console.error("key or dictionary does not exist in localStorage");
     }
-  
+
     // stores dictionary from localStorage into var
     calendarDict = JSON.parse(calendarDict);
-  
+
     let calendarJson = JSON.stringify(calendarDict[String(loadCalendarKey)]);
-  
+
     // creates Calendar obj with calendarJson
     let calendarObj = loadJson([calendarJson]);
-  
+
     loadCalendarData(calendarObj);
-  
+
     let currDay = getCurrentDay();
     calendarData[0].Show(currDay[0], currDay[1]);
   }
-  
+
   // auto save calendar to local storage
   saveJsonToLocalStorage(calendarData[0]);
 }
@@ -144,7 +144,7 @@ function loadCalendarFromDict() {
  * @author Guan Li
  * @summary takes in a parameter calendar and save it to storage
  */
- function saveNewCalendarToStorage(json_file) {
+function saveNewCalendarToStorage(json_file) {
   let oldCalendarStorage = getCalendarFromStorage();
   oldCalendarStorage.push(json_file);
   localStorage.setItem("calendars", JSON.stringify(oldCalendarStorage));
@@ -154,19 +154,18 @@ function loadCalendarFromDict() {
  * @author Guan Li
  * @summary Get calenar json file from storage.
  */
- function getCalendarFromStorage() {
+function getCalendarFromStorage() {
   if (!localStorage.getItem("calendars")) {
     return [];
   }
   return JSON.parse(localStorage.getItem("calendars"));
 }
 
-
 /**
  * @author Guan Li, Steven Khaw
  * @summary Add all the calendar to middle ground from the local storage
  */
- function createView(calendars) {
+function createView(calendars) {
   if (calendars == null) {
     return;
   } else {

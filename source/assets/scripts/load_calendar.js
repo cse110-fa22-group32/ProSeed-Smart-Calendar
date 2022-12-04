@@ -11,18 +11,12 @@ let currDay;
 
 // Starts the program, all function calls trace back here
 function init() {
-  
   // currDay format = [YYYY,MM,DD]
   currDay = getCurrentDay();
   initializeCalendarDisplay(currDay);
 
   let emptyCalendar = {
-    lastUpdated:
-      currDay[0] +
-      "/" +
-      currDay[1] +
-      "/" +
-      currDay[2],
+    lastUpdated: currDay[0] + "/" + currDay[1] + "/" + currDay[2],
     title: "Empty Calendar",
     calendarID:
       currDay[0] +
@@ -32,13 +26,17 @@ function init() {
       String("Empty Calendar".length),
     usersList: [],
     eventsList: [],
-    tasksList: []
+    tasksList: [],
   };
-  
-  
-  if (!localStorage.getItem("calendarDict") || !localStorage.getItem("loadCalendarKey")) {
+
+  if (
+    !localStorage.getItem("calendarDict") ||
+    !localStorage.getItem("loadCalendarKey")
+  ) {
     if (!localStorage.getItem("jsonStr")) {
-      alert("Calendar was not loaded properly. Please head back to middle-ground.html. Alternatively, you may work on this empty calendar.");
+      alert(
+        "Calendar was not loaded properly. Please head back to middle-ground.html. Alternatively, you may work on this empty calendar."
+      );
       validateDict();
       addDictPair(
         String(emptyCalendar.calendarID),
@@ -48,9 +46,7 @@ function init() {
       storeKey(String(emptyCalendar.calendarID));
       saveNewCalendarToStorage(emptyCalendar);
     }
-    
   }
-  
 
   // clears jsonStr from localStorage
   isNewCalendar();
@@ -63,13 +59,11 @@ function init() {
   traverseYearEventListener();
 }
 
-
-
 /**
  * @author Christopher Han, Steven Khaw
  * @summary to assign the value of global variable calendarData
  * @update made it append it rather than set calendarData
- * 
+ *
  * @param {Calendar} inputData data of calendar to be loaded
  */
 
@@ -319,7 +313,6 @@ function traverseMonthEventListener() {
       currDay[0]++;
       currDay[1] = 1;
 
-
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
@@ -330,7 +323,6 @@ function traverseMonthEventListener() {
 
       calendarData[0].Show(currDay[0], currDay[1]);
       //drawCalendar();
-
     } else {
       // go to next month
       currDay[1]++;
@@ -373,7 +365,6 @@ function traverseYearEventListener() {
     // auto save displayed date to local storage
     saveDisplayDateToLocalStorage();
     //drawCalendar();
-
   });
 
   yearBtnDown.addEventListener("click", function () {
@@ -406,4 +397,3 @@ function traverseYearEventListener() {
 function displayDate() {
   return currDay;
 }
-
