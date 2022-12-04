@@ -45,9 +45,9 @@ function createView(calendars) {
       let article = document.createElement("article");
       if (!calendars[i][0]) {
         article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
         <p class="title">Title: ${calendars[i].title}</p>
-        <p class="innerText">Last Updated: ${calendars[i].lastUpdated}</p>
+        <p class="inner-text">Last Updated: ${calendars[i].lastUpdated}</p>
         <div class="row">
           <div class="column">
             <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}>Open calendar</button>
@@ -59,9 +59,9 @@ function createView(calendars) {
         `;
       } else {
         article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
         <p class="title">Title: ${calendars[i][0].title}</p>
-        <p class="innerText">Last Updated: ${calendars[i][0].lastUpdated}</p>
+        <p class="inner-text">Last Updated: ${calendars[i][0].lastUpdated}</p>
         <div class="row">
           <div class="column">
             <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i][0].calendarID}>Open calendar</button>
@@ -109,16 +109,6 @@ async function parseJsonFile(file) {
     fileReader.onerror = (error) => reject(error);
     fileReader.readAsText(file);
   });
-}
-
-/**
- * @author Guan Li
- * @summary When a button is clicked, find the corresponding calendar
- *
- * @return NONE
- */
-function goToCalendar() {
-  console.log("HIT");
 }
 
 // When the html is loaded
