@@ -2,19 +2,18 @@
  * Day.js
  * @author Steven Khaw
  * @summary File contains Day class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Day */
 class Day {
-
   /**
    * @author Steven Khaw
    * Constructs a day object from the class
    * @constructor
-   * 
+   *
    * @param {number} currDayInt number of day (1-31)
    * @param {string} currDayStr string representation of day ('Monday'...etc.)
    * @param {Event[]} events events of day

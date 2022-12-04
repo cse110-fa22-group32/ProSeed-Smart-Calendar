@@ -2,14 +2,13 @@
  * Event.js
  * @author Guan Li
  * @summary File contains Event class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
  */
 
 /** Class Event  */
 class Event {
-
   /** @type {number} */
   static counter = 0;
 
@@ -17,7 +16,7 @@ class Event {
    * @author Guan Li
    * Constructs a Event object from the class
    * @constructor
-   * 
+   *
    * @param {string} startDay - start day of event
    * @param {string} endDay - end day of event
    * @param {string} eventName - name of event
@@ -92,7 +91,7 @@ class Event {
    * @param eventName - the name of event
    * @param location - the location of events
    * @param description - the description of event
-   * 
+   *
    * @author Guan Li
    * @return an Event object
    */
@@ -108,7 +107,7 @@ class Event {
    * @param {string} eventName - name of event
    * @param {string} location - location of event
    * @param {string} description - description of event
-   * 
+   *
    * @author Younus Ahmad
    * @return an Event object
    */
@@ -119,9 +118,4 @@ class Event {
     this.location = location;
     this.description = description;
   }
-
-
-
-  
 }
-
