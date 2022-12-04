@@ -9,8 +9,4 @@ describe('Testing Calendar Functionality', () => {
 	  console.log(title);
       expect(title).toBe('ProSeed Login');
 	}, 10000);
-
-	afterAll(async () => {
-	});
-
 });
