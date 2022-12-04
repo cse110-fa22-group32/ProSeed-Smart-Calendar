@@ -153,6 +153,7 @@ time {
   background: #54cb9c;
   border-radius: 50px;
   border: #fff solid;
+  cursor: pointer;
 }
 
 #calendar-title-bar-conponent {
@@ -173,6 +174,7 @@ time {
   bottom: 23px;
   right: 28px;
   width: 280px;
+  cursor: pointer;
 }
 
 /* The popup form - hidden by default */
@@ -263,6 +265,7 @@ time {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .column {
