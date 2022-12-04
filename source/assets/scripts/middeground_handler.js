@@ -11,12 +11,6 @@
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
-  //isNewCalendar();
-  /* validateDict();
-  addDictPair("2022123-16",testingJson);
-  addDictPair("2022123-18",testingJson2);
-  storeKey("2022123-16"); */
-  //loadCalendarFromDict();
 }
 
 /**
