@@ -39,17 +39,17 @@ label {
 .grid-item {
   margin: auto;
   background: #36b080;
-  border-radius: 30px;
   padding: 20px;
   font-size: 30px;
   text-align: center;
   border-radius: 15px;
-  border: #ffffff solid;
+  border: #fff solid;
 }
 
 a {
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -61,7 +61,7 @@ article {
   grid-template-rows: 120px 30px 30px 50px 10px;
   height: auto;
   row-gap: 5px;
-  padding: 0 16px 16px 16px;
+  padding: 0 16px 16px;
   width: 180px;
   margin: auto;
 }
@@ -73,7 +73,7 @@ p.texts {
   overflow: hidden;
 }
 
-p.innerText {
+p.inner-text {
   color: white !important;
 }
 
@@ -83,34 +83,31 @@ p.title {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   background: #36b080;
-
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
   line-height: 30px;
-
-  color: #ffffff;
+  color: #fff;
 }
 
 p:not(.title),
 span,
 time {
   background: #36b080;
-  font-family: "Inter", sans-serif;
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 30px;
-
-  color: #ffffff;
+  color: #fff;
 }
 
 #button {
   line-height: 12px;
   width: 18px;
   font-size: 8pt;
-  font-family: tahoma;
+  font-family: Inter, sans-serif;
   margin-top: 1px;
   margin-right: 2px;
   position: absolute;
@@ -155,7 +152,7 @@ time {
   padding-right: 10px;
   background: #54cb9c;
   border-radius: 50px;
-  border: #ffffff solid;
+  border: #fff solid;
 }
 
 #calendar-title-bar-conponent {
@@ -200,7 +197,7 @@ time {
 .form-container input[type="password"] {
   width: 90%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 22px;
   border: none;
   background: #f1f1f1;
 }
@@ -275,7 +272,7 @@ time {
 }
 
 /* Clear floats after the columns */
-.row:after {
+.row::after {
   margin: auto;
   align-self: center;
   content: "";
