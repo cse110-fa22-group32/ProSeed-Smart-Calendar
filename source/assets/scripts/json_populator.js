@@ -111,12 +111,14 @@ function init() {
     loadCalendarData(calData);
 
     // export calendar to json with different range of time selections
-    let tuesJson = calendarData[0].Export([-1], [-1], [1]);
-    let thursJson = calendarData[0].Export([-1], [-1], [3]);
+    /* let tuesJson = calendarData.Export([-1], [-1], [1]);
+    let thursJson = calendarData.Export([-1], [-1], [3]); */
 
     // create a calendar object from multiple json
-    calendarData = loadJson([tuesJson, thursJson]);
-    calendarData[0].Show(2022, 12);
+    /* calendarData = loadJson([tuesJson, thursJson]); */
+
+    let currDay = getCurrentDay();
+    calendarData.Show(currDay[0], currDay[1]);
 
     // simple tests for reading/writing json from/to local drive
 
@@ -128,7 +130,7 @@ function init() {
     // });
   }
   // auto save calendar to local storage
-  saveJsonToLocalStorage(calendarData[0]);
+  saveJsonToLocalStorage(calendarData);
 
   // read local drive, to do that first...
   /* const uploadBtn = document.getElementById("upload-btn");

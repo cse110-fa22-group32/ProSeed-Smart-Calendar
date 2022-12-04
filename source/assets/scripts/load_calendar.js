@@ -11,9 +11,16 @@ let currDay;
 
 // Starts the program, all function calls trace back here
 function init() {
+  
   // currDay format = [YYYY,MM,DD]
   currDay = getCurrentDay();
   initializeCalendarDisplay(currDay);
+
+  // clears jsonStr from localStorage
+  isNewCalendar();
+
+  // loads calendar based on current key stored
+  loadCalendarFromDict();
 
   // adds event listeners to buttons
   traverseMonthEventListener();
@@ -21,10 +28,11 @@ function init() {
 }
 
 /**
- * @author Christopher Han
+ * @author Christopher Han, Steven Khaw
  * @summary to assign the value of global variable calendarData
- *
- * @param {calendar} inputData data of calendar to be loaded
+ * @update made it append it rather than set calendarData
+ * 
+ * @param {Calendar} inputData data of calendar to be loaded
  */
 
 function loadCalendarData(inputData) {

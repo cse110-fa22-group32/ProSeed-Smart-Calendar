@@ -276,3 +276,199 @@
         ]
       }
 ]
+
+
+
+// //Create a dummy data array to store dummy calendars.
+// let data_array =  [{
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "10/12/2022",
+//   "calendarTitle" : "Personal",
+//   "calendarID" : "WEFJ1242",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "11/12/2022",
+//   "calendarTitle" : "Work",
+//   "calendarID" : "ACHUWE132",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "11/16/2022",
+//   "calendarTitle" : "School",
+//   "calendarID" : "!@$AFJIO12",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// },
+// {
+//   "lastUpdated" : "11/15/2022",
+//   "calendarTitle" : "Friend",
+//   "calendarID" : "QWFQWFASF",
+//   "listTile" : "title2",
+
+//   "usersList" : [
+
+//   ],
+//   "eventsList" : [
+
+//   ],
+//   "tasksList" : [
+
+//   ]
+// }]

@@ -85,8 +85,13 @@ title bar and head css setting for calendar
 }
 
 #leaf-icon {
-  width: 45px;
-  height: 45px;
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+#leaf-link {
+  color: transparent;
 }
 
 #calendar-title-bar-header {
@@ -199,6 +204,9 @@ day block css setting for calendar
 }
 
 .event-block {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -217,6 +225,9 @@ day block css setting for calendar
 }
 
 .task-block {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   font-weight: 400;

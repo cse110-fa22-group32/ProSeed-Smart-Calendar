@@ -17,6 +17,10 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
     />
     <link rel="stylesheet" href="assets/styles/calendar.css" />
+    <script 
+      type="text/javascript" 
+      src="assets/scripts/day_view.js">
+    </script>
     <script
       type="text/javascript"
       src="assets/scripts/calendar_helper.js"
@@ -39,18 +43,18 @@
     <script type="text/javascript" src="assets/scripts/User.js"></script>
     <script type="text/javascript" src="assets/scripts/Calendar.js"></script>
     <script type="text/javascript" src="assets/scripts/List.js"></script>
+    <script 
+      type="text/javascript" 
+      src="assets/scripts/middeground_handler.js"
+    ></script>
     <script
       type="text/javascript"
       src="assets/scripts/json_interpreter.js"
     ></script>
-    <script
-      type="text/javascript"
-      src="assets/scripts/json_populator.js"
-    ></script>
 
     <!-- sidebar script(s) and stylesheet(s)-->
-    <link rel="stylesheet" href="assets/styles/sidebar.css" />
-    <script type="module" src="assets/scripts/day_view.js"></script>
+    <link rel="stylesheet" href="assets/styles/sidebar.css"/>
+    
   </head>
 
   <body>
@@ -58,28 +62,41 @@
       <div id="calendar-title-bar">
 
         <div id="calendar-title-bar-header">
-          <img id="leaf-icon" src="assets/images/icons/leaf.png" 
+          <a href="middle-ground.html" id="leaf-link">
+            <img id="leaf-icon" src="assets/images/icons/leaf.svg" 
             alt="leaf icon"/>
+          </a>
           ProSeed Calendar
         </div>
 
         <div id="calendar-title-bar-component">
-          <button id="calendar-month-btn-up" class="calendar-title-bar-btn">
-            <span class="material-symbols-outlined">arrow_upward</span>
-          </button>
+          <img 
+            id="calendar-month-btn-up" 
+            class="calendar-title-bar-btn"
+            src="assets/images/icons/arrow-up-circle.svg" 
+            alt="up arrow icon"
+          />
           <p id="month-label">Month</p>
-          <button id="calendar-month-btn-down" class="calendar-title-bar-btn">
-            <span class="material-symbols-outlined">arrow_downward</span>
-          </button>
-
-          <button id="calendar-year-btn-up" class="calendar-title-bar-btn">
-            <span class="material-symbols-outlined">arrow_upward</span>
-          </button>
+          <img 
+            id="calendar-month-btn-down" 
+            class="calendar-title-bar-btn"
+            src="assets/images/icons/arrow-down-circle.svg" 
+            alt="down arrow icon"
+          />
+          <img 
+            id="calendar-year-btn-up" 
+            class="calendar-title-bar-btn"
+            src="assets/images/icons/arrow-up-circle.svg" 
+            alt="up arrow icon"
+          />
           <p id="year-label">Year</p>
-          <button id="calendar-year-btn-down" class="calendar-title-bar-btn">
-            <span class="material-symbols-outlined">arrow_downward</span>
-          </button>
-
+          <img 
+            id="calendar-year-btn-down" 
+            class="calendar-title-bar-btn"
+            src="assets/images/icons/arrow-down-circle.svg" 
+            alt="down arrow icon"
+          />
+          
           <button id="calendar-title-bar-logout" class="calendar-title-bar-btn">
             <span class="material-symbols-outlines">Logout</span>
           </button>
@@ -178,17 +195,27 @@
 
     <footer>
       <div id="calendar-tail">
-        <button id="add-event-btn" class="calendar-tail-btn">
-          <span class="material-symbols-outlined">add_circle</span>
-        </button>
+
+        <img 
+          id="add-event-btn" 
+          class="calendar-tail-btn"
+          src="assets/images/icons/plus-circle.svg" 
+          alt="plus circle icon"
+        />
         <span class="tail-label">Add event</span>
-        <button id="add-todo-btn" class="calendar-tail-btn">
-          <span class="material-symbols-outlined">add_circle</span>
-        </button>
+        <img 
+          id="add-todo-btn" 
+          class="calendar-tail-btn"
+          src="assets/images/icons/plus-circle.svg" 
+          alt="plus circle icon"
+        />
         <span class="tail-label">Add task</span>
-        <button id="help-btn" class="calendar-tail-btn">
-          <span class="material-symbols-outlined">help</span>
-        </button>
+        <img 
+          id="help-btn" 
+          class="calendar-tail-btn"
+          src="assets/images/icons/help-circle.svg" 
+          alt="help icon"
+        />
       </div>
 
       <dialog id="confirm-delete">
@@ -200,11 +227,12 @@
           </div>
         </form>
       </dialog>
-
+      <input type="hidden" id="edit-info" value="" />
+      <input type="hidden" id="is-edit" value="false" />
       <dialog id="add-event-dialog">
         <form id="add-event-form" method="dialog">
           <fieldset>
-            <legend>Add An Event</legend>
+            <legend>Event</legend>
             <label for="title"
               >Title:
               <input
@@ -278,7 +306,7 @@
       <dialog id="add-todo-dialog">
         <form id="add-todo-form" method="dialog">
           <fieldset>
-            <legend>Add An To-do Task</legend>
+            <legend>To-do Task</legend>
             <label for="tasktitle"
               >Title:
               <input
