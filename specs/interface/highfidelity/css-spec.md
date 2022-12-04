@@ -88,6 +88,9 @@ Not every page from the prototype is included in this specification. There are b
 #### Main Page
 ![middleground colors](images/specs-colors/middleground-spec-colors.png)
 
+### Import Page
+![import calendar page colors](images/specs-colors/import-calendar-spec-colors.png)
+
 #### Delete Pages
 ![delete calendar select page 1 colors](images/specs-colors/delete-calendar-spec-colors-1.png)
 ![delete calendar select page 2 colors](images/specs-colors/delete-calendar-spec-colors-2.png)
