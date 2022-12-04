@@ -11,20 +11,46 @@
   <title>ProSeed Login</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./assets/styles/calendarBlock.css">
-  <script src="assets/scripts/middle-ground.js"></script>
+  <link rel="stylesheet" href="./assets/styles/middle-ground.css">
+  <script type="text/javascript" src="assets/scripts/calendar_helper.js"></script>
+  <script type="module" src="assets/scripts/middle-ground.js"></script>
 </head>
 
-<body>
-    <div class="main-container">
-      <h1 class="main-container-header">Calendar View</h1>
-      <h3 class="main-container-header">Select your calendar Below: </h3>
-      
 
-      <div id="Calendars" class="grid-view">
+<body>
+
+  <header>
+
+    <div id="calendar-title-bar">
+      <h1>ProSeed Calendar Overview</h1>
+      <div id="calendar-title-bar-conponent">
+        <button class="title-button" id="new-calendar-button">New Calendar</button>
+        <button class="title-button" id="upload-calendar-button">Upload Calendar</button>
+        <button class="title-button" id="current-calendar-button">Current Calendar</button>
+
+        <div class="form-popup" id="myForm">
+          <form class="form-container">
+            <h2>New Calendar Information</h2>
+            
+            <label for="calendar-name"><b>Calendar Title</b></label>
+            <input type="text" placeholder="Enter title" name="calendar-title" id="calendar-name" required>
+
+            <button type="submit" class="btn" id="btn-submit">Submit</button>
+            <button type="button" class="btn cancel" id="btn-cancel">Close</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+  <main>
+    <div class="main-container">
+      <div id="Calendars" class = "grid-container">
         <!-- We want the stuff to populate here with json files. -->
       </div>
     </div>
+  </main>
   </body>
 
 </html>

@@ -4,126 +4,212 @@
  * @summary File is used to populate calendar into middle ground for calendar view.
  * 
  * Created at : 2022-11-21 2:30 PM
- * Last Modified : 2022-11-21 8:30 PM
+ * Last Modified : 2022-12-3 5:30 PM
  */
-
 
 /**
- * This is currently just a dummy version
- * TODO: Fix
+ * @author Guan Li
+ * @summary Get calenar json file from storage.
+ * 
+ * @return NONE
  */
+function getCalendarFromStorage(){
+  if(!localStorage.getItem("calendars")){
+      return [];
+  }
+  return JSON.parse(localStorage.getItem("calendars"));
+}
 
-let data_array =  [{
-    "lastUpdated" : "12/12/2012",
-    "calendarTitle" : "Personal",
-    "calendarID" : "WEFJ1242",
-    "listTile" : "title2",
+/**
+ * @author Guan Li
+ * @summary takes in a parameter calendar and save it to storage
+ * 
+ * @return NONE
+ */
+function saveNewCalendarToStorage(json_file){
+  let oldCalendarStorage = getCalendarFromStorage();
+  oldCalendarStorage.push(json_file);
+  localStorage.setItem('calendars', JSON.stringify(oldCalendarStorage));
+  localStorage.setItem('test', JSON.stringify(oldCalendarStorage));
+}
 
-    "usersList" : [
+/**
+ * @author Guan Li
+ * @summary Add all the calendar to middle ground from the local storage
+ * 
+ * @return NONE
+ */
+function createView(calendars){
 
-    ],
-    "eventsList" : [
+  if (calendars == null){
+    return null;
+  }
+  else{
+    let middleGroundContainer = document.querySelector("#Calendars");
+    middleGroundContainer.innerHTML = ""; // Clear the html first.
+    
+    for (let i = 0; i < calendars.length; i++){
+      // const calendar = document.createElement("calendar-block");
+      // calendar.data = calendars[i];
+      // console.log(calendars[i].calendarTitle);
+      let gridContainer = document.createElement("div");
+      gridContainer.className = "grid-item";
+      let article = document.createElement("article");
+      article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
+      <p class="title"> <a> Title : ${calendars[i].title}</a> </p>
+      <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>
+      <div class="row">
+      <div class="column">
+      <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}> Enter calendar </button>
+      </div>
+      <div class="column">
+      <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}> Remove calendar </button>
+      </div>
+      </div>`;
+      gridContainer.appendChild(article);
+      middleGroundContainer.appendChild(gridContainer);
+    }
+  }
+}
 
-    ],
-    "tasksList" : [
+/**
+ * @author Guan Li
+ * @summary Open the form for user input
+ * 
+ * @return NONE
+ */
+function openForm(){
+  //Display the form:
+  document.getElementById("myForm").style.display = "block";  
+}
 
-    ]
-  },
-  {
-    "lastUpdated" : "13/13/2013",
-    "calendarTitle" : "Work",
-    "calendarID" : "ACHUWE132",
-    "listTile" : "title2",
+/**
+ * @author Guan Li
+ * @summary Close the form for user input
+ * 
+ * @return NONE
+ */
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
 
-    "usersList" : [
+/**
+ * @author Guan Li
+ * @summary returns the file to grab the json files.
+ *
+ * @return Promise - Returns the json file objects.
+ */
+async function parseJsonFile(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.onload = event => resolve(JSON.parse(event.target.result));
+    fileReader.onerror = error => reject(error);
+    fileReader.readAsText(file);
+  });
+}
 
-    ],
-    "eventsList" : [
-
-    ],
-    "tasksList" : [
-
-    ]
-  },
-  {
-    "lastUpdated" : "14/14/2014",
-    "calendarTitle" : "School",
-    "calendarID" : "!@$AFJIO12",
-    "listTile" : "title2",
-
-    "usersList" : [
-
-    ],
-    "eventsList" : [
-
-    ],
-    "tasksList" : [
-
-    ]
-  },
-  {
-    "lastUpdated" : "02/21/2022",
-    "calendarTitle" : "Friend",
-    "calendarID" : "QWFQWFASF",
-    "listTile" : "title2",
-
-    "usersList" : [
-
-    ],
-    "eventsList" : [
-
-    ],
-    "tasksList" : [
-
-    ]
-  }]
-
-
+/**
+ * @author Guan Li
+ * @summary When a button is clicked, find the corresponding calendar
+ *
+ * @return NONE
+ */
+function goToCalendar(){
+  console.log("HIT");
+}
 
 // When the html is loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Grab the calendar from local storage and save it into a variable.
+  let calendars = getCalendarFromStorage();
+  //Create view for the calendar Populate the calendar objects.
+  createView(calendars);
 
-    //Load the information into local storage: DEMO:
-    localStorage.setItem("calendars", JSON.stringify(data_array));
+  //Grab the buttons and their button ids.
+  let createNewCalendar = document.querySelector("#new-calendar-button");
+  let currentCalendarBtn = document.querySelector("#current-calendar-button");
+  let uploadNewCalendar = document.querySelector("#upload-calendar-button");
+  let submitButton = document.querySelector("#btn-submit");
+  let closeButton = document.querySelector("#btn-cancel");
 
-    let calendars = getCalendarFromStorage();
-    // console.log(calendars[0].calendarTitle);
-    createView(calendars);
-    //TODO: ADD LISTENERS?
+  if(closeButton){
+    closeButton.addEventListener("click", function(){
+      closeForm();
+    })
+  }
+
+  submitButton.addEventListener("click", function(){
+    //Grab the submissions.
+    let calendarName = document.getElementById("calendar-name").value;
+    if(calendarName != ""){
+      //Store it into the local storage.
+      let newCalendar = {
+        "lastUpdated": getCurrentDay()[0] + "/" + getCurrentDay()[1] + "/" + + getCurrentDay()[2],
+        "title": calendarName,
+        "calendarID": getCurrentDay()[0] + getCurrentDay()[1] + getCurrentDay()[2] + "-" + calendarName,
+        "usersList": [],
+        "eventsList": [],
+        "tasksList": [],
+        "usersList" : [
+          
+        ],
+        "eventsList" : [
+          
+        ],
+        "tasksList" : [
+          
+        ]
+      }
+      saveNewCalendarToStorage(newCalendar);
+      createView(calendars);
+    }
+    });
+
+    // Open up a form to ask for user new input.
+    createNewCalendar.addEventListener("click", function(){
+      // //Enable the form
+      document.getElementById("myForm").style.display = "block";
+    })
+
+    // Direct you straight to current Calendar.html
+    currentCalendarBtn.addEventListener("click", function(){
+      //Go to calendar.html
+      location.href = "./calendar.html";
+    })
+
+    // Open up a view and update
+    uploadNewCalendar.addEventListener("click", function(){
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.onchange = async e => { 
+        var file = e.target.files[0];
+        if (file.type == "application/json"){
+          const object = await parseJsonFile(file);
+          // console.log(object)
+          saveNewCalendarToStorage(object);
+          location.reload();
+        } 
+      }
+      input.click();
+      
+      //Update view:
+      createView(calendars);
+    });
+
+    //-----------------------This works--------------------------------
+    //Grab all enter calendar.
+    const enterCalendarBtn = document.querySelectorAll(".key-button");
+
+    enterCalendarBtn.forEach(enterCalendarBtn =>{
+      enterCalendarBtn.addEventListener("click", event=>{
+        console.log(event.target.name);
+        if(event.target.id == "enter-calendar"){
+
+          location.href = "./calendar.html";
+        }
+        // else if(event.target.id == "remove-calendar"){
+        //   remove calendar
+        // }
+      });
+    });
 }, false);
-
-//Add calendars into middleGround containers.
-function createView(calendars){
-    let middleGroundContainer = document.querySelector("#Calendars");
-    
-    for (let i = 0; i < calendars.length; i++){
-
-        // const calendar = document.createElement("calendar-block");
-        // calendar.data = calendars[i];
-        // console.log(calendars[i].calendarTitle);
-
-        let gridContainer = document.createElement("div");
-        gridContainer.className = "grid-item";
-
-        let article = document.createElement("article");
-
-        article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
-        <p class="title"> <a href="./calendar.html"> Title : ${calendars[i].calendarTitle}</a> </p>
-        <p class="organization"> Calendar ID : ${calendars[i].calendarID}</p>
-        <p class="ingredients"> Last Updated : ${calendars[i].lastUpdated}</p>`;
-
-        // calendar.appendChild(article);
-        
-        gridContainer.appendChild(article);
-        middleGroundContainer.appendChild(gridContainer);
-
-    }
-}
-
-//Get calendar json from storage:
-function getCalendarFromStorage(){
-    if(!localStorage.getItem("calendars")){
-        return [];
-    }
-    return JSON.parse(localStorage.getItem("calendars"));
-}
