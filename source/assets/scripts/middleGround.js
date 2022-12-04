@@ -69,8 +69,14 @@ function createView(calendars){
         article.innerHTML = `<img src= "./assets/temp_/Icon.png" alt= "calendar">
         <p class="title"> <a> Title : ${calendars[i].title}</a> </p>
         <p class="innerText"> Last Updated : ${calendars[i].lastUpdated}</p>
-        <button id="key-button"> Enter calendar </button>
-        <button id="key-button"> Remove calendar </button>`;
+        <div class="row">
+        <div class="column">
+        <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}> Enter calendar </button>
+        </div>
+        <div class="column">
+        <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}> Remove calendar </button>
+        </div>
+        </div>`;
         gridContainer.appendChild(article);
         middleGroundContainer.appendChild(gridContainer);
     }
@@ -113,6 +119,15 @@ async function parseJsonFile(file) {
   })
 }
 
+/**
+ * @author Guan Li
+ * @summary When a button is clicked, find the corresponding calendar
+ *
+ * @return NONE
+ */
+function goToCalendar(){
+  console.log("HIT");
+}
 
 // When the html is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -129,15 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentCalendarBtn = document.querySelector("#current-calendar-button");
   let uploadNewCalendar = document.querySelector("#upload-calendar-button");
   let submitButton = document.querySelector("#btn-submit");
-  let calendarTitleBtn = document.querySelector(".title");
   let closeButton = document.querySelector("#btn-cancel");
-
-  //Making sure the calendar button excists.
-  if(calendarTitleBtn){
-    calendarTitleBtn.addEventListener("click", function(){
-      location.href = './calendar.html';
-    });
-  }
 
   if(closeButton){
     closeButton.addEventListener("click", function(){
@@ -202,5 +209,31 @@ document.addEventListener('DOMContentLoaded', function() {
       //Update view:
       createView(calendars);
     });
+
+    //-----------------------This works--------------------------------
+    //Grab all enter calendar.
+    const enterCalendarBtn = document.querySelectorAll(".key-button");
+
+    enterCalendarBtn.forEach(enterCalendarBtn =>{
+      enterCalendarBtn.addEventListener("click", event=>{
+        console.log(event.target.name);
+        if(event.target.id == "enter-calendar"){
+
+          location.href = "./calendar.html";
+        }
+        else if(event.target.id == "remove-calendar"){
+
+        }
+      });
+    });
+
+
+    // //------------------------------------------------------
+    // let All_Buttons = document.querySelector('#key-button');
+    // All_Buttons.onclick=e=>
+    // {
+    //   if (e.target.id!='key-button') return // ignore other clicks on area
+    //     console.log(`You selected: ${e.target.id.toUpperCase()}`)
+    // }
 
 }, false);
