@@ -45,7 +45,7 @@ function createView(calendars) {
       let article = document.createElement("article");
       if (!calendars[i][0]) {
         article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
         <p class="title">Title: ${calendars[i].title}</p>
         <p class="innerText">Last Updated: ${calendars[i].lastUpdated}</p>
         <div class="row">
@@ -59,7 +59,7 @@ function createView(calendars) {
         `;
       } else {
         article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
+        <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
         <p class="title">Title: ${calendars[i][0].title}</p>
         <p class="innerText">Last Updated: ${calendars[i][0].lastUpdated}</p>
         <div class="row">
@@ -109,16 +109,6 @@ async function parseJsonFile(file) {
     fileReader.onerror = (error) => reject(error);
     fileReader.readAsText(file);
   });
-}
-
-/**
- * @author Guan Li
- * @summary When a button is clicked, find the corresponding calendar
- *
- * @return NONE
- */
-function goToCalendar() {
-  console.log("HIT");
 }
 
 // When the html is loaded
