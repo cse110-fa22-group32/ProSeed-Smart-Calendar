@@ -72,7 +72,6 @@ class Calendar {
   }
 
   /**
-
    * Export data of users and selected years, months, days to a json
    * @param {number[]} selectedYears - hold selected years (2000-3000); [-1] indicate all years
    * @param {number[]} selectedMonths - hold selected months (1-12); [-1] indicate all months

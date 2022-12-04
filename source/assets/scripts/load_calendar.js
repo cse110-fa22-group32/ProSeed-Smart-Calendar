@@ -16,6 +16,42 @@ function init() {
   currDay = getCurrentDay();
   initializeCalendarDisplay(currDay);
 
+  let emptyCalendar = {
+    lastUpdated:
+      currDay[0] +
+      "/" +
+      currDay[1] +
+      "/" +
+      currDay[2],
+    title: "Empty Calendar",
+    calendarID:
+      currDay[0] +
+      currDay[1] +
+      currDay[2] +
+      "-" +
+      String("Empty Calendar".length),
+    usersList: [],
+    eventsList: [],
+    tasksList: []
+  };
+  
+  
+  if (!localStorage.getItem("calendarDict") || !localStorage.getItem("loadCalendarKey")) {
+    if (!localStorage.getItem("jsonStr")) {
+      alert("Calendar was not loaded properly. Please head back to middle-ground.html. Alternatively, you may work on this empty calendar.");
+      validateDict();
+      addDictPair(
+        String(emptyCalendar.calendarID),
+        JSON.stringify(emptyCalendar)
+      );
+
+      storeKey(String(emptyCalendar.calendarID));
+      saveNewCalendarToStorage(emptyCalendar);
+    }
+    
+  }
+  
+
   // clears jsonStr from localStorage
   isNewCalendar();
 
@@ -26,6 +62,8 @@ function init() {
   traverseMonthEventListener();
   traverseYearEventListener();
 }
+
+
 
 /**
  * @author Christopher Han, Steven Khaw
