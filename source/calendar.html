@@ -210,13 +210,22 @@
           alt="plus circle icon"
         />
         <span class="tail-label">Add task</span>
-        <img 
+        <span class="popup" onclick="helpPopup()">
+          <img 
           id="help-btn" 
           class="calendar-tail-btn"
           src="assets/images/icons/help-circle.svg" 
           alt="help icon"
-        />
+          />
+          <span class="popuptext" id="my-popup">This is the calendar. 
+            To traverse the calendar, use the ↓ or ↑ found on the top right of 
+            your screen. To add an event or a task to your to-do list on a 
+            particular date, click on the "Add Event" or "Add Task" buttons 
+            at the bottom of your screen. 
+          </span>
+        </span>
       </div>
+      
 
       <dialog id="confirm-delete">
         <form method="dialog">
@@ -327,9 +336,6 @@
                 required
               /> </label
             ><br>
-            <!-- <label for="location">Location:
-            <input name="location" class="location">
-          </label><br> -->
             <label for="todo-description"
               >Description:<br>
               <textarea
