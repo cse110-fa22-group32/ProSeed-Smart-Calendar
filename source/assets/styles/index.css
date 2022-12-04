@@ -1,15 +1,16 @@
 @font-face {
-  font-family: 'Mochiy Pop One';
-  src: url(../fonts/MochiyPopOne-Regular.ttf);
+  font-family: "Mochiy Pop One";
+  src: url("../fonts/MochiyPopOne-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Inter';
-  src: url(../fonts/Inter-VariableFont.ttf);
+  font-family: Inter;
+  src: url("../fonts/Inter-VariableFont.ttf");
 }
 
 body { 
-  background: url(../images/splash.png);
+  background: url("../images/splash.svg");
+  background-color: #d7f7d1;
   background-size: cover;
 }
 
@@ -18,56 +19,49 @@ body {
 }
 
 #title-header {
-  font-family: 'Mochiy Pop One';
+  font-family: 'Mochiy Pop One', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 60px;
-  line-height: 87px;
-
+  line-height: 88px;
   color: #54CB9C;
 }
 
 #title-caption {
-  font-family: 'Mochiy Pop One';
+  font-family: 'Mochiy Pop One', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
   line-height: 36px;
-
   color: #309C71;
 }
 
 #main-container {
   width: 300px;
   height: 320px;
-
   padding: 50px;
   margin: auto;
-
   background: #F0FCEE;
   border-radius: 50px;
 }
 
 #main-container-header {
-  font-family: 'Inter';
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 1000;
   font-size: 40px;
   line-height: 24px;
-
   color: #54CB9C;
 }
 
 #email-input-label, #password-input-label, #remember-box-label {
-  font-family: 'Inter';
+  font-family: Inter, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-
   padding-bottom: 6px;
-  
-  color: #000000;
+  color: #000;
 }
 
 #email-input, #password-input {
@@ -75,16 +69,14 @@ body {
   width: 300px;
   height: 48px;
   font-size: 20px;
-
   padding: 16px;
-
-  background: #FFFFFF;
+  background: #FFF;
   border: 1px solid #309C71;
   border-radius: 50px;
 }
 
 #remember-box {
-  background: #FFFFFF;
+  background: #FFF;
   border: 1px solid #309C71;
   border-radius: 5px;
 }
@@ -93,7 +85,6 @@ body {
   width: 300px;
   height: 60px;
   font-size: 32px;
-
   color: white;
   background: #54CB9C;
   border-radius: 50px;

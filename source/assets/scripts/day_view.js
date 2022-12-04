@@ -1,14 +1,15 @@
 /**
  * day_view.js
- * @author Steven Chin
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * @summary File contains functions for sidebar visibility and population
  * @fileoverview
  *
  * Created at : 2022-11-18 12:11 AM;
- * Last Modified : 2022-11-18
+ * Last Modified : 2022-12-1 9:20 PM
  */
 
 window.addEventListener("DOMContentLoaded", init);
+//shadowClick is 1, prevent hide the side bar.
 var shadowClick = 0;
 
 /**
@@ -16,7 +17,6 @@ var shadowClick = 0;
  * Initializes day view functionality
  */
 function init() {
-  var currDay = getCurrentDay();
   addListeners();
 }
 
@@ -39,7 +39,7 @@ function addListeners() {
 
 /**
  * @author Yangming Guan
- * updata the display of side bar.
+ * handle the delete call
  * @param {Event} event - click event
  * @param {string} year - date year
  * @param {string} month - date month
@@ -52,15 +52,9 @@ function callDelete(event, year, month, day, isEvent) {
     .getRootNode()
     .host.shadowRoot.querySelector("#Id");
   let id = parseInt(eventID.innerHTML);
-  console.log(event);
-  console.log(year);
-  console.log(month);
-  console.log(day);
-  console.log(isEvent);
   if (isEvent) {
     let eventList =
       calendarData[0].years[year].months[month].days[day - 1].Events;
-    console.log(eventList);
     for (let i = 0; i < eventList.length; i++) {
       if (eventList[i].eventID === id) {
         eventList.splice(i, 1);
@@ -75,10 +69,113 @@ function callDelete(event, year, month, day, isEvent) {
       }
     }
   }
-  updataSideBar(day);
+  updateSideBar(day);
   calendarData[0].Show(currDay[0], currDay[1]);
-  console.log("finish updataSidebar");
-  console.log(shadowClick);
+  shadowClick = 0;
+  saveJsonToLocalStorage(calendarData[0]);
+}
+
+/**
+ * @author Yangming Guan
+ * format the date for use.
+ * @param {String} date - date info from object data
+ * @return new format date
+ */
+function dateFormat(date) {
+  let formatDate = "";
+  let dateTemp = date.split("/");
+  formatDate =
+    "20" +
+    dateTemp[2] +
+    "-" +
+    dateTemp[0].padStart(2, "0") +
+    "-" +
+    dateTemp[1].padStart(2, "0");
+  return formatDate;
+}
+
+/**
+ * @author Yangming Guan
+ * format the time for use.
+ * @param {String} time - time info from object data
+ * @return new format time
+ */
+function timeFormat(time) {
+  let formatTime = "";
+  let timeTemp = time.split(":");
+  formatTime =
+    timeTemp[0].padStart(2, "0") + ":" + timeTemp[1].padStart(2, "0");
+  return formatTime;
+}
+
+/**
+ * @author Yangming Guan
+ * handle the edit click.
+ * @param {Event} event - click event
+ * @param {string} year - date year
+ * @param {string} month - date month
+ * @param {string} day - date day
+ * @param {boolean} isEvent - is this call from event type delete.
+ */
+function callEdit(event, year, month, day, isEvent) {
+  let eventID = event.currentTarget
+    .getRootNode()
+    .host.shadowRoot.querySelector("#Id");
+  let id = parseInt(eventID.innerHTML);
+  if (isEvent) {
+    let eventList =
+      calendarData[0].years[year].months[month].days[day - 1].Events;
+    for (let i = 0; i < eventList.length; i++) {
+      if (eventList[i].eventID === id) {
+        //put all the info to the dialog.
+        let add_event_dialog = document.getElementById("add-event-dialog");
+        let eventTitle = document.getElementById("event-title");
+        let date = document.getElementById("date");
+        let startTime = document.getElementById("start-time");
+        let endTime = document.getElementById("end-time");
+        let location = document.getElementById("location");
+        let description = document.getElementById("description");
+        let editInfo = document.getElementById("edit-info");
+        let isEdit = document.getElementById("is-edit");
+        isEdit.value = true;
+        editInfo.value =
+          eventList[i].eventID + " " + year + " " + month + " " + day;
+        eventTitle.value = eventList[i].eventName;
+        date.value = dateFormat(eventList[i].startDay.split(" ")[0]);
+        startTime.value = timeFormat(eventList[i].startDay.split(" ")[1]);
+        endTime.value = timeFormat(eventList[i].endDay.split(" ")[1]);
+        location.value = eventList[i].location;
+        description.value = eventList[i].description;
+        add_event_dialog.showModal();
+      }
+    }
+  } else {
+    let taskList =
+      calendarData[0].years[year].months[month].days[day - 1].tasks;
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].taskID === id) {
+        //put all the info to the dialog.
+        let add_todo_dialog = document.getElementById("add-todo-dialog");
+        let todoTitle = document.getElementById("task-title");
+        let deuDate = document.getElementById("due-date");
+        let description = document.getElementById("todo-description");
+        let editInfo = document.getElementById("edit-info");
+        let isEdit = document.getElementById("is-edit");
+        isEdit.value = true;
+        editInfo.value =
+          taskList[i].taskID + " " + year + " " + month + " " + day;
+        todoTitle.value = taskList[i].taskName;
+        deuDate.value =
+          dateFormat(taskList[i].dueDate.split(" ")[0]) +
+          " " +
+          timeFormat(taskList[i].dueDate.split(" ")[1]);
+        description.value = taskList[i].description;
+        add_todo_dialog.showModal();
+      }
+    }
+  }
+  updateSideBar(day);
+  calendarData[0].Show(currDay[0], currDay[1]);
 }
 
 /**
@@ -86,13 +183,28 @@ function callDelete(event, year, month, day, isEvent) {
  * updata the display of side bar.
  * @param {string} day - date day
  */
-function updataSideBar(day) {
+function updateSideBar(day) {
+  // 2022 -> 22
   let currentYear = String(currDay[0] - 2000);
+  // 12 -> 11 (December)
   let currentMont = String(currDay[1] - 1);
   let startingDay = getWeekDayIndex(currDay[0], currDay[1], 1);
   let currDayElement = document.getElementById(
     "day-block-" + String(startingDay - 1 + parseInt(day))
   );
+
+  let currDayString =
+    currDay[1] +
+    "/" +
+    day +
+    "/" +
+    currDay[0] +
+    " " +
+    getWeekDayString(currDay[0], currDay[1], currDay[2]);
+
+  const sidebarTitleElem = document.querySelector(".sidebar-title");
+  sidebarTitleElem.textContent = currDayString;
+
   if (calendarData[0].years[currentYear] != null) {
     if (calendarData[0].years[currentYear].months[currentMont] != null) {
       //clear side bar
@@ -100,7 +212,7 @@ function updataSideBar(day) {
       sideBarEvent.innerHTML = "";
       let sideBarTask = document.querySelector(".sidebar-tasks");
       sideBarTask.innerHTML = "";
-      console.log(currDayElement);
+
       if (currDayElement.classList.contains("othermonth") == false) {
         //let day = e.currentTarget.querySelector('p').innerHTML;
         if (
@@ -131,6 +243,7 @@ function updataSideBar(day) {
           count = 0;
           for (let task of days.Tasks) {
             dotoArray.push({
+              checked: task.complete,
               id: task.taskID,
               title: task.TaskName,
               due: task.DueDate,
@@ -140,15 +253,19 @@ function updataSideBar(day) {
 
           //add data to the new event-block
           eventArray.forEach((event) => {
-            console.log(event.end);
             let event_block = document.createElement("event-block");
             event_block.eventData = event;
             sideBarEvent.append(event_block);
             let deleteBtun = event_block.shadowRoot.querySelector("#delete");
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
-              console.log(btnEvnet.currentTarget.getRootNode().host);
               callDelete(btnEvnet, currentYear, currentMont, day, true);
+            });
+
+            let editButton = event_block.shadowRoot.querySelector("#edit");
+            editButton.addEventListener("click", (btnEvnet) => {
+              btnEvnet.stopPropagation();
+              callEdit(btnEvnet, currentYear, currentMont, day, true);
             });
 
             // hide events if needed
@@ -160,15 +277,39 @@ function updataSideBar(day) {
 
           //add data to the new event-block
           dotoArray.forEach((task) => {
-            console.log(task.end);
             let todo_block = document.createElement("todo-block");
             todo_block.todoData = task;
             let deleteBtun = todo_block.shadowRoot.querySelector("#delete");
+            let checkBox = todo_block.shadowRoot.querySelector("#check");
+            checkBox.checked = task["checked"];
+
+            //chcek box save the check state.
+            checkBox.addEventListener("change", (event) => {
+              let eventID = event.currentTarget
+                .getRootNode()
+                .host.shadowRoot.querySelector("#Id");
+              let taskList =
+                calendarData[0].years[currentYear].months[currentMont].days[
+                  day - 1
+                ].tasks;
+              let id = parseInt(eventID.innerHTML);
+              for (let i = 0; i < taskList.length; i++) {
+                if (taskList[i].taskID === id) {
+                  taskList[i].complete = checkBox.checked;
+                }
+              }
+            });
+
             deleteBtun.addEventListener("click", (btnEvnet) => {
               btnEvnet.stopPropagation();
-              console.log(btnEvnet.currentTarget.parentNode);
               callDelete(btnEvnet, currentYear, currentMont, day, false);
             });
+            let editButton = todo_block.shadowRoot.querySelector("#edit");
+            editButton.addEventListener("click", (btnEvnet) => {
+              btnEvnet.stopPropagation();
+              callEdit(btnEvnet, currentYear, currentMont, day, false);
+            });
+
             sideBarTask.append(todo_block);
 
             // hide tasks if needed
@@ -191,12 +332,13 @@ function updataSideBar(day) {
 function viewDay(e) {
   //looking for the event list
   let day = e.currentTarget.querySelector("p").innerHTML;
-  updataSideBar(day);
+
+  updateSideBar(day);
   populateSidebar(e);
   showSidebar();
   e.stopPropagation();
   addExitListener();
-  hideTodo(); // TODO: Do not hide when clicking on current day number again
+  hideTodo();
 }
 
 /**
@@ -206,42 +348,22 @@ function viewDay(e) {
 function addExitListener() {
   document.addEventListener("click", function docClick(event) {
     if (!event.target.closest(".sidebar")) {
-      console.log(shadowClick + " addEventListener");
-      if (shadowClick == 0) {
-        console.log("hidesidebar");
+      let isEdit = document.getElementById("is-edit");
+      if (shadowClick == 0 && isEdit.value == "false") {
         hideSidebar();
-      } else {
-        shadowClick--;
       }
-      // document.removeEventListener('click', arguments.callee);
       document.removeEventListener("click", addExitListener);
     }
-    //document.removeEventListener('click', arguments.callee);
   });
 }
 
 /**
- * @author Steven Chin
- * Adds event listener to hide sidebar upon clicking outside of sidebar
- */
-/*
- function addExitListener() {
-   document.addEventListener('click', e => {
-     if (!e.target.closest('.sidebar')) {
-       //console.log(shadowClick+"hidesidebar");
-       hideSidebar();
-       document.removeEventListener('click', arguments.callee);
-     }
-   });
- }*/
-
-/**
- * @author Steven Chin
+ * @author Steven Chin, Steven Khaw
  * Adds event listener to expand to-do list
  */
 function addExpandListener() {
-  const expandBtn = document.querySelector(".expand-tasks-btn");
-  expandBtn.addEventListener("click", () => {
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.addEventListener("click", () => {
     const todoList = document.querySelector(".sidebar-tasks");
     if (todoList.classList.contains(".sidebar-tasks-expanded")) {
       hideTodo();
@@ -252,10 +374,14 @@ function addExpandListener() {
 }
 
 /**
- * @author Steven Chin, Yangming Guan
+
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to expand to-do list and shrink event list
  */
 function showTodo() {
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.style.borderRadius = "0px 0px 0px 0px";
+
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "⌄";
   const todoList = document.querySelector(".sidebar-tasks");
@@ -279,10 +405,14 @@ function showTodo() {
 }
 
 /**
- * @author Steven Chin,Yangming Guan
+
+ * @author Steven Chin,Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
 function hideTodo() {
+  const taskHeaderElem = document.querySelector(".tasks-head");
+  taskHeaderElem.style.borderRadius = "0px 0px 30px 0px";
+
   const expandBtn = document.querySelector(".expand-tasks-btn");
   expandBtn.textContent = "^";
   const todoList = document.querySelector(".sidebar-tasks");
