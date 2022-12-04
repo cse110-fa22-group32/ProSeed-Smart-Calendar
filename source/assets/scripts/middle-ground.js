@@ -7,120 +7,6 @@
  * Last Modified : 2022-12-4 12:00 AM
  */
 
-/**
- * @author Guan Li
- * @summary Get calenar json file from storage.
- */
-function getCalendarFromStorage() {
-  if (!localStorage.getItem("calendars")) {
-    return [];
-  }
-  return JSON.parse(localStorage.getItem("calendars"));
-}
-
-/**
- * @author Guan Li
- * @summary takes in a parameter calendar and save it to storage
- */
-function saveNewCalendarToStorage(json_file) {
-  let oldCalendarStorage = getCalendarFromStorage();
-  oldCalendarStorage.push(json_file);
-  localStorage.setItem("calendars", JSON.stringify(oldCalendarStorage));
-}
-
-/**
- * @author Guan Li, Steven Khaw
- * @summary Add all the calendar to middle ground from the local storage
- */
-function createView(calendars) {
-  if (calendars == null) {
-    return;
-  } else {
-    let middleGroundContainer = document.querySelector("#Calendars");
-    middleGroundContainer.innerHTML = ""; // Clear the html first.
-
-    for (let i = 0; i < calendars.length; i++) {
-      let gridContainer = document.createElement("div");
-      gridContainer.className = "grid-item";
-      let article = document.createElement("article");
-      if (!calendars[i][0]) {
-        article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
-        <p class="title">Title: ${calendars[i].title}</p>
-        <p class="innerText">Last Updated: ${calendars[i].lastUpdated}</p>
-        <div class="row">
-          <div class="column">
-            <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}>Open calendar</button>
-          </div>
-          <div class="column">
-            <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}>Delete calendar</button>
-          </div>
-        </div>
-        `;
-      } else {
-        article.innerHTML = `
-        <img src="./assets/temp_/Icon.png" alt="calendar">
-        <p class="title">Title: ${calendars[i][0].title}</p>
-        <p class="innerText">Last Updated: ${calendars[i][0].lastUpdated}</p>
-        <div class="row">
-          <div class="column">
-            <button type ="button" class="key-button" id="enter-calendar" name=${calendars[i][0].calendarID}>Open calendar</button>
-          </div>
-          <div class="column">
-            <button type ="button" class="key-button" id="remove-calendar" name=${calendars[i][0].calendarID}>Delete calendar</button>
-          </div>
-        </div>
-        `;
-      }
-
-      gridContainer.appendChild(article);
-      middleGroundContainer.appendChild(gridContainer);
-    }
-  }
-}
-
-/**
- * @author Guan Li
- * @summary Open the form for user input
- */
-function openForm() {
-  //Display the form:
-  document.getElementById("myForm").style.display = "block";
-}
-
-/**
- * @author Guan Li
- * @summary Close the form for user input
- */
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
-
-/**
- * @author Guan Li
- * @summary returns the file to grab the json files.
- *
- * @return Promise - Returns the json file objects.
- */
-async function parseJsonFile(file) {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.onload = (event) => resolve(JSON.parse(event.target.result));
-    fileReader.onerror = (error) => reject(error);
-    fileReader.readAsText(file);
-  });
-}
-
-/**
- * @author Guan Li
- * @summary When a button is clicked, find the corresponding calendar
- *
- * @return NONE
- */
-function goToCalendar() {
-  console.log("HIT");
-}
-
 // When the html is loaded
 document.addEventListener(
   "DOMContentLoaded",
@@ -154,7 +40,7 @@ document.addEventListener(
             "/" +
             getCurrentDay()[1] +
             "/" +
-            +getCurrentDay()[2],
+            getCurrentDay()[2],
           title: calendarName,
           calendarID:
             getCurrentDay()[0] +

@@ -2,19 +2,18 @@
  * User.js
  * @author Guan Li
  * @summary File contains User class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
  */
 
 /** Class User  */
 class User {
-
   /**
    * @author Guan Li
    * Constructs a user object from the class
    * @constructor
-   * 
+   *
    * @param {string} firstName - firstname of user
    * @param {string} lastName - lastname of user
    * @param {string} userName - username of user
@@ -67,11 +66,7 @@ class User {
    * Currently not implemented.
    * @return User's infromation - for other implementation
    */
-  displayUserInformation() {
-
-  }
+  displayUserInformation() {}
 
   //TODO: Maybe have something for user access?
-
 }
-
