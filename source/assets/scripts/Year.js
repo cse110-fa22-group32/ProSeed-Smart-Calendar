@@ -2,26 +2,27 @@
  * Year.js
  * @author Steven Khaw
  * @summary File contains Year class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Year */
 class Year {
-
   /**
    * @author Steven Khaw
    * Constructs a year object from the class
-   * @constructor 
-   * 
+   * @constructor
+   *
    * @param {number} currYear year of Year (2022)
    * @param {boolean} isLeapYear boolean on if leap year
-   * @param {Month[]} months months of year 
+   * @param {Month[]} months months of year
    */
   constructor(currYear, months) {
     this.currYear = currYear;
-    this.isLeapYear = ((0 === this.currYear % 4) && (0 !== this.currYear % 100) || (0 === this.currYear % 400));
+    this.isLeapYear =
+      (0 === this.currYear % 4 && 0 !== this.currYear % 100) ||
+      0 === this.currYear % 400;
     this.months = months;
   }
 
@@ -55,7 +56,7 @@ class Year {
    * Return events and tasks of selected months, days
    * @param {number[]} selectedMonths - hold selected months (1-12); [-1] indicate all months
    * @param {number[]} selectedDays - hold selected days (1-31); [-1] indicate all days
-   * 
+   *
    * @author Yuelin Dai
    * @return {Array<Array<Event>, Array<Task>>} - array of events and array of tasks
    */
@@ -63,7 +64,8 @@ class Year {
     let eventsAr = [];
     let tasksAr = [];
 
-    if (selectedMonths[0] == -1) { // export events of all months
+    if (selectedMonths[0] == -1) {
+      // export events of all months
       for (let curMonth of this.months) {
         if (curMonth != null) {
           let [childEvents, childTasks] = curMonth.Export(selectedDays);
@@ -71,11 +73,12 @@ class Year {
           tasksAr = tasksAr.concat(childTasks);
         }
       }
-    }
-    else { // export events of selected months
+    } else {
+      // export events of selected months
       for (let curMonth of selectedMonths) {
         if (this.months[curMonth - 1] != null) {
-          let [childEvents, childTasks] = this.months[curMonth - 1].Export(selectedDays);
+          let [childEvents, childTasks] =
+            this.months[curMonth - 1].Export(selectedDays);
           eventsAr = eventsAr.concat(childEvents);
           tasksAr = tasksAr.concat(childTasks);
         }

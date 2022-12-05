@@ -15,6 +15,45 @@ function init() {
   currDay = getCurrentDay();
   initializeCalendarDisplay(currDay);
 
+  let emptyCalendar = {
+    lastUpdated: currDay[0] + "/" + currDay[1] + "/" + currDay[2],
+    title: "Empty Calendar",
+    calendarID:
+      currDay[0] +
+      currDay[1] +
+      currDay[2] +
+      "-" +
+      String("Empty Calendar".length),
+    usersList: [],
+    eventsList: [],
+    tasksList: [],
+  };
+
+  if (
+    !localStorage.getItem("calendarDict") ||
+    !localStorage.getItem("loadCalendarKey")
+  ) {
+    if (!localStorage.getItem("jsonStr")) {
+      alert(
+        "Calendar was not loaded properly. Please head back to middle-ground.html. Alternatively, you may work on this empty calendar."
+      );
+      validateDict();
+      addDictPair(
+        String(emptyCalendar.calendarID),
+        JSON.stringify(emptyCalendar)
+      );
+
+      storeKey(String(emptyCalendar.calendarID));
+      saveNewCalendarToStorage(emptyCalendar);
+    }
+  }
+
+  // clears jsonStr from localStorage
+  isNewCalendar();
+
+  // loads calendar based on current key stored
+  loadCalendarFromDict();
+
   // adds event listeners to buttons
   traverseMonthEventListener();
   traverseYearEventListener();
@@ -24,7 +63,7 @@ function init() {
  * @author Christopher Han, Steven Khaw
  * @summary to assign the value of global variable calendarData
  * @update made it append it rather than set calendarData
- * 
+ *
  * @param {Calendar} inputData data of calendar to be loaded
  */
 
@@ -274,7 +313,6 @@ function traverseMonthEventListener() {
       currDay[0]++;
       currDay[1] = 1;
 
-
       numWeeks = getWeekCount(currDay[0], currDay[1]);
 
       // create day blocks
@@ -285,7 +323,6 @@ function traverseMonthEventListener() {
 
       calendarData[0].Show(currDay[0], currDay[1]);
       //drawCalendar();
-
     } else {
       // go to next month
       currDay[1]++;
@@ -328,7 +365,6 @@ function traverseYearEventListener() {
     // auto save displayed date to local storage
     saveDisplayDateToLocalStorage();
     //drawCalendar();
-
   });
 
   yearBtnDown.addEventListener("click", function () {
@@ -361,4 +397,3 @@ function traverseYearEventListener() {
 function displayDate() {
   return currDay;
 }
-
