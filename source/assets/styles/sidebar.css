@@ -34,11 +34,11 @@ Root variables
 */
 
 :root {
-  --sb-height: 
-    calc(37.6px + 2 * var(--calendar-margin) + var(--week-of-day-height) + 5 *
-    var(--day-block-gap) + 5 * var(--day-block-height)
-  ); /* TODO: HARDCODED! */
-
+  --sb-height:
+    calc(
+      37.6px + 2 * var(--calendar-margin) + var(--week-of-day-height) + 5 *
+      var(--day-block-gap) + 5 * var(--day-block-height)
+    ); /* TODO: HARDCODED! */
   --sb-radius: 30px;
 }
 
