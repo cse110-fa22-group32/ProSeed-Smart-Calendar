@@ -68,6 +68,7 @@ describe('Testing Login Functionality', () => {
 
 	it('Create a new calendar', async () => {
 		//Login from sign in page to reach middleground page
+		await page.goto('https://cse110-fa22-group32.github.io/cse110-fa22-group32/');
 		const email = "random@ucsd.edu";
 		const password = "hello1";
 		await page.$eval('input[id=email-input]', (el,value) => el.value = value, email);
@@ -75,6 +76,6 @@ describe('Testing Login Functionality', () => {
 		await page.$eval('button[type=submit]', el => el.click());
 
 		//Begin new calendar creation here
-		await page.$eval('input[id=new-calendar-button]', el => el.click());
+		await page.$eval('button[id=new-calendar-button]', el => el.click());
 	}, 10000);
 });
