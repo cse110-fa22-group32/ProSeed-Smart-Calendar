@@ -65,4 +65,16 @@ describe('Testing Login Functionality', () => {
 		const title = await page.title();
 		expect(title).toBe('ProSeed');
 	}, 10000);
+
+	it('Create a new calendar', async () => {
+		//Login from sign in page to reach middleground page
+		const email = "random@ucsd.edu";
+		const password = "hello1";
+		await page.$eval('input[id=email-input]', (el,value) => el.value = value, email);
+		await page.$eval('input[id=password-input]', (el,value) => el.value = value, password);
+		await page.$eval('button[type=submit]', el => el.click());
+
+		//Begin new calendar creation here
+		await page.$eval('input[id=new-calendar-button]', el => el.click());
+	}, 10000);
 });
