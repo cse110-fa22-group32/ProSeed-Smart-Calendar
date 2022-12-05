@@ -1,3 +1,9 @@
+/**
+ * @author Younus Ahmad
+ * @summary This file contains end-to-end tests for the general workflow of creating,
+ * adding, and editing events. 
+ */
+
 const { Dialog } = require("puppeteer");
 
 describe('Testing Login Functionality', () => {
@@ -50,9 +56,6 @@ describe('Testing Login Functionality', () => {
 		await page.$eval('input[id=password-input]', (el,value) => el.value = value, password);
 		await page.$eval('input[id=remember-box]', el => el.value = "checked");
 		await page.$eval('button[type=submit]', el => el.click());
-		// await page.$eval('p[class=title]', el => el.click())
-		// // await page.goto('http://127.0.0.1:5502/source/index.html');
-		//TODO: not done with middle ground
 		const title = await page.title();
 		expect(title).toBe('ProSeed');
 	}, 10000);
@@ -163,7 +166,6 @@ describe('Testing Calendar Functionality', () => {
 		//Check home button functionality
 		await homeBtn.click();
 		await page.waitForNavigation();
-		//console.log(await page.title());
 		expect(await page.title()).toBe("ProSeed");
 		await page.goBack();
 		expect(await page.title()).toBe("ProSeed Calendar");
@@ -209,17 +211,11 @@ describe('Testing Calendar Functionality', () => {
 		date = await (await calHeader.getProperty('textContent')).jsonValue();
 	}, 10000);
 
-	it('Edge Case: check for date bounds', async () => {
-		//TODO: this requires needing to load in a calendar that is initialized
-		//to January 0000 and one for whatever the max value is
-	}, 10000);
-
 	it('Add calendar event: check in main view', async () => {
 		const tail = await page.$('#calendar-tail');
 		const tailBts = await tail.$$('.calendar-tail-btn');
 		//Click add event button and look for form to read values
 		await tailBts[0].click();
-		const eventForm = await page.$('#add-event-form');	//Not even sure if I actually need to use this because i can just use .$eval()
 		const eventName = "Test Event1";
 		//For this test, we create an event on an arbitrary day in December
 		const testDate = "2022-12-05";
@@ -246,15 +242,12 @@ describe('Testing Calendar Functionality', () => {
 		//const title = await (await text[0].getProperty('textContent')).jsonValue();
 		const eventTitle = await (await eventsList[0].getProperty('textContent')).jsonValue();
 		expect(eventTitle).toBe(eventName);
-
-
 	}, 10000);
 
 	it('Add calendar event: Check in taskbar view', async () => {
 		//Event is now created, now to check whether it is populated into correct space
 		const calMain = await page.$('#calendar-day-main');
 		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
-		//const eventsList = await dayBlocks[4].$$('.event-block');
 		//Click on dayblock with event created to see if taskbar is populated
 		await dayBlocks[4].click();
 		const sidebar = await page.$('.sidebar');
@@ -264,36 +257,89 @@ describe('Testing Calendar Functionality', () => {
 		//Event was given the date of 2022-12-05, which is a monday 
 		expect(sidebarHeader).toBe("12/5/2022 Monday");
 		expect(sidebarEventsList.length).toBe(1);
-
-		//Check that the actual event details were populated correctly as well (not sure why I can't access shadow root)
-		// const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
-		// const sideEventName = await shadowRoot.$('#title');
-		// const title = await (await sideEventName.getProperty()).jsonValue();
-		// console.log(title);
 	}, 10000);
 
-	it('Delete Calendar Event', async () => {
-			//Event is now created, now to check whether it is populated into correct space
-			const calMain = await page.$('#calendar-day-main');
-			const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
-			//const eventsList = await dayBlocks[4].$$('.event-block');
-			//Click on dayblock with event created to see if taskbar is populated
-			//For some reason the shadowRoot is not being registered as something that can be indexed? idk
-			// await dayBlocks[4].click();
-			// const sidebar = await page.$('.sidebar');
-			// const sidebarEvents = await sidebar.$('.sidebar-events');
-			// const sidebarEventsList = await sidebarEvents.$$('event-block');
-			// const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
-			// const buttons = await shadowRoot.$$("button");
-			// console.log(sidebarEventsList.length);
-	}, 10000);
-
-	it('Edit Calendar Event', async () => {
+	it('Check on logout events are not removed', async () => {
+		//Load in logout buttons and go through dialog for login
+		const btnContainer = await page.$('#calendar-title-bar-component');
+		const traversalBtns = await btnContainer.$$('.calendar-title-bar-btn');
+		await traversalBtns[4].click();
+		const confirmLogout = await page.$('#confirm-logout');
+		await confirmLogout.click();
+		await page.waitForNavigation();
+		//Verify that logout sends user to login page
+		expect(await page.title()).toBe("ProSeed Login");
+		await page.goBack();
+		expect(await page.title()).toBe("ProSeed Calendar");
+		//Veryify that events are still populated in main and sidebar view
 		const calMain = await page.$('#calendar-day-main');
 		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
 		const eventsList = await dayBlocks[4].$$('.event-block');
-
+		expect(eventsList.length).toBe(1);
 		await dayBlocks[4].click();
 		const sidebar = await page.$('.sidebar');
+		const sidebarHeader = await (await (await sidebar.$('.sidebar-title')).getProperty('textContent')).jsonValue();
+		const sidebarEvents = await sidebar.$('.sidebar-events');
+		const sidebarEventsList = await sidebarEvents.$$('event-block');
+		//Event was given the date of 2022-12-05, which is a monday 
+		expect(sidebarHeader).toBe("12/5/2022 Monday");
+		expect(sidebarEventsList.length).toBe(1);
+	}, 10000);
+
+	it('Check edit event', async () => {
+		//Load in sidebar events list
+		const calMain = await page.$('#calendar-day-main');
+		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		dayBlocks[4].click();
+		const sidebar = await page.$('.sidebar');
+		const sidebarEvents = await sidebar.$('.sidebar-events');
+		const sidebarEventsList = await sidebarEvents.$$('event-block');
+		//Get shadowroot that holds sidebar event object, click on edit button
+		const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
+		await shadowRoot.$eval('button[id=edit]', el => el.click());
+
+		const eventName = "Test Event4";
+		//For this test, we create an event on an arbitrary day in December
+		const testDate = "2022-12-22";
+		const startTime = "13:30";
+		const endTime = "15:30";
+		const location = "UCSD";
+		const description = "Sample description!!!";
+		//Load in the parameters of event into the create event form
+		await page.$eval('input[id=event-title]', (el, value) => el.value = value, eventName);
+		await page.$eval('input[id=date]', (el, value) => el.value = value, testDate);
+		await page.$eval('input[id=start-time]', (el, value) => el.value = value, startTime);
+		await page.$eval('input[id=end-time]', (el, value) => el.value = value, endTime);
+		await page.$eval('input[id=location]', (el, value) => el.value = value, location);
+		await page.$eval('textarea[id=description]', (el, value) => el.value = value, description);
+		const saveBtn = await page.$('#save-event-btn');
+		await saveBtn.click();
+		//Represents refreshed content of dayblock after editing event
+		const dayBlocks2 = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		const eventsList2 = await dayBlocks2[21].$$('.event-block');
+		await dayBlocks[21].click();
+		const sidebarHeader = await (await (await sidebar.$('.sidebar-title')).getProperty('textContent')).jsonValue();
+		const eventTitle = await (await eventsList2[0].getProperty('textContent')).jsonValue();
+		expect(eventTitle).toBe(eventName);
+		expect(sidebarHeader).toBe("12/22/2022 Thursday")
+	}, 10000);
+
+	it('Check delete event', async () => {
+		//Load in sidebar events list
+		const calMain = await page.$('#calendar-day-main');
+		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		const eventsList = await dayBlocks[21].$$('.event-block');
+		dayBlocks[21].click();
+		const sidebar = await page.$('.sidebar');
+		const sidebarEvents = await sidebar.$('.sidebar-events');
+		const sidebarEventsList = await sidebarEvents.$$('event-block');
+		//Get shadowroot that holds sidebar event object, click on delete button
+		const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
+		await shadowRoot.$eval('button[id=delete]', el => el.click());
+		//Check that after delete event is removed from taskbar
+		const sidebarEventsList2 = await sidebarEvents.$$('event-block');
+		const eventsList2 = await dayBlocks[21].$$('.event-block');
+		expect(sidebarEventsList2.length).toBe(0);
+		expect(eventsList2.length).toBe(0);
 	}, 10000);
 });
