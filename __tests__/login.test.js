@@ -3,7 +3,7 @@ const { Dialog } = require("puppeteer");
 describe('Testing Login Functionality', () => {
 
 	beforeAll(async () => {
-	  await page.goto('http://127.0.0.1:5502/source/index.html');
+	  await page.goto('https://cse110-fa22-group32.github.io/cse110-fa22-group32/');
 	});
 
 	it('Title of login page', async () => {
@@ -52,7 +52,7 @@ describe('Testing Login Functionality', () => {
 	}, 10000);
 
 	it('Verify remember me', async () => {
-		await page.goto('http://127.0.0.1:5502/source/index.html');
+		await page.goto('https://cse110-fa22-group32.github.io/cse110-fa22-group32/');
 		const email = "random@ucsd.edu";
 		const password = "hello1";
 		await page.$eval('input[id=email-input]', (el,value) => el.value = value, email);
