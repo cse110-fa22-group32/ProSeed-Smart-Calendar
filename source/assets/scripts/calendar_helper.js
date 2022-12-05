@@ -1,5 +1,14 @@
-
- module.exports = { getIfLeapYear, getDaysInMonth, indexToMonth, indexToDay, getWeekDayString, getWeekDayIndex, getWeekCount, getCurrentDay };
+try {
+  module.exports = { 
+    getIfLeapYear, 
+    getDaysInMonth, 
+    indexToMonth, 
+    indexToDay, 
+    getWeekDayString, 
+    getWeekDayIndex, 
+    getWeekCount, 
+    getCurrentDay };
+} catch (error){}
 
 /**
  * calendar_helper.js
