@@ -81,11 +81,9 @@ describe('Testing Middleground Functionality', () => {
 		const title = await (await text[0].getProperty('textContent')).jsonValue();
 		const lastUpdated = await (await text[1].getProperty('textContent')).jsonValue();
 		expect(title).toBe("Title: Work");
-// 		expect(lastUpdated).toBe("Last Updated: 2022/12/4");
-		
-		let today = new Date();
-		let month = today.getMonth() + 1;
-		expect(lastUpdated).toBe("Last Updated: " + today.getFullYear() +"/" + month + "/" + today.getDate());
+		let date = new Date();
+		let reformatedDate = date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+		expect(lastUpdated).toBe(`Last Updated: ${reformatedDate}`);
 	}, 10000);
 
 	it('Open a calendar', async () => {
@@ -209,5 +207,93 @@ describe('Testing Calendar Functionality', () => {
 		date = await (await calHeader.getProperty('textContent')).jsonValue();
 		expect(date).toBe("January 2023");
 		date = await (await calHeader.getProperty('textContent')).jsonValue();
+	}, 10000);
+
+	it('Edge Case: check for date bounds', async () => {
+		//TODO: this requires needing to load in a calendar that is initialized
+		//to January 0000 and one for whatever the max value is
+	}, 10000);
+
+	it('Add calendar event: check in main view', async () => {
+		const tail = await page.$('#calendar-tail');
+		const tailBts = await tail.$$('.calendar-tail-btn');
+		//Click add event button and look for form to read values
+		await tailBts[0].click();
+		const eventForm = await page.$('#add-event-form');	//Not even sure if I actually need to use this because i can just use .$eval()
+		const eventName = "Test Event1";
+		//For this test, we create an event on an arbitrary day in December
+		const testDate = "2022-12-05";
+		const startTime = "13:30";
+		const endTime = "15:30";
+		const location = "UCSD";
+		const description = "Sample description!!!";
+		//Load in the parameters of event into the create event form
+		await page.$eval('input[id=event-title]', (el, value) => el.value = value, eventName);
+		await page.$eval('input[id=date]', (el, value) => el.value = value, testDate);
+		await page.$eval('input[id=start-time]', (el, value) => el.value = value, startTime);
+		await page.$eval('input[id=end-time]', (el, value) => el.value = value, endTime);
+		await page.$eval('input[id=location]', (el, value) => el.value = value, location);
+		await page.$eval('textarea[id=description]', (el, value) => el.value = value, description);
+		//await page.$eval('button[id=save-event-btn]', el => el.click());
+		//await page.$eval('button[type=submit]', el => el.click());
+		const saveBtn = await page.$('#save-event-btn');
+		await saveBtn.click();
+
+		//Event is now created, now to check whether it is populated into correct space
+		const calMain = await page.$('#calendar-day-main');
+		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		const eventsList = await dayBlocks[4].$$('.event-block');
+		//const title = await (await text[0].getProperty('textContent')).jsonValue();
+		const eventTitle = await (await eventsList[0].getProperty('textContent')).jsonValue();
+		expect(eventTitle).toBe(eventName);
+
+
+	}, 10000);
+
+	it('Add calendar event: Check in taskbar view', async () => {
+		//Event is now created, now to check whether it is populated into correct space
+		const calMain = await page.$('#calendar-day-main');
+		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		//const eventsList = await dayBlocks[4].$$('.event-block');
+		//Click on dayblock with event created to see if taskbar is populated
+		await dayBlocks[4].click();
+		const sidebar = await page.$('.sidebar');
+		const sidebarHeader = await (await (await sidebar.$('.sidebar-title')).getProperty('textContent')).jsonValue();
+		const sidebarEvents = await sidebar.$('.sidebar-events');
+		const sidebarEventsList = await sidebarEvents.$$('event-block');
+		//Event was given the date of 2022-12-05, which is a monday 
+		expect(sidebarHeader).toBe("12/5/2022 Monday");
+		expect(sidebarEventsList.length).toBe(1);
+
+		//Check that the actual event details were populated correctly as well (not sure why I can't access shadow root)
+		// const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
+		// const sideEventName = await shadowRoot.$('#title');
+		// const title = await (await sideEventName.getProperty()).jsonValue();
+		// console.log(title);
+	}, 10000);
+
+	it('Delete Calendar Event', async () => {
+			//Event is now created, now to check whether it is populated into correct space
+			const calMain = await page.$('#calendar-day-main');
+			const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+			//const eventsList = await dayBlocks[4].$$('.event-block');
+			//Click on dayblock with event created to see if taskbar is populated
+			//For some reason the shadowRoot is not being registered as something that can be indexed? idk
+			// await dayBlocks[4].click();
+			// const sidebar = await page.$('.sidebar');
+			// const sidebarEvents = await sidebar.$('.sidebar-events');
+			// const sidebarEventsList = await sidebarEvents.$$('event-block');
+			// const shadowRoot = await sidebarEventsList[0].getProperty("shadowRoot");
+			// const buttons = await shadowRoot.$$("button");
+			// console.log(sidebarEventsList.length);
+	}, 10000);
+
+	it('Edit Calendar Event', async () => {
+		const calMain = await page.$('#calendar-day-main');
+		const dayBlocks = await calMain.$$('.calendar-day-block:not(.othermonth)');
+		const eventsList = await dayBlocks[4].$$('.event-block');
+
+		await dayBlocks[4].click();
+		const sidebar = await page.$('.sidebar');
 	}, 10000);
 });
