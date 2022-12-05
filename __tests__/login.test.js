@@ -81,7 +81,11 @@ describe('Testing Middleground Functionality', () => {
 		const title = await (await text[0].getProperty('textContent')).jsonValue();
 		const lastUpdated = await (await text[1].getProperty('textContent')).jsonValue();
 		expect(title).toBe("Title: Work");
-		expect(lastUpdated).toBe("Last Updated: 2022/12/4");
+// 		expect(lastUpdated).toBe("Last Updated: 2022/12/4");
+		
+		let today = new Date();
+		let month = today.getMonth() + 1;
+		expect(lastUpdated).toBe("Last Updated: " + today.getFullYear() +"/" + month + "/" + today.getDate());
 	}, 10000);
 
 	it('Open a calendar', async () => {
