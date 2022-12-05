@@ -295,6 +295,24 @@ day block css setting for calendar
 .othermonth {
   background: #c2dbbd;
 }
+/*
+***********************************************
+styling for add event and task
+***********************************************
+*/
+dialog {
+  font-family: "Mochiy Pop One", sans-serif;
+  border-radius: 25px;
+  background-color: rgb(186, 228, 211);
+  color: rgb(0, 0, 0);
+}
+
+dialog button {
+  background-color: #54cb9c;
+  border-radius: 25px;
+  font-family: "Mochiy Pop One", sans-serif;
+  color:black;
+}
 
 /*
 ***********************************************
@@ -333,21 +351,3 @@ function button setting for calendar
   background-color: royalblue;
 }
 
-/*
-***********************************************
-styling for add event and task
-***********************************************
-*/
-dialog {
-  font-family: "Mochiy Pop One", sans-serif;
-  border-radius: 25px;
-  background-color: rgb(186, 228, 211);
-  color: rgb(0, 0, 0);
-}
-
-dialog button {
-  background-color: #54cb9c;
-  border-radius: 25px;
-  font-family: "Mochiy Pop One", sans-serif;
-  color:black;
-}
