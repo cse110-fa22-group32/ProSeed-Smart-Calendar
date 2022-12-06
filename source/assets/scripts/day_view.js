@@ -4,12 +4,12 @@
  * @summary File contains functions for sidebar visibility and population
  * @fileoverview
  *
- * Created at : 2022-11-18 12:11 AM;
- * Last Modified : 2022-12-1 9:20 PM
+ * Created at : 2022-11-18 12:11 AM
+ * Last Modified : 2022-12-5 7:12 PM
  */
 
 window.addEventListener("DOMContentLoaded", init);
-//shadowClick is 1, prevent hide the side bar.
+//shadowClick is 1, prevent hiding the sidebar.
 var shadowClick = 0;
 
 /**
@@ -30,8 +30,6 @@ function addListeners() {
   dayNumbers.forEach((num) => {
     num.style.cursor = "pointer";
     num.onclick = viewDay;
-
-    //num.addEventListener('click', viewDay);
   });
 
   addExpandListener();
@@ -39,7 +37,7 @@ function addListeners() {
 
 /**
  * @author Yangming Guan
- * handle the delete call
+ * Handle the delete call
  * @param {Event} event - click event
  * @param {string} year - date year
  * @param {string} month - date month
@@ -77,7 +75,7 @@ function callDelete(event, year, month, day, isEvent) {
 
 /**
  * @author Yangming Guan
- * format the date for use.
+ * Format the date for use
  * @param {String} date - date info from object data
  * @return new format date
  */
@@ -96,7 +94,7 @@ function dateFormat(date) {
 
 /**
  * @author Yangming Guan
- * format the time for use.
+ * Format the time for use
  * @param {String} time - time info from object data
  * @return new format time
  */
@@ -110,7 +108,7 @@ function timeFormat(time) {
 
 /**
  * @author Yangming Guan
- * handle the edit click.
+ * Handle the edit click
  * @param {Event} event - click event
  * @param {string} year - date year
  * @param {string} month - date month
@@ -180,7 +178,7 @@ function callEdit(event, year, month, day, isEvent) {
 
 /**
  * @author Yangming Guan
- * updata the display of side bar.
+ * Update the display of sidebar
  * @param {string} day - date day
  */
 function updateSideBar(day) {
@@ -200,14 +198,14 @@ function updateSideBar(day) {
     "/" +
     currDay[0] +
     " " +
-    getWeekDayString(currDay[0], currDay[1], currDay[2]);
+    getWeekDayString(currDay[0], currDay[1], day);
 
   const sidebarTitleElem = document.querySelector(".sidebar-title");
   sidebarTitleElem.textContent = currDayString;
 
   if (calendarData[0].years[currentYear] != null) {
     if (calendarData[0].years[currentYear].months[currentMont] != null) {
-      //clear side bar
+      //clear sidebar
       let sideBarEvent = document.querySelector(".sidebar-events");
       sideBarEvent.innerHTML = "";
       let sideBarTask = document.querySelector(".sidebar-tasks");
@@ -334,7 +332,6 @@ function viewDay(e) {
   let day = e.currentTarget.querySelector("p").innerHTML;
 
   updateSideBar(day);
-  populateSidebar(e);
   showSidebar();
   e.stopPropagation();
   addExitListener();
@@ -374,7 +371,6 @@ function addExpandListener() {
 }
 
 /**
-
  * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to expand to-do list and shrink event list
  */
@@ -405,8 +401,7 @@ function showTodo() {
 }
 
 /**
-
- * @author Steven Chin,Yangming Guan, Steven Khaw
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
 function hideTodo() {
@@ -428,7 +423,7 @@ function hideTodo() {
     e.classList.remove("hidden");
   });
 
-  //hide tast
+  //hide task
   let tasks = document.querySelectorAll(".sidebar-tasks todo-block");
   tasks.forEach((t) => {
     t.classList.add("hidden");
@@ -457,15 +452,4 @@ function hideSidebar() {
 
   const container = sidebar.parentElement;
   container.classList.remove("sidebar-container-open");
-}
-
-/**
- * @author Steven Chin
- * Populates sidebar with calendar event and task elements
- * TODO: Complete populateSidebar function
- * @param {Event} e - click event
- */
-function populateSidebar(e) {
-  const calendar = -1; // somehow get calendar
-  const dayNumber = Number(e.target);
 }

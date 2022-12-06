@@ -153,6 +153,7 @@ time {
   background: #54cb9c;
   border-radius: 50px;
   border: #fff solid;
+  cursor: pointer;
 }
 
 #calendar-title-bar-conponent {
@@ -173,6 +174,7 @@ time {
   bottom: 23px;
   right: 28px;
   width: 280px;
+  cursor: pointer;
 }
 
 /* The popup form - hidden by default */
@@ -181,12 +183,13 @@ time {
   position: fixed;
   bottom: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;
   z-index: 9;
 }
 
 /* Add styles to the form container */
 .form-container {
+  border-radius: 25px;
+  font-family: "Mochiy Pop One", sans-serif;
   max-width: 300px;
   padding: 10px;
   background-color: white;
@@ -211,6 +214,7 @@ time {
 
 /* Set a style for the submit/login button */
 .form-container .btn {
+  font-family: "Mochiy Pop One", sans-serif;
   background-color: #04aa6d;
   color: white;
   padding: 16px 20px;
@@ -219,6 +223,7 @@ time {
   width: 100%;
   margin-bottom: 10px;
   opacity: 0.8;
+  border-radius: 25px;
 }
 
 /* Add a red background color to the cancel button */
@@ -263,8 +268,8 @@ time {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  cursor: pointer;
 }
-
 .column {
   float: left;
   width: 50%;

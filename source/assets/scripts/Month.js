@@ -2,19 +2,18 @@
  * Month.js
  * @author Steven Khaw
  * @summary File contains Month class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 4:30 PM
  */
 
 /** Class Month */
 class Month {
-
   /**
    * @author Steven Khaw
    * Constructs a month object from the class
-   * @constructor 
-   * 
+   * @constructor
+   *
    * @param {number} currMonthInt number of month (1-12)
    * @param {string} currMonthStr string representation of month ('January'...etc.)
    * @param {Day[]} days days of month
@@ -34,7 +33,7 @@ class Month {
   get MonthInt() {
     return this.currMonthInt;
   }
-  
+
   /**
    * @author Steven Khaw
    * @return currMonthStr
@@ -54,7 +53,7 @@ class Month {
   /**
    * Return events and tasks of selected days
    * @param {number[]} selectedDays - hold selected days (1-31); [-1] indicate all days
-   * 
+   *
    * @author Yuelin Dai
    * @return {Array<Array<Event>, Array<Task>>} - array of events and array of tasks
    */
@@ -62,56 +61,58 @@ class Month {
     let eventsAr = [];
     let tasksAr = [];
 
-    if (selectedDays[0] == -1) { // export events of all days
+    if (selectedDays[0] == -1) {
+      // export events of all days
       for (let curDay of this.days) {
         if (curDay != null) {
-
-          for (let curEvent of curDay.Events) { // collect events
+          for (let curEvent of curDay.Events) {
+            // collect events
             eventsAr.push({
-              "startDay": curEvent.StartDay,
-              "endDay": curEvent.EndDay,
-              "eventName": curEvent.EventName,
-              "users": [0],
-              "location": curEvent.Lcation,
-              "description": curEvent.Description
+              startDay: curEvent.StartDay,
+              endDay: curEvent.EndDay,
+              eventName: curEvent.EventName,
+              users: [0],
+              location: curEvent.Location,
+              description: curEvent.Description,
             });
           }
-          for (let curTask of curDay.Tasks) { // collect tasks
+          for (let curTask of curDay.Tasks) {
+            // collect tasks
             tasksAr.push({
-              "taskName": curTask.TaskName,
-              "tags": curTask.Tags,
-              "dueDate": curTask.DueDate,
-              "description": curTask.Description,
-              "complete": curTask.Complete,
-              "users": [0]
+              taskName: curTask.TaskName,
+              tags: curTask.Tags,
+              dueDate: curTask.DueDate,
+              description: curTask.Description,
+              complete: curTask.Complete,
+              users: [0],
             });
           }
-
         }
       }
-    }
-    else { // export events of selected days
+    } else {
+      // export events of selected days
       for (let curDay of selectedDays) {
         if (this.days[curDay - 1] != null) {
-
-          for (let curEvent of this.days[curDay - 1].Events) { // collect events
+          for (let curEvent of this.days[curDay - 1].Events) {
+            // collect events
             eventsAr.push({
-              "startDay": curEvent.StartDay,
-              "endDay": curEvent.EndDay,
-              "eventName": curEvent.EventName,
-              "users": [0],
-              "location": curEvent.Lcation,
-              "description": curEvent.Description
+              startDay: curEvent.StartDay,
+              endDay: curEvent.EndDay,
+              eventName: curEvent.EventName,
+              users: [0],
+              location: curEvent.Location,
+              description: curEvent.Description,
             });
           }
-          for (let curTask of this.days[curDay - 1].Tasks) { // collect tasks
+          for (let curTask of this.days[curDay - 1].Tasks) {
+            // collect tasks
             tasksAr.push({
-              "taskName": curTask.TaskName,
-              "tags": curTask.Tags,
-              "dueDate": curTask.DueDate,
-              "description": curTask.Description,
-              "complete": curTask.Complete,
-              "users": [0]
+              taskName: curTask.TaskName,
+              tags: curTask.Tags,
+              dueDate: curTask.DueDate,
+              description: curTask.Description,
+              complete: curTask.Complete,
+              users: [0],
             });
           }
         }
@@ -121,3 +122,9 @@ class Month {
     return [eventsAr, tasksAr];
   }
 }
+
+try {
+  module.exports = {
+    Month,
+  };
+} catch (error) {}

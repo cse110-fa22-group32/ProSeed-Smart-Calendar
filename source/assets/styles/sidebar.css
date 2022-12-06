@@ -34,11 +34,11 @@ Root variables
 */
 
 :root {
-  --sb-height: calc(
-    37.6px + 2 * var(--calendar-margin) + var(--week-of-day-height) + 5 *
+  --sb-height:
+    calc(
+      37.6px + 2 * var(--calendar-margin) + var(--week-of-day-height) + 5 *
       var(--day-block-gap) + 5 * var(--day-block-height)
-  ); /* TODO: HARDCODED! */
-
+  );
   --sb-radius: 30px;
 }
 
@@ -64,30 +64,28 @@ Sidebar styling
 
 .sidebar-container {
   width: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .sidebar-container.sidebar-container-open {
-  width: var(--sb-width);
   flex: 0 1 auto;
+  width: var(--sb-width);
 }
 
 .sidebar {
-  font-family: "Mochiy Pop One", sans-serif;
-  font-style: normal;
   background: #36b080;
   border: 2px solid black;
   border-radius: 0 30px 30px 0;
-
-  /* border-radius: var(--sb-radius); */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-style: normal;
   height: var(--sb-height);
   left: calc(-1 * var(--sb-width));
   min-height: 500px;
   position: absolute;
-
-  /* top: 25%; /*TODO: Make responsive */
   transition: transform 0s;
   width: var(--sb-width);
 }
@@ -97,28 +95,28 @@ Sidebar styling
 }
 
 .sidebar-title {
-  padding-left: 15px;
-  margin-right: 5px;
+  background-color: #36b080;
+  color: #fff;
   font-family: "Mochiy Pop One", sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
   line-height: 20px;
-  color: #fff;
-  background-color: #36b080;
+  margin-right: 5px;
+  padding-left: 15px;
 }
 
 .sidebar-title-2 {
+  color: #fff;
   font-family: "Mochiy Pop One", sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   line-height: 20px;
   margin: 5px;
-  padding-left: 10px;
   margin-right: 5px;
   padding-bottom: 5px;
-  color: #fff;
+  padding-left: 10px;
 }
 
 .sidebar.sidebar-open {
@@ -133,14 +131,14 @@ Sidebar event list styling
 */
 
 .sidebar-events {
+  color: #000;
   flex: 1;
   height: 90%;
-  transition: flex 0.5s ease;
   font-family: "Mochiy Pop One", sans-serif;
-  font-style: normal;
   font-size: 18px;
+  font-style: normal;
   line-height: 27px;
-  color: #000;
+  transition: flex 0.5s ease;
 }
 
 /*
@@ -150,38 +148,38 @@ Sidebar to-do list styling
 */
 
 .sidebar-tasks {
+  background-color: #309c71;
+  color: #000; 
   height: 10%;
   flex: 0;
   font-family: "Mochiy Pop One", sans-serif;
-  font-style: normal;
   font-size: 18px;
+  font-style: normal;
   line-height: 27px;
-  color: #000;
-  background-color: #309c71;
 }
 
 .sidebar-tasks.sidebar-tasks-expanded {
+  background-color: #309c71;
   flex: 1;
   height: 90%;
-  background-color: #309c71;
 }
 
 .tasks-head {
-  display: flex;
-  justify-content: space-between;
   background-color: #309c71;
   border-radius: 0 0 30px;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }
 
 .expand-tasks-btn {
-  font-family: "Mochiy Pop One", sans-serif;
-  font-style: normal;
-  font-size: 1rem;
-  border-radius: 50px;
   background: transparent;
   border: none;
-  cursor: pointer;
-  margin-right: 5px;
+  border-radius: 50px;
   color: #fff;
+  cursor: pointer;
+  font-family: "Mochiy Pop One", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  margin-right: 5px;
 }

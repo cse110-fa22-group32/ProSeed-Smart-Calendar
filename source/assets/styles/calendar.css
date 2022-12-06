@@ -14,6 +14,7 @@ the display size of calendar depend on the screen size
 at 600px, 900px, 1200px.
 ***********************************************
 */
+
 @media only screen and (max-width: 600px) {
   :root {
     --week-title-display: inline;
@@ -58,12 +59,13 @@ at 600px, 900px, 1200px.
   --calendar-width: 95vw;
   --week-of-day-height: 40px;
   --day-block-gap: 0.3vw;
-  --calendar-margin: 20px;
+  --calendar-margin: 10px;
 }
 
 body {
   background: #bae4d3;
 }
+
 
 /*
 ***********************************************
@@ -293,6 +295,24 @@ day block css setting for calendar
 .othermonth {
   background: #c2dbbd;
 }
+/*
+***********************************************
+styling for add event and task
+***********************************************
+*/
+dialog {
+  font-family: "Mochiy Pop One", sans-serif;
+  border-radius: 25px;
+  background-color: rgb(186, 228, 211);
+  color: rgb(0, 0, 0);
+}
+
+dialog button {
+  background-color: #54cb9c;
+  border-radius: 25px;
+  font-family: "Mochiy Pop One", sans-serif;
+  color:black;
+}
 
 /*
 ***********************************************
@@ -301,13 +321,15 @@ function button setting for calendar
 */
 #calendar-tail {
   margin-top: var(--calendar-margin);
-  background: #309c71;
+  background-color: #309c71;
+  display: flex;
+  align-items: left;
+  justify-content: left;
 }
 
 .calendar-tail-btn {
   margin: 10px;
-  margin-right: 0;
-  width: 50px;
+  width: 50px; 
   height: 50px;
   border-style: none;
   border-radius: 50px;
@@ -316,7 +338,8 @@ function button setting for calendar
 }
 
 .tail-label {
-  font-family: Inter, sans-serif;
+  margin: 10px;
+  font-family: "Mochiy Pop One", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 25px;
@@ -327,6 +350,7 @@ function button setting for calendar
 .calendar-tail-btn:hover {
   background-color: royalblue;
 }
+
 
 /* Help popup container - can be anything you want */
 .popup {
@@ -384,4 +408,4 @@ function button setting for calendar
 @keyframes fade-in {
   from {opacity: 0;}
   to {opacity:1 ;}
-}
+
