@@ -60,3 +60,9 @@ class Day {
     return this.tasks;
   }
 }
+
+try {
+  module.exports = {
+    Day,
+  };
+} catch (error) {}

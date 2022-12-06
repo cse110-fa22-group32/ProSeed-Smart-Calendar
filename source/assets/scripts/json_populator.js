@@ -6,7 +6,6 @@ const testJson = `
      "lastUpdated" : "",
      "calendarTitle" : "title1",
      "calendarID" : "",
-     "listTile" : "title2",
  
      "usersList" : [
          {

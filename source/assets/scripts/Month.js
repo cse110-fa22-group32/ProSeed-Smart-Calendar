@@ -72,7 +72,7 @@ class Month {
               endDay: curEvent.EndDay,
               eventName: curEvent.EventName,
               users: [0],
-              location: curEvent.Lcation,
+              location: curEvent.Location,
               description: curEvent.Description,
             });
           }
@@ -100,7 +100,7 @@ class Month {
               endDay: curEvent.EndDay,
               eventName: curEvent.EventName,
               users: [0],
-              location: curEvent.Lcation,
+              location: curEvent.Location,
               description: curEvent.Description,
             });
           }
@@ -122,3 +122,9 @@ class Month {
     return [eventsAr, tasksAr];
   }
 }
+
+try {
+  module.exports = {
+    Month,
+  };
+} catch (error) {}

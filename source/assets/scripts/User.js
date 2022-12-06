@@ -70,3 +70,9 @@ class User {
 
   //TODO: Maybe have something for user access?
 }
+
+try {
+  module.exports = {
+    User,
+  };
+} catch (error) {}
