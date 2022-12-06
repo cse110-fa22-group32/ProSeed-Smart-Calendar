@@ -200,7 +200,7 @@ function updateSideBar(day) {
     "/" +
     currDay[0] +
     " " +
-    getWeekDayString(currDay[0], currDay[1], currDay[2]);
+    getWeekDayString(currDay[0], currDay[1], day);
 
   const sidebarTitleElem = document.querySelector(".sidebar-title");
   sidebarTitleElem.textContent = currDayString;
