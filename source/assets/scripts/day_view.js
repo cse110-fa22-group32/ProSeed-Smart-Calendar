@@ -5,11 +5,11 @@
  * @fileoverview
  *
  * Created at : 2022-11-18 12:11 AM
- * Last Modified : 2022-12-1 9:20 PM
+ * Last Modified : 2022-12-5 7:12 PM
  */
 
 window.addEventListener("DOMContentLoaded", init);
-//shadowClick is 1, prevent hide the side bar.
+//shadowClick is 1, prevent hiding the sidebar.
 var shadowClick = 0;
 
 /**
@@ -37,7 +37,7 @@ function addListeners() {
 
 /**
  * @author Yangming Guan
- * handle the delete call
+ * Handle the delete call
  * @param {Event} event - click event
  * @param {string} year - date year
  * @param {string} month - date month
@@ -75,7 +75,7 @@ function callDelete(event, year, month, day, isEvent) {
 
 /**
  * @author Yangming Guan
- * format the date for use.
+ * Format the date for use
  * @param {String} date - date info from object data
  * @return new format date
  */
@@ -94,7 +94,7 @@ function dateFormat(date) {
 
 /**
  * @author Yangming Guan
- * format the time for use.
+ * Format the time for use
  * @param {String} time - time info from object data
  * @return new format time
  */
@@ -108,7 +108,7 @@ function timeFormat(time) {
 
 /**
  * @author Yangming Guan
- * handle the edit click.
+ * Handle the edit click
  * @param {Event} event - click event
  * @param {string} year - date year
  * @param {string} month - date month
@@ -178,7 +178,7 @@ function callEdit(event, year, month, day, isEvent) {
 
 /**
  * @author Yangming Guan
- * updata the display of side bar.
+ * Update the display of sidebar
  * @param {string} day - date day
  */
 function updateSideBar(day) {
@@ -371,7 +371,6 @@ function addExpandListener() {
 }
 
 /**
-
  * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to expand to-do list and shrink event list
  */
@@ -402,7 +401,6 @@ function showTodo() {
 }
 
 /**
-
  * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
