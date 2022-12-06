@@ -132,14 +132,26 @@ document.addEventListener(
           var parsedObject = JSON.parse(retrievedObject);
 
           for (let i = 0; i < parsedObject.length; i++) {
-            if (parsedObject[i].calendarID == event.target.name) {
-              //Update parsed object.
-              parsedObject[i].lastUpdated = lastUpdated;
-              //save the parsed object into the dictionary;
-              console.log(parsedObject[i]);
-              addDictPair(event.target.name, JSON.stringify(parsedObject[i]));
+            if (!parsedObject[i][0]) {
+              if (parsedObject[i].calendarID == event.target.name) {
+                //Update parsed object.
+                parsedObject[i].lastUpdated = lastUpdated;
+                //save the parsed object into the dictionary;
+                addDictPair(event.target.name, JSON.stringify(parsedObject[i]));
+              }
+            } else {
+              if (parsedObject[i][0].calendarID == event.target.name) {
+                //Update parsed object.
+                parsedObject[i][0].lastUpdated = lastUpdated;
+                //save the parsed object into the dictionary;
+                addDictPair(
+                  event.target.name, 
+                  JSON.stringify(parsedObject[i][0])
+                );
+              }
             }
           }
+          
           //Store the parsed object back to calendars local storage
           saveOnlyNewCalendarToStorage(parsedObject);
 

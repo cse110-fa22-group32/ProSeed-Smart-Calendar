@@ -260,6 +260,8 @@ function saveJsonToLocalStorage(calendarData) {
     String(calendarData.calendarID),
     calendarData.Export([-1], [-1], [-1])
   );
+  
+  updateMiddlegroundCalendar();
   saveDisplayDateToLocalStorage();
 }
 
