@@ -129,6 +129,9 @@ function getWeekDayIndex(year, month, day) {
   const date = new Date(
     String(month) + " " + String(day) + ", " + String(year)
   );
+  date.toLocaleString('en-US', {
+    timeZone: 'America/Los_Angeles',
+  });
   return date.getDay();
 }
 
