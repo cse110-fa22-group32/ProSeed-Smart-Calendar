@@ -155,11 +155,13 @@ function updateMiddlegroundCalendar() {
   for (let i = 0; i < calendarObject.length; i++) {
     if (!calendarObject[i][0]) {
       if (calendarObject[i].calendarID == calendarID) {
+        currJsonStr.title = calendarObject[i].title;
         calendarObject[i] = currJsonStr;
         break;
       }
     } else {
       if (calendarObject[i][0].calendarID == calendarID) {
+        currJsonStr.title = calendarObject[i][0].title;
         calendarObject[i][0] = currJsonStr;
         break;
       }
