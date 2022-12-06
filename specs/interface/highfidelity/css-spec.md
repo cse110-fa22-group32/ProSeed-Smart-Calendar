@@ -132,3 +132,42 @@ Not every page from the prototype is included in this specification out of time 
 #### Delete Pages Fonts
 ![delete calendar select page fonts](images/specs-fonts/delete-spec-fonts-1.png)
 ![delete calendar confirmation page fonts](images/specs-fonts/delete-spec-fonts-2.png)
+
+## Calendar
+### Event Colors
+![#26bbd9](https://placehold.co/25x25/26bbd9/26bbd9.png) `#26bbd9` = `hsl(190, 70, 50)`
+
+![#22b6c3](https://placehold.co/25x25/22B6C3/22B6C3.png) `#22b6c3` = `hsl(185, 70, 45)`
+
+...
+
+![#178270](https://placehold.co/25x25/178270/178270.png) `#178270` = `hsl(170, 70, 30)`
+
+![#1b9878](https://placehold.co/25x25/1B9878/1B9878.png) `#1b9878` = `hsl(165, 70, 35)`
+
+...
+
+![#22c365](https://placehold.co/25x25/22C365/22C365.png) `#22c365` = `hsl(145, 70, 45)`
+
+... And so on following this algorithm for consecutive events, where 0 <= hue <= 360, saturation = 70, 30 <= lightness <=50.
+
+![day view multiple events page](images/day-view-multiple-events.png)
+
+### Task Colors
+![#d9bc26](https://placehold.co/25x25/D9BC26/D9BC26.png) `#d9bc26` = `hsl(50, 70, 50)`
+
+![#ddcf3c](https://placehold.co/25x25/DDCF3C/DDCF3C.png) `#ddcf3c` = `hsl(55, 70, 55)`
+
+...
+
+![#d6e87d](https://placehold.co/25x25/D6E87D/D6E87D.png) `#d6e87d` = `hsl(70, 70, 70)`
+
+![#c5e467](https://placehold.co/25x25/C5E467/C5E467.png) `#c5e467` = `hsl(75, 70, 65)`
+
+...
+
+![#7fdd3c](https://placehold.co/25x25/7FDD3C/7FDD3C.png) `#7fcc3c` = `hsl(95, 70, 55)`
+
+... And so on following this algorithm for consecutive events, where 0 <= hue <= 360, saturation = 70, 50 <= lightness <=70.
+
+![day view multiple tasks page](images/day-view-multiple-tasks.png)
