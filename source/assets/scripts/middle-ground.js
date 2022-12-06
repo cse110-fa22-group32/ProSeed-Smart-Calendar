@@ -32,10 +32,9 @@ function saveNewCalendarToStorage(json_file) {
  * @author Guan Li
  * @summary takes in a parameter calendar and save it to storage
  */
- function saveOnlyNewCalendarToStorage(json_file) {
+function saveOnlyNewCalendarToStorage(json_file) {
   localStorage.setItem("calendars", JSON.stringify(json_file));
 }
-
 
 /**
  * @author Guan Li, Steven Khaw
@@ -230,27 +229,31 @@ document.addEventListener(
           isNewCalendar();
 
           //Update the last updated on the calendar
-          let lastUpdated = getCurrentDay()[0] + "/" + getCurrentDay()[1] + "/" + getCurrentDay()[2];
+          let lastUpdated =
+            getCurrentDay()[0] +
+            "/" +
+            getCurrentDay()[1] +
+            "/" +
+            getCurrentDay()[2];
           // let lastUpdated = 30000000;
           // the CalendarID is: event.target.name
-          
+
           // READ STRING FROM LOCAL STORAGE
-          var retrievedObject = localStorage.getItem('calendars');
+          var retrievedObject = localStorage.getItem("calendars");
           // CONVERT STRING TO REGULAR JS OBJECT
           var parsedObject = JSON.parse(retrievedObject);
 
-          for(let i = 0; i < parsedObject.length; i++){
-            if (parsedObject[i].calendarID == event.target.name){
+          for (let i = 0; i < parsedObject.length; i++) {
+            if (parsedObject[i].calendarID == event.target.name) {
               //Update parsed object.
               parsedObject[i].lastUpdated = lastUpdated;
               //save the parsed object into the dictionary;
               console.log(parsedObject[i]);
-              addDictPair(event.target.name,JSON.stringify(parsedObject[i]));
+              addDictPair(event.target.name, JSON.stringify(parsedObject[i]));
             }
           }
           //Store the parsed object back to calendars local storage
           saveOnlyNewCalendarToStorage(parsedObject);
-
 
           location.href = "./calendar.html";
         }
