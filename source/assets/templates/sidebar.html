@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sidebar</title>
+    <!--Style-->
+    <style>
+      @media only screen and (max-width: 600px) {
+        :root {
+          --sb-width: 30%;
+        }
+      }
+
+      @media only screen and (min-width: 600px) {
+        :root {
+          --sb-width: 30%;
+        }
+      }
+
+      @media only screen and (min-width: 900px) {
+        :root {
+          --sb-width: 20%;
+        }
+      }
+
+      /*@media only screen and (min-width: 1200px) {
+      :root {
+        --sb-width: 20%;
+      }
+    }*/
+
+      :root {
+        --sb-height: 50%;
+        --sb-radius: 30px;
+      }
+
+      .sidebar {
+        border: 2px solid #309c71;
+        border-radius: var(--sb-radius);
+        height: var(--sb-height);
+        min-height: 500px;
+        /*transition: width 0.2s, border-radius 0.2s ease-in-out;*/
+        width: var(--sb-width);
+      }
+
+      .sidebar-events {
+        border: solid #309c71;
+        border-width: 2px 0 2px 0;
+        height: 70%;
+      }
+
+      .sidebar-tasks {
+        height: 30%;
+      }
+
+      .sidebar-title {
+        margin: 5px;
+      }
+
+      .sidebar-title-2 {
+        margin: 5px;
+        border-radius: 50px;
+      }
+    </style>
+  </head>
+  <!--Markup-->
+  <body>
+    <div class="sidebar">
+      <h2 class="sidebar-title">DATE</h2>
+      <div class="sidebar-events"></div>
+      <h3 class="sidebar-title-2">To-Do List</h3>
+      <div class="sidebar-tasks"></div>
+    </div>
+  </body>
+</html>
