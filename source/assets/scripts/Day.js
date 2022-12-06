@@ -62,6 +62,7 @@ class Day {
 }
 
 try {
-  module.exports = { 
-    Day };
-} catch (error){}
+  module.exports = {
+    Day,
+  };
+} catch (error) {}

@@ -214,6 +214,7 @@ class Calendar {
 }
 
 try {
-  module.exports = { 
-    Calendar };
-} catch (error){}
+  module.exports = {
+    Calendar,
+  };
+} catch (error) {}

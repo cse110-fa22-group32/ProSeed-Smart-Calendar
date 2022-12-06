@@ -1,14 +1,15 @@
 try {
-  module.exports = { 
-    getIfLeapYear, 
-    getDaysInMonth, 
-    indexToMonth, 
-    indexToDay, 
-    getWeekDayString, 
-    getWeekDayIndex, 
-    getWeekCount, 
-    getCurrentDay };
-} catch (error){}
+  module.exports = {
+    getIfLeapYear,
+    getDaysInMonth,
+    indexToMonth,
+    indexToDay,
+    getWeekDayString,
+    getWeekDayIndex,
+    getWeekCount,
+    getCurrentDay,
+  };
+} catch (error) {}
 
 /**
  * calendar_helper.js
@@ -129,8 +130,8 @@ function getWeekDayIndex(year, month, day) {
   const date = new Date(
     String(month) + " " + String(day) + ", " + String(year)
   );
-  date.toLocaleString('en-US', {
-    timeZone: 'America/Los_Angeles',
+  date.toLocaleString("en-US", {
+    timeZone: "America/Los_Angeles",
   });
   return date.getDay();
 }

@@ -283,8 +283,9 @@ function clearLocalStorage() {
 
 try {
   // export
-  module.exports = { 
-    loadJson };
+  module.exports = {
+    loadJson,
+  };
 
   // import
   eval('var {Calendar} = require("./calendar.js");');
@@ -294,6 +295,7 @@ try {
   eval('var {Task} = require("./Task.js");');
   eval('var {User} = require("./User.js");');
   eval('var {Year} = require("./Year.js");');
-  eval('var {getIfLeapYear,getDaysInMonth,indexToMonth,indexToDay,getWeekDayString, getWeekDayIndex, getWeekCount, getCurrentDay } = require("./calendar_helper.js")');
-
-} catch (error){ }
+  eval(
+    'var {getIfLeapYear,getDaysInMonth,indexToMonth,indexToDay,getWeekDayString, getWeekDayIndex, getWeekCount, getCurrentDay } = require("./calendar_helper.js")'
+  );
+} catch (error) {}

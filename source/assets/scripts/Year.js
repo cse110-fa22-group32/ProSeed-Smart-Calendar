@@ -90,6 +90,7 @@ class Year {
 }
 
 try {
-  module.exports = { 
-    Year };
-} catch (error){}
+  module.exports = {
+    Year,
+  };
+} catch (error) {}

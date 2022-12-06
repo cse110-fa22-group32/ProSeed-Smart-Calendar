@@ -120,6 +120,7 @@ class Task {
 }
 
 try {
-  module.exports = { 
-    Task };
-} catch (error){}
+  module.exports = {
+    Task,
+  };
+} catch (error) {}

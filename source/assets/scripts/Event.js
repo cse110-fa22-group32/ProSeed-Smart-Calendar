@@ -120,8 +120,8 @@ class Event {
   }
 }
 
-
 try {
-  module.exports = { 
-    Event };
-} catch (error){}
+  module.exports = {
+    Event,
+  };
+} catch (error) {}

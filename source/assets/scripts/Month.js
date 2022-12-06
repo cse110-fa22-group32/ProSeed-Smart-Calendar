@@ -124,6 +124,7 @@ class Month {
 }
 
 try {
-  module.exports = { 
-    Month };
-} catch (error){}
+  module.exports = {
+    Month,
+  };
+} catch (error) {}

@@ -72,6 +72,7 @@ class User {
 }
 
 try {
-  module.exports = { 
-    User };
-} catch (error){}
+  module.exports = {
+    User,
+  };
+} catch (error) {}
