@@ -118,3 +118,8 @@ class Task {
     this.description = newTaskDescription;
   }
 }
+
+try {
+  module.exports = { 
+    Task };
+} catch (error){}

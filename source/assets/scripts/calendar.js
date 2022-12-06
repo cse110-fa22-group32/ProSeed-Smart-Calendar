@@ -111,7 +111,7 @@ class Calendar {
 
     return JSON.stringify({
       lastUpdated: this.LastUpdated,
-      title: this.Title,
+      calendarTitle: this.Title,
       calendarID: this.CalendarID,
       usersList: this.Users,
       eventsList: eventsAr,
@@ -212,3 +212,8 @@ class Calendar {
     }
   }
 }
+
+try {
+  module.exports = { 
+    Calendar };
+} catch (error){}

@@ -88,3 +88,8 @@ class Year {
     return [eventsAr, tasksAr];
   }
 }
+
+try {
+  module.exports = { 
+    Year };
+} catch (error){}

@@ -7,7 +7,9 @@
  * Last Modified : 2022-11-17 6:30 AM
  */
 
-window.addEventListener("DOMContentLoaded", init);
+try {
+  window.addEventListener("DOMContentLoaded", init);
+} catch (error) {}
 
 function init() {
   //getJsonFromLocalStorage();
@@ -186,11 +188,11 @@ function loadJson(jsonStrAr) {
 
   let jsonObj = JSON.parse(jsonStrAr[0]); // use first json's metadata
   let calendar = new Calendar(
-    jsonObj.title,
+    jsonObj.calendarTitle,
     jsonObj.lastUpdated,
     jsonObj.calendarID,
     yearList,
-    Object.values(userNames)
+    Object.values(userList)
   );
 
   return [calendar, Object.values(userList)];
@@ -278,3 +280,20 @@ function saveDisplayDateToLocalStorage() {
 function clearLocalStorage() {
   localStorage.clear();
 }
+
+try {
+  // export
+  module.exports = { 
+    loadJson };
+
+  // import
+  eval('var {Calendar} = require("./calendar.js");');
+  eval('var {Day} = require("./Day.js");');
+  eval('var {Event} = require("./Event.js");');
+  eval('var {Month} = require("./Month.js");');
+  eval('var {Task} = require("./Task.js");');
+  eval('var {User} = require("./User.js");');
+  eval('var {Year} = require("./Year.js");');
+  eval('var {getIfLeapYear,getDaysInMonth,indexToMonth,indexToDay,getWeekDayString, getWeekDayIndex, getWeekCount, getCurrentDay } = require("./calendar_helper.js")');
+
+} catch (error){ }

@@ -119,3 +119,9 @@ class Event {
     this.description = description;
   }
 }
+
+
+try {
+  module.exports = { 
+    Event };
+} catch (error){}
