@@ -126,7 +126,7 @@ describe("Testing Middleground Functionality", () => {
     const lastUpdated = await (
       await text[1].getProperty("textContent")
     ).jsonValue();
-    expect(title).toBe("Title: Work");
+    expect(title).toBe("Work");
     let date = new Date();
     let reformatedDate =
       date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
