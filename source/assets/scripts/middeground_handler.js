@@ -139,6 +139,35 @@ function loadCalendarFromDict() {
   // auto save calendar to local storage
   saveJsonToLocalStorage(calendarData[0]);
 }
+
+/**
+ * @author Steven Khaw
+ * @summary updates the middleground calendar to the most up to date version
+ */
+function updateMiddlegroundCalendar() {
+  let currJsonStr = localStorage.getItem("jsonStr");
+  currJsonStr = JSON.parse(currJsonStr);
+  let calendarID = currJsonStr.calendarID
+
+  let calendarObject = localStorage.getItem("calendars");
+  calendarObject = JSON.parse(calendarObject);
+
+  for (let i = 0; i < calendarObject.length; i++) {
+    if (!calendarObject[i][0]) {
+      if (calendarObject[i].calendarID == calendarID) {
+        calendarObject[i] = currJsonStr;
+        break;
+      }
+    } else {
+      if (calendarObject[i][0].calendarID == calendarID) {
+        calendarObject[i][0] = currJsonStr;
+        break;
+      }
+    }
+  }
+
+  localStorage.setItem("calendars", JSON.stringify(calendarObject));
+}
 /**
  * @author Guan Li
  * @summary Get calenar json file from storage.
