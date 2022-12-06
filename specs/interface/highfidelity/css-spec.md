@@ -1,8 +1,9 @@
 # ProSeed CSS Specification
+Author: Steven Chin (sdchin@ucsd.edu)
+
 Link to high fidelity prototype: [Figma](https://www.figma.com/proto/vJAL9jNYD1M3XEjxaxH0cd/ProSeed-Prototype?page-id=0%3A1&node-id=3%3A3&viewport=623%2C-370%2C1.79&scaling=scale-down&starting-point-node-id=3%3A3)
 
-Not every page from the prototype is included in this specification. There are broadly three main divisions (sign in, middleground, calendar), and pages within the same division can be assumed to have the same color scheme unless otherwise specified in this document.
-
+Not every page from the prototype is included in this specification out of time constraints. There are broadly three main divisions (sign in, middleground, calendar), and the styling for pages within the same division can generally be inferred from other pages in this document.
 ## Color Scheme
 ![#54cb9c](https://placehold.co/25x25/54cb9c/54cb9c.png) `#54cb9c` 60% = `rgba(84, 203, 156, 0.6)`
 
