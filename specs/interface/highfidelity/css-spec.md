@@ -35,29 +35,47 @@ Not every page from the prototype is included in this specification. There are b
 ![brand 60% opacity](branding/brand-60-opacity.svg)
 ![brand no tagline](branding/brand.svg)
 
-![brand leaf icon](branding/leaf.svg)
+![brand leaf icon](branding/leaf.svg) ![brand leaf icon 60% opacity](branding/leaf-60-opacity.svg)
 
 ## Icons
 ![down arrow](icons/arrow-down-circle.svg)
+![year down arrow](icons/year-down-circle.svg)
+![year down arrow 60%](icons/year-down-circle-60-opacity.svg)
 
 ![up arrow](icons/arrow-up-circle.svg)
 ![up arrow 60% opacity](icons/arrow-up-circle-60-opacity.svg)
 ![up arrow blue](icons/arrow-up-circle-blue.svg)
+![year up arrow](icons/year-up-circle.svg)
+![year up arrow 60% opacity](icons/year-up-circle-60-opacity.svg)
+
+![month left arrow](icons/month-left-circle.svg)
+![month left arrow 60% opacity](icons/month-left-circle-60-opacity.svg)
+
+![month right arrow](icons/month-right-circle.svg)
+![month right arrow 60% opacity](icons/month-right-circle-60-opacity.svg)
 
 ![plus circle](icons/plus-circle.svg)
+![plus circle 60% opacity](icons/plus-circle-60-opacity.svg)
+![plus circle blue](icons/plus-circle-blue.svg)
+![plus circle blue 60% opacity](icons/plus-circle-blue-60-opacity.svg)
 
 ![minus circle](icons/minus-circle.svg)
+![minus circle blue](icons/minus-circle-blue.svg)
+![minus circle blue 60% opacity](icons/minus-circle-blue-60-opacity.svg)
 
 ![check circle red](icons/check-circle-red.svg)
 ![check circle blue](icons/check-circle-blue.svg)
 
 ![help circle](icons/help-circle.svg)
+![help circle 60% opacity](icons/help-circle-60-opacity.svg)
 
 ![trash icon](icons/trash.svg)
 ![trash icon red](icons/trash-red.svg)
 
 ![chevron down](icons/chevron-down.svg)
 ![chevron up](icons/chevron-up.svg)
+![chevron right white](icons/chevron-right-white.svg)
+![chevron right black](icons/chevron-right-black.svg)
 
 ![calendar icon](icons/calendar.svg)
 ![calendar icon 60% opacity](icons/calendar-60-opacity.svg)
