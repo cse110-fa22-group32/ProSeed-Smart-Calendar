@@ -5,5 +5,5 @@ The CI pipeline has 7 actions right now.
 3. JSDoc_generation: This action is used to autogenerate documentation for .js file inside source/assets/scripts/ in main branch for every pull request to the main branch. For it to generate documentation, .js files have to have comments that obeys rules defined in https://jsdoc.app/. Until now, it will put all documentation into JSDoc_generation branch using force push. The documentation there will be merged into main after human review. 
 4. Lint Code Base: Test the code quality and style.
 5. Deploy Jekyll with GitHub Pages dependencies preinstalled: it is a action to deploy GitHub Page. The only difference between it and usually way is that it read index.html from source instead of root directory. As for now, it will deploy website based on branch main.
-6. Test: This is for automatic E2E test. It tests all E2E tests in login.test.js file. As for now, it will check branch main only.
-7. Unit Test: This is for unit test. For now, it tests all unit tests in calendar_helper.test.js file. As for now, it will check branch main only.
+6. Test: This is for automatic E2E test. It tests all E2E tests. As for now, it will check branch main only. If any new test files are added, do update the action to include them to test.
+7. Unit Test: This is for unit test. For now, it tests all unit tests. As for now, it will check branch main only. If any new test files are added, do update the action to include them to test.
