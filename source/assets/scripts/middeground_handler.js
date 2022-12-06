@@ -139,10 +139,20 @@ function loadCalendarFromDict() {
   // auto save calendar to local storage
   saveJsonToLocalStorage(calendarData[0]);
 }
+/**
+ * @author Guan Li
+ * @summary Get calenar json file from storage.
+ */
+ function getCalendarFromStorage() {
+  if (!localStorage.getItem("calendars")) {
+    return [];
+  }
+  return JSON.parse(localStorage.getItem("calendars"));
+}
 
 /**
  * @author Guan Li
- * @summary takes in a parameter calendar and save it to storage
+ * @summary takes in a parameter calendar and Append it to storage
  */
 function saveNewCalendarToStorage(json_file) {
   let oldCalendarStorage = getCalendarFromStorage();
@@ -152,13 +162,10 @@ function saveNewCalendarToStorage(json_file) {
 
 /**
  * @author Guan Li
- * @summary Get calenar json file from storage.
+ * @summary takes in a parameter calendar and save it to storage
  */
-function getCalendarFromStorage() {
-  if (!localStorage.getItem("calendars")) {
-    return [];
-  }
-  return JSON.parse(localStorage.getItem("calendars"));
+function saveOnlyNewCalendarToStorage(json_file) {
+  localStorage.setItem("calendars", JSON.stringify(json_file));
 }
 
 /**
@@ -179,7 +186,7 @@ function createView(calendars) {
       if (!calendars[i][0]) {
         article.innerHTML = `
         <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
-        <p class="title">${calendars[i].title}</p>
+        <p class="title">Title: ${calendars[i].title}</p>
         <p class="inner-text">Last Updated: ${calendars[i].lastUpdated}</p>
         <div class="row">
           <div class="column">
@@ -193,7 +200,7 @@ function createView(calendars) {
       } else {
         article.innerHTML = `
         <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
-        <p class="title">${calendars[i][0].title}</p>
+        <p class="title">Title: ${calendars[i][0].title}</p>
         <p class="inner-text">Last Updated: ${calendars[i][0].lastUpdated}</p>
         <div class="row">
           <div class="column">
