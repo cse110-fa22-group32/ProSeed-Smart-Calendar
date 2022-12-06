@@ -4,7 +4,7 @@
  * @summary File contains functions for sidebar visibility and population
  * @fileoverview
  *
- * Created at : 2022-11-18 12:11 AM;
+ * Created at : 2022-11-18 12:11 AM
  * Last Modified : 2022-12-1 9:20 PM
  */
 
@@ -30,8 +30,6 @@ function addListeners() {
   dayNumbers.forEach((num) => {
     num.style.cursor = "pointer";
     num.onclick = viewDay;
-
-    //num.addEventListener('click', viewDay);
   });
 
   addExpandListener();
@@ -207,7 +205,7 @@ function updateSideBar(day) {
 
   if (calendarData[0].years[currentYear] != null) {
     if (calendarData[0].years[currentYear].months[currentMont] != null) {
-      //clear side bar
+      //clear sidebar
       let sideBarEvent = document.querySelector(".sidebar-events");
       sideBarEvent.innerHTML = "";
       let sideBarTask = document.querySelector(".sidebar-tasks");
@@ -334,7 +332,6 @@ function viewDay(e) {
   let day = e.currentTarget.querySelector("p").innerHTML;
 
   updateSideBar(day);
-  populateSidebar(e);
   showSidebar();
   e.stopPropagation();
   addExitListener();
@@ -406,7 +403,7 @@ function showTodo() {
 
 /**
 
- * @author Steven Chin,Yangming Guan, Steven Khaw
+ * @author Steven Chin, Yangming Guan, Steven Khaw
  * Adds style to shrink to-do list and expand event list
  */
 function hideTodo() {
@@ -428,7 +425,7 @@ function hideTodo() {
     e.classList.remove("hidden");
   });
 
-  //hide tast
+  //hide task
   let tasks = document.querySelectorAll(".sidebar-tasks todo-block");
   tasks.forEach((t) => {
     t.classList.add("hidden");
@@ -457,15 +454,4 @@ function hideSidebar() {
 
   const container = sidebar.parentElement;
   container.classList.remove("sidebar-container-open");
-}
-
-/**
- * @author Steven Chin
- * Populates sidebar with calendar event and task elements
- * TODO: Complete populateSidebar function
- * @param {Event} e - click event
- */
-function populateSidebar(e) {
-  const calendar = -1; // somehow get calendar
-  const dayNumber = Number(e.target);
 }
