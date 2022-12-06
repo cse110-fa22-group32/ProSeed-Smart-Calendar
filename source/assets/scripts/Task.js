@@ -2,14 +2,13 @@
  * Task.js
  * @author Guan Li, Steven Khaw, Christopher Han
  * @summary File contains Task class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
  */
 
 /** Class Task TODO ADD MORE DESCRIPTION  */
 class Task {
-
   /** @type {number} */
   static counter = 0;
 
@@ -17,7 +16,7 @@ class Task {
    * @author Guan Li
    * Constructs a task object from the class
    * @constructor
-   * 
+   *
    * @param {string} taskName - name of task
    * @param {string[]} tags - tags that task belongs to
    * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
@@ -85,7 +84,6 @@ class Task {
     return this.complete;
   }
 
-
   // Setters:
 
   /**
@@ -120,4 +118,3 @@ class Task {
     this.description = newTaskDescription;
   }
 }
-
