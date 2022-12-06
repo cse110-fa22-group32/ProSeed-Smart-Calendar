@@ -186,7 +186,7 @@ function createView(calendars) {
       if (!calendars[i][0]) {
         article.innerHTML = `
         <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
-        <p class="title">Title: ${calendars[i].title}</p>
+        <p class="title">${calendars[i].title}</p>
         <p class="inner-text">Last Updated: ${calendars[i].lastUpdated}</p>
         <div class="row">
           <div class="column">
@@ -200,7 +200,7 @@ function createView(calendars) {
       } else {
         article.innerHTML = `
         <img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
-        <p class="title">Title: ${calendars[i][0].title}</p>
+        <p class="title">${calendars[i][0].title}</p>
         <p class="inner-text">Last Updated: ${calendars[i][0].lastUpdated}</p>
         <div class="row">
           <div class="column">
