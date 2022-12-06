@@ -34,3 +34,4 @@ jobs:
         run: |
           npm test __tests__/calendar_helper.test.js
           npm test __tests__/json_interpreter.test.js
+          npm test __tests__/login_helper.test.js

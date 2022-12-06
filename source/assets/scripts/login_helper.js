@@ -6,6 +6,13 @@
  * Last Modified : 2022-11-28 3:20 PM
  */
 
+try {
+  module.exports = {
+    isEmail,
+    isStrongPassword,
+  };
+} catch (error) {}
+
 /**
  * @author Steven Khaw & CSE 110 Lab 8
  * @summary checks if email is of valid format
