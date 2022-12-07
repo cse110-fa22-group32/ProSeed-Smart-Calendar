@@ -1,5 +1,12 @@
 # Group32 - Grass Touchers Corp.
+
 [**Github Pages**](https://cse110-fa22-group32.github.io/cse110-fa22-group32/)
+
+[**Link to team.md**](/admin/team.md)
+
+[**Link to private video**](https://youtu.be/Gz3LbyEudho)
+
+[**Link to public video**](https://youtu.be/bbv6O-wKrUE)
 
 To sign in, please use the username: `skhaw@udsd.edu` and password: `This123`. From middle-ground.html you will be able to either create a new calendar or import a calendar yourself. You can download this [**file**](/source/assets/temp_/testing_calendar.json) as a test calendar json file to use and load. The rest should be pretty familiar. Enjoy!
 
@@ -19,9 +26,3 @@ We are creating a productivity app that combines a calendar and a to-do list int
 
 **Meeting Times:**
 Monday, Wednesday, and Friday 9pm standups in Discord.  
-
-[**Link to team.md**](/admin/team.md)
-
-[**Link to private video**](https://youtu.be/Gz3LbyEudho)
-
-[**Link to public video**]()
