@@ -21,3 +21,4 @@ We are creating a productivity app that combines a calendar and a to-do list int
 Monday, Wednesday, and Friday 9pm standups in Discord.  
 
 [**Link to team.md**](/admin/team.md)
+[**Link to private video**](https://youtu.be/Gz3LbyEudho)
