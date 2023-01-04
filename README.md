@@ -1,6 +1,6 @@
 # Group32 - Grass Touchers Corp.
 
-[**Github Pages**](https://cse110-fa22-group32.github.io/cse110-fa22-group32/)
+[**Github Pages**](https://cse110-fa22-group32.github.io/ProSeed-Smart-Calendar/)
 
 [**Link to team.md**](/admin/team.md)
 
