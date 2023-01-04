@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Task.js</title>
+    <title>JSDoc: Source: calendar_helper.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Task.js</h1>
+    <h1 class="page-title">Source: calendar_helper.js</h1>
 
     
 
@@ -26,132 +26,184 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Task.js
- * @author Guan Li, Steven Khaw, Christopher Han
- * @summary File contains Task class and functions.
- *
- * Created at : 2022-11-16 2:30 PM
- * Last Modified : 2022-11-16 2:30 PM
- */
-
-/** Class Task TODO ADD MORE DESCRIPTION  */
-class Task {
-  /** @type {number} */
-  static counter = 0;
-
-  /**
-   * @author Guan Li
-   * Constructs a task object from the class
-   * @constructor
-   *
-   * @param {string} taskName - name of task
-   * @param {string[]} tags - tags that task belongs to
-   * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
-   * @param {string} description - description of task
-   * @param {boolean} complete - boolean of task completion
-   */
-  constructor(taskName, tags, dueDate, description, complete) {
-    this.taskName = taskName;
-    // this.taskID = taskID;
-    /** @type {number} */
-    this.taskID = Task.counter++;
-    this.tags = tags;
-    this.dueDate = dueDate;
-    this.description = description;
-    this.complete = complete;
-  }
-
-  // Getters:
-
-  /**
-   * @author Guan Li
-   * @return taskName
-   */
-  get TaskName() {
-    return this.taskName;
-  }
-
-  /**
-   * @author Guan Li
-   * @return taskID
-   */
-  get TaskID() {
-    return this.taskID;
-  }
-
-  /**
-   * @author Guan Li
-   * @return tags
-   */
-  get Tags() {
-    return this.tags;
-  }
-
-  /**
-   * @author Guan Li
-   * @return dueDate
-   */
-  get DueDate() {
-    return this.dueDate;
-  }
-
-  /**
-   * @author Guan Li
-   * @return description
-   */
-  get Description() {
-    return this.description;
-  }
-
-  /**
-   * @author Steven Khaw
-   * @return complete
-   */
-  get Complete() {
-    return this.complete;
-  }
-
-  // Setters:
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task name
-   */
-  set modifyTaskName(newTaskName) {
-    this.taskName = newTaskName;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string[]} new tags
-   */
-  set modifyTaskTags(newTags) {
-    this.tags = newTags;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new due date
-   */
-  set modifyDueDate(newDueDate) {
-    this.dueDate = newDueDate;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task description
-   */
-  set modifyTaskDescription(newTaskDescription) {
-    this.description = newTaskDescription;
-  }
-}
-
-try {
+            <pre class="prettyprint source linenums"><code>try {
   module.exports = {
-    Task,
+    getIfLeapYear,
+    getDaysInMonth,
+    indexToMonth,
+    indexToDay,
+    getWeekDayString,
+    getWeekDayIndex,
+    getWeekCount,
+    getCurrentDay,
   };
 } catch (error) {}
+
+/**
+ * calendar_helper.js
+ * @author Steven Khaw
+ * @summary Helper functions for the calendar
+ *
+ * Created at : 2022-11-18 2:00 PM
+ * Last Modified : 2022-11-21 11:30 PM
+ */
+
+/**
+ * @author Steven Khaw
+ * returns whether a year is a leap year or not
+ *
+ * @param {number} year year being checked
+ *
+ * @return {boolean} true if leap year, false if else
+ */
+function getIfLeapYear(year) {
+  return year % 4 === 0;
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns how many days in month given year and month
+ *
+ * @param {number} year year being checked
+ * @param {number} month month being checked (1-12)
+ *
+ * @return {number} days in a month given year
+ */
+function getDaysInMonth(year, month) {
+  return new Date(year, month, 0).getDate();
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns month string
+ *
+ * @param {number} monthIndex month being checked (1-12)
+ *
+ * @return {string} month of given index input
+ */
+function indexToMonth(monthIndex) {
+  return [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ][monthIndex - 1];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns day of week string
+ *
+ * @param {number} dayIndex day being checked
+ *
+ * @return {string} day of given index input
+ */
+function indexToDay(dayIndex) {
+  return [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ][dayIndex - 1];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns the day of the week of an input date
+ *
+ * @param {number} year year being checked
+ * @param {number} month month being checked
+ * @param {number} day day being checked
+ *
+ * @return {string} day of week of input
+ */
+function getWeekDayString(year, month, day) {
+  const DAYS_STRINGS = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  const date = new Date(month + " " + String(day) + ", " + String(year));
+  return DAYS_STRINGS[date.getDay()];
+}
+
+/**
+ * @author Steven Khaw
+ * @summary calculates the integer day of the week of an input date
+ * index = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+ *
+ * @param {number} year year being checked
+ * @param {number} month month being checked
+ * @param {number} day day being checked
+ *
+ * @return {number} number day of week of input
+ */
+function getWeekDayIndex(year, month, day) {
+  const date = new Date(
+    String(month) + " " + String(day) + ", " + String(year)
+  );
+  date.toLocaleString("en-US", {
+    timeZone: "America/Los_Angeles",
+  });
+  return date.getDay();
+}
+
+/**
+ * @author Steven Khaw
+ * @summary calculates how many weeks in month
+ *
+ * @param {number} year year being checked
+ * @param {number} month month being checked
+ * @returns {number} number of weeks of input
+ */
+function getWeekCount(year, month) {
+  var firstOfMonth = new Date(year, month - 1, 1);
+  var lastOfMonth = new Date(year, month, 0);
+
+  var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+
+  return Math.ceil(used / 7);
+}
+
+/**
+ * @author Steven Khaw
+ * @summary returns the current date in format: [YYYY,MM,DD]
+ *
+ * @return {string[]} current date in format: [YYYY,MM,DD]
+ */
+function getCurrentDay() {
+  const date = new Date();
+  return [
+    String(date.getFullYear()),
+    String(date.getMonth() + 1),
+    String(date.getDate()),
+  ];
+}
+
+/**
+ * @author Haoyi Wang
+ * @summary Shows popup
+ */
+function helpPopup() {
+  var popup = document.getElementById("my-popup");
+  popup.classList.toggle("show");
+}
 </code></pre>
         </article>
     </section>

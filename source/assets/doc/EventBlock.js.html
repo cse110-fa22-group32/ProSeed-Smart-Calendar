@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Task.js</title>
+    <title>JSDoc: Source: EventBlock.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Task.js</h1>
+    <h1 class="page-title">Source: EventBlock.js</h1>
 
     
 
@@ -26,132 +26,113 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Task.js
- * @author Guan Li, Steven Khaw, Christopher Han
- * @summary File contains Task class and functions.
- *
- * Created at : 2022-11-16 2:30 PM
- * Last Modified : 2022-11-16 2:30 PM
- */
+            <pre class="prettyprint source linenums"><code>//create a event block in side bar.
 
-/** Class Task TODO ADD MORE DESCRIPTION  */
-class Task {
-  /** @type {number} */
-  static counter = 0;
+class EventBlock extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    const divBlock = document.createElement("div");
+    const style = document.createElement("style");
 
-  /**
-   * @author Guan Li
-   * Constructs a task object from the class
-   * @constructor
-   *
-   * @param {string} taskName - name of task
-   * @param {string[]} tags - tags that task belongs to
-   * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
-   * @param {string} description - description of task
-   * @param {boolean} complete - boolean of task completion
-   */
-  constructor(taskName, tags, dueDate, description, complete) {
-    this.taskName = taskName;
-    // this.taskID = taskID;
-    /** @type {number} */
-    this.taskID = Task.counter++;
-    this.tags = tags;
-    this.dueDate = dueDate;
-    this.description = description;
-    this.complete = complete;
-  }
+    style.innerHTML = `
+      @font-face {
+        font-family: "Mochiy Pop One";
+        src: url("../fonts/MochiyPopOne-Regular.ttf");
+      }
+      div {
+        border-style: none;        
+        margin-top: 10px;
+        display: grid;
+        height: 40px;
+        grid-template-columns: repeat(22, auto);
+        background: #54CB9C;
+        border-radius: 62.5407px;
+        padding-left: 10px
+      }
+      #Id {
+        display: none;
+      }
+      #title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 55px;
+        max-width: 120px;
+        font-size: 22px;
+        align-self: center;
+        grid-column-start: 2;
+        grid-column-end: 6;
+        margin: 0%;
+      }
+      h4 {
+        font-weight: normal;
+        font-size: 15px;
+        align-self: center;
+        margin: 0%;
+      }
+      #start {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 55px;
+        align-self: center;
+        grid-column-start: 8;
+        grid-column-end: 14;
+      }
+      #delete {
+        font-family: "Mochiy Pop One", sans-serif;
+        font-style: normal;
+        align-self: center;
+        border-radius: 50px;
+        width: 32px;
+        height: 32px;
+        background: #9c3030;
+        grid-column-start: 15;
+        grid-column-end: 17;
+      }
+      #edit {
+        font-family: "Mochiy Pop One", sans-serif;
+        font-style: normal;
+        align-self: center;
+        border-radius: 50px;
+        width: 32px;
+        height: 32px;
+        background: #F4F276;
+        grid-column-start: 18;
+        grid-column-end: 20;
+      }
+      #delete:hover, #edit:hover {
+        background-color: RoyalBlue;
+      }
+    `;
 
-  // Getters:
-
-  /**
-   * @author Guan Li
-   * @return taskName
-   */
-  get TaskName() {
-    return this.taskName;
-  }
-
-  /**
-   * @author Guan Li
-   * @return taskID
-   */
-  get TaskID() {
-    return this.taskID;
-  }
-
-  /**
-   * @author Guan Li
-   * @return tags
-   */
-  get Tags() {
-    return this.tags;
-  }
-
-  /**
-   * @author Guan Li
-   * @return dueDate
-   */
-  get DueDate() {
-    return this.dueDate;
-  }
-
-  /**
-   * @author Guan Li
-   * @return description
-   */
-  get Description() {
-    return this.description;
-  }
-
-  /**
-   * @author Steven Khaw
-   * @return complete
-   */
-  get Complete() {
-    return this.complete;
-  }
-
-  // Setters:
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task name
-   */
-  set modifyTaskName(newTaskName) {
-    this.taskName = newTaskName;
+    this.shadowRoot.append(style, divBlock);
   }
 
   /**
-   * @author Christopher Han
-   * @param {string[]} new tags
+   * @param {Object} data - The data to pass into the &lt;event-block>, must be of the
+   * following format:
+   * {
+   *    "id": number,
+   *    "title": "string",
+   *    "start" : "string",
+   *    "end": "string"
+   * }
    */
-  set modifyTaskTags(newTags) {
-    this.tags = newTags;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new due date
-   */
-  set modifyDueDate(newDueDate) {
-    this.dueDate = newDueDate;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task description
-   */
-  set modifyTaskDescription(newTaskDescription) {
-    this.description = newTaskDescription;
+  set eventData(data) {
+    const article = this.shadowRoot.querySelector("div");
+    article.innerHTML = `
+        &lt;p id="Id">${data.id}&lt;/p>
+        &lt;h3 id="title">${data.title}&lt;/h3>
+        &lt;h4 id="start">${data.start}->${data.end}&lt;/h4>
+        &lt;button id="delete">D&lt;/button>
+        &lt;button id="edit">E&lt;/button>
+        `;
   }
 }
 
-try {
-  module.exports = {
-    Task,
-  };
-} catch (error) {}
+customElements.define("event-block", EventBlock);
 </code></pre>
         </article>
     </section>

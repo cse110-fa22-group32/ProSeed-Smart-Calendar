@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: middeground_handler.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: middeground_handler.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * middleground_handler.js
+ * @author Steven Khaw
+ * @summary
+ *
+ * Created at : 2022-12-2 10:00 PM
+ * Last Modified : 2022-12-3 2:00 AM
+ */
+
+// Run the init() function when the page has loaded
+window.addEventListener("DOMContentLoaded", init);
+
+function init() {}
+
+/**
+ * @author Steven Khaw
+ * @summary creates dictionary in local storage if it does not exist
+ */
+function validateDict() {
+  let calendarDict = localStorage.getItem("calendarDict");
+
+  // if calendarDict DNE in localStorage, create it
+  if (!calendarDict) localStorage.setItem("calendarDict", JSON.stringify({}));
+}
+
+/**
+ * @author Steven Khaw
+ * @summary adds or updates key and value pair to local storage dictionary
+ *
+ * @param {string} calendarKey
+ * @param {string} calendarJson
+ */
+function addDictPair(calendarKey, calendarJson) {
+  let calendarDict = localStorage.getItem("calendarDict");
+
+  // creates dict if it DNE
+  if (!calendarDict) {
+    validateDict();
+    addDictPair(calendarKey, calendarJson);
+  }
+
+  // stores dictionary from localStorage into var
+  calendarDict = JSON.parse(calendarDict);
+
+  // if key exists in local storage, delete it, then add new data to dict
+  if (calendarDict[String(calendarKey)]) {
+    delete calendarDict[String(calendarKey)];
+  }
+
+  // creates Calendar obj with calendarJson
+  let calendarObj = loadJson([calendarJson]);
+
+  // loads calendarJSON into dictionary with respective key
+  calendarDict[String(calendarKey)] = JSON.parse(
+    calendarObj[0].Export([-1], [-1], [-1])
+  );
+
+  // store updated dict back to localStorage
+  localStorage.setItem("calendarDict", JSON.stringify(calendarDict));
+}
+
+function removeDictPair(calendarKey) {
+  let calendarDict = localStorage.getItem("calendarDict");
+
+  // creates dict if it DNE
+  if (!calendarDict) {
+    validateDict();
+    removeDictPair(calendarKey);
+  }
+
+  // stores dictionary from localStorage into var
+  calendarDict = JSON.parse(calendarDict);
+
+  // if key exists in local storage, delete it, then add new data to dict
+  if (calendarDict[String(calendarKey)]) {
+    delete calendarDict[String(calendarKey)];
+  }
+
+  // store updated dict back to localStorage
+  localStorage.setItem("calendarDict", JSON.stringify(calendarDict));
+}
+
+/**
+ * @author Steven Khaw
+ * @summary stores calendarKey into localStorage
+ *
+ * @param {string} calendarKey
+ */
+function storeKey(calendarKey) {
+  localStorage.setItem("loadCalendarKey", calendarKey);
+}
+
+/**
+ * @author Steven Khaw
+ * @summary removes calendarKey from localStorage
+ */
+function removeKey() {
+  localStorage.removeItem("loadCalendarKey");
+}
+
+/**
+ * @author Steven Khaw
+ * @summary clears jsonStr to prep for new calendar
+ */
+function isNewCalendar() {
+  localStorage.removeItem("jsonStr");
+}
+
+/**
+ * @author Steven Khaw, Christopher Han
+ * @summary loads calendar based on what is stored in loadCalendarKey in
+ * local storage
+ */
+function loadCalendarFromDict() {
+  // when there's no json file in localStorage, load testJson
+  if (!getJsonFromLocalStorage()) {
+    let loadCalendarKey = localStorage.getItem("loadCalendarKey");
+    let calendarDict = localStorage.getItem("calendarDict");
+
+    // check to ensure items exist in localStorage
+    if (!loadCalendarKey || !calendarDict) {
+      console.error("key or dictionary does not exist in localStorage");
+    }
+
+    // stores dictionary from localStorage into var
+    calendarDict = JSON.parse(calendarDict);
+
+    let calendarJson = JSON.stringify(calendarDict[String(loadCalendarKey)]);
+
+    // creates Calendar obj with calendarJson
+    let calendarObj = loadJson([calendarJson]);
+
+    loadCalendarData(calendarObj);
+
+    let currDay = getCurrentDay();
+    calendarData[0].Show(currDay[0], currDay[1]);
+  }
+
+  // auto save calendar to local storage
+  saveJsonToLocalStorage(calendarData[0]);
+}
+
+/**
+ * @author Steven Khaw
+ * @summary updates the middleground calendar to the most up to date version
+ */
+function updateMiddlegroundCalendar() {
+  let currJsonStr = localStorage.getItem("jsonStr");
+  currJsonStr = JSON.parse(currJsonStr);
+  let calendarID = currJsonStr.calendarID
+
+  let calendarObject = localStorage.getItem("calendars");
+  calendarObject = JSON.parse(calendarObject);
+
+  for (let i = 0; i &lt; calendarObject.length; i++) {
+    if (!calendarObject[i][0]) {
+      if (calendarObject[i].calendarID == calendarID) {
+        currJsonStr.title = calendarObject[i].title;
+        calendarObject[i] = currJsonStr;
+        break;
+      }
+    } else {
+      if (calendarObject[i][0].calendarID == calendarID) {
+        currJsonStr.title = calendarObject[i][0].title;
+        calendarObject[i][0] = currJsonStr;
+        break;
+      }
+    }
+  }
+
+  localStorage.setItem("calendars", JSON.stringify(calendarObject));
+}
+/**
+ * @author Guan Li
+ * @summary Get calenar json file from storage.
+ */
+ function getCalendarFromStorage() {
+  if (!localStorage.getItem("calendars")) {
+    return [];
+  }
+  return JSON.parse(localStorage.getItem("calendars"));
+}
+
+/**
+ * @author Guan Li
+ * @summary takes in a parameter calendar and Append it to storage
+ */
+function saveNewCalendarToStorage(json_file) {
+  let oldCalendarStorage = getCalendarFromStorage();
+  oldCalendarStorage.push(json_file);
+  localStorage.setItem("calendars", JSON.stringify(oldCalendarStorage));
+}
+
+/**
+ * @author Guan Li
+ * @summary takes in a parameter calendar and save it to storage
+ */
+function saveOnlyNewCalendarToStorage(json_file) {
+  localStorage.setItem("calendars", JSON.stringify(json_file));
+}
+
+/**
+ * @author Guan Li, Steven Khaw
+ * @summary Add all the calendar to middle ground from the local storage
+ */
+function createView(calendars) {
+  if (calendars == null) {
+    return;
+  } else {
+    let middleGroundContainer = document.querySelector("#Calendars");
+    middleGroundContainer.innerHTML = ""; // Clear the html first.
+
+    for (let i = 0; i &lt; calendars.length; i++) {
+      let gridContainer = document.createElement("div");
+      gridContainer.className = "grid-item";
+      let article = document.createElement("article");
+      if (!calendars[i][0]) {
+        article.innerHTML = `
+        &lt;img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
+        &lt;p class="title">${calendars[i].title}&lt;/p>
+        &lt;p class="inner-text">Last Updated: ${calendars[i].lastUpdated}&lt;/p>
+        &lt;div class="row">
+          &lt;div class="column">
+            &lt;button type ="button" class="key-button" id="enter-calendar" name=${calendars[i].calendarID}>Open calendar&lt;/button>
+          &lt;/div>
+          &lt;div class="column">
+            &lt;button type ="button" class="key-button" id="remove-calendar" name=${calendars[i].calendarID}>Delete calendar&lt;/button>
+          &lt;/div>
+        &lt;/div>
+        `;
+      } else {
+        article.innerHTML = `
+        &lt;img id="calander-icon" src="./assets/images/icons/calendar.svg" alt="calendar">
+        &lt;p class="title">${calendars[i][0].title}&lt;/p>
+        &lt;p class="inner-text">Last Updated: ${calendars[i][0].lastUpdated}&lt;/p>
+        &lt;div class="row">
+          &lt;div class="column">
+            &lt;button type ="button" class="key-button" id="enter-calendar" name=${calendars[i][0].calendarID}>Open calendar&lt;/button>
+          &lt;/div>
+          &lt;div class="column">
+            &lt;button type ="button" class="key-button" id="remove-calendar" name=${calendars[i][0].calendarID}>Delete calendar&lt;/button>
+          &lt;/div>
+        &lt;/div>
+        `;
+      }
+
+      gridContainer.appendChild(article);
+      middleGroundContainer.appendChild(gridContainer);
+    }
+  }
+}
+
+/**
+ * @author Guan Li
+ * @summary Open the form for user input
+ */
+function openForm() {
+  //Display the form:
+  document.getElementById("myForm").style.display = "block";
+}
+
+/**
+ * @author Guan Li
+ * @summary Close the form for user input
+ */
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+
+/**
+ * @author Guan Li
+ * @summary returns the file to grab the json files.
+ *
+ * @return Promise - Returns the json file objects.
+ */
+async function parseJsonFile(file) {
+  return new Promise((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.onload = (event) => resolve(JSON.parse(event.target.result));
+    fileReader.onerror = (error) => reject(error);
+    fileReader.readAsText(file);
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Calendar.html">Calendar</a></li><li><a href="CalendarBlock.html">CalendarBlock</a></li><li><a href="Day.html">Day</a></li><li><a href="Event.html">Event</a></li><li><a href="List.html">List</a></li><li><a href="Month.html">Month</a></li><li><a href="Task.html">Task</a></li><li><a href="User.html">User</a></li><li><a href="Year.html">Year</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add_event">add_event</a></li><li><a href="global.html#add_todo">add_todo</a></li><li><a href="global.html#addDictPair">addDictPair</a></li><li><a href="global.html#addExitListener">addExitListener</a></li><li><a href="global.html#addExpandListener">addExpandListener</a></li><li><a href="global.html#addListeners">addListeners</a></li><li><a href="global.html#authenticateLogin">authenticateLogin</a></li><li><a href="global.html#callDelete">callDelete</a></li><li><a href="global.html#callEdit">callEdit</a></li><li><a href="global.html#clearLocalStorage">clearLocalStorage</a></li><li><a href="global.html#closeForm">closeForm</a></li><li><a href="global.html#createCalendarHTML">createCalendarHTML</a></li><li><a href="global.html#createView">createView</a></li><li><a href="global.html#dateFormat">dateFormat</a></li><li><a href="global.html#displayDate">displayDate</a></li><li><a href="global.html#drawCalendar">drawCalendar</a></li><li><a href="global.html#ensureEmail">ensureEmail</a></li><li><a href="global.html#getCalendarFromStorage">getCalendarFromStorage</a></li><li><a href="global.html#getCurrentDay">getCurrentDay</a></li><li><a href="global.html#getDaysInMonth">getDaysInMonth</a></li><li><a href="global.html#getIfLeapYear">getIfLeapYear</a></li><li><a href="global.html#getJsonFromLocalStorage">getJsonFromLocalStorage</a></li><li><a href="global.html#getWeekCount">getWeekCount</a></li><li><a href="global.html#getWeekDayIndex">getWeekDayIndex</a></li><li><a href="global.html#getWeekDayString">getWeekDayString</a></li><li><a href="global.html#helpPopup">helpPopup</a></li><li><a href="global.html#hideLastRow">hideLastRow</a></li><li><a href="global.html#hideSidebar">hideSidebar</a></li><li><a href="global.html#hideTodo">hideTodo</a></li><li><a href="global.html#indexToDay">indexToDay</a></li><li><a href="global.html#indexToMonth">indexToMonth</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initializeCalendarDisplay">initializeCalendarDisplay</a></li><li><a href="global.html#isEmail">isEmail</a></li><li><a href="global.html#isNewCalendar">isNewCalendar</a></li><li><a href="global.html#isStrongPassword">isStrongPassword</a></li><li><a href="global.html#loadCalendarData">loadCalendarData</a></li><li><a href="global.html#loadCalendarFromDict">loadCalendarFromDict</a></li><li><a href="global.html#loadCalendarHTML">loadCalendarHTML</a></li><li><a href="global.html#loadJson">loadJson</a></li><li><a href="global.html#loginList">loginList</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#openForm">openForm</a></li><li><a href="global.html#parseJsonFile">parseJsonFile</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#resetCalendarHTML">resetCalendarHTML</a></li><li><a href="global.html#saveDisplayDateToLocalStorage">saveDisplayDateToLocalStorage</a></li><li><a href="global.html#saveJsonToLocalStorage">saveJsonToLocalStorage</a></li><li><a href="global.html#saveNewCalendarToStorage">saveNewCalendarToStorage</a></li><li><a href="global.html#saveOnlyNewCalendarToStorage">saveOnlyNewCalendarToStorage</a></li><li><a href="global.html#showSidebar">showSidebar</a></li><li><a href="global.html#showTodo">showTodo</a></li><li><a href="global.html#storeKey">storeKey</a></li><li><a href="global.html#testJson">testJson</a></li><li><a href="global.html#timeFormat">timeFormat</a></li><li><a href="global.html#traverseMonthEventListener">traverseMonthEventListener</a></li><li><a href="global.html#traverseYearEventListener">traverseYearEventListener</a></li><li><a href="global.html#update_day_block">update_day_block</a></li><li><a href="global.html#updateCalendarView">updateCalendarView</a></li><li><a href="global.html#updateMiddlegroundCalendar">updateMiddlegroundCalendar</a></li><li><a href="global.html#updateSideBar">updateSideBar</a></li><li><a href="global.html#validateDict">validateDict</a></li><li><a href="global.html#viewDay">viewDay</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jan 04 2023 23:13:51 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

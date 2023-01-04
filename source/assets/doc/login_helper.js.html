@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Task.js</title>
+    <title>JSDoc: Source: login_helper.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Task.js</h1>
+    <h1 class="page-title">Source: login_helper.js</h1>
 
     
 
@@ -27,131 +27,54 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Task.js
- * @author Guan Li, Steven Khaw, Christopher Han
- * @summary File contains Task class and functions.
+ * @author Steven Khaw
+ * @summary helper functions that check whether email and password are valid
  *
- * Created at : 2022-11-16 2:30 PM
- * Last Modified : 2022-11-16 2:30 PM
+ * Created at : 2022-11-28 3:00 PM
+ * Last Modified : 2022-11-28 3:20 PM
  */
-
-/** Class Task TODO ADD MORE DESCRIPTION  */
-class Task {
-  /** @type {number} */
-  static counter = 0;
-
-  /**
-   * @author Guan Li
-   * Constructs a task object from the class
-   * @constructor
-   *
-   * @param {string} taskName - name of task
-   * @param {string[]} tags - tags that task belongs to
-   * @param {string} dueDate - due date of task; format: 'MM/DD/YY HH:MM'
-   * @param {string} description - description of task
-   * @param {boolean} complete - boolean of task completion
-   */
-  constructor(taskName, tags, dueDate, description, complete) {
-    this.taskName = taskName;
-    // this.taskID = taskID;
-    /** @type {number} */
-    this.taskID = Task.counter++;
-    this.tags = tags;
-    this.dueDate = dueDate;
-    this.description = description;
-    this.complete = complete;
-  }
-
-  // Getters:
-
-  /**
-   * @author Guan Li
-   * @return taskName
-   */
-  get TaskName() {
-    return this.taskName;
-  }
-
-  /**
-   * @author Guan Li
-   * @return taskID
-   */
-  get TaskID() {
-    return this.taskID;
-  }
-
-  /**
-   * @author Guan Li
-   * @return tags
-   */
-  get Tags() {
-    return this.tags;
-  }
-
-  /**
-   * @author Guan Li
-   * @return dueDate
-   */
-  get DueDate() {
-    return this.dueDate;
-  }
-
-  /**
-   * @author Guan Li
-   * @return description
-   */
-  get Description() {
-    return this.description;
-  }
-
-  /**
-   * @author Steven Khaw
-   * @return complete
-   */
-  get Complete() {
-    return this.complete;
-  }
-
-  // Setters:
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task name
-   */
-  set modifyTaskName(newTaskName) {
-    this.taskName = newTaskName;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string[]} new tags
-   */
-  set modifyTaskTags(newTags) {
-    this.tags = newTags;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new due date
-   */
-  set modifyDueDate(newDueDate) {
-    this.dueDate = newDueDate;
-  }
-
-  /**
-   * @author Christopher Han
-   * @param {string} new task description
-   */
-  set modifyTaskDescription(newTaskDescription) {
-    this.description = newTaskDescription;
-  }
-}
 
 try {
   module.exports = {
-    Task,
+    isEmail,
+    isStrongPassword,
   };
 } catch (error) {}
+
+/**
+ * @author Steven Khaw &amp; CSE 110 Lab 8
+ * @summary checks if email is of valid format
+ *
+ * @param {string} email full email being checked
+ * @return {boolean} true if valid email, false otherwise
+ */
+function isEmail(email) {
+  const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+  return emailRegex.test(email);
+}
+
+/**
+ * @author Steven Khaw &amp; CSE 110 Lab 8
+ * @summary The password's first character must be a letter, it must contain at
+ * least * 4 characters and no more than 20 characters and no characters
+ * other than * * letters, numbers and the underscore may be used
+ *
+ * @param {string} password password being checked
+ * @return true if password is valid, false otherwise
+ */
+function isStrongPassword(password) {
+  const pwRegex = /^[a-zA-Z]\w{3,19}$/;
+  return pwRegex.test(password);
+}
+
+/**
+ * @author Haoyi Wang
+ * @summary Shows popup
+ */
+function helpPopup() {
+  var popup = document.getElementById("my-popup");
+  popup.classList.toggle("show");
+}
 </code></pre>
         </article>
     </section>

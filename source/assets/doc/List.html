@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Calendar</title>
+    <title>JSDoc: Class: List</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Calendar</h1>
+    <h1 class="page-title">Class: List</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Calendar<span class="signature">(lastUpdated, title, calendarID, years, users)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>List<span class="signature">(title, lastUpdated, bindedCalendarID, tasks)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Class Calendar</div>
+            <div class="class-description">Class List</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="Calendar"><span class="type-signature"></span>new Calendar<span class="signature">(lastUpdated, title, calendarID, years, users)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="List"><span class="type-signature"></span>new List<span class="signature">(title, lastUpdated, bindedCalendarID, tasks)</span><span class="type-signature"></span></h4>
     
 
     
@@ -85,6 +85,29 @@
 
         <tr>
             
+                <td class="name"><code>title</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">title of list</td>
+        </tr>
+
+    
+
+        <tr>
+            
                 <td class="name"><code>lastUpdated</code></td>
             
 
@@ -108,7 +131,7 @@
 
         <tr>
             
-                <td class="name"><code>title</code></td>
+                <td class="name"><code>bindedCalendarID</code></td>
             
 
             <td class="type">
@@ -124,20 +147,20 @@
 
             
 
-            <td class="description last">title of calendar</td>
+            <td class="description last">ID of the binded calendar</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>calendarID</code></td>
+                <td class="name"><code>tasks</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">Object</span>
 
 
             
@@ -147,53 +170,7 @@
 
             
 
-            <td class="description last">unique ID for calendar</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>years</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;<a href="Year.html">Year</a>></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">years in calendar</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>users</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;String></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">users able to access calendar; format: "Firstname Lastname"</td>
+            <td class="description last">tasks in list, key is task's unique ID</td>
         </tr>
 
     
@@ -227,8 +204,8 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Steven Khaw
-Constructs a calendar object from the class</li>
+            <li>Yuelin Dai
+Constructs a list object from the class</li>
         </ul>
     </dd>
     
@@ -242,7 +219,7 @@ Constructs a calendar object from the class</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line11">line 11</a>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line11">line 11</a>
     </li></ul></dd>
     
 
@@ -292,7 +269,7 @@ Constructs a calendar object from the class</li>
 
         
             
-<h4 class="name" id="CalendarID"><span class="type-signature"></span>CalendarID<span class="type-signature"></span></h4>
+<h4 class="name" id="BindedCalendarID"><span class="type-signature"></span>BindedCalendarID<span class="type-signature"></span></h4>
 
 
 
@@ -325,7 +302,7 @@ Constructs a calendar object from the class</li>
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Steven Khaw</li>
+            <li>Yuelin Dai</li>
         </ul>
     </dd>
     
@@ -339,7 +316,7 @@ Constructs a calendar object from the class</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line53">line 53</a>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -390,7 +367,7 @@ Constructs a calendar object from the class</li>
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Steven Khaw</li>
+            <li>Yuelin Dai</li>
         </ul>
     </dd>
     
@@ -404,7 +381,137 @@ Constructs a calendar object from the class</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line37">line 37</a>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line35">line 35</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="SortedTasks"><span class="type-signature"></span>SortedTasks<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Yuelin Dai</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Tasks"><span class="type-signature"></span>Tasks<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Yuelin Dai</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -455,7 +562,7 @@ Constructs a calendar object from the class</li>
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Steven Khaw</li>
+            <li>Yuelin Dai</li>
         </ul>
     </dd>
     
@@ -469,137 +576,7 @@ Constructs a calendar object from the class</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line45">line 45</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Users"><span class="type-signature"></span>Users<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Steven Khaw</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line69">line 69</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="Years"><span class="type-signature"></span>Years<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Steven Khaw</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line61">line 61</a>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -627,16 +604,12 @@ Constructs a calendar object from the class</li>
     
 
     
-    <h4 class="name" id="Export"><span class="type-signature"></span>Export<span class="signature">(selectedYears, selectedMonths, selectedDays)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="AddTask"><span class="type-signature"></span>AddTask<span class="signature">(task)</span><span class="type-signature"></span></h4>
     
 
     
 
 
-
-<div class="description">
-    Export data of users and selected years, months, days to a json
-</div>
 
 
 
@@ -671,13 +644,13 @@ Constructs a calendar object from the class</li>
 
         <tr>
             
-                <td class="name"><code>selectedYears</code></td>
+                <td class="name"><code>task</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Array.&lt;number></span>
+<span class="param-type"><a href="Task.html">Task</a></span>
 
 
             
@@ -687,53 +660,7 @@ Constructs a calendar object from the class</li>
 
             
 
-            <td class="description last">hold selected years (2000-3000); [-1] indicate all years</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>selectedMonths</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">hold selected months (1-12); [-1] indicate all months</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>selectedDays</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;number></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">hold selected days (1-31); [-1] indicate all days</td>
+            <td class="description last">task that will be added</td>
         </tr>
 
     
@@ -781,182 +708,7 @@ Constructs a calendar object from the class</li>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line82">line 82</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    a json string containing data
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="Show"><span class="type-signature"></span>Show<span class="signature">(year, month)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>year</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">year number</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>month</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">month number (1 - 12)</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Yuelin Dai
-
-Populate calendar view with days, events and tasks of inputted month</li>
-        </ul>
-    </dd>
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="calendar.js.html">calendar.js</a>, <a href="calendar.js.html#line129">line 129</a>
+        <a href="List.js.html">List.js</a>, <a href="List.js.html#line94">line 94</a>
     </li></ul></dd>
     
 

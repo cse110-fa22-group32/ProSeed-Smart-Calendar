@@ -30,101 +30,129 @@
  * Event.js
  * @author Guan Li
  * @summary File contains Event class and functions.
- * 
+ *
  * Created at : 2022-11-16 2:30 PM
  * Last Modified : 2022-11-16 2:30 PM
  */
 
 /** Class Event  */
 class Event {
+  /** @type {number} */
+  static counter = 0;
 
-    /**
-     * @author Guan Li
-     * Constructs a Event object from the class
-     * @constructor
-     * 
-     * @param {string} startDay - start day of event
-     * @param {string} endDay - end day of event
-     * @param {string} eventName - name of event
-     * @param {string} eventID - unique ID of event
-     * @param {string} location - location of event
-     * @param {string} description - description of event
-     */
-    constructor(startDay, endDay, eventName, eventID, location, description) {
-        this.startDay = startDay;
-        this.endDay = endDay;
-        this.eventName = eventName;
-        this.eventID = eventID;
-        this.location = location;
-        this.description = description;
-    }
+  /**
+   * @author Guan Li
+   * Constructs a Event object from the class
+   * @constructor
+   *
+   * @param {string} startDay - start day of event
+   * @param {string} endDay - end day of event
+   * @param {string} eventName - name of event
+   * @param {string} location - location of event
+   * @param {string} description - description of event
+   */
+  constructor(startDay, endDay, eventName, location, description) {
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.eventName = eventName;
+    // this.eventID = eventID;
+    /** @type {number} */
+    this.eventID = Event.counter++;
+    this.location = location;
+    this.description = description;
+  }
 
-    // Getters:
+  // Getters:
 
-    /**
-     * @author Guan Li
-     * @return startDay
-     */
-    get StartDay() {
-        return this.startDay;
-    }
+  /**
+   * @author Guan Li
+   * @return startDay
+   */
+  get StartDay() {
+    return this.startDay;
+  }
 
-    /**
-     * @author Guan Li
-     * @return endDay
-     */
-    get EndDay() {
-        return this.endDay;
-    }
+  /**
+   * @author Guan Li
+   * @return endDay
+   */
+  get EndDay() {
+    return this.endDay;
+  }
 
-    /**
-     * @author Guan Li
-     * @return eventName
-     */
-    get EventName() {
-        return this.eventName;
-    }
+  /**
+   * @author Guan Li
+   * @return eventName
+   */
+  get EventName() {
+    return this.eventName;
+  }
 
-    /**
-     * @author Guan Li
-     * @return eventID
-     */
-    get EventID() {
-        return this.eventID;
-    }
+  /**
+   * @author Guan Li
+   * @return eventID
+   */
+  get EventID() {
+    return this.eventID;
+  }
 
-    /**
-     * @author Guan Li
-     * @return location
-     */
-    get Location() {
-        return this.location;
-    }
+  /**
+   * @author Guan Li
+   * @return location
+   */
+  get Location() {
+    return this.location;
+  }
 
-    /**
-     * @author Guan Li
-     * @return eventDescription
-     */
-    get Description() {
-        return this.description;
-    }
+  /**
+   * @author Guan Li
+   * @return eventDescription
+   */
+  get Description() {
+    return this.description;
+  }
 
-    /**
-     * @param: startDay,endDay, location, description
-     * @param startDay - the start day of event
-     * @param endDay - the last day of event
-     * @param eventName - the name of event
-     * @param location - the location of events
-     * @param description - the description of event
-     * 
-     * @author Guan Li
-     * @return an Event object
-     */
-    createEvent(startDay, endDay, eventName, location, description){
-        //TODO:
-    }
+  /**
+   * @param: startDay,endDay, location, description
+   * @param startDay - the start day of event
+   * @param endDay - the last day of event
+   * @param eventName - the name of event
+   * @param location - the location of events
+   * @param description - the description of event
+   *
+   * @author Guan Li
+   * @return an Event object
+   */
+  createEvent(startDay, endDay, eventName, location, description) {
+    //TODO:
+  }
+
+  /**
+   * Function to overrite the event objects
+   * @param: startDay,endDay, location, description
+   * @param {string} startDay - start day of event
+   * @param {string} endDay - end day of event
+   * @param {string} eventName - name of event
+   * @param {string} location - location of event
+   * @param {string} description - description of event
+   *
+   * @author Younus Ahmad
+   * @return an Event object
+   */
+  modifyEvent(startDay, endDay, eventName, location, description) {
+    this.startDay = startDay;
+    this.endDay = endDay;
+    this.eventName = eventName;
+    this.location = location;
+    this.description = description;
+  }
 }
 
+try {
+  module.exports = {
+    Event,
+  };
+} catch (error) {}
 </code></pre>
         </article>
     </section>
@@ -135,13 +163,13 @@ class Event {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Calendar.html">Calendar</a></li><li><a href="Day.html">Day</a></li><li><a href="Event.html">Event</a></li><li><a href="Month.html">Month</a></li><li><a href="Task.html">Task</a></li><li><a href="User.html">User</a></li><li><a href="Year.html">Year</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Calendar.html">Calendar</a></li><li><a href="CalendarBlock.html">CalendarBlock</a></li><li><a href="Day.html">Day</a></li><li><a href="Event.html">Event</a></li><li><a href="List.html">List</a></li><li><a href="Month.html">Month</a></li><li><a href="Task.html">Task</a></li><li><a href="User.html">User</a></li><li><a href="Year.html">Year</a></li></ul><h3>Global</h3><ul><li><a href="global.html#add_event">add_event</a></li><li><a href="global.html#add_todo">add_todo</a></li><li><a href="global.html#addDictPair">addDictPair</a></li><li><a href="global.html#addExitListener">addExitListener</a></li><li><a href="global.html#addExpandListener">addExpandListener</a></li><li><a href="global.html#addListeners">addListeners</a></li><li><a href="global.html#authenticateLogin">authenticateLogin</a></li><li><a href="global.html#callDelete">callDelete</a></li><li><a href="global.html#callEdit">callEdit</a></li><li><a href="global.html#clearLocalStorage">clearLocalStorage</a></li><li><a href="global.html#closeForm">closeForm</a></li><li><a href="global.html#createCalendarHTML">createCalendarHTML</a></li><li><a href="global.html#createView">createView</a></li><li><a href="global.html#dateFormat">dateFormat</a></li><li><a href="global.html#displayDate">displayDate</a></li><li><a href="global.html#drawCalendar">drawCalendar</a></li><li><a href="global.html#ensureEmail">ensureEmail</a></li><li><a href="global.html#getCalendarFromStorage">getCalendarFromStorage</a></li><li><a href="global.html#getCurrentDay">getCurrentDay</a></li><li><a href="global.html#getDaysInMonth">getDaysInMonth</a></li><li><a href="global.html#getIfLeapYear">getIfLeapYear</a></li><li><a href="global.html#getJsonFromLocalStorage">getJsonFromLocalStorage</a></li><li><a href="global.html#getWeekCount">getWeekCount</a></li><li><a href="global.html#getWeekDayIndex">getWeekDayIndex</a></li><li><a href="global.html#getWeekDayString">getWeekDayString</a></li><li><a href="global.html#helpPopup">helpPopup</a></li><li><a href="global.html#hideLastRow">hideLastRow</a></li><li><a href="global.html#hideSidebar">hideSidebar</a></li><li><a href="global.html#hideTodo">hideTodo</a></li><li><a href="global.html#indexToDay">indexToDay</a></li><li><a href="global.html#indexToMonth">indexToMonth</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initializeCalendarDisplay">initializeCalendarDisplay</a></li><li><a href="global.html#isEmail">isEmail</a></li><li><a href="global.html#isNewCalendar">isNewCalendar</a></li><li><a href="global.html#isStrongPassword">isStrongPassword</a></li><li><a href="global.html#loadCalendarData">loadCalendarData</a></li><li><a href="global.html#loadCalendarFromDict">loadCalendarFromDict</a></li><li><a href="global.html#loadCalendarHTML">loadCalendarHTML</a></li><li><a href="global.html#loadJson">loadJson</a></li><li><a href="global.html#loginList">loginList</a></li><li><a href="global.html#logout">logout</a></li><li><a href="global.html#openForm">openForm</a></li><li><a href="global.html#parseJsonFile">parseJsonFile</a></li><li><a href="global.html#removeKey">removeKey</a></li><li><a href="global.html#resetCalendarHTML">resetCalendarHTML</a></li><li><a href="global.html#saveDisplayDateToLocalStorage">saveDisplayDateToLocalStorage</a></li><li><a href="global.html#saveJsonToLocalStorage">saveJsonToLocalStorage</a></li><li><a href="global.html#saveNewCalendarToStorage">saveNewCalendarToStorage</a></li><li><a href="global.html#saveOnlyNewCalendarToStorage">saveOnlyNewCalendarToStorage</a></li><li><a href="global.html#showSidebar">showSidebar</a></li><li><a href="global.html#showTodo">showTodo</a></li><li><a href="global.html#storeKey">storeKey</a></li><li><a href="global.html#testJson">testJson</a></li><li><a href="global.html#timeFormat">timeFormat</a></li><li><a href="global.html#traverseMonthEventListener">traverseMonthEventListener</a></li><li><a href="global.html#traverseYearEventListener">traverseYearEventListener</a></li><li><a href="global.html#update_day_block">update_day_block</a></li><li><a href="global.html#updateCalendarView">updateCalendarView</a></li><li><a href="global.html#updateMiddlegroundCalendar">updateMiddlegroundCalendar</a></li><li><a href="global.html#updateSideBar">updateSideBar</a></li><li><a href="global.html#validateDict">validateDict</a></li><li><a href="global.html#viewDay">viewDay</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Nov 18 2022 02:50:00 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jan 04 2023 23:13:51 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
